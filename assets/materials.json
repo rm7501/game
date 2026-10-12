@@ -1,0 +1,4072 @@
+{
+ "M_AcaciaBark": {
+  "kind": "opaque",
+  "color": [
+   0.28,
+   0.22,
+   0.17
+  ],
+  "rough": 0.95,
+  "metal": 0.0,
+  "tex": "Rock",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_AcaciaLeaves": {
+  "kind": "foliage",
+  "color": [
+   0.3,
+   0.36,
+   0.16
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_AlUla_MudPlaster": {
+  "kind": "opaque",
+  "color": [
+   1.0,
+   0.9,
+   0.8
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": "MudPlaster",
+  "tile": 3.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_AlUla_Sandstone": {
+  "kind": "opaque",
+  "color": [
+   1.0,
+   0.92,
+   0.85
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": "SandstoneStrata",
+  "tile": 9.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_AlUla_SandstoneDark": {
+  "kind": "opaque",
+  "color": [
+   0.8,
+   0.62,
+   0.52
+  ],
+  "rough": 0.92,
+  "metal": 0.0,
+  "tex": "SandstoneStrata",
+  "tile": 7.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_AlUla_StoneBase": {
+  "kind": "opaque",
+  "color": [
+   0.95,
+   0.8,
+   0.68
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": "StoneMasonry",
+  "tile": 2.5,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_ArchTrimDark": {
+  "kind": "opaque",
+  "color": [
+   0.18,
+   0.12,
+   0.08
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Asphalt": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": "Asphalt",
+  "tile": 4.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_AviationRed": {
+  "kind": "emissive",
+  "color": [
+   0.6,
+   0.0,
+   0.0
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1,
+   0.02,
+   0.0
+  ],
+  "emit_str": 20,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Awning_Cream": {
+  "kind": "foliage",
+  "color": [
+   0.88,
+   0.82,
+   0.68
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Awning_Indigo": {
+  "kind": "foliage",
+  "color": [
+   0.15,
+   0.17,
+   0.4
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Awning_Red": {
+  "kind": "foliage",
+  "color": [
+   0.6,
+   0.12,
+   0.08
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_BalloonFabric_1_0": {
+  "kind": "opaque",
+  "color": [
+   0.05,
+   0.35,
+   0.25
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_BalloonFabric_1_1": {
+  "kind": "opaque",
+  "color": [
+   0.95,
+   0.9,
+   0.8
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Billboard_RiyadhSeason": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.3,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 4.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/riyadh/textures/T_Billboard_RiyadhSeason.png",
+  "image_emit": true
+ },
+ "M_BoostBase": {
+  "kind": "opaque",
+  "color": [
+   0.03,
+   0.03,
+   0.04
+  ],
+  "rough": 0.3,
+  "metal": 0.5,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_BoostGlow": {
+  "kind": "emissive",
+  "color": [
+   0.1,
+   0.8,
+   1.0
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.1,
+   0.8,
+   1.0
+  ],
+  "emit_str": 15,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Brass": {
+  "kind": "opaque",
+  "color": [
+   0.8,
+   0.58,
+   0.25
+  ],
+  "rough": 0.3,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_BulbWarm": {
+  "kind": "emissive",
+  "color": [
+   1.0,
+   0.8,
+   0.5
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.75,
+   0.45
+  ],
+  "emit_str": 20,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_BurnerFlame": {
+  "kind": "emissive",
+  "color": [
+   1.0,
+   0.5,
+   0.1
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.5,
+   0.1
+  ],
+  "emit_str": 15,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_CanopyFabric": {
+  "kind": "foliage",
+  "color": [
+   0.92,
+   0.9,
+   0.85
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car01_Accent": {
+  "kind": "carpaint",
+  "color": [
+   0.95,
+   0.95,
+   0.93
+  ],
+  "rough": 0.3,
+  "metal": 0.4,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car01_Glow": {
+  "kind": "emissive",
+  "color": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "emit_str": 12.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car01_Number": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.35,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Number_01.png",
+  "image_emit": false
+ },
+ "M_Car01_Paint": {
+  "kind": "carpaint",
+  "color": [
+   0.0,
+   0.17,
+   0.085
+  ],
+  "rough": 0.28,
+  "metal": 0.6,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car01_Plate": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Plate_01.png",
+  "image_emit": false
+ },
+ "M_Car01_Rim": {
+  "kind": "opaque",
+  "color": [
+   0.08,
+   0.08,
+   0.09
+  ],
+  "rough": 0.3,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car01_Seat": {
+  "kind": "opaque",
+  "color": [
+   0.55,
+   0.42,
+   0.25
+  ],
+  "rough": 0.55,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car02_Accent": {
+  "kind": "carpaint",
+  "color": [
+   0.08,
+   0.08,
+   0.09
+  ],
+  "rough": 0.3,
+  "metal": 0.4,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car02_Glow": {
+  "kind": "emissive",
+  "color": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "emit_str": 12.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car02_Number": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.35,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Number_02.png",
+  "image_emit": false
+ },
+ "M_Car02_Paint": {
+  "kind": "carpaint",
+  "color": [
+   0.86,
+   0.45,
+   0.1
+  ],
+  "rough": 0.28,
+  "metal": 0.3,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car02_Plate": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Plate_02.png",
+  "image_emit": false
+ },
+ "M_Car02_Rim": {
+  "kind": "opaque",
+  "color": [
+   0.75,
+   0.75,
+   0.78
+  ],
+  "rough": 0.25,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car02_Seat": {
+  "kind": "opaque",
+  "color": [
+   0.1,
+   0.1,
+   0.1
+  ],
+  "rough": 0.55,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car03_Accent": {
+  "kind": "carpaint",
+  "color": [
+   0.72,
+   0.58,
+   0.32
+  ],
+  "rough": 0.3,
+  "metal": 0.4,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car03_Glow": {
+  "kind": "emissive",
+  "color": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "emit_str": 12.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car03_Number": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.35,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Number_03.png",
+  "image_emit": false
+ },
+ "M_Car03_Paint": {
+  "kind": "carpaint",
+  "color": [
+   0.93,
+   0.92,
+   0.88
+  ],
+  "rough": 0.28,
+  "metal": 0.35,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car03_Plate": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Plate_03.png",
+  "image_emit": false
+ },
+ "M_Car03_Rim": {
+  "kind": "opaque",
+  "color": [
+   0.72,
+   0.62,
+   0.38
+  ],
+  "rough": 0.3,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car03_Seat": {
+  "kind": "opaque",
+  "color": [
+   0.6,
+   0.5,
+   0.38
+  ],
+  "rough": 0.55,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car04_Accent": {
+  "kind": "carpaint",
+  "color": [
+   0.07,
+   0.07,
+   0.08
+  ],
+  "rough": 0.3,
+  "metal": 0.4,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car04_Glow": {
+  "kind": "emissive",
+  "color": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "emit_str": 12.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car04_Number": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.35,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Number_04.png",
+  "image_emit": false
+ },
+ "M_Car04_Paint": {
+  "kind": "carpaint",
+  "color": [
+   0.62,
+   0.03,
+   0.04
+  ],
+  "rough": 0.28,
+  "metal": 0.55,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car04_Plate": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Plate_04.png",
+  "image_emit": false
+ },
+ "M_Car04_Rim": {
+  "kind": "opaque",
+  "color": [
+   0.05,
+   0.05,
+   0.055
+  ],
+  "rough": 0.25,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car04_Seat": {
+  "kind": "opaque",
+  "color": [
+   0.12,
+   0.12,
+   0.12
+  ],
+  "rough": 0.55,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car05_Accent": {
+  "kind": "carpaint",
+  "color": [
+   0.02,
+   0.02,
+   0.022
+  ],
+  "rough": 0.3,
+  "metal": 0.4,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car05_Glow": {
+  "kind": "emissive",
+  "color": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "emit_str": 12.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car05_Number": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.35,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Number_05.png",
+  "image_emit": false
+ },
+ "M_Car05_Paint": {
+  "kind": "carpaint",
+  "color": [
+   0.75,
+   0.52,
+   0.12
+  ],
+  "rough": 0.28,
+  "metal": 0.8,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car05_Plate": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Plate_05.png",
+  "image_emit": false
+ },
+ "M_Car05_Rim": {
+  "kind": "opaque",
+  "color": [
+   0.86,
+   0.86,
+   0.88
+  ],
+  "rough": 0.12,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car05_Seat": {
+  "kind": "opaque",
+  "color": [
+   0.08,
+   0.08,
+   0.08
+  ],
+  "rough": 0.55,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car06_Accent": {
+  "kind": "carpaint",
+  "color": [
+   0.02,
+   0.05,
+   0.08
+  ],
+  "rough": 0.3,
+  "metal": 0.4,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car06_Glow": {
+  "kind": "emissive",
+  "color": [
+   0.15,
+   0.95,
+   1.0
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.15,
+   0.95,
+   1.0
+  ],
+  "emit_str": 12.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car06_Number": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.35,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Number_06.png",
+  "image_emit": false
+ },
+ "M_Car06_Paint": {
+  "kind": "carpaint",
+  "color": [
+   0.93,
+   0.94,
+   0.95
+  ],
+  "rough": 0.28,
+  "metal": 0.2,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car06_Plate": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Plate_06.png",
+  "image_emit": false
+ },
+ "M_Car06_Rim": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.9,
+   0.92
+  ],
+  "rough": 0.25,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car06_Seat": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.9,
+   0.9
+  ],
+  "rough": 0.55,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car07_Accent": {
+  "kind": "carpaint",
+  "color": [
+   0.95,
+   0.95,
+   0.93
+  ],
+  "rough": 0.3,
+  "metal": 0.4,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car07_Glow": {
+  "kind": "emissive",
+  "color": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "emit_str": 12.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car07_Number": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.35,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Number_07.png",
+  "image_emit": false
+ },
+ "M_Car07_Paint": {
+  "kind": "carpaint",
+  "color": [
+   0.78,
+   0.33,
+   0.12
+  ],
+  "rough": 0.28,
+  "metal": 0.45,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car07_Plate": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Plate_07.png",
+  "image_emit": false
+ },
+ "M_Car07_Rim": {
+  "kind": "opaque",
+  "color": [
+   0.95,
+   0.95,
+   0.95
+  ],
+  "rough": 0.25,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car07_Seat": {
+  "kind": "opaque",
+  "color": [
+   0.1,
+   0.1,
+   0.1
+  ],
+  "rough": 0.55,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car08_Accent": {
+  "kind": "carpaint",
+  "color": [
+   0.85,
+   0.72,
+   0.42
+  ],
+  "rough": 0.3,
+  "metal": 0.4,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car08_Glow": {
+  "kind": "emissive",
+  "color": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.2,
+   0.9,
+   1.0
+  ],
+  "emit_str": 12.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car08_Number": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.35,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Number_08.png",
+  "image_emit": false
+ },
+ "M_Car08_Paint": {
+  "kind": "carpaint",
+  "color": [
+   0.02,
+   0.18,
+   0.32
+  ],
+  "rough": 0.28,
+  "metal": 0.85,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car08_Plate": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/cars/textures/T_Plate_08.png",
+  "image_emit": false
+ },
+ "M_Car08_Rim": {
+  "kind": "opaque",
+  "color": [
+   0.7,
+   0.7,
+   0.72
+  ],
+  "rough": 0.2,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car08_Seat": {
+  "kind": "opaque",
+  "color": [
+   0.75,
+   0.62,
+   0.45
+  ],
+  "rough": 0.55,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_BrakeDisc": {
+  "kind": "opaque",
+  "color": [
+   0.45,
+   0.45,
+   0.46
+  ],
+  "rough": 0.38,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_Carbon": {
+  "kind": "opaque",
+  "color": [
+   0.02,
+   0.021,
+   0.024
+  ],
+  "rough": 0.22,
+  "metal": 0.3,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_Chrome": {
+  "kind": "mirror",
+  "color": [
+   0.95,
+   0.95,
+   0.95
+  ],
+  "rough": 0.04,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_DRL": {
+  "kind": "emissive",
+  "color": [
+   0.95,
+   0.97,
+   1.0
+  ],
+  "rough": 0.1,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.9,
+   0.95,
+   1.0
+  ],
+  "emit_str": 20.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_Exhaust": {
+  "kind": "opaque",
+  "color": [
+   0.55,
+   0.5,
+   0.45
+  ],
+  "rough": 0.3,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_ExhaustInner": {
+  "kind": "opaque",
+  "color": [
+   0.01,
+   0.01,
+   0.01
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_Glass": {
+  "kind": "glass",
+  "color": [
+   0.02,
+   0.025,
+   0.03
+  ],
+  "rough": 0.02,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.7,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_GlossBlack": {
+  "kind": "opaque",
+  "color": [
+   0.008,
+   0.008,
+   0.009
+  ],
+  "rough": 0.12,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 1.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_Grille": {
+  "kind": "opaque",
+  "color": [
+   0.8,
+   0.8,
+   0.82
+  ],
+  "rough": 0.5,
+  "metal": 0.6,
+  "tex": "HexMesh",
+  "tile": 0.18,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_Headlight": {
+  "kind": "emissive",
+  "color": [
+   0.9,
+   0.95,
+   1.0
+  ],
+  "rough": 0.1,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.85,
+   0.92,
+   1.0
+  ],
+  "emit_str": 10.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_Indicator": {
+  "kind": "emissive",
+  "color": [
+   0.9,
+   0.4,
+   0.02
+  ],
+  "rough": 0.1,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.45,
+   0.02
+  ],
+  "emit_str": 6.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_Interior": {
+  "kind": "opaque",
+  "color": [
+   0.05,
+   0.045,
+   0.04
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_LightHousing": {
+  "kind": "opaque",
+  "color": [
+   0.05,
+   0.05,
+   0.06
+  ],
+  "rough": 0.08,
+  "metal": 0.8,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_MirrorGlass": {
+  "kind": "mirror",
+  "color": [
+   0.8,
+   0.82,
+   0.85
+  ],
+  "rough": 0.02,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_Taillight": {
+  "kind": "emissive",
+  "color": [
+   0.3,
+   0.0,
+   0.0
+  ],
+  "rough": 0.1,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.0,
+   0.0
+  ],
+  "emit_str": 2.5,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_Tire": {
+  "kind": "opaque",
+  "color": [
+   0.025,
+   0.025,
+   0.027
+  ],
+  "rough": 0.88,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_TrimBlack": {
+  "kind": "opaque",
+  "color": [
+   0.015,
+   0.015,
+   0.017
+  ],
+  "rough": 0.55,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Car_Underbody": {
+  "kind": "opaque",
+  "color": [
+   0.03,
+   0.03,
+   0.03
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_CardBack": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.35,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/common/textures/T_CardBack.png",
+  "image_emit": false
+ },
+ "M_CardEdge": {
+  "kind": "opaque",
+  "color": [
+   0.84,
+   0.66,
+   0.34
+  ],
+  "rough": 0.25,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_CardFront": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.35,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/common/textures/T_CardFront_Template.png",
+  "image_emit": false
+ },
+ "M_Checker_Black": {
+  "kind": "opaque",
+  "color": [
+   0.02,
+   0.02,
+   0.02
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Checker_White": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.9,
+   0.9
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_CheckpointBanner": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/common/textures/T_CheckpointBanner.png",
+  "image_emit": false
+ },
+ "M_Concrete": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": "Concrete",
+  "tile": 2.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_ConcreteWarm": {
+  "kind": "opaque",
+  "color": [
+   1.0,
+   0.95,
+   0.86
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": "Concrete",
+  "tile": 4.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_CurbBlack": {
+  "kind": "opaque",
+  "color": [
+   0.05,
+   0.05,
+   0.05
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_CurbPaint": {
+  "kind": "opaque",
+  "color": [
+   0.85,
+   0.85,
+   0.8
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Cushion_Green": {
+  "kind": "opaque",
+  "color": [
+   0.08,
+   0.3,
+   0.15
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Cushion_Red": {
+  "kind": "opaque",
+  "color": [
+   0.55,
+   0.06,
+   0.05
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Default": {
+  "kind": "opaque",
+  "color": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Faisaliah_GoldGlass": {
+  "kind": "opaque",
+  "color": [
+   0.95,
+   0.7,
+   0.3
+  ],
+  "rough": 0.12,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.65,
+   0.25
+  ],
+  "emit_str": 3.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Falcon_Beak": {
+  "kind": "opaque",
+  "color": [
+   0.85,
+   0.7,
+   0.2
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Falcon_Belly": {
+  "kind": "opaque",
+  "color": [
+   0.85,
+   0.78,
+   0.66
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Falcon_Eye": {
+  "kind": "opaque",
+  "color": [
+   0.02,
+   0.02,
+   0.02
+  ],
+  "rough": 0.1,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Falcon_Feathers": {
+  "kind": "opaque",
+  "color": [
+   0.45,
+   0.33,
+   0.22
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Falcon_Hood": {
+  "kind": "opaque",
+  "color": [
+   0.5,
+   0.15,
+   0.08
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_GlassDark": {
+  "kind": "opaque",
+  "color": [
+   0.03,
+   0.04,
+   0.06
+  ],
+  "rough": 0.05,
+  "metal": 0.8,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Goods_0": {
+  "kind": "opaque",
+  "color": [
+   0.7,
+   0.35,
+   0.1
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Goods_1": {
+  "kind": "opaque",
+  "color": [
+   0.85,
+   0.65,
+   0.2
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Goods_2": {
+  "kind": "opaque",
+  "color": [
+   0.45,
+   0.12,
+   0.08
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Goods_3": {
+  "kind": "opaque",
+  "color": [
+   0.2,
+   0.4,
+   0.15
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Goods_4": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.85,
+   0.7
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_HazardYellow": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.7,
+   0.05
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Hegra_CarvedFacade": {
+  "kind": "opaque",
+  "color": [
+   1.12,
+   1.0,
+   0.9
+  ],
+  "rough": 0.85,
+  "metal": 0.0,
+  "tex": "SandstoneStrata",
+  "tile": 5.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Jeddah_CoralStone": {
+  "kind": "opaque",
+  "color": [
+   1.0,
+   0.98,
+   0.95
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": "CoralStone",
+  "tile": 3.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Jeddah_CoralStoneWarm": {
+  "kind": "opaque",
+  "color": [
+   0.96,
+   0.88,
+   0.76
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": "CoralStone",
+  "tile": 3.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Jeddah_DoorWood": {
+  "kind": "opaque",
+  "color": [
+   0.38,
+   0.24,
+   0.13
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 0.8,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Jeddah_StonePaving": {
+  "kind": "opaque",
+  "color": [
+   0.85,
+   0.8,
+   0.7
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": "StoneMasonry",
+  "tile": 2.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Jeddah_Takaleel": {
+  "kind": "opaque",
+  "color": [
+   0.3,
+   0.2,
+   0.12
+  ],
+  "rough": 0.85,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_KC_ArchLED": {
+  "kind": "emissive",
+  "color": [
+   0.35,
+   0.3,
+   1.0
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.35,
+   0.25,
+   1.0
+  ],
+  "emit_str": 9.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_KC_BridgeLight": {
+  "kind": "emissive",
+  "color": [
+   0.9,
+   0.95,
+   1.0
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.85,
+   0.92,
+   1.0
+  ],
+  "emit_str": 12.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_KC_FacadeNight": {
+  "kind": "opaque",
+  "color": [
+   0.8,
+   0.85,
+   0.95
+  ],
+  "rough": 0.08,
+  "metal": 0.7,
+  "tex": "FacadeNight",
+  "tile": 16.0,
+  "emit": null,
+  "emit_str": 1.2,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_LED_Amber": {
+  "kind": "emissive",
+  "color": [
+   1.0,
+   0.55,
+   0.15
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.55,
+   0.15
+  ],
+  "emit_str": 12,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_LED_Green": {
+  "kind": "emissive",
+  "color": [
+   0.1,
+   0.8,
+   0.4
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.15,
+   1.0,
+   0.45
+  ],
+  "emit_str": 10,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_LED_White": {
+  "kind": "emissive",
+  "color": [
+   0.9,
+   0.95,
+   1.0
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.85,
+   0.9,
+   1.0
+  ],
+  "emit_str": 10,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_LanternGlow": {
+  "kind": "emissive",
+  "color": [
+   1.0,
+   0.7,
+   0.35
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.65,
+   0.3
+  ],
+  "emit_str": 14,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Lime_White": {
+  "kind": "opaque",
+  "color": [
+   0.92,
+   0.91,
+   0.87
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": "CoralStone",
+  "tile": 4.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Limestone": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.8,
+   0.64
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": "MudPlaster",
+  "tile": 3.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Maraya_Backing": {
+  "kind": "opaque",
+  "color": [
+   0.05,
+   0.05,
+   0.055
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Maraya_Mirror": {
+  "kind": "mirror",
+  "color": [
+   0.92,
+   0.93,
+   0.95
+  ],
+  "rough": 0.015,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Metro_Line1Blue": {
+  "kind": "opaque",
+  "color": [
+   0.0,
+   0.32,
+   0.72
+  ],
+  "rough": 0.3,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.6,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Metro_White": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.9,
+   0.9
+  ],
+  "rough": 0.3,
+  "metal": 0.2,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.6,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Metro_Window": {
+  "kind": "emissive",
+  "color": [
+   0.7,
+   0.8,
+   0.9
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.8,
+   0.88,
+   1.0
+  ],
+  "emit_str": 3.5,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Minaret_GreenTrim": {
+  "kind": "opaque",
+  "color": [
+   0.05,
+   0.35,
+   0.2
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_MudBrick": {
+  "kind": "opaque",
+  "color": [
+   1.0,
+   0.95,
+   0.9
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": "MudPlaster",
+  "tile": 3.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_PaintWhite": {
+  "kind": "opaque",
+  "color": [
+   0.85,
+   0.85,
+   0.83
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_PalmDates": {
+  "kind": "opaque",
+  "color": [
+   0.62,
+   0.3,
+   0.05
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_PalmFrond": {
+  "kind": "foliage",
+  "color": [
+   0.26,
+   0.34,
+   0.15
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_PalmFrondDry": {
+  "kind": "foliage",
+  "color": [
+   0.45,
+   0.36,
+   0.22
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_PalmTrunk": {
+  "kind": "opaque",
+  "color": [
+   0.42,
+   0.33,
+   0.24
+  ],
+  "rough": 0.95,
+  "metal": 0.0,
+  "tex": "MudPlaster",
+  "tile": 0.6,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_PalmWood": {
+  "kind": "opaque",
+  "color": [
+   0.42,
+   0.3,
+   0.2
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Paver": {
+  "kind": "opaque",
+  "color": [
+   0.85,
+   0.75,
+   0.62
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": "Concrete",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Pennant_Gold": {
+  "kind": "foliage",
+  "color": [
+   0.85,
+   0.62,
+   0.15
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Pennant_Green": {
+  "kind": "foliage",
+  "color": [
+   0.0,
+   0.42,
+   0.22
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_PickupBase": {
+  "kind": "opaque",
+  "color": [
+   0.06,
+   0.05,
+   0.05
+  ],
+  "rough": 0.3,
+  "metal": 0.8,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_PickupGold": {
+  "kind": "opaque",
+  "color": [
+   0.85,
+   0.6,
+   0.25
+  ],
+  "rough": 0.25,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_PickupHolo": {
+  "kind": "emissive",
+  "color": [
+   0.9,
+   0.6,
+   0.2
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.65,
+   0.2
+  ],
+  "emit_str": 10,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Plastic_Orange": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.3,
+   0.02
+  ],
+  "rough": 0.45,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Plastic_Red": {
+  "kind": "opaque",
+  "color": [
+   0.6,
+   0.04,
+   0.03
+  ],
+  "rough": 0.45,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Plastic_White": {
+  "kind": "opaque",
+  "color": [
+   0.85,
+   0.85,
+   0.83
+  ],
+  "rough": 0.45,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_RampSteel": {
+  "kind": "opaque",
+  "color": [
+   0.5,
+   0.5,
+   0.52
+  ],
+  "rough": 0.5,
+  "metal": 1.0,
+  "tex": "MetalPanels",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_ReflectorStripe": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.75,
+   0.1
+  ],
+  "rough": 0.3,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1,
+   0.75,
+   0.1
+  ],
+  "emit_str": 0.5,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_ReflectorWhite": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.9,
+   0.9
+  ],
+  "rough": 0.3,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Riyadh_FacadeNight": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.1,
+  "metal": 0.6,
+  "tex": "FacadeNight",
+  "tile": 24.0,
+  "emit": null,
+  "emit_str": 3.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_RoadLanes": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": "RoadLanes",
+  "tile": 12.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_RoadLineWhite": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.9,
+   0.88
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_RoadLineYellow": {
+  "kind": "opaque",
+  "color": [
+   0.85,
+   0.65,
+   0.1
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_RoadSign_KingFahd": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.6,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/riyadh/textures/T_Sign_KingFahd.png",
+  "image_emit": true
+ },
+ "M_RoadSign_Kingdom": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.6,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/riyadh/textures/T_Sign_Kingdom.png",
+  "image_emit": true
+ },
+ "M_RoadSign_Olaya": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.6,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/riyadh/textures/T_Sign_Olaya.png",
+  "image_emit": true
+ },
+ "M_Rope": {
+  "kind": "opaque",
+  "color": [
+   0.7,
+   0.62,
+   0.48
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Roshan_Blue": {
+  "kind": "opaque",
+  "color": [
+   0.12,
+   0.26,
+   0.48
+  ],
+  "rough": 0.75,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 1.2,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Roshan_Brown": {
+  "kind": "opaque",
+  "color": [
+   0.32,
+   0.2,
+   0.11
+  ],
+  "rough": 0.75,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 1.2,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Roshan_Green": {
+  "kind": "opaque",
+  "color": [
+   0.1,
+   0.32,
+   0.17
+  ],
+  "rough": 0.75,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 1.2,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Roshan_Teal": {
+  "kind": "opaque",
+  "color": [
+   0.08,
+   0.38,
+   0.36
+  ],
+  "rough": 0.75,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 1.2,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Roshan_Turquoise": {
+  "kind": "opaque",
+  "color": [
+   0.16,
+   0.52,
+   0.55
+  ],
+  "rough": 0.75,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 1.2,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Roshan_White": {
+  "kind": "opaque",
+  "color": [
+   0.82,
+   0.82,
+   0.78
+  ],
+  "rough": 0.75,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 1.2,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Sand": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": "Sand",
+  "tile": 6,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_SandTrap": {
+  "kind": "opaque",
+  "color": [
+   0.86,
+   0.66,
+   0.42
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": "Sand",
+  "tile": 2.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Seat_Green": {
+  "kind": "opaque",
+  "color": [
+   0.02,
+   0.35,
+   0.18
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_ShopSign_0": {
+  "kind": "emissive",
+  "color": [
+   0.1,
+   0.6,
+   1.0
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.1,
+   0.6,
+   1.0
+  ],
+  "emit_str": 8,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_ShopSign_1": {
+  "kind": "emissive",
+  "color": [
+   1.0,
+   0.3,
+   0.2
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.3,
+   0.2
+  ],
+  "emit_str": 8,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_ShopSign_2": {
+  "kind": "emissive",
+  "color": [
+   0.2,
+   1.0,
+   0.5
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.2,
+   1.0,
+   0.5
+  ],
+  "emit_str": 8,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_ShopSign_3": {
+  "kind": "emissive",
+  "color": [
+   1.0,
+   0.8,
+   0.2
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.8,
+   0.2
+  ],
+  "emit_str": 8,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_ShopSign_4": {
+  "kind": "emissive",
+  "color": [
+   0.8,
+   0.3,
+   1.0
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.8,
+   0.3,
+   1.0
+  ],
+  "emit_str": 8,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_StartBanner": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/common/textures/T_StartBanner.png",
+  "image_emit": false
+ },
+ "M_StartLight_Green": {
+  "kind": "emissive",
+  "color": [
+   0.02,
+   0.5,
+   0.1
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.1,
+   1,
+   0.2
+  ],
+  "emit_str": 10,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_StartLight_Red": {
+  "kind": "emissive",
+  "color": [
+   0.6,
+   0.02,
+   0.02
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1,
+   0.02,
+   0.02
+  ],
+  "emit_str": 10,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_SteelDark": {
+  "kind": "opaque",
+  "color": [
+   0.08,
+   0.08,
+   0.09
+  ],
+  "rough": 0.4,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_SteelGalvanised": {
+  "kind": "opaque",
+  "color": [
+   0.55,
+   0.56,
+   0.58
+  ],
+  "rough": 0.45,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Studio_Floor": {
+  "kind": "opaque",
+  "color": [
+   0.18,
+   0.18,
+   0.19
+  ],
+  "rough": 0.35,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_TombInterior": {
+  "kind": "opaque",
+  "color": [
+   0.05,
+   0.03,
+   0.02
+  ],
+  "rough": 0.95,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Tree_Bark": {
+  "kind": "opaque",
+  "color": [
+   0.3,
+   0.24,
+   0.18
+  ],
+  "rough": 0.95,
+  "metal": 0.0,
+  "tex": "Rock",
+  "tile": 1.5,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Tree_NeemLeaves": {
+  "kind": "foliage",
+  "color": [
+   0.16,
+   0.3,
+   0.1
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_VFX_FlameCore": {
+  "kind": "emissive",
+  "color": [
+   0.6,
+   0.85,
+   1.0
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.5,
+   0.8,
+   1.0
+  ],
+  "emit_str": 20,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_VFX_FlameOuter": {
+  "kind": "emissive",
+  "color": [
+   1.0,
+   0.45,
+   0.1
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.4,
+   0.08
+  ],
+  "emit_str": 10,
+  "transmission": 0.0,
+  "alpha": 0.6,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_VFX_Sand": {
+  "kind": "foliage",
+  "color": [
+   0.85,
+   0.65,
+   0.4
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 0.6,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_VFX_ShieldHex": {
+  "kind": "emissive",
+  "color": [
+   0.2,
+   0.8,
+   1.0
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.2,
+   0.8,
+   1.0
+  ],
+  "emit_str": 4,
+  "transmission": 0.0,
+  "alpha": 0.35,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_VFX_Shock": {
+  "kind": "emissive",
+  "color": [
+   0.6,
+   0.4,
+   1.0
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.6,
+   0.4,
+   1.0
+  ],
+  "emit_str": 12,
+  "transmission": 0.0,
+  "alpha": 0.7,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_WaterTank": {
+  "kind": "opaque",
+  "color": [
+   0.8,
+   0.82,
+   0.85
+  ],
+  "rough": 0.45,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_WaterTankBlue": {
+  "kind": "opaque",
+  "color": [
+   0.15,
+   0.3,
+   0.55
+  ],
+  "rough": 0.45,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Wicker": {
+  "kind": "opaque",
+  "color": [
+   0.62,
+   0.45,
+   0.25
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 0.5,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Win_Dark": {
+  "kind": "opaque",
+  "color": [
+   0.02,
+   0.025,
+   0.035
+  ],
+  "rough": 0.05,
+  "metal": 0.7,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Win_LitCool": {
+  "kind": "emissive",
+  "color": [
+   0.8,
+   0.88,
+   1.0
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.8,
+   0.88,
+   1.0
+  ],
+  "emit_str": 2.5,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Win_LitWarm": {
+  "kind": "emissive",
+  "color": [
+   0.9,
+   0.7,
+   0.45
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.72,
+   0.42
+  ],
+  "emit_str": 3.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_WindowDarkHole": {
+  "kind": "opaque",
+  "color": [
+   0.02,
+   0.015,
+   0.01
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_WindowFrameDark": {
+  "kind": "opaque",
+  "color": [
+   0.06,
+   0.05,
+   0.045
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_WoodDark": {
+  "kind": "opaque",
+  "color": [
+   0.2,
+   0.13,
+   0.08
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ }
+}
