@@ -106,14 +106,17 @@ def make_textures():
         d.text((cx - (r - l) / 2 - l, 128 - (b - t) / 2 - t), txt, font=f, fill=(250, 245, 230))
     im.save(os.path.join(TEXOUT, "T_StartBanner.png"))
 
-    # checkpoint banner
-    im = Image.new("RGB", (1024, 256), (150, 60, 20))
+    # checkpoint banner (8:1 to match the 9.6 x 1.2 m panel on the arch)
+    im = Image.new("RGB", (2048, 256), (150, 60, 20))
     d = ImageDraw.Draw(im)
-    f = ImageFont.truetype(bold, 96)
-    for txt, cx in ((ar("نقطة تفتيش"), 300), ("CHECKPOINT", 760)):
-        l, t, r, b = d.textbbox((0, 0), txt, font=f if cx < 500 else ImageFont.truetype(bold, 80))
-        ff = f if cx < 500 else ImageFont.truetype(bold, 80)
-        d.text((cx - (r - l) / 2 - l, 128 - (b - t) / 2 - t), txt, font=ff, fill=(255, 240, 210))
+    for x in range(0, 2048, 64):
+        star(d, x + 32, 22, 13, (190, 95, 45), 3)
+        star(d, x + 32, 234, 13, (190, 95, 45), 3)
+    for txt, cx, size in ((ar("نقطة تفتيش"), 520, 120), ("CHECKPOINT", 1480, 112)):
+        f = ImageFont.truetype(bold, size)
+        l, t, r, b = d.textbbox((0, 0), txt, font=f)
+        d.text((cx - (r - l) / 2 - l, 128 - (b - t) / 2 - t), txt, font=f, fill=(255, 240, 210))
+    d.line([(1000, 60), (1000, 196)], fill=(255, 220, 170), width=6)
     im.save(os.path.join(TEXOUT, "T_CheckpointBanner.png"))
 
 

@@ -33,7 +33,7 @@ the maps read as the real places.
 Each car has:
 * a **Chaos Vehicle–ready skeletal mesh** (`Root` + `Wheel_FL/FR/RL/RR`)
 * a static body and wheels
-* real tyre treads and five rim styles
+* real tyre treads (road, rally, off-road, slick) and 8 rim styles
 * recessed intakes and grilles, an interior, door shut-lines and mirrors
 * Saudi-format licence plates and a race-number roundel in Arabic and English
 * wheel and tuning data in `vehicle_spec.json`
