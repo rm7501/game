@@ -1,0 +1,546 @@
+{
+ "Falcon": {
+  "car": "Falcon",
+  "name_ar": "الصقر",
+  "number": "1",
+  "skeletal_mesh": "SK_Falcon",
+  "root_bone": "Root",
+  "length_cm": 455,
+  "wheelbase_cm": 277.6,
+  "track_front_cm": 159.8,
+  "track_rear_cm": 160.0,
+  "mass_kg": 1350,
+  "max_torque_nm": 720,
+  "max_rpm": 8500,
+  "drive": "AWD",
+  "suspension_travel_cm": 8,
+  "center_of_mass_offset_cm": {
+   "x": 0,
+   "y": 0,
+   "z": -15
+  },
+  "wheels": {
+   "Wheel_FL": {
+    "bone": "Wheel_FL",
+    "x_cm": 138.8,
+    "y_cm": -79.9,
+    "z_cm": 33.5,
+    "radius_cm": 33.5,
+    "width_cm": 26.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": true
+   },
+   "Wheel_FR": {
+    "bone": "Wheel_FR",
+    "x_cm": 138.8,
+    "y_cm": 79.9,
+    "z_cm": 33.5,
+    "radius_cm": 33.5,
+    "width_cm": 26.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": true
+   },
+   "Wheel_RL": {
+    "bone": "Wheel_RL",
+    "x_cm": -138.8,
+    "y_cm": -80.0,
+    "z_cm": 35.0,
+    "radius_cm": 35.0,
+    "width_cm": 32.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   },
+   "Wheel_RR": {
+    "bone": "Wheel_RR",
+    "x_cm": -138.8,
+    "y_cm": 80.0,
+    "z_cm": 35.0,
+    "radius_cm": 35.0,
+    "width_cm": 32.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   }
+  },
+  "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+ },
+ "DuneFox": {
+  "car": "DuneFox",
+  "name_ar": "ثعلب الكثبان",
+  "number": "2",
+  "skeletal_mesh": "SK_DuneFox",
+  "root_bone": "Root",
+  "length_cm": 560,
+  "wheelbase_cm": 322.0,
+  "track_front_cm": 176.0,
+  "track_rear_cm": 176.0,
+  "mass_kg": 2200,
+  "max_torque_nm": 900,
+  "max_rpm": 6500,
+  "drive": "AWD",
+  "suspension_travel_cm": 35,
+  "center_of_mass_offset_cm": {
+   "x": 0,
+   "y": 0,
+   "z": -15
+  },
+  "wheels": {
+   "Wheel_FL": {
+    "bone": "Wheel_FL",
+    "x_cm": 161.0,
+    "y_cm": -88.0,
+    "z_cm": 48.0,
+    "radius_cm": 48.0,
+    "width_cm": 36.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": true
+   },
+   "Wheel_FR": {
+    "bone": "Wheel_FR",
+    "x_cm": 161.0,
+    "y_cm": 88.0,
+    "z_cm": 48.0,
+    "radius_cm": 48.0,
+    "width_cm": 36.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": true
+   },
+   "Wheel_RL": {
+    "bone": "Wheel_RL",
+    "x_cm": -161.0,
+    "y_cm": -88.0,
+    "z_cm": 48.0,
+    "radius_cm": 48.0,
+    "width_cm": 36.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   },
+   "Wheel_RR": {
+    "bone": "Wheel_RR",
+    "x_cm": -161.0,
+    "y_cm": 88.0,
+    "z_cm": 48.0,
+    "radius_cm": 48.0,
+    "width_cm": 36.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   }
+  },
+  "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+ },
+ "NajdiGXR": {
+  "car": "NajdiGXR",
+  "name_ar": "النجدي",
+  "number": "3",
+  "skeletal_mesh": "SK_NajdiGXR",
+  "root_bone": "Root",
+  "length_cm": 495,
+  "wheelbase_cm": 284.6,
+  "track_front_cm": 161.0,
+  "track_rear_cm": 161.0,
+  "mass_kg": 2400,
+  "max_torque_nm": 650,
+  "max_rpm": 6000,
+  "drive": "AWD",
+  "suspension_travel_cm": 20,
+  "center_of_mass_offset_cm": {
+   "x": 0,
+   "y": 0,
+   "z": -15
+  },
+  "wheels": {
+   "Wheel_FL": {
+    "bone": "Wheel_FL",
+    "x_cm": 142.3,
+    "y_cm": -80.5,
+    "z_cm": 40.0,
+    "radius_cm": 40.0,
+    "width_cm": 29.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": true
+   },
+   "Wheel_FR": {
+    "bone": "Wheel_FR",
+    "x_cm": 142.3,
+    "y_cm": 80.5,
+    "z_cm": 40.0,
+    "radius_cm": 40.0,
+    "width_cm": 29.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": true
+   },
+   "Wheel_RL": {
+    "bone": "Wheel_RL",
+    "x_cm": -142.3,
+    "y_cm": -80.5,
+    "z_cm": 40.0,
+    "radius_cm": 40.0,
+    "width_cm": 29.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   },
+   "Wheel_RR": {
+    "bone": "Wheel_RR",
+    "x_cm": -142.3,
+    "y_cm": 80.5,
+    "z_cm": 40.0,
+    "radius_cm": 40.0,
+    "width_cm": 29.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   }
+  },
+  "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+ },
+ "HiluxRaider": {
+  "car": "HiluxRaider",
+  "name_ar": "الغزّاي",
+  "number": "4",
+  "skeletal_mesh": "SK_HiluxRaider",
+  "root_bone": "Root",
+  "length_cm": 530,
+  "wheelbase_cm": 304.8,
+  "track_front_cm": 150.0,
+  "track_rear_cm": 150.0,
+  "mass_kg": 2000,
+  "max_torque_nm": 600,
+  "max_rpm": 6000,
+  "drive": "RWD",
+  "suspension_travel_cm": 18,
+  "center_of_mass_offset_cm": {
+   "x": 0,
+   "y": 0,
+   "z": -15
+  },
+  "wheels": {
+   "Wheel_FL": {
+    "bone": "Wheel_FL",
+    "x_cm": 152.4,
+    "y_cm": -75.0,
+    "z_cm": 38.0,
+    "radius_cm": 38.0,
+    "width_cm": 28.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": false
+   },
+   "Wheel_FR": {
+    "bone": "Wheel_FR",
+    "x_cm": 152.4,
+    "y_cm": 75.0,
+    "z_cm": 38.0,
+    "radius_cm": 38.0,
+    "width_cm": 28.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": false
+   },
+   "Wheel_RL": {
+    "bone": "Wheel_RL",
+    "x_cm": -152.4,
+    "y_cm": -75.0,
+    "z_cm": 38.0,
+    "radius_cm": 38.0,
+    "width_cm": 28.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   },
+   "Wheel_RR": {
+    "bone": "Wheel_RR",
+    "x_cm": -152.4,
+    "y_cm": 75.0,
+    "z_cm": 38.0,
+    "radius_cm": 38.0,
+    "width_cm": 28.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   }
+  },
+  "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+ },
+ "RiyadhMuscle": {
+  "car": "RiyadhMuscle",
+  "name_ar": "عضلات الرياض",
+  "number": "5",
+  "skeletal_mesh": "SK_RiyadhMuscle",
+  "root_bone": "Root",
+  "length_cm": 475,
+  "wheelbase_cm": 282.6,
+  "track_front_cm": 154.8,
+  "track_rear_cm": 156.0,
+  "mass_kg": 1600,
+  "max_torque_nm": 800,
+  "max_rpm": 7000,
+  "drive": "RWD",
+  "suspension_travel_cm": 10,
+  "center_of_mass_offset_cm": {
+   "x": 0,
+   "y": 0,
+   "z": -15
+  },
+  "wheels": {
+   "Wheel_FL": {
+    "bone": "Wheel_FL",
+    "x_cm": 141.3,
+    "y_cm": -77.4,
+    "z_cm": 34.0,
+    "radius_cm": 34.0,
+    "width_cm": 25.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": false
+   },
+   "Wheel_FR": {
+    "bone": "Wheel_FR",
+    "x_cm": 141.3,
+    "y_cm": 77.4,
+    "z_cm": 34.0,
+    "radius_cm": 34.0,
+    "width_cm": 25.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": false
+   },
+   "Wheel_RL": {
+    "bone": "Wheel_RL",
+    "x_cm": -141.3,
+    "y_cm": -78.0,
+    "z_cm": 35.0,
+    "radius_cm": 35.0,
+    "width_cm": 30.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   },
+   "Wheel_RR": {
+    "bone": "Wheel_RR",
+    "x_cm": -141.3,
+    "y_cm": 78.0,
+    "z_cm": 35.0,
+    "radius_cm": 35.0,
+    "width_cm": 30.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   }
+  },
+  "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+ },
+ "NeomGlide": {
+  "car": "NeomGlide",
+  "name_ar": "نيوم",
+  "number": "6",
+  "skeletal_mesh": "SK_NeomGlide",
+  "root_bone": "Root",
+  "length_cm": 485,
+  "wheelbase_cm": 291.0,
+  "track_front_cm": 164.8,
+  "track_rear_cm": 161.8,
+  "mass_kg": 1500,
+  "max_torque_nm": 850,
+  "max_rpm": 12000,
+  "drive": "AWD",
+  "suspension_travel_cm": 8,
+  "center_of_mass_offset_cm": {
+   "x": 0,
+   "y": 0,
+   "z": -15
+  },
+  "wheels": {
+   "Wheel_FL": {
+    "bone": "Wheel_FL",
+    "x_cm": 145.5,
+    "y_cm": -82.4,
+    "z_cm": 36.0,
+    "radius_cm": 36.0,
+    "width_cm": 27.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": true
+   },
+   "Wheel_FR": {
+    "bone": "Wheel_FR",
+    "x_cm": 145.5,
+    "y_cm": 82.4,
+    "z_cm": 36.0,
+    "radius_cm": 36.0,
+    "width_cm": 27.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": true
+   },
+   "Wheel_RL": {
+    "bone": "Wheel_RL",
+    "x_cm": -145.5,
+    "y_cm": -80.9,
+    "z_cm": 36.0,
+    "radius_cm": 36.0,
+    "width_cm": 30.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   },
+   "Wheel_RR": {
+    "bone": "Wheel_RR",
+    "x_cm": -145.5,
+    "y_cm": 80.9,
+    "z_cm": 36.0,
+    "radius_cm": 36.0,
+    "width_cm": 30.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   }
+  },
+  "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+ },
+ "AlUlaRally": {
+  "car": "AlUlaRally",
+  "name_ar": "رالي العُلا",
+  "number": "7",
+  "skeletal_mesh": "SK_AlUlaRally",
+  "root_bone": "Root",
+  "length_cm": 420,
+  "wheelbase_cm": 277.2,
+  "track_front_cm": 157.0,
+  "track_rear_cm": 159.0,
+  "mass_kg": 1250,
+  "max_torque_nm": 520,
+  "max_rpm": 8000,
+  "drive": "AWD",
+  "suspension_travel_cm": 16,
+  "center_of_mass_offset_cm": {
+   "x": 0,
+   "y": 0,
+   "z": -15
+  },
+  "wheels": {
+   "Wheel_FL": {
+    "bone": "Wheel_FL",
+    "x_cm": 138.6,
+    "y_cm": -78.5,
+    "z_cm": 33.0,
+    "radius_cm": 33.0,
+    "width_cm": 25.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": true
+   },
+   "Wheel_FR": {
+    "bone": "Wheel_FR",
+    "x_cm": 138.6,
+    "y_cm": 78.5,
+    "z_cm": 33.0,
+    "radius_cm": 33.0,
+    "width_cm": 25.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": true
+   },
+   "Wheel_RL": {
+    "bone": "Wheel_RL",
+    "x_cm": -138.6,
+    "y_cm": -79.5,
+    "z_cm": 33.0,
+    "radius_cm": 33.0,
+    "width_cm": 25.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   },
+   "Wheel_RR": {
+    "bone": "Wheel_RR",
+    "x_cm": -138.6,
+    "y_cm": 79.5,
+    "z_cm": 33.0,
+    "radius_cm": 33.0,
+    "width_cm": 25.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   }
+  },
+  "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+ },
+ "JeddahGT": {
+  "car": "JeddahGT",
+  "name_ar": "جدة جي تي",
+  "number": "8",
+  "skeletal_mesh": "SK_JeddahGT",
+  "root_bone": "Root",
+  "length_cm": 475,
+  "wheelbase_cm": 289.8,
+  "track_front_cm": 158.0,
+  "track_rear_cm": 160.0,
+  "mass_kg": 1650,
+  "max_torque_nm": 760,
+  "max_rpm": 7800,
+  "drive": "RWD",
+  "suspension_travel_cm": 9,
+  "center_of_mass_offset_cm": {
+   "x": 0,
+   "y": 0,
+   "z": -15
+  },
+  "wheels": {
+   "Wheel_FL": {
+    "bone": "Wheel_FL",
+    "x_cm": 144.9,
+    "y_cm": -79.0,
+    "z_cm": 35.0,
+    "radius_cm": 35.0,
+    "width_cm": 26.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": false
+   },
+   "Wheel_FR": {
+    "bone": "Wheel_FR",
+    "x_cm": 144.9,
+    "y_cm": 79.0,
+    "z_cm": 35.0,
+    "radius_cm": 35.0,
+    "width_cm": 26.0,
+    "steer": true,
+    "max_steer_deg": 40,
+    "driven": false
+   },
+   "Wheel_RL": {
+    "bone": "Wheel_RL",
+    "x_cm": -144.9,
+    "y_cm": -80.0,
+    "z_cm": 35.5,
+    "radius_cm": 35.5,
+    "width_cm": 30.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   },
+   "Wheel_RR": {
+    "bone": "Wheel_RR",
+    "x_cm": -144.9,
+    "y_cm": 80.0,
+    "z_cm": 35.5,
+    "radius_cm": 35.5,
+    "width_cm": 30.0,
+    "steer": false,
+    "max_steer_deg": 0,
+    "driven": true
+   }
+  },
+  "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "car": "JeddahGT",
+ "name_ar": "جدة جي تي",
+ "number": "8",
+ "skeletal_mesh": "SK_JeddahGT",
+ "root_bone": "Root",
+ "length_cm": 475,
+ "wheelbase_cm": 289.8,
+ "track_front_cm": 158.0,
+ "track_rear_cm": 160.0,
+ "mass_kg": 1650,
+ "max_torque_nm": 760,
+ "max_rpm": 7800,
+ "drive": "RWD",
+ "suspension_travel_cm": 9,
+ "center_of_mass_offset_cm": {
+  "x": 0,
+  "y": 0,
+  "z": -15
+ },
+ "wheels": {
+  "Wheel_FL": {
+   "bone": "Wheel_FL",
+   "x_cm": 144.9,
+   "y_cm": -79.0,
+   "z_cm": 35.0,
+   "radius_cm": 35.0,
+   "width_cm": 26.0,
+   "steer": true,
+   "max_steer_deg": 40,
+   "driven": false
+  },
+  "Wheel_FR": {
+   "bone": "Wheel_FR",
+   "x_cm": 144.9,
+   "y_cm": 79.0,
+   "z_cm": 35.0,
+   "radius_cm": 35.0,
+   "width_cm": 26.0,
+   "steer": true,
+   "max_steer_deg": 40,
+   "driven": false
+  },
+  "Wheel_RL": {
+   "bone": "Wheel_RL",
+   "x_cm": -144.9,
+   "y_cm": -80.0,
+   "z_cm": 35.5,
+   "radius_cm": 35.5,
+   "width_cm": 30.0,
+   "steer": false,
+   "max_steer_deg": 0,
+   "driven": true
+  },
+  "Wheel_RR": {
+   "bone": "Wheel_RR",
+   "x_cm": -144.9,
+   "y_cm": 80.0,
+   "z_cm": 35.5,
+   "radius_cm": 35.5,
+   "width_cm": 30.0,
+   "steer": false,
+   "max_steer_deg": 0,
+   "driven": true
+  }
+ },
+ "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+}

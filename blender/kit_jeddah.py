@@ -458,7 +458,7 @@ def diorama(objs, out=None, cars=("JeddahGT", "Falcon")):
         glb = os.path.join(sr.ROOT, "assets", "cars", c, f"{c}_preview.glb")
         if os.path.exists(glb):
             sr.import_glb(glb, ((14, 26)[i], (-1.8, 1.8)[i], 0.0), (0, 0)[i])
-    sr.setup_render((1600, 900), 96, exposure=0.2)
+    sr.setup_render((1600, 900), 64, exposure=0.2)
     sr.world_sky(3, 260, 0.35)
     sr.sun((87, 0, 255), 4.0, (1.0, 0.55, 0.3), 1.0)
     sr.camera((-8, -3.5, 2.6), (80, 2, 8.5), 28)

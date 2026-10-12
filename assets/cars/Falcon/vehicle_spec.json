@@ -1,0 +1,68 @@
+{
+ "car": "Falcon",
+ "name_ar": "الصقر",
+ "number": "1",
+ "skeletal_mesh": "SK_Falcon",
+ "root_bone": "Root",
+ "length_cm": 455,
+ "wheelbase_cm": 277.6,
+ "track_front_cm": 159.8,
+ "track_rear_cm": 160.0,
+ "mass_kg": 1350,
+ "max_torque_nm": 720,
+ "max_rpm": 8500,
+ "drive": "AWD",
+ "suspension_travel_cm": 8,
+ "center_of_mass_offset_cm": {
+  "x": 0,
+  "y": 0,
+  "z": -15
+ },
+ "wheels": {
+  "Wheel_FL": {
+   "bone": "Wheel_FL",
+   "x_cm": 138.8,
+   "y_cm": -79.9,
+   "z_cm": 33.5,
+   "radius_cm": 33.5,
+   "width_cm": 26.0,
+   "steer": true,
+   "max_steer_deg": 40,
+   "driven": true
+  },
+  "Wheel_FR": {
+   "bone": "Wheel_FR",
+   "x_cm": 138.8,
+   "y_cm": 79.9,
+   "z_cm": 33.5,
+   "radius_cm": 33.5,
+   "width_cm": 26.0,
+   "steer": true,
+   "max_steer_deg": 40,
+   "driven": true
+  },
+  "Wheel_RL": {
+   "bone": "Wheel_RL",
+   "x_cm": -138.8,
+   "y_cm": -80.0,
+   "z_cm": 35.0,
+   "radius_cm": 35.0,
+   "width_cm": 32.0,
+   "steer": false,
+   "max_steer_deg": 0,
+   "driven": true
+  },
+  "Wheel_RR": {
+   "bone": "Wheel_RR",
+   "x_cm": -138.8,
+   "y_cm": 80.0,
+   "z_cm": 35.0,
+   "radius_cm": 35.0,
+   "width_cm": 32.0,
+   "steer": false,
+   "max_steer_deg": 0,
+   "driven": true
+  }
+ },
+ "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+}

@@ -1,0 +1,165 @@
+{
+ "SM_TheLine_Segment": {
+  "tris": 100584,
+  "size_m": [
+   200.07,
+   200.28,
+   500.4
+  ],
+  "materials": [
+   "M_Line_Backing",
+   "M_Line_MirrorFacade",
+   "M_Line_InnerGlass",
+   "M_Line_SlabWhite",
+   "M_Line_Planting",
+   "M_Neon_Warm",
+   "M_Future_White",
+   "M_Future_GlassBlue",
+   "M_Neon_Cyan"
+  ]
+ },
+ "SM_NeomTower_Petal": {
+  "tris": 12286,
+  "size_m": [
+   57.7,
+   60.05,
+   310.1
+  ],
+  "materials": [
+   "M_Line_InnerGlass",
+   "M_Neon_Cyan",
+   "M_Future_White"
+  ]
+ },
+ "SM_NeomTower_Halo": {
+  "tris": 4052,
+  "size_m": [
+   69.2,
+   69.2,
+   246.07
+  ],
+  "materials": [
+   "M_Line_InnerGlass",
+   "M_Future_White",
+   "M_Neon_Magenta"
+  ]
+ },
+ "SM_MaglevGuideway_30m": {
+  "tris": 200,
+  "size_m": [
+   30.0,
+   5.67,
+   14.9
+  ],
+  "materials": [
+   "M_Future_White",
+   "M_Neon_Cyan"
+  ]
+ },
+ "SM_MaglevCar": {
+  "tris": 348,
+  "size_m": [
+   26.0,
+   3.21,
+   3.33
+  ],
+  "materials": [
+   "M_Future_White",
+   "M_Neon_Warm",
+   "M_Neon_Cyan",
+   "M_Future_GlassBlue",
+   "M_Future_Graphite"
+  ]
+ },
+ "SM_HoloArch": {
+  "tris": 2408,
+  "size_m": [
+   23.2,
+   2.05,
+   18.98
+  ],
+  "materials": [
+   "M_Future_Graphite",
+   "M_Neon_Cyan",
+   "M_Neon_Magenta"
+  ]
+ },
+ "SM_FutureBarrier_10m": {
+  "tris": 44,
+  "size_m": [
+   10.0,
+   0.7,
+   0.9
+  ],
+  "materials": [
+   "M_Future_White",
+   "M_Neon_Cyan"
+  ]
+ },
+ "SM_FutureStreetLight": {
+  "tris": 608,
+  "size_m": [
+   4.44,
+   1.26,
+   11.09
+  ],
+  "materials": [
+   "M_Future_White",
+   "M_Neon_Cyan"
+  ]
+ },
+ "SM_Drone": {
+  "tris": 1124,
+  "size_m": [
+   2.11,
+   2.11,
+   0.4
+  ],
+  "materials": [
+   "M_Future_White",
+   "M_Future_Graphite",
+   "M_Future_GlassBlue",
+   "M_Neon_Cyan",
+   "M_Neon_Magenta"
+  ]
+ },
+ "SM_SolarTree": {
+  "tris": 780,
+  "size_m": [
+   9.15,
+   9.23,
+   8.66
+  ],
+  "materials": [
+   "M_Future_White",
+   "M_SolarPanel",
+   "M_Neon_Cyan"
+  ]
+ },
+ "SM_WindHelix": {
+  "tris": 1112,
+  "size_m": [
+   5.53,
+   5.61,
+   17.0
+  ],
+  "materials": [
+   "M_Future_White",
+   "M_Neon_Cyan"
+  ]
+ },
+ "SM_Road_Future_25m": {
+  "tris": 456,
+  "size_m": [
+   25.0,
+   16.65,
+   0.16
+  ],
+  "materials": [
+   "M_Future_Road",
+   "M_Neon_Cyan",
+   "M_Future_White",
+   "M_Neon_Magenta"
+  ]
+ }
+}

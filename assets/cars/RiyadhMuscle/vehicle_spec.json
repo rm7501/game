@@ -1,0 +1,68 @@
+{
+ "car": "RiyadhMuscle",
+ "name_ar": "عضلات الرياض",
+ "number": "5",
+ "skeletal_mesh": "SK_RiyadhMuscle",
+ "root_bone": "Root",
+ "length_cm": 475,
+ "wheelbase_cm": 282.6,
+ "track_front_cm": 154.8,
+ "track_rear_cm": 156.0,
+ "mass_kg": 1600,
+ "max_torque_nm": 800,
+ "max_rpm": 7000,
+ "drive": "RWD",
+ "suspension_travel_cm": 10,
+ "center_of_mass_offset_cm": {
+  "x": 0,
+  "y": 0,
+  "z": -15
+ },
+ "wheels": {
+  "Wheel_FL": {
+   "bone": "Wheel_FL",
+   "x_cm": 141.3,
+   "y_cm": -77.4,
+   "z_cm": 34.0,
+   "radius_cm": 34.0,
+   "width_cm": 25.0,
+   "steer": true,
+   "max_steer_deg": 40,
+   "driven": false
+  },
+  "Wheel_FR": {
+   "bone": "Wheel_FR",
+   "x_cm": 141.3,
+   "y_cm": 77.4,
+   "z_cm": 34.0,
+   "radius_cm": 34.0,
+   "width_cm": 25.0,
+   "steer": true,
+   "max_steer_deg": 40,
+   "driven": false
+  },
+  "Wheel_RL": {
+   "bone": "Wheel_RL",
+   "x_cm": -141.3,
+   "y_cm": -78.0,
+   "z_cm": 35.0,
+   "radius_cm": 35.0,
+   "width_cm": 30.0,
+   "steer": false,
+   "max_steer_deg": 0,
+   "driven": true
+  },
+  "Wheel_RR": {
+   "bone": "Wheel_RR",
+   "x_cm": -141.3,
+   "y_cm": 78.0,
+   "z_cm": 35.0,
+   "radius_cm": 35.0,
+   "width_cm": 30.0,
+   "steer": false,
+   "max_steer_deg": 0,
+   "driven": true
+  }
+ },
+ "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+}

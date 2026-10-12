@@ -342,7 +342,16 @@ def hex_mesh(out):
     save(out, "HexMesh", col, normal_from_height(hgt, 10), 0.85 - 0.45 * frame)
 
 
-ALL = [facade_tower, hex_mesh, sand, sandstone_strata, rock, asphalt, road_lanes, coral_stone, mud_plaster,
+def defaults(out):
+    """Neutral textures used as defaults by the Unreal master materials (keeps sampler types valid)."""
+    n = 64
+    for suffix, val in (("D", (255, 255, 255)), ("N", (128, 128, 255)), ("R", (255, 255, 255)), ("E", (255, 255, 255))):
+        img = Image.new("RGB", (n, n), val)
+        img.save(os.path.join(out, f"T_Default_{suffix}.png"))
+    print("texture Default")
+
+
+ALL = [defaults, facade_tower, hex_mesh, sand, sandstone_strata, rock, asphalt, road_lanes, coral_stone, mud_plaster,
        stone_masonry, concrete, wood_painted, facade_night, metal_panels, terrace_grass]
 
 if __name__ == "__main__":

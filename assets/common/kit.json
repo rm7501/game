@@ -1,0 +1,288 @@
+{
+ "SM_DatePalm_A": {
+  "tris": 11700,
+  "size_m": [
+   6.79,
+   7.55,
+   11.83
+  ],
+  "materials": [
+   "M_PalmTrunk",
+   "M_PalmFrond",
+   "M_PalmFrondDry",
+   "M_PalmDates"
+  ]
+ },
+ "SM_DatePalm_B": {
+  "tris": 13164,
+  "size_m": [
+   7.52,
+   7.53,
+   15.16
+  ],
+  "materials": [
+   "M_PalmTrunk",
+   "M_PalmFrond",
+   "M_PalmFrondDry",
+   "M_PalmDates"
+  ]
+ },
+ "SM_DatePalm_C": {
+  "tris": 7792,
+  "size_m": [
+   7.75,
+   7.56,
+   8.08
+  ],
+  "materials": [
+   "M_PalmTrunk",
+   "M_PalmFrond",
+   "M_PalmFrondDry"
+  ]
+ },
+ "SM_Acacia": {
+  "tris": 5060,
+  "size_m": [
+   7.55,
+   7.07,
+   4.68
+  ],
+  "materials": [
+   "M_AcaciaBark",
+   "M_AcaciaLeaves"
+  ]
+ },
+ "SM_Barrier_Water": {
+  "tris": 84,
+  "size_m": [
+   2.05,
+   0.6,
+   0.95
+  ],
+  "materials": [
+   "M_Plastic_Red",
+   "M_Plastic_White"
+  ]
+ },
+ "SM_Barrier_Concrete": {
+  "tris": 52,
+  "size_m": [
+   4.0,
+   0.6,
+   0.81
+  ],
+  "materials": [
+   "M_Concrete",
+   "M_ReflectorStripe"
+  ]
+ },
+ "SM_TireStack": {
+  "tris": 4060,
+  "size_m": [
+   3.32,
+   0.7,
+   1.0
+  ],
+  "materials": [
+   "M_Car_Tire",
+   "M_Plastic_Red",
+   "M_Plastic_White"
+  ]
+ },
+ "SM_Cone": {
+  "tris": 444,
+  "size_m": [
+   0.38,
+   0.38,
+   0.7
+  ],
+  "materials": [
+   "M_Plastic_Orange",
+   "M_ReflectorWhite"
+  ]
+ },
+ "SM_Checkpoint_Arch": {
+  "tris": 1536,
+  "size_m": [
+   26.8,
+   2.6,
+   11.0
+  ],
+  "materials": [
+   "M_Limestone",
+   "M_ArchTrimDark",
+   "M_LED_Amber",
+   "M_CheckpointBanner"
+  ]
+ },
+ "SM_StartGantry": {
+  "tris": 3816,
+  "size_m": [
+   24.4,
+   1.55,
+   10.95
+  ],
+  "materials": [
+   "M_SteelDark",
+   "M_StartBanner",
+   "M_Car_TrimBlack",
+   "M_StartLight_Red",
+   "M_StartLight_Green",
+   "M_Checker_Black",
+   "M_Checker_White"
+  ]
+ },
+ "SM_BoostPad": {
+  "tris": 228,
+  "size_m": [
+   6.0,
+   4.0,
+   0.08
+  ],
+  "materials": [
+   "M_BoostBase",
+   "M_BoostGlow"
+  ]
+ },
+ "SM_JumpRamp": {
+  "tris": 148,
+  "size_m": [
+   8.0,
+   6.0,
+   1.62
+  ],
+  "materials": [
+   "M_RampSteel",
+   "M_HazardYellow"
+  ]
+ },
+ "SM_Card": {
+  "tris": 52,
+  "size_m": [
+   0.01,
+   0.63,
+   0.88
+  ],
+  "materials": [
+   "M_CardFront",
+   "M_CardBack",
+   "M_CardEdge"
+  ]
+ },
+ "SM_CardPickup": {
+  "tris": 452,
+  "size_m": [
+   2.5,
+   2.5,
+   2.48
+  ],
+  "materials": [
+   "M_PickupBase",
+   "M_PickupHolo",
+   "M_PickupGold",
+   "M_CardFront",
+   "M_CardBack",
+   "M_CardEdge"
+  ]
+ },
+ "SM_VFX_Shield": {
+  "tris": 1920,
+  "size_m": [
+   6.4,
+   4.0,
+   3.1
+  ],
+  "materials": [
+   "M_VFX_ShieldHex"
+  ]
+ },
+ "SM_VFX_SandTornado": {
+  "tris": 2106,
+  "size_m": [
+   9.19,
+   9.07,
+   14.39
+  ],
+  "materials": [
+   "M_VFX_Sand"
+  ]
+ },
+ "SM_VFX_NitroFlame": {
+  "tris": 256,
+  "size_m": [
+   1.92,
+   0.34,
+   0.34
+  ],
+  "materials": [
+   "M_VFX_FlameCore",
+   "M_VFX_FlameOuter"
+  ]
+ },
+ "SM_VFX_ShockRing": {
+  "tris": 768,
+  "size_m": [
+   10.0,
+   10.0,
+   0.5
+  ],
+  "materials": [
+   "M_VFX_Shock"
+  ]
+ },
+ "SM_VFX_SandTrap": {
+  "tris": 3200,
+  "size_m": [
+   6.0,
+   4.4,
+   0.28
+  ],
+  "materials": [
+   "M_SandTrap"
+  ]
+ },
+ "SM_FalconDrone": {
+  "tris": 466,
+  "size_m": [
+   2.87,
+   5.59,
+   0.64
+  ],
+  "materials": [
+   "M_Falcon_Feathers",
+   "M_Falcon_Hood",
+   "M_Falcon_Beak",
+   "M_Falcon_Eye",
+   "M_Falcon_Belly"
+  ]
+ },
+ "SM_Grandstand": {
+  "tris": 13158,
+  "size_m": [
+   30.3,
+   9.5,
+   8.5
+  ],
+  "materials": [
+   "M_Concrete",
+   "M_Plastic_White",
+   "M_Seat_Green",
+   "M_SteelDark",
+   "M_CanopyFabric"
+  ]
+ },
+ "SM_Flag_Pennant": {
+  "tris": 446,
+  "size_m": [
+   20.0,
+   0.02,
+   1.23
+  ],
+  "materials": [
+   "M_SteelDark",
+   "M_Pennant_Green",
+   "M_Pennant_White",
+   "M_Pennant_Gold"
+  ]
+ }
+}

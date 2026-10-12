@@ -360,6 +360,16 @@ class MB:
         f = self.bm.faces.new([self.bm.verts.new(Vector(p)) for p in pts])
         return self._tag([f], m, smooth)
 
+    def poly_facing(self, pts, normal, m=None, smooth=False):
+        """Single face guaranteed to face `normal` (isolated faces cannot be auto-oriented)."""
+        f = self.bm.faces.new([self.bm.verts.new(Vector(p)) for p in pts])
+        f.normal_update()
+        if f.normal.dot(Vector(normal)) < 0:
+            f.normal_flip()
+        self._tag([f], m, smooth)
+        f[self.keep] = 1
+        return f
+
     def quad_uv(self, pts, uvs=((0, 0), (1, 0), (1, 1), (0, 1)), m=None):
         """Single face with explicit UVs (signs, plates, card art)."""
         f = self.bm.faces.new([self.bm.verts.new(Vector(p)) for p in pts])
@@ -848,9 +858,19 @@ def bounds(objs):
     return lo, hi
 
 
-def export_kit(objs, kit, glb=False):
-    """Export each object to assets/<kit>/<name>.fbx with its origin at the world origin."""
+def export_kit(objs, kit, glb=False, blend=True):
+    """Export each object to assets/<kit>/<name>.fbx with its origin at the world origin,
+    write assets/<kit>/kit.json (tris + size per asset) and an editable <kit>_kit.blend."""
     folder = os.path.join(ROOT, "assets", kit)
+    os.makedirs(folder, exist_ok=True)
+    info = {}
+    for o in objs:
+        bpy.context.view_layer.update()
+        lo, hi = bounds([o])
+        info[o.name] = dict(tris=tri_count(o), size_m=[round(hi.x - lo.x, 2), round(hi.y - lo.y, 2), round(hi.z - lo.z, 2)],
+                            materials=[m.name for m in o.data.materials])
+    with open(os.path.join(folder, "kit.json"), "w") as f:
+        json.dump(info, f, indent=1)
     for o in objs:
         loc = o.location.copy()
         o.location = (0, 0, 0)
@@ -860,6 +880,12 @@ def export_kit(objs, kit, glb=False):
             export_glb(o, os.path.join(folder, "glb", f"{o.name}.glb"))
         o.location = loc
     bpy.context.view_layer.update()
+    if blend:
+        layout_grid(objs, spacing=6.0, row_width=400.0)
+        for im in bpy.data.images:          # keep texture paths relative to the .blend
+            if im.filepath:
+                im.filepath = bpy.path.relpath(im.filepath, start=folder) if hasattr(bpy.path, "relpath") else im.filepath
+        save_blend(os.path.join(folder, f"{kit}_kit.blend"))
 
 
 def layout_grid(objs, spacing=4.0, row_width=80.0):

@@ -297,7 +297,7 @@ def maraya(mm, name="SM_Maraya"):
                     p = base + t * u + Vector((0, 0, z))
                     off = (u - (u0 + u1) / 2) * tilt.x + (z - (z0 + z1) / 2) * tilt.y
                     pts.append(tuple(p + n * off))
-                f = mb.poly(pts, mm["mirror"])
+                mb.poly_facing(pts, tuple(n), mm["mirror"])
     # roof edge coping
     mb.box((L + 0.2, D + 0.2, 0.25), (0, 0, H + 0.12), m=mm["mirror_back"])
     # entrance: dark recess
@@ -464,13 +464,14 @@ def diorama(objs, extra=(), out=None, cars=("AlUlaRally", "DuneFox")):
     rnd = random.Random(8)
     for k in range(-1, 30):
         sr.inst(by["SM_Road_Desert_25m"], (k * 25.0, 0, 0.02))
-    sr.inst(by["SM_ElephantRock"], (330, 70, 0), (0, 0, 200))
-    sr.inst(by["SM_QasrAlFarid"], (150, -60, 0), (0, 0, 60))
-    sr.inst(by["SM_HegraTombCliff"], (420, -150, 0), (0, 0, 70))
-    sr.inst(by["SM_Maraya"], (620, 160, 0), (0, 0, -20))
-    sr.inst(by["SM_RainbowRock"], (520, -40, 0), (0, 0, 80))
-    sr.inst(by["SM_RockPillar_A"], (230, 28, 0), (0, 0, 30))
-    sr.inst(by["SM_RockPillar_B"], (90, 40, 0), (0, 0, 120))
+    # hero landmarks posed for the road: Elephant Rock side-on (arch visible), tomb facades facing traffic
+    sr.inst(by["SM_ElephantRock"], (235, -62, 0), (0, 0, 95))
+    sr.inst(by["SM_QasrAlFarid"], (120, 42, 0), (0, 0, -70))
+    sr.inst(by["SM_HegraTombCliff"], (330, 105, 0), (0, 0, -80))
+    sr.inst(by["SM_Maraya"], (470, 40, 0), (0, 0, 12))
+    sr.inst(by["SM_RainbowRock"], (560, -70, 0), (0, 0, 80))
+    sr.inst(by["SM_RockPillar_A"], (175, -30, 0), (0, 0, 30))
+    sr.inst(by["SM_RockPillar_B"], (60, 36, 0), (0, 0, 120))
     for k in range(6):
         sr.inst(by["SM_Mesa_A"], (700 + k * 60, -500 + k * 200, 0), (0, 0, rnd.uniform(-40, 40)), scale=rnd.uniform(1.2, 2.0))
     for k in range(4):
@@ -478,7 +479,7 @@ def diorama(objs, extra=(), out=None, cars=("AlUlaRally", "DuneFox")):
     boulders = [by[f"SM_Boulder_{c}"] for c in "ABC"]
     for k in range(80):
         x, y = rnd.uniform(0, 600), rnd.uniform(-160, 160)
-        if abs(y) < 9:
+        if abs(y) < 9 or (abs(x - 235) < 45 and abs(y + 62) < 40) or (abs(x - 120) < 30 and abs(y - 42) < 30):
             continue
         sr.inst(rnd.choice(boulders), (x, y, 0), (0, 0, rnd.uniform(0, 360)), scale=rnd.uniform(0.6, 1.6))
     trees = [by[n] for n in ("SM_Acacia", "SM_DatePalm_A", "SM_DatePalm_C") if n in by]
@@ -494,10 +495,10 @@ def diorama(objs, extra=(), out=None, cars=("AlUlaRally", "DuneFox")):
         glb = os.path.join(sr.ROOT, "assets", "cars", c, f"{c}_preview.glb")
         if os.path.exists(glb):
             sr.import_glb(glb, ((16, 30)[i], (-1.9, 1.9)[i], 0.07), (0, 180)[i])
-    sr.setup_render((1600, 900), 96, exposure=-0.2)
+    sr.setup_render((1600, 900), 64, exposure=-0.2)
     sr.world_sky(6, 250, 0.22)
     sr.sun((84, 0, 250), 5.5, (1.0, 0.68, 0.4), 1.2)
-    sr.camera((-14, -6.5, 3.2), (300, 25, 30), 32)
+    sr.camera((-14, -6.5, 3.4), (300, 8, 20), 30)
     sr.render(out or os.path.join(sr.ROOT, "docs", "previews", "map_alula.png"))
 
 

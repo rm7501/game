@@ -1,0 +1,282 @@
+{
+ "SM_HijaziHouse_01": {
+  "tris": 14252,
+  "size_m": [
+   10.3,
+   10.16,
+   15.5
+  ],
+  "materials": [
+   "M_Jeddah_CoralStone",
+   "M_Jeddah_Takaleel",
+   "M_Roshan_Brown",
+   "M_Roshan_Turquoise",
+   "M_WindowDarkHole",
+   "M_Roshan_Green",
+   "M_Roshan_Blue",
+   "M_Roshan_White",
+   "M_Roshan_Teal",
+   "M_Lime_White",
+   "M_Jeddah_DoorWood"
+  ]
+ },
+ "SM_HijaziHouse_02": {
+  "tris": 7668,
+  "size_m": [
+   8.3,
+   9.16,
+   12.1
+  ],
+  "materials": [
+   "M_Jeddah_CoralStoneWarm",
+   "M_Jeddah_Takaleel",
+   "M_Roshan_Blue",
+   "M_WindowDarkHole",
+   "M_Roshan_Teal",
+   "M_Roshan_Brown",
+   "M_Roshan_Turquoise",
+   "M_Roshan_Green",
+   "M_Lime_White",
+   "M_Jeddah_DoorWood"
+  ]
+ },
+ "SM_HijaziHouse_03": {
+  "tris": 29980,
+  "size_m": [
+   13.16,
+   11.16,
+   18.9
+  ],
+  "materials": [
+   "M_Jeddah_CoralStone",
+   "M_Jeddah_Takaleel",
+   "M_Roshan_Brown",
+   "M_Roshan_White",
+   "M_WindowDarkHole",
+   "M_Roshan_Green",
+   "M_Roshan_Blue",
+   "M_Roshan_Teal",
+   "M_Roshan_Turquoise",
+   "M_Lime_White",
+   "M_Jeddah_DoorWood"
+  ]
+ },
+ "SM_HijaziHouse_04": {
+  "tris": 24028,
+  "size_m": [
+   10.16,
+   12.16,
+   15.5
+  ],
+  "materials": [
+   "M_Jeddah_CoralStone",
+   "M_Jeddah_Takaleel",
+   "M_Roshan_Teal",
+   "M_Roshan_White",
+   "M_WindowDarkHole",
+   "M_Roshan_Turquoise",
+   "M_Roshan_Green",
+   "M_Roshan_Brown",
+   "M_Roshan_Blue",
+   "M_Lime_White",
+   "M_Jeddah_DoorWood"
+  ]
+ },
+ "SM_HijaziHouse_05": {
+  "tris": 35908,
+  "size_m": [
+   14.3,
+   11.16,
+   24.44
+  ],
+  "materials": [
+   "M_Jeddah_CoralStone",
+   "M_Jeddah_Takaleel",
+   "M_Roshan_Brown",
+   "M_Roshan_Teal",
+   "M_WindowDarkHole",
+   "M_Roshan_Green",
+   "M_Roshan_Blue",
+   "M_Roshan_Turquoise",
+   "M_Roshan_White",
+   "M_Lime_White",
+   "M_Jeddah_DoorWood"
+  ]
+ },
+ "SM_HijaziHouse_06": {
+  "tris": 9824,
+  "size_m": [
+   8.16,
+   9.16,
+   12.1
+  ],
+  "materials": [
+   "M_Jeddah_CoralStoneWarm",
+   "M_Jeddah_Takaleel",
+   "M_Roshan_White",
+   "M_WindowDarkHole",
+   "M_Roshan_Brown",
+   "M_Roshan_Blue",
+   "M_Roshan_Teal",
+   "M_Roshan_Green",
+   "M_Lime_White",
+   "M_Jeddah_DoorWood"
+  ]
+ },
+ "SM_NassifHouse": {
+  "tris": 59612,
+  "size_m": [
+   19.16,
+   25.95,
+   21.09
+  ],
+  "materials": [
+   "M_Jeddah_CoralStoneWarm",
+   "M_Jeddah_Takaleel",
+   "M_Roshan_Teal",
+   "M_Roshan_Turquoise",
+   "M_Roshan_Blue",
+   "M_WindowDarkHole",
+   "M_Roshan_White",
+   "M_Roshan_Brown",
+   "M_Roshan_Green",
+   "M_Lime_White",
+   "M_Jeddah_DoorWood",
+   "M_Tree_Bark",
+   "M_Tree_NeemLeaves"
+  ]
+ },
+ "SM_Roshan_2F": {
+  "tris": 3780,
+  "size_m": [
+   2.7,
+   1.06,
+   7.89
+  ],
+  "materials": [
+   "M_Roshan_Teal"
+  ]
+ },
+ "SM_Roshan_3F": {
+  "tris": 5484,
+  "size_m": [
+   2.7,
+   1.06,
+   11.29
+  ],
+  "materials": [
+   "M_Roshan_Green"
+  ]
+ },
+ "SM_HijaziMinaret": {
+  "tris": 1580,
+  "size_m": [
+   5.4,
+   5.4,
+   30.95
+  ],
+  "materials": [
+   "M_Lime_White",
+   "M_Minaret_GreenTrim",
+   "M_WindowDarkHole",
+   "M_Brass"
+  ]
+ },
+ "SM_BabMakkah": {
+  "tris": 2320,
+  "size_m": [
+   18.6,
+   8.4,
+   10.6
+  ],
+  "materials": [
+   "M_Lime_White",
+   "M_Jeddah_StonePaving",
+   "M_WindowDarkHole",
+   "M_Minaret_GreenTrim",
+   "M_Jeddah_Takaleel",
+   "M_Jeddah_DoorWood"
+  ]
+ },
+ "SM_SouqAwning": {
+  "tris": 184,
+  "size_m": [
+   10.08,
+   12.0,
+   0.63
+  ],
+  "materials": [
+   "M_Awning_Red",
+   "M_Awning_Cream",
+   "M_Awning_Indigo",
+   "M_SteelDark"
+  ]
+ },
+ "SM_Lantern": {
+  "tris": 288,
+  "size_m": [
+   0.42,
+   0.42,
+   1.22
+  ],
+  "materials": [
+   "M_Brass",
+   "M_LanternGlow"
+  ]
+ },
+ "SM_StringLights": {
+  "tris": 1668,
+  "size_m": [
+   10.0,
+   0.09,
+   1.01
+  ],
+  "materials": [
+   "M_SteelDark",
+   "M_BulbWarm"
+  ]
+ },
+ "SM_SouqStall": {
+  "tris": 1062,
+  "size_m": [
+   2.6,
+   1.6,
+   2.4
+  ],
+  "materials": [
+   "M_Jeddah_DoorWood",
+   "M_Goods_2",
+   "M_Goods_3",
+   "M_Goods_4",
+   "M_Goods_0",
+   "M_Goods_1",
+   "M_Jeddah_Takaleel",
+   "M_Awning_Red"
+  ]
+ },
+ "SM_MarkazBench": {
+  "tris": 480,
+  "size_m": [
+   2.0,
+   0.91,
+   1.05
+  ],
+  "materials": [
+   "M_Jeddah_DoorWood",
+   "M_Cushion_Red",
+   "M_Cushion_Green"
+  ]
+ },
+ "SM_Lane_Paving_20m": {
+  "tris": 24,
+  "size_m": [
+   20.0,
+   10.0,
+   0.18
+  ],
+  "materials": [
+   "M_Jeddah_StonePaving",
+   "M_Lime_White"
+  ]
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "car": "HiluxRaider",
+ "name_ar": "الغزّاي",
+ "number": "4",
+ "skeletal_mesh": "SK_HiluxRaider",
+ "root_bone": "Root",
+ "length_cm": 530,
+ "wheelbase_cm": 304.8,
+ "track_front_cm": 150.0,
+ "track_rear_cm": 150.0,
+ "mass_kg": 2000,
+ "max_torque_nm": 600,
+ "max_rpm": 6000,
+ "drive": "RWD",
+ "suspension_travel_cm": 18,
+ "center_of_mass_offset_cm": {
+  "x": 0,
+  "y": 0,
+  "z": -15
+ },
+ "wheels": {
+  "Wheel_FL": {
+   "bone": "Wheel_FL",
+   "x_cm": 152.4,
+   "y_cm": -75.0,
+   "z_cm": 38.0,
+   "radius_cm": 38.0,
+   "width_cm": 28.0,
+   "steer": true,
+   "max_steer_deg": 40,
+   "driven": false
+  },
+  "Wheel_FR": {
+   "bone": "Wheel_FR",
+   "x_cm": 152.4,
+   "y_cm": 75.0,
+   "z_cm": 38.0,
+   "radius_cm": 38.0,
+   "width_cm": 28.0,
+   "steer": true,
+   "max_steer_deg": 40,
+   "driven": false
+  },
+  "Wheel_RL": {
+   "bone": "Wheel_RL",
+   "x_cm": -152.4,
+   "y_cm": -75.0,
+   "z_cm": 38.0,
+   "radius_cm": 38.0,
+   "width_cm": 28.0,
+   "steer": false,
+   "max_steer_deg": 0,
+   "driven": true
+  },
+  "Wheel_RR": {
+   "bone": "Wheel_RR",
+   "x_cm": -152.4,
+   "y_cm": 75.0,
+   "z_cm": 38.0,
+   "radius_cm": 38.0,
+   "width_cm": 28.0,
+   "steer": false,
+   "max_steer_deg": 0,
+   "driven": true
+  }
+ },
+ "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+}

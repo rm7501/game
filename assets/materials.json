@@ -60,13 +60,13 @@
   "kind": "opaque",
   "color": [
    1.0,
-   0.92,
-   0.85
+   0.95,
+   0.92
   ],
   "rough": 0.9,
   "metal": 0.0,
   "tex": "SandstoneStrata",
-  "tile": 9.0,
+  "tile": 11.0,
   "emit": null,
   "emit_str": 0.0,
   "transmission": 0.0,
@@ -78,14 +78,14 @@
  "M_AlUla_SandstoneDark": {
   "kind": "opaque",
   "color": [
-   0.8,
-   0.62,
-   0.52
+   0.82,
+   0.7,
+   0.64
   ],
   "rough": 0.92,
   "metal": 0.0,
   "tex": "SandstoneStrata",
-  "tile": 7.0,
+  "tile": 8.0,
   "emit": null,
   "emit_str": 0.0,
   "transmission": 0.0,
@@ -124,6 +124,234 @@
   "metal": 0.0,
   "tex": null,
   "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Asir_Granite": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": "Rock",
+  "tile": 6.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Asir_MudPlaster": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.78,
+   0.66
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": "MudPlaster",
+  "tile": 2.5,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Asir_Shutter_Blue": {
+  "kind": "opaque",
+  "color": [
+   0.12,
+   0.3,
+   0.6
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 0.8,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Asir_Shutter_Green": {
+  "kind": "opaque",
+  "color": [
+   0.1,
+   0.45,
+   0.2
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 0.8,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Asir_Shutter_Red": {
+  "kind": "opaque",
+  "color": [
+   0.65,
+   0.1,
+   0.08
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 0.8,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Asir_Shutter_Turquoise": {
+  "kind": "opaque",
+  "color": [
+   0.1,
+   0.55,
+   0.55
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 0.8,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Asir_Shutter_Yellow": {
+  "kind": "opaque",
+  "color": [
+   0.85,
+   0.65,
+   0.1
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": "WoodPainted",
+  "tile": 0.8,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Asir_Slate": {
+  "kind": "opaque",
+  "color": [
+   0.3,
+   0.29,
+   0.28
+  ],
+  "rough": 0.85,
+  "metal": 0.0,
+  "tex": "Rock",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Asir_StoneDark": {
+  "kind": "opaque",
+  "color": [
+   0.72,
+   0.7,
+   0.68
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": "StoneMasonry",
+  "tile": 2.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Asir_StoneMasonry": {
+  "kind": "opaque",
+  "color": [
+   1.25,
+   1.2,
+   1.15
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": "StoneMasonry",
+  "tile": 2.4,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Asir_TerraceGrass": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.95,
+  "metal": 0.0,
+  "tex": "TerraceGrass",
+  "tile": 4.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Asir_WhitePaint": {
+  "kind": "opaque",
+  "color": [
+   0.94,
+   0.94,
+   0.9
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": "Concrete",
+  "tile": 2.0,
   "emit": null,
   "emit_str": 0.0,
   "transmission": 0.0,
@@ -231,6 +459,44 @@
   "image": null,
   "image_emit": false
  },
+ "M_BalloonFabric_0_0": {
+  "kind": "opaque",
+  "color": [
+   0.85,
+   0.15,
+   0.1
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_BalloonFabric_0_1": {
+  "kind": "opaque",
+  "color": [
+   0.95,
+   0.75,
+   0.2
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
  "M_BalloonFabric_1_0": {
   "kind": "opaque",
   "color": [
@@ -256,6 +522,44 @@
    0.95,
    0.9,
    0.8
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_BalloonFabric_2_0": {
+  "kind": "opaque",
+  "color": [
+   0.15,
+   0.25,
+   0.6
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_BalloonFabric_2_1": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.5,
+   0.15
   ],
   "rough": 0.6,
   "metal": 0.0,
@@ -392,6 +696,25 @@
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_CableCar_Red": {
+  "kind": "opaque",
+  "color": [
+   0.7,
+   0.08,
+   0.06
+  ],
+  "rough": 0.35,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.6,
   "image": null,
   "image_emit": false
  },
@@ -2233,6 +2556,82 @@
   "image": null,
   "image_emit": false
  },
+ "M_Future_GlassBlue": {
+  "kind": "opaque",
+  "color": [
+   0.05,
+   0.12,
+   0.18
+  ],
+  "rough": 0.03,
+  "metal": 0.6,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Future_Graphite": {
+  "kind": "opaque",
+  "color": [
+   0.05,
+   0.055,
+   0.065
+  ],
+  "rough": 0.25,
+  "metal": 0.6,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Future_Road": {
+  "kind": "opaque",
+  "color": [
+   0.35,
+   0.38,
+   0.42
+  ],
+  "rough": 0.35,
+  "metal": 0.0,
+  "tex": "Asphalt",
+  "tile": 4.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Future_White": {
+  "kind": "opaque",
+  "color": [
+   0.92,
+   0.93,
+   0.95
+  ],
+  "rough": 0.25,
+  "metal": 0.1,
+  "tex": "MetalPanels",
+  "tile": 3.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.6,
+  "image": null,
+  "image_emit": false
+ },
  "M_GlassDark": {
   "kind": "opaque",
   "color": [
@@ -2369,14 +2768,14 @@
  "M_Hegra_CarvedFacade": {
   "kind": "opaque",
   "color": [
-   1.12,
-   1.0,
-   0.9
+   1.1,
+   1.02,
+   0.95
   ],
   "rough": 0.85,
   "metal": 0.0,
   "tex": "SandstoneStrata",
-  "tile": 5.0,
+  "tile": 14.0,
   "emit": null,
   "emit_str": 0.0,
   "transmission": 0.0,
@@ -2464,13 +2863,51 @@
  "M_Jeddah_Takaleel": {
   "kind": "opaque",
   "color": [
-   0.3,
-   0.2,
-   0.12
+   0.48,
+   0.36,
+   0.24
   ],
   "rough": 0.85,
   "metal": 0.0,
   "tex": "WoodPainted",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Juniper_Bark": {
+  "kind": "opaque",
+  "color": [
+   0.32,
+   0.24,
+   0.2
+  ],
+  "rough": 0.95,
+  "metal": 0.0,
+  "tex": "Rock",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Juniper_Foliage": {
+  "kind": "foliage",
+  "color": [
+   0.13,
+   0.22,
+   0.14
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": null,
   "tile": 1.0,
   "emit": null,
   "emit_str": 0.0,
@@ -2535,10 +2972,10 @@
   ],
   "rough": 0.08,
   "metal": 0.7,
-  "tex": "FacadeNight",
-  "tile": 16.0,
+  "tex": "FacadeTower",
+  "tile": 24.0,
   "emit": null,
-  "emit_str": 1.2,
+  "emit_str": 1.6,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
@@ -2667,6 +3104,101 @@
   "metal": 0.0,
   "tex": "MudPlaster",
   "tile": 3.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Line_Backing": {
+  "kind": "opaque",
+  "color": [
+   0.05,
+   0.05,
+   0.06
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Line_InnerGlass": {
+  "kind": "opaque",
+  "color": [
+   0.75,
+   0.85,
+   1.0
+  ],
+  "rough": 0.08,
+  "metal": 0.5,
+  "tex": "FacadeNight",
+  "tile": 24.0,
+  "emit": null,
+  "emit_str": 1.6,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Line_MirrorFacade": {
+  "kind": "mirror",
+  "color": [
+   0.9,
+   0.92,
+   0.95
+  ],
+  "rough": 0.02,
+  "metal": 1.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Line_Planting": {
+  "kind": "opaque",
+  "color": [
+   0.18,
+   0.4,
+   0.14
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": "TerraceGrass",
+  "tile": 3.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Line_SlabWhite": {
+  "kind": "opaque",
+  "color": [
+   0.88,
+   0.88,
+   0.86
+  ],
+  "rough": 0.4,
+  "metal": 0.0,
+  "tex": "MetalPanels",
+  "tile": 6.0,
   "emit": null,
   "emit_str": 0.0,
   "transmission": 0.0,
@@ -2806,6 +3338,75 @@
   "tile": 3.0,
   "emit": null,
   "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Neon_Cyan": {
+  "kind": "emissive",
+  "color": [
+   0.1,
+   0.9,
+   1.0
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.1,
+   0.85,
+   1.0
+  ],
+  "emit_str": 14,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Neon_Magenta": {
+  "kind": "emissive",
+  "color": [
+   1.0,
+   0.2,
+   0.8
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.2,
+   0.75
+  ],
+  "emit_str": 12,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Neon_Warm": {
+  "kind": "emissive",
+  "color": [
+   1.0,
+   0.75,
+   0.45
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.72,
+   0.42
+  ],
+  "emit_str": 8,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
@@ -2983,6 +3584,25 @@
   "image": null,
   "image_emit": false
  },
+ "M_Pennant_White": {
+  "kind": "foliage",
+  "color": [
+   0.88,
+   0.88,
+   0.85
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
  "M_PickupBase": {
   "kind": "opaque",
   "color": [
@@ -3101,6 +3721,25 @@
   "image": null,
   "image_emit": false
  },
+ "M_QattAsiri_Door": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": "assets/asir/textures/T_QattAsiri.png",
+  "image_emit": false
+ },
  "M_RampSteel": {
   "kind": "opaque",
   "color": [
@@ -3114,6 +3753,29 @@
   "tile": 1.0,
   "emit": null,
   "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_ReflectorAmber": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.5,
+   0.1
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1,
+   0.5,
+   0.1
+  ],
+  "emit_str": 1.0,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
@@ -3174,7 +3836,7 @@
   "tex": "FacadeNight",
   "tile": 24.0,
   "emit": null,
-  "emit_str": 3.0,
+  "emit_str": 2.0,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
@@ -3501,7 +4163,7 @@
    0.6,
    1.0
   ],
-  "emit_str": 8,
+  "emit_str": 4,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
@@ -3524,7 +4186,7 @@
    0.3,
    0.2
   ],
-  "emit_str": 8,
+  "emit_str": 4,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
@@ -3547,7 +4209,7 @@
    1.0,
    0.5
   ],
-  "emit_str": 8,
+  "emit_str": 4,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
@@ -3570,7 +4232,7 @@
    0.8,
    0.2
   ],
-  "emit_str": 8,
+  "emit_str": 4,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
@@ -3593,7 +4255,26 @@
    0.3,
    1.0
   ],
-  "emit_str": 8,
+  "emit_str": 4,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_SolarPanel": {
+  "kind": "opaque",
+  "color": [
+   0.03,
+   0.06,
+   0.15
+  ],
+  "rough": 0.08,
+  "metal": 0.7,
+  "tex": "HexMesh",
+  "tile": 0.6,
+  "emit": null,
+  "emit_str": 0.0,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
@@ -3773,6 +4454,29 @@
   "tile": 1.0,
   "emit": null,
   "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_TunnelLight": {
+  "kind": "emissive",
+  "color": [
+   1.0,
+   0.85,
+   0.6
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.8,
+   0.55
+  ],
+  "emit_str": 10,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
@@ -3969,9 +4673,9 @@
  "M_Win_LitCool": {
   "kind": "emissive",
   "color": [
-   0.8,
-   0.88,
-   1.0
+   0.2,
+   0.22,
+   0.26
   ],
   "rough": 0.5,
   "metal": 0.0,
@@ -3982,7 +4686,7 @@
    0.88,
    1.0
   ],
-  "emit_str": 2.5,
+  "emit_str": 0.9,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
@@ -3992,9 +4696,9 @@
  "M_Win_LitWarm": {
   "kind": "emissive",
   "color": [
-   0.9,
-   0.7,
-   0.45
+   0.25,
+   0.18,
+   0.12
   ],
   "rough": 0.5,
   "metal": 0.0,
@@ -4005,7 +4709,7 @@
    0.72,
    0.42
   ],
-  "emit_str": 3.0,
+  "emit_str": 1.1,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,

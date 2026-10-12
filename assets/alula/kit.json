@@ -1,0 +1,255 @@
+{
+ "SM_QasrAlFarid": {
+  "tris": 28956,
+  "size_m": [
+   30.79,
+   24.76,
+   30.3
+  ],
+  "materials": [
+   "M_AlUla_Sandstone",
+   "M_Hegra_CarvedFacade",
+   "M_TombInterior"
+  ]
+ },
+ "SM_HegraTombCliff": {
+  "tris": 33852,
+  "size_m": [
+   49.07,
+   24.19,
+   31.57
+  ],
+  "materials": [
+   "M_AlUla_Sandstone",
+   "M_Hegra_CarvedFacade",
+   "M_TombInterior"
+  ]
+ },
+ "SM_ElephantRock": {
+  "tris": 38232,
+  "size_m": [
+   67.41,
+   29.8,
+   46.98
+  ],
+  "materials": [
+   "M_AlUla_Sandstone"
+  ]
+ },
+ "SM_RainbowRock": {
+  "tris": 20160,
+  "size_m": [
+   47.25,
+   15.21,
+   28.89
+  ],
+  "materials": [
+   "M_AlUla_Sandstone",
+   "M_AlUla_SandstoneDark"
+  ]
+ },
+ "SM_Maraya": {
+  "tris": 3156,
+  "size_m": [
+   100.2,
+   40.25,
+   26.25
+  ],
+  "materials": [
+   "M_Maraya_Backing",
+   "M_Maraya_Mirror",
+   "M_TombInterior"
+  ]
+ },
+ "SM_RockPillar_A": {
+  "tris": 10924,
+  "size_m": [
+   18.31,
+   14.86,
+   30.93
+  ],
+  "materials": [
+   "M_AlUla_Sandstone"
+  ]
+ },
+ "SM_RockPillar_B": {
+  "tris": 10164,
+  "size_m": [
+   21.66,
+   12.95,
+   22.82
+  ],
+  "materials": [
+   "M_AlUla_Sandstone"
+  ]
+ },
+ "SM_Mesa_A": {
+  "tris": 27620,
+  "size_m": [
+   107.53,
+   42.5,
+   40.09
+  ],
+  "materials": [
+   "M_AlUla_Sandstone"
+  ]
+ },
+ "SM_Boulder_A": {
+  "tris": 3396,
+  "size_m": [
+   3.88,
+   2.43,
+   1.95
+  ],
+  "materials": [
+   "M_AlUla_Sandstone",
+   "M_AlUla_SandstoneDark"
+  ]
+ },
+ "SM_Boulder_B": {
+  "tris": 3556,
+  "size_m": [
+   7.05,
+   6.01,
+   2.85
+  ],
+  "materials": [
+   "M_AlUla_Sandstone",
+   "M_AlUla_SandstoneDark"
+  ]
+ },
+ "SM_Boulder_C": {
+  "tris": 4116,
+  "size_m": [
+   12.56,
+   9.79,
+   6.76
+  ],
+  "materials": [
+   "M_AlUla_Sandstone",
+   "M_AlUla_SandstoneDark"
+  ]
+ },
+ "SM_AlUlaHouse_A": {
+  "tris": 640,
+  "size_m": [
+   8.0,
+   7.15,
+   7.1
+  ],
+  "materials": [
+   "M_AlUla_StoneBase",
+   "M_AlUla_MudPlaster",
+   "M_PalmWood",
+   "M_WoodDark",
+   "M_WindowDarkHole"
+  ]
+ },
+ "SM_AlUlaHouse_B": {
+  "tris": 808,
+  "size_m": [
+   10.0,
+   8.15,
+   10.3
+  ],
+  "materials": [
+   "M_AlUla_StoneBase",
+   "M_AlUla_MudPlaster",
+   "M_PalmWood",
+   "M_WoodDark",
+   "M_WindowDarkHole"
+  ]
+ },
+ "SM_AlUlaOldTown": {
+  "tris": 12644,
+  "size_m": [
+   63.5,
+   30.38,
+   10.3
+  ],
+  "materials": [
+   "M_AlUla_StoneBase",
+   "M_AlUla_MudPlaster",
+   "M_PalmWood",
+   "M_WoodDark",
+   "M_WindowDarkHole",
+   "M_Sand"
+  ]
+ },
+ "SM_HotAirBalloon_A": {
+  "tris": 1172,
+  "size_m": [
+   18.4,
+   18.4,
+   29.0
+  ],
+  "materials": [
+   "M_BalloonFabric_0_0",
+   "M_BalloonFabric_0_1",
+   "M_Rope",
+   "M_Wicker",
+   "M_WoodDark",
+   "M_SteelDark",
+   "M_BurnerFlame"
+  ]
+ },
+ "SM_HotAirBalloon_B": {
+  "tris": 1172,
+  "size_m": [
+   18.4,
+   18.4,
+   29.0
+  ],
+  "materials": [
+   "M_BalloonFabric_1_0",
+   "M_BalloonFabric_1_1",
+   "M_Rope",
+   "M_Wicker",
+   "M_WoodDark",
+   "M_SteelDark",
+   "M_BurnerFlame"
+  ]
+ },
+ "SM_HotAirBalloon_C": {
+  "tris": 1172,
+  "size_m": [
+   18.4,
+   18.4,
+   29.0
+  ],
+  "materials": [
+   "M_BalloonFabric_2_0",
+   "M_BalloonFabric_2_1",
+   "M_Rope",
+   "M_Wicker",
+   "M_WoodDark",
+   "M_SteelDark",
+   "M_BurnerFlame"
+  ]
+ },
+ "SM_Dune_A": {
+  "tris": 24200,
+  "size_m": [
+   200.0,
+   200.0,
+   13.54
+  ],
+  "materials": [
+   "M_Sand"
+  ]
+ },
+ "SM_Road_Desert_25m": {
+  "tris": 108,
+  "size_m": [
+   25.0,
+   12.9,
+   0.29
+  ],
+  "materials": [
+   "M_Asphalt",
+   "M_RoadLineWhite",
+   "M_Sand",
+   "M_RoadLineYellow"
+  ]
+ }
+}

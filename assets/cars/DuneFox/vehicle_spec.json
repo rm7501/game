@@ -1,0 +1,68 @@
+{
+ "car": "DuneFox",
+ "name_ar": "ثعلب الكثبان",
+ "number": "2",
+ "skeletal_mesh": "SK_DuneFox",
+ "root_bone": "Root",
+ "length_cm": 560,
+ "wheelbase_cm": 322.0,
+ "track_front_cm": 176.0,
+ "track_rear_cm": 176.0,
+ "mass_kg": 2200,
+ "max_torque_nm": 900,
+ "max_rpm": 6500,
+ "drive": "AWD",
+ "suspension_travel_cm": 35,
+ "center_of_mass_offset_cm": {
+  "x": 0,
+  "y": 0,
+  "z": -15
+ },
+ "wheels": {
+  "Wheel_FL": {
+   "bone": "Wheel_FL",
+   "x_cm": 161.0,
+   "y_cm": -88.0,
+   "z_cm": 48.0,
+   "radius_cm": 48.0,
+   "width_cm": 36.0,
+   "steer": true,
+   "max_steer_deg": 40,
+   "driven": true
+  },
+  "Wheel_FR": {
+   "bone": "Wheel_FR",
+   "x_cm": 161.0,
+   "y_cm": 88.0,
+   "z_cm": 48.0,
+   "radius_cm": 48.0,
+   "width_cm": 36.0,
+   "steer": true,
+   "max_steer_deg": 40,
+   "driven": true
+  },
+  "Wheel_RL": {
+   "bone": "Wheel_RL",
+   "x_cm": -161.0,
+   "y_cm": -88.0,
+   "z_cm": 48.0,
+   "radius_cm": 48.0,
+   "width_cm": 36.0,
+   "steer": false,
+   "max_steer_deg": 0,
+   "driven": true
+  },
+  "Wheel_RR": {
+   "bone": "Wheel_RR",
+   "x_cm": -161.0,
+   "y_cm": 88.0,
+   "z_cm": 48.0,
+   "radius_cm": 48.0,
+   "width_cm": 36.0,
+   "steer": false,
+   "max_steer_deg": 0,
+   "driven": true
+  }
+ },
+ "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+}

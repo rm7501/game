@@ -594,7 +594,7 @@ def grandstand(name="SM_Grandstand", length=30.0, rows=10):
 
 def pennants(name="SM_Flag_Pennant", length=20.0):
     cols = [sr.mat("Pennant_Green", (0.0, 0.42, 0.22), rough=0.7, kind="foliage"),
-            sr.mat("Plastic_White", (0.85, 0.85, 0.83), rough=0.45),
+            sr.mat("Pennant_White", (0.88, 0.88, 0.85), rough=0.7, kind="foliage"),
             sr.mat("Pennant_Gold", (0.85, 0.62, 0.15), rough=0.7, kind="foliage")]
     rope = sr.mat("SteelDark", (0.08, 0.08, 0.09), rough=0.4, metal=1.0)
     mb = sr.MB(name)

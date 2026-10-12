@@ -1,0 +1,68 @@
+{
+ "car": "NeomGlide",
+ "name_ar": "نيوم",
+ "number": "6",
+ "skeletal_mesh": "SK_NeomGlide",
+ "root_bone": "Root",
+ "length_cm": 485,
+ "wheelbase_cm": 291.0,
+ "track_front_cm": 164.8,
+ "track_rear_cm": 161.8,
+ "mass_kg": 1500,
+ "max_torque_nm": 850,
+ "max_rpm": 12000,
+ "drive": "AWD",
+ "suspension_travel_cm": 8,
+ "center_of_mass_offset_cm": {
+  "x": 0,
+  "y": 0,
+  "z": -15
+ },
+ "wheels": {
+  "Wheel_FL": {
+   "bone": "Wheel_FL",
+   "x_cm": 145.5,
+   "y_cm": -82.4,
+   "z_cm": 36.0,
+   "radius_cm": 36.0,
+   "width_cm": 27.0,
+   "steer": true,
+   "max_steer_deg": 40,
+   "driven": true
+  },
+  "Wheel_FR": {
+   "bone": "Wheel_FR",
+   "x_cm": 145.5,
+   "y_cm": 82.4,
+   "z_cm": 36.0,
+   "radius_cm": 36.0,
+   "width_cm": 27.0,
+   "steer": true,
+   "max_steer_deg": 40,
+   "driven": true
+  },
+  "Wheel_RL": {
+   "bone": "Wheel_RL",
+   "x_cm": -145.5,
+   "y_cm": -80.9,
+   "z_cm": 36.0,
+   "radius_cm": 36.0,
+   "width_cm": 30.0,
+   "steer": false,
+   "max_steer_deg": 0,
+   "driven": true
+  },
+  "Wheel_RR": {
+   "bone": "Wheel_RR",
+   "x_cm": -145.5,
+   "y_cm": 80.9,
+   "z_cm": 36.0,
+   "radius_cm": 36.0,
+   "width_cm": 30.0,
+   "steer": false,
+   "max_steer_deg": 0,
+   "driven": true
+  }
+ },
+ "notes": "Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies)."
+}

@@ -1,0 +1,375 @@
+{
+ "SM_KingdomCentre": {
+  "tris": 17744,
+  "size_m": [
+   76.0,
+   38.0,
+   303.3
+  ],
+  "materials": [
+   "M_KC_FacadeNight",
+   "M_KC_ArchLED",
+   "M_GlassDark",
+   "M_KC_BridgeLight",
+   "M_AviationRed"
+  ]
+ },
+ "SM_KingdomMall": {
+  "tris": 1174,
+  "size_m": [
+   190.5,
+   82.5,
+   21.2
+  ],
+  "materials": [
+   "M_GlassDark",
+   "M_Limestone",
+   "M_Win_LitWarm",
+   "M_Default",
+   "M_SteelDark",
+   "M_KC_BridgeLight"
+  ]
+ },
+ "SM_AlFaisaliah": {
+  "tris": 6234,
+  "size_m": [
+   70.0,
+   70.0,
+   268.12
+  ],
+  "materials": [
+   "M_ConcreteWarm",
+   "M_LED_Green",
+   "M_Riyadh_FacadeNight",
+   "M_Faisaliah_GoldGlass",
+   "M_SteelDark",
+   "M_SteelGalvanised",
+   "M_AviationRed",
+   "M_Paver"
+  ]
+ },
+ "SM_RiyadhTVTower": {
+  "tris": 1830,
+  "size_m": [
+   30.1,
+   30.1,
+   173.7
+  ],
+  "materials": [
+   "M_ConcreteWarm",
+   "M_Win_LitCool",
+   "M_Win_LitWarm",
+   "M_LED_White",
+   "M_SteelGalvanised",
+   "M_AviationRed"
+  ]
+ },
+ "SM_PIFTower": {
+  "tris": 3106,
+  "size_m": [
+   66.05,
+   66.05,
+   396.24
+  ],
+  "materials": [
+   "M_Riyadh_FacadeNight",
+   "M_GlassDark",
+   "M_LED_White",
+   "M_SteelGalvanised"
+  ]
+ },
+ "SM_KAFD_Twist": {
+  "tris": 1294,
+  "size_m": [
+   49.13,
+   49.1,
+   236.05
+  ],
+  "materials": [
+   "M_Riyadh_FacadeNight",
+   "M_LED_White",
+   "M_SteelDark"
+  ]
+ },
+ "SM_KAFD_Slant": {
+  "tris": 338,
+  "size_m": [
+   44.39,
+   28.8,
+   190.29
+  ],
+  "materials": [
+   "M_Riyadh_FacadeNight",
+   "M_ConcreteWarm",
+   "M_LED_Amber"
+  ]
+ },
+ "SM_KAFD_Diagrid": {
+  "tris": 8990,
+  "size_m": [
+   54.95,
+   44.49,
+   260.31
+  ],
+  "materials": [
+   "M_Riyadh_FacadeNight",
+   "M_ConcreteWarm"
+  ]
+ },
+ "SM_KAFD_Stepped": {
+  "tris": 124,
+  "size_m": [
+   51.0,
+   37.0,
+   230.0
+  ],
+  "materials": [
+   "M_Riyadh_FacadeNight",
+   "M_LED_White",
+   "M_SteelGalvanised"
+  ]
+ },
+ "SM_Masmak": {
+  "tris": 17162,
+  "size_m": [
+   68.6,
+   60.0,
+   20.75
+  ],
+  "materials": [
+   "M_MudBrick",
+   "M_WindowFrameDark",
+   "M_PalmWood",
+   "M_SteelGalvanised",
+   "M_LED_Amber",
+   "M_Sand"
+  ]
+ },
+ "SM_RiyadhBlock_01": {
+  "tris": 11024,
+  "size_m": [
+   30.62,
+   22.62,
+   32.17
+  ],
+  "materials": [
+   "M_Limestone",
+   "M_Win_LitWarm",
+   "M_ShopSign_0",
+   "M_ShopSign_3",
+   "M_Win_LitCool",
+   "M_ShopSign_1",
+   "M_Win_Dark",
+   "M_WindowFrameDark",
+   "M_ShopSign_4",
+   "M_ShopSign_2",
+   "M_WaterTankBlue",
+   "M_WaterTank",
+   "M_PaintWhite",
+   "M_SteelGalvanised"
+  ]
+ },
+ "SM_RiyadhBlock_02": {
+  "tris": 7684,
+  "size_m": [
+   24.62,
+   24.62,
+   24.95
+  ],
+  "materials": [
+   "M_ConcreteWarm",
+   "M_Win_LitCool",
+   "M_ShopSign_0",
+   "M_Win_LitWarm",
+   "M_ShopSign_2",
+   "M_ShopSign_1",
+   "M_Win_Dark",
+   "M_WindowFrameDark",
+   "M_ShopSign_3",
+   "M_ShopSign_4",
+   "M_WaterTankBlue",
+   "M_WaterTank",
+   "M_PaintWhite",
+   "M_SteelGalvanised"
+  ]
+ },
+ "SM_RiyadhBlock_03": {
+  "tris": 13860,
+  "size_m": [
+   40.62,
+   18.62,
+   39.37
+  ],
+  "materials": [
+   "M_MudBrick",
+   "M_Win_LitWarm",
+   "M_ShopSign_4",
+   "M_ShopSign_0",
+   "M_Win_LitCool",
+   "M_ShopSign_3",
+   "M_ShopSign_1",
+   "M_WindowFrameDark",
+   "M_Win_Dark",
+   "M_ShopSign_2",
+   "M_WaterTank",
+   "M_WaterTankBlue",
+   "M_PaintWhite",
+   "M_SteelGalvanised"
+  ]
+ },
+ "SM_RiyadhBlock_04": {
+  "tris": 6440,
+  "size_m": [
+   22.62,
+   16.62,
+   21.35
+  ],
+  "materials": [
+   "M_Limestone",
+   "M_Win_LitWarm",
+   "M_ShopSign_0",
+   "M_Win_LitCool",
+   "M_ShopSign_3",
+   "M_WindowFrameDark",
+   "M_Win_Dark",
+   "M_ShopSign_1",
+   "M_ShopSign_2",
+   "M_WaterTank",
+   "M_PaintWhite",
+   "M_SteelGalvanised"
+  ]
+ },
+ "SM_RiyadhBlock_05": {
+  "tris": 14004,
+  "size_m": [
+   36.62,
+   26.62,
+   50.17
+  ],
+  "materials": [
+   "M_ConcreteWarm",
+   "M_Win_LitWarm",
+   "M_ShopSign_2",
+   "M_Win_LitCool",
+   "M_ShopSign_4",
+   "M_ShopSign_3",
+   "M_ShopSign_1",
+   "M_Win_Dark",
+   "M_WindowFrameDark",
+   "M_ShopSign_0",
+   "M_WaterTank",
+   "M_WaterTankBlue",
+   "M_PaintWhite",
+   "M_SteelGalvanised"
+  ]
+ },
+ "SM_RiyadhBlock_06": {
+  "tris": 9336,
+  "size_m": [
+   28.62,
+   20.62,
+   28.57
+  ],
+  "materials": [
+   "M_MudBrick",
+   "M_Win_LitCool",
+   "M_ShopSign_0",
+   "M_Win_LitWarm",
+   "M_ShopSign_2",
+   "M_ShopSign_1",
+   "M_ShopSign_3",
+   "M_Win_Dark",
+   "M_WindowFrameDark",
+   "M_ShopSign_4",
+   "M_WaterTank",
+   "M_PaintWhite",
+   "M_SteelGalvanised"
+  ]
+ },
+ "SM_Road_KingFahd_25m": {
+  "tris": 664,
+  "size_m": [
+   25.0,
+   34.6,
+   0.3
+  ],
+  "materials": [
+   "M_RoadLanes",
+   "M_CurbPaint",
+   "M_Paver",
+   "M_CurbBlack",
+   "M_Sand"
+  ]
+ },
+ "SM_StreetLight_KFR": {
+  "tris": 544,
+  "size_m": [
+   7.4,
+   0.7,
+   14.12
+  ],
+  "materials": [
+   "M_Concrete",
+   "M_SteelGalvanised",
+   "M_LED_White",
+   "M_LED_Amber"
+  ]
+ },
+ "SM_Gantry_KFR": {
+  "tris": 1534,
+  "size_m": [
+   28.6,
+   2.1,
+   10.5
+  ],
+  "materials": [
+   "M_SteelGalvanised",
+   "M_Concrete",
+   "M_RoadSign_Olaya",
+   "M_LED_White",
+   "M_RoadSign_KingFahd",
+   "M_RoadSign_Kingdom"
+  ]
+ },
+ "SM_MetroViaduct_30m": {
+  "tris": 490,
+  "size_m": [
+   30.0,
+   10.88,
+   15.45
+  ],
+  "materials": [
+   "M_ConcreteWarm",
+   "M_SteelGalvanised",
+   "M_LED_White"
+  ]
+ },
+ "SM_MetroCar": {
+  "tris": 400,
+  "size_m": [
+   18.0,
+   3.0,
+   3.6
+  ],
+  "materials": [
+   "M_Metro_White",
+   "M_Metro_Window",
+   "M_Metro_Line1Blue",
+   "M_WindowFrameDark",
+   "M_LED_White",
+   "M_SteelDark"
+  ]
+ },
+ "SM_Billboard_LED": {
+  "tris": 58,
+  "size_m": [
+   14.6,
+   1.2,
+   18.8
+  ],
+  "materials": [
+   "M_SteelDark",
+   "M_Billboard_RiyadhSeason"
+  ]
+ }
+}

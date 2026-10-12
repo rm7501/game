@@ -821,7 +821,7 @@ def diorama(objs, out=None, cars=("Falcon", "JeddahGT", "RiyadhMuscle")):
         if os.path.exists(glb):
             sr.import_glb(glb, ((18, 34, 26)[i], (-6.0, -10.0, 6.5)[i], 0.0), (0, 0, 180)[i])
     # night lighting
-    sr.setup_render((1600, 900), 128, exposure=0.0)
+    sr.setup_render((1600, 900), 80, exposure=0.0)
     sr.world_color(top=(0.004, 0.006, 0.02), horizon=(0.09, 0.05, 0.06), strength=1.0)
     sr.sun((60, 0, -30), 0.06, (0.6, 0.7, 1.0), 0.5, name="Moon")
     sr.camera((-12, -7.0, 2.4), (700, 0, 92), 30)

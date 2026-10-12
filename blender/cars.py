@@ -903,9 +903,10 @@ def render_car(car, body, wheels, tag=""):
     name = car.s["name"]
     L = car.L
     studio(L)
-    sr.camera((L * 1.25, L * 0.95, 1.45), (0.1, 0, 0.55), 50)
+    parts = [body] + list(wheels.values())
+    sr.frame_camera(parts, (1.25, 0.95, 0.32), 50, margin=0.62)
     sr.render(os.path.join(PREV, f"{name}_front.png"))
-    sr.camera((-L * 1.2, L * 0.9, 1.6), (-0.1, 0, 0.6), 50)
+    sr.frame_camera(parts, (-1.2, 0.9, 0.36), 50, margin=0.62)
     sr.render(os.path.join(PREV, f"{name}_rear.png"))
 
 
@@ -1201,7 +1202,7 @@ CARS = [
              ("quad", "rear", ((-0.75, 1.2), (0.75, 1.2), (0.72, 1.82), (-0.72, 1.82)), "glass", 0.004, False),
              ("strip", "left", [(-2.2, 0.82), (2.4, 0.82)], 0.06, "accent", 0.003, True),
              ("strip", "left", [(-2.2, 0.72), (2.4, 0.72)], 0.025, "accent", 0.003, True),
-             ("roundel", (0.1, 1.0), 0.2),
+             ("roundel", (0.48, 0.99), 0.15),
          ],
          extras=[ex_najdi]),
 
@@ -1370,6 +1371,54 @@ def build_car(spec, render=True, export=True):
     return car
 
 
+# ------------------------------------------------------- Chaos vehicle data ---
+CLASS_TUNING = {   # arcade-leaning starting points per car (mass kg, torque Nm, max rpm, susp travel cm, drive)
+    "Falcon": (1350, 720, 8500, 8, "AWD"), "DuneFox": (2200, 900, 6500, 35, "AWD"),
+    "NajdiGXR": (2400, 650, 6000, 20, "AWD"), "HiluxRaider": (2000, 600, 6000, 18, "RWD"),
+    "RiyadhMuscle": (1600, 800, 7000, 10, "RWD"), "NeomGlide": (1500, 850, 12000, 8, "AWD"),
+    "AlUlaRally": (1250, 520, 8000, 16, "AWD"), "JeddahGT": (1650, 760, 7800, 9, "RWD"),
+}
+
+
+def vehicle_spec(spec):
+    """Wheel/axle data in Unreal units (cm, X forward, Y right) for the Chaos Wheeled Vehicle component."""
+    L = spec["L"]
+    tr, tf = spec["axles"]
+    tm = (tr + tf) / 2
+    wc = curve(spec["w"])
+    mass, torque, rpm, travel, drive = CLASS_TUNING.get(spec["name"], (1500, 600, 7000, 10, "AWD"))
+    wheels = {}
+    for key, front, side in (("FL", True, -1), ("FR", True, 1), ("RL", False, -1), ("RR", False, 1)):
+        t = tf if front else tr
+        R = spec["R"][0 if front else 1]
+        TW = spec["TW"][0 if front else 1]
+        y = wc(t) - TW / 2 - spec.get("wheel_inset", 0.04)
+        wheels[f"Wheel_{key}"] = dict(bone=f"Wheel_{key}", x_cm=round((t - tm) * L * 100, 1), y_cm=round(side * y * 100, 1),
+                                      z_cm=round(R * 100, 1), radius_cm=round(R * 100, 1), width_cm=round(TW * 100, 1),
+                                      steer=front, max_steer_deg=40 if front else 0,
+                                      driven=(drive == "AWD") or (drive == "RWD" and not front))
+    return dict(car=spec["name"], name_ar=spec["name_ar"], number=spec["number"], skeletal_mesh=f"SK_{spec['name']}",
+                root_bone="Root", length_cm=round(L * 100), wheelbase_cm=round((tf - tr) * L * 100, 1),
+                track_front_cm=round(2 * abs(wheels["Wheel_FL"]["y_cm"]), 1), track_rear_cm=round(2 * abs(wheels["Wheel_RL"]["y_cm"]), 1),
+                mass_kg=mass, max_torque_nm=torque, max_rpm=rpm, drive=drive, suspension_travel_cm=travel,
+                center_of_mass_offset_cm=dict(x=0, y=0, z=-15), wheels=wheels,
+                notes="Bones are in the skeletal mesh. Physics asset: keep only the Root body (delete wheel bodies).")
+
+
+def write_vehicle_specs():
+    import json
+    allspecs = {}
+    for spec in CARS:
+        vs = vehicle_spec(spec)
+        allspecs[spec["name"]] = vs
+        os.makedirs(os.path.join(OUT, spec["name"]), exist_ok=True)
+        with open(os.path.join(OUT, spec["name"], "vehicle_spec.json"), "w") as f:
+            json.dump(vs, f, indent=1, ensure_ascii=False)
+    with open(os.path.join(OUT, "vehicle_specs.json"), "w") as f:
+        json.dump(allspecs, f, indent=1, ensure_ascii=False)
+    print("wrote vehicle specs")
+
+
 if __name__ == "__main__":
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else sys.argv[1:]
     names = [a for a in argv if not a.startswith("-")]
@@ -1379,3 +1428,4 @@ if __name__ == "__main__":
         if names and spec["name"] not in names:
             continue
         build_car(spec, render, export)
+    write_vehicle_specs()

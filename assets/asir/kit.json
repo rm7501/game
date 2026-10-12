@@ -1,0 +1,276 @@
+{
+ "SM_RijalAlmaaHouse_01": {
+  "tris": 3352,
+  "size_m": [
+   8.37,
+   7.43,
+   17.05
+  ],
+  "materials": [
+   "M_Asir_StoneMasonry",
+   "M_Asir_WhitePaint",
+   "M_WindowDarkHole",
+   "M_Asir_Shutter_Green",
+   "M_Asir_Shutter_Yellow",
+   "M_Asir_Shutter_Red",
+   "M_Asir_Shutter_Turquoise",
+   "M_Asir_Shutter_Blue",
+   "M_QattAsiri_Door"
+  ]
+ },
+ "SM_RijalAlmaaHouse_02": {
+  "tris": 2460,
+  "size_m": [
+   6.96,
+   6.96,
+   14.05
+  ],
+  "materials": [
+   "M_Asir_StoneMasonry",
+   "M_Asir_WhitePaint",
+   "M_WindowDarkHole",
+   "M_Asir_Shutter_Green",
+   "M_Asir_Shutter_Red",
+   "M_Asir_Shutter_Blue",
+   "M_Asir_Shutter_Yellow",
+   "M_Asir_Shutter_Turquoise",
+   "M_QattAsiri_Door"
+  ]
+ },
+ "SM_RijalAlmaaHouse_03": {
+  "tris": 3736,
+  "size_m": [
+   9.31,
+   7.9,
+   23.05
+  ],
+  "materials": [
+   "M_Asir_StoneMasonry",
+   "M_Asir_WhitePaint",
+   "M_WindowDarkHole",
+   "M_Asir_Shutter_Blue",
+   "M_Asir_Shutter_Turquoise",
+   "M_Asir_Shutter_Red",
+   "M_Asir_Shutter_Yellow",
+   "M_Asir_Shutter_Green",
+   "M_QattAsiri_Door"
+  ]
+ },
+ "SM_RijalAlmaaHouse_04": {
+  "tris": 2288,
+  "size_m": [
+   7.43,
+   6.49,
+   11.05
+  ],
+  "materials": [
+   "M_Asir_StoneMasonry",
+   "M_Asir_WhitePaint",
+   "M_WindowDarkHole",
+   "M_Asir_Shutter_Red",
+   "M_Asir_Shutter_Blue",
+   "M_Asir_Shutter_Green",
+   "M_Asir_Shutter_Yellow",
+   "M_Asir_Shutter_Turquoise",
+   "M_QattAsiri_Door"
+  ]
+ },
+ "SM_RijalAlmaaVillage": {
+  "tris": 83660,
+  "size_m": [
+   64.55,
+   40.5,
+   33.0
+  ],
+  "materials": [
+   "M_Asir_StoneDark",
+   "M_Asir_StoneMasonry",
+   "M_Asir_WhitePaint",
+   "M_WindowDarkHole",
+   "M_Asir_Shutter_Yellow",
+   "M_Asir_Shutter_Green",
+   "M_Asir_Shutter_Blue",
+   "M_Asir_Shutter_Turquoise",
+   "M_Asir_Shutter_Red",
+   "M_QattAsiri_Door"
+  ]
+ },
+ "SM_AsiriMudTower_A": {
+  "tris": 1678,
+  "size_m": [
+   6.77,
+   6.77,
+   12.6
+  ],
+  "materials": [
+   "M_Asir_MudPlaster",
+   "M_Asir_Slate",
+   "M_Asir_WhitePaint",
+   "M_WindowDarkHole"
+  ]
+ },
+ "SM_AsiriMudTower_B": {
+  "tris": 2202,
+  "size_m": [
+   7.8,
+   7.8,
+   16.6
+  ],
+  "materials": [
+   "M_Asir_MudPlaster",
+   "M_Asir_Slate",
+   "M_Asir_WhitePaint",
+   "M_WindowDarkHole"
+  ]
+ },
+ "SM_QattDoor": {
+  "tris": 14,
+  "size_m": [
+   1.6,
+   0.27,
+   2.7
+  ],
+  "materials": [
+   "M_Asir_WhitePaint",
+   "M_QattAsiri_Door"
+  ]
+ },
+ "SM_TerraceHill": {
+  "tris": 115200,
+  "size_m": [
+   120.0,
+   120.0,
+   22.1
+  ],
+  "materials": [
+   "M_Asir_TerraceGrass",
+   "M_Asir_StoneMasonry"
+  ]
+ },
+ "SM_AsirMountain_A": {
+  "tris": 51200,
+  "size_m": [
+   900.0,
+   900.0,
+   244.48
+  ],
+  "materials": [
+   "M_Asir_Granite",
+   "M_Asir_TerraceGrass"
+  ]
+ },
+ "SM_AsirMountain_B": {
+  "tris": 51200,
+  "size_m": [
+   700.0,
+   700.0,
+   169.18
+  ],
+  "materials": [
+   "M_Asir_Granite",
+   "M_Asir_TerraceGrass"
+  ]
+ },
+ "SM_Juniper_A": {
+  "tris": 4104,
+  "size_m": [
+   4.31,
+   4.31,
+   7.21
+  ],
+  "materials": [
+   "M_Juniper_Bark",
+   "M_Juniper_Foliage"
+  ]
+ },
+ "SM_Juniper_B": {
+  "tris": 3348,
+  "size_m": [
+   4.31,
+   3.96,
+   5.44
+  ],
+  "materials": [
+   "M_Juniper_Bark",
+   "M_Juniper_Foliage"
+  ]
+ },
+ "SM_CableCar_Pylon": {
+  "tris": 884,
+  "size_m": [
+   9.0,
+   5.24,
+   33.54
+  ],
+  "materials": [
+   "M_SteelGalvanised",
+   "M_CableCar_Red"
+  ]
+ },
+ "SM_CableCar_Cabin": {
+  "tris": 164,
+  "size_m": [
+   2.91,
+   2.0,
+   4.65
+  ],
+  "materials": [
+   "M_CableCar_Red",
+   "M_Car_Glass",
+   "M_SteelGalvanised"
+  ]
+ },
+ "SM_Road_Mountain_25m": {
+  "tris": 108,
+  "size_m": [
+   25.0,
+   9.64,
+   0.46
+  ],
+  "materials": [
+   "M_Asphalt",
+   "M_RoadLineWhite",
+   "M_Concrete",
+   "M_RoadLineYellow"
+  ]
+ },
+ "SM_Guardrail_10m": {
+  "tris": 152,
+  "size_m": [
+   10.1,
+   0.32,
+   1.0
+  ],
+  "materials": [
+   "M_SteelGalvanised",
+   "M_ReflectorAmber"
+  ]
+ },
+ "SM_TunnelPortal": {
+  "tris": 540,
+  "size_m": [
+   20.0,
+   31.65,
+   12.1
+  ],
+  "materials": [
+   "M_Asir_StoneMasonry",
+   "M_Concrete",
+   "M_Asir_StoneDark",
+   "M_TunnelLight",
+   "M_Asphalt"
+  ]
+ },
+ "SM_RetainingWall_20m": {
+  "tris": 24,
+  "size_m": [
+   20.0,
+   1.25,
+   4.22
+  ],
+  "materials": [
+   "M_Asir_StoneMasonry",
+   "M_Concrete"
+  ]
+ }
+}
