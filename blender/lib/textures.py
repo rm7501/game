@@ -406,7 +406,18 @@ def track_glow(out):
     save(out, "TrackGlow", col, None, rough, em)
 
 
-ALL = [track_asphalt, track_sand, track_glow, defaults, facade_tower, hex_mesh, sand, sandstone_strata, rock, asphalt, road_lanes, coral_stone, mud_plaster,
+def water_waves(out):
+    """Sea surface: tileable wave normals (directional swell + chop). Unreal pans two copies of it."""
+    yy, xx = np.mgrid[0:N, 0:N] / N
+    swell = sum(np.sin(2 * np.pi * (k * xx + j * yy) + ph) / (k * k + j * j) ** 0.6
+                for k, j, ph in ((3, 1, 0.2), (2, 3, 1.3), (5, -2, 2.1), (-4, 5, 0.7), (7, 3, 1.9)))
+    chop = fbm(beta=2.6, lo=6, seed=171, aniso=(1.0, 1.6))
+    h = 0.6 * (swell - swell.min()) / (swell.max() - swell.min()) + 0.4 * chop
+    col = np.stack([np.full((N, N), 0.04), np.full((N, N), 0.16), np.full((N, N), 0.2)], -1)
+    save(out, "WaterWaves", col, normal_from_height(h, 9.0), np.full((N, N), 0.06))
+
+
+ALL = [water_waves, track_asphalt, track_sand, track_glow, defaults, facade_tower, hex_mesh, sand, sandstone_strata, rock, asphalt, road_lanes, coral_stone, mud_plaster,
        stone_masonry, concrete, wood_painted, facade_night, metal_panels, terrace_grass]
 
 if __name__ == "__main__":

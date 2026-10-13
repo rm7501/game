@@ -685,7 +685,8 @@ def tri_count(obj):
 
 
 # ----------------------------------------------------------------- export ---
-def export_fbx(objs, path, armature=False):
+def export_fbx(objs, path, armature=False, colors="SRGB"):
+    """colors: vertex-colour encoding. Terrain layer weights use LINEAR (raw 0..1 factors in Unreal)."""
     os.makedirs(os.path.dirname(path), exist_ok=True)
     objs = objs if isinstance(objs, (list, tuple)) else [objs]
     for o in bpy.context.scene.objects:
@@ -702,7 +703,7 @@ def export_fbx(objs, path, armature=False):
         object_types={"MESH", "ARMATURE", "EMPTY"} if armature else {"MESH"},
         mesh_smooth_type="FACE", use_mesh_modifiers=True, add_leaf_bones=False,
         use_armature_deform_only=True, bake_anim=False, path_mode="STRIP",
-        axis_forward="-Z", axis_up="Y", use_tspace=True)
+        axis_forward="-Z", axis_up="Y", use_tspace=True, colors_type=colors)
     for o in sel:
         o.select_set(False)
     print("exported", os.path.relpath(path, ROOT))

@@ -79,7 +79,7 @@ def tracks():
         CP(-170, -560, 9, surf="sand", L=N, R=N), CP(ax + dxa * 45, ay + dya * 45, 8), CP(ax, ay, 7),
         CP(ax - dxa * 45, ay - dya * 45, 8), CP(100, -660, 9)], closed=False, label="Elephant Rock arch", hidden=True)
     s_slot = Track("Shortcut_SlotCanyon", [
-        CP(290, 590, 8, surf="sand", L=N, R=N), CP(210, 680, 7), CP(70, 715, 7), CP(-80, 700, 7), CP(-210, 560, 8)],
+        CP(290, 590, 8, surf="sand", L=N, R=N), CP(180, 632, 7), CP(40, 642, 7), CP(-100, 628, 7), CP(-210, 560, 8)],
         closed=False, label="Slot canyon", hidden=True)
     lx, ly = LABY
     s_lab = Track("Shortcut_LabyrinthRun", [

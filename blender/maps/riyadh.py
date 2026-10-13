@@ -10,8 +10,8 @@ Main circuit (~4 km, clockwise):
   KAFD chicane between towers -> escarpment descent with a hairpin -> Wadi Hanifa floor (palms, pond)
   -> climb out -> Diriyah ruins S-bends -> back onto King Fahd Road.
 Shortcuts:
-  FlyoverJump   (visible)  gap in the flyover barrier: fly off the deck and land on the loop exit
-  MetroLine     (hidden)   construction ramp up onto the Metro viaduct, straight across the valley
+  StadiumCut    (visible)  straight across the stadium car park, inside the last corner
+  MetroLeap     (hidden)   construction ramp onto the unfinished Metro viaduct, leap off its end
   PalmTrail     (hidden)   dirt trail through the palm grove cutting the wadi meander
   DiriyahBreach (hidden)   through a breach in the old mud wall, skipping the ruins S-bends
 """
@@ -103,8 +103,8 @@ def tracks():
         CP(-470, 160, 12, surf="asphalt_old", L="rock", R="rock"),
         CP(-560, 80, 13, L=N, R=N),                                         # wadi floor
         CP(-600, -30, 13),
-        CP(-560, -150, 13),                                                 # past the pond
-        CP(-630, -280, 13),
+        CP(-575, -150, 13, bank=5),                                         # wadi meander
+        CP(-755, -285, 13, bank=-6),
         CP(-610, -420, 13, tags={"curbs"}),
         CP(-520, -520, 12, L=G, R=G),                                       # climb out
         CP(-400, -575, 12),
@@ -117,16 +117,16 @@ def tracks():
         CP(300, -560, 15, bank=6),
     ]
     main_t = Track("Track", main, closed=True, surf="asphalt", L=J, R=J)
-    s_jump = Track("Shortcut_FlyoverJump", [
-        CP(321, 270, 10, z=PL + 10, L=J, R=N), CP(318, 360, 9, z=PL + 15.5, tags={"gap"}), CP(312, 420, 9, z=PL + 1.5),
-        CP(300, 452, 10, z=PL + 0.3, L=N, R=N)], closed=False, label="Flyover jump", hidden=False)
+    s_jump = Track("Shortcut_StadiumCut", [
+        CP(140, -628, 11, surf="asphalt_old", L=N, R=N), CP(205, -560, 11, tags={"curbs"}), CP(265, -495, 11),
+        CP(318, -425, 12)], closed=False, label="Stadium car-park cut", hidden=False)
     # unfinished Metro viaduct: ride the deck to where it stops at the cliff edge and leap into the wadi
     s_metro = Track("Shortcut_MetroLeap", [
         CP(40, 463, 8, L=N, R=N, surf="metal"), CP(0, 410, 8, z=PL + 7, deck="metro", tags={"nocarve"}),
         CP(-140, 340, 8, z=PL + 8), CP(-300, 302, 8, z=PL + 7, tags={"gap"}), CP(-362, 270, 9, z=PL - 6),
         CP(-418, 224, 11, deck="highway", surf="asphalt_old")], closed=False, label="Metro leap", hidden=True)
     s_palm = Track("Shortcut_PalmTrail", [
-        CP(-602, -40, 7, surf="dirt", L=N, R=N), CP(-640, -120, 7), CP(-660, -210, 7), CP(-632, -285, 7)],
+        CP(-602, -40, 7, surf="dirt", L=N, R=N), CP(-636, -150, 7), CP(-668, -255, 7), CP(-700, -338, 7)],
         closed=False, label="Palm grove trail", hidden=True)
     s_dir = Track("Shortcut_DiriyahBreach", [
         CP(-262, -600, 6, surf="cobble", L=W_, R=W_), CP(-180, -600, 6), CP(-90, -600, 6), CP(-20, -592, 6),

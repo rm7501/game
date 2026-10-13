@@ -28,11 +28,19 @@ The asset pack in this repo was made separately; your job is to wire it into the
    - Set the wheel setups to bones `Wheel_FL`, `Wheel_FR`, `Wheel_RL` and `Wheel_RR`. Take the radius, width,
      mass, torque and rpm from `assets/cars/<Car>/vehicle_spec.json`.
    - If the game does not use Chaos vehicles, use `SM_<Car>_Body` plus the `SM_<Car>_Wheel_F/R` static meshes instead.
-3. **Maps:** open each level and run `unreal/setup_map.py`, then call
-   `setup("riyadh" | "alula" | "jeddah" | "asir" | "future")` for its lighting. Replace the old placeholder
-   buildings and rocks with the kit landmarks, keeping the existing track and gameplay. Follow
-   `docs/MAP_GUIDE.md`: Kingdom Centre and Al Faisaliah on the Riyadh skyline, Elephant Rock and the Hegra tomb
-   in AlUla, rawasheen houses in Jeddah, and so on.
+3. **Maps:** the pack now has 5 complete race maps (`docs/MAPS.md`). For each one, make a new empty level
+   (keep the old level as a backup) and run `unreal/build_map.py`. Then call `build("RiyadhNights" | "AlUla" |
+   "JeddahCorniche" | "AsirMountains" | "FutureCity")`. That builds the terrain, track, props, lighting and the
+   gameplay markers.
+   Hook the game's existing race logic onto the tagged actors:
+   - `SR_Checkpoint` / `SR_CP_<n>`: checkpoints in order, 0 is the start/finish line
+   - `SR_Grid_<n>`: start grid
+   - `SR_CardPickup`, `SR_BoostPad`: pickups and boost pads
+   - `SR_Line_<n>`: AI waypoints along the racing line
+   - `SR_Shortcut` / `SR_Hidden`: shortcut waypoints
+
+   You can also set `ITEM_CLASSES` in `build_map.py` to the game's own pickup and checkpoint Blueprints. Then
+   point the map-select menu at the new levels.
 4. **Cards and abilities:** put the `T_Card_01..08` textures on the matching characters' cards. Each card's
    ability text is a placeholder, so keep the game's real card text (edit `ABILITY` in `blender/card_art.py`
    and re-run it if needed). Use the `SM_VFX_*` meshes and `SM_FalconDrone` for the ability effects,

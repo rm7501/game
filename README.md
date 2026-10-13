@@ -1,9 +1,20 @@
 # Sahara Racers — سباق الصحراء
 
 Asset pack and Blender → Unreal Engine 5 pipeline for **Sahara Racers**, an arcade card racing game set
-in Saudi Arabia. It has **8 detailed race cars** and **5 map kits** (Riyadh Nights, AlUla, Jeddah
-Al-Balad, Asir Mountains, Future City/NEOM). Every landmark is modelled from its real proportions, so
-the maps read as the real places.
+in Saudi Arabia. It has **8 detailed race cars**, **5 map kits** (Riyadh Nights, AlUla, Jeddah
+Al-Balad, Asir Mountains, Future City/NEOM) and **5 complete race maps** built from them: sculpted 2 km
+terrain, full laps with bridges and tunnels, and hidden shortcuts. Every landmark is modelled from its
+real proportions, so the maps read as the real places.
+
+## The 5 race maps
+
+| | |
+|---|---|
+| ![Riyadh Nights](docs/previews/maps/RiyadhNights_1.jpg) **Riyadh Nights**: King Fahd Road, a 270° loop ramp, KAFD, then down the escarpment into Wadi Hanifa and Diriyah. 4.36 km, 4 shortcuts | ![AlUla](docs/previews/maps/AlUla_1.jpg) **AlUla**: a sand rally between the sandstone massifs, from Maraya to Elephant Rock. 4.24 km, 4 shortcuts |
+| ![Jeddah](docs/previews/maps/JeddahCorniche_1.jpg) **Jeddah**: the Corniche and floating mosque, Bab Makkah, then the Al-Balad lanes. 4.45 km, 3 shortcuts | ![Asir](docs/previews/maps/AsirMountains_1.jpg) **Asir**: from Rijal Almaa up stacked hairpins, along a knife-edge ridge in the mist, through the Soudah peak. 4.90 km, 4 shortcuts |
+| ![Future City](docs/previews/maps/FutureCity_1.jpg) **Future City**: inside The Line, out through its wall, round a banked mountain curve to the floating Oxagon. 4.83 km, 3 shortcuts | **Every map has** a race-ready lap with kerbs, barriers, bridges and tunnels, plus 3–4 shortcuts (most of them hidden). It also has checkpoints, an 8-car grid, card pickups, boost pads, an AI racing line and a minimap. In Unreal it is a one-call build: `build("AlUla")`. **→ [docs/MAPS.md](docs/MAPS.md)** |
+
+## The 5 map kits
 
 ![Riyadh Nights — King Fahd Road towards Kingdom Centre](docs/previews/map_riyadh_nights.png)
 
@@ -56,9 +67,14 @@ assets/
                      <Car>_preview.glb (open in Windows 3D Viewer / Blender), vehicle_spec.json
   common/ riyadh/ alula/ jeddah/ asir/ future/
                      SM_*.fbx per asset, kit.json (tris + size), <kit>_kit.blend (editable in Blender)
+  maps/<Map>/        the 5 race maps: terrain tiles, road chunks, water, props/, layout.json,
+                     track.json (racing line, shortcuts, checkpoints, grid, pickups), landscape/, minimap.png
 blender/             the procedural sources (rebuild or tweak anything)
-unreal/              import_assets.py (one-click import), setup_map.py (lighting presets per map)
-docs/                UNREAL_SETUP.md, MAP_GUIDE.md, previews/
+  maps/              one file per race map (riyadh.py, alula.py, jeddah.py, asir.py, future.py)
+  lib/               terrain.py (heightfield), track.py (road splines), mapkit.py (placement/export)
+unreal/              import_assets.py (one-click import), build_map.py (assemble a race map),
+                     setup_map.py (lighting presets per map)
+docs/                MAPS.md, UNREAL_SETUP.md, MAP_GUIDE.md, previews/
 ```
 
 | Kit | Highlights |
@@ -78,8 +94,11 @@ docs/                UNREAL_SETUP.md, MAP_GUIDE.md, previews/
 3. Open your map level and run `unreal/setup_map.py`, then `setup("riyadh")` (or `alula`, `jeddah`,
    `asir`, `future`) for the matching lighting.
 4. Swap your car Blueprints to the new skeletal meshes: see **[docs/UNREAL_SETUP.md](docs/UNREAL_SETUP.md)**.
-5. Dress each track with its kit: see **[docs/MAP_GUIDE.md](docs/MAP_GUIDE.md)** for layouts and what
-   makes each place recognizable.
+5. Build the race maps: in a new empty level, run `unreal/build_map.py` and call `build("RiyadhNights")`
+   (or `AlUla`, `JeddahCorniche`, `AsirMountains`, `FutureCity`). It places the terrain, track, props,
+   checkpoints, grid, pickups and lighting. See **[docs/MAPS.md](docs/MAPS.md)**.
+6. To dress your own tracks with the kits, see **[docs/MAP_GUIDE.md](docs/MAP_GUIDE.md)** for what makes
+   each place recognizable.
 
 ## Editing in Blender
 

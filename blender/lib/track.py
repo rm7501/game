@@ -132,6 +132,8 @@ class Track:
                     c[k] = cur[k]
                 cur[k] = c[k]
         self.phantom = None
+        self.smooth_m = 20.0           # along-track smoothing of the ground-following height profile
+        self.pillar_ok = None          # optional callable (x, y) -> bool: skip bridge pillars that would hit a road
 
     # -- geometry -----------------------------------------------------------
     def build(self, terrain, main=None):
@@ -179,7 +181,7 @@ class Track:
         # elevation: smoothed ground + overrides
         ground = terrain.sample(self.P[:, 0], self.P[:, 1])
         self.ground0 = ground.copy()
-        zg = circ_smooth(ground, 20.0 / self.step, self.closed) + self.dzp
+        zg = circ_smooth(ground, self.smooth_m / self.step, self.closed) + self.dzp
         zo = np.zeros(len(S))
         wo = np.zeros(len(S))
         zabs = [c["z"] for c in cp]
@@ -203,7 +205,16 @@ class Track:
                 f = 1 - _ss(np.arange(n_blend) / n_blend)
                 f = f if end == 0 else f[::-1]
                 z[idx] = zm * f + z[idx] * (1 - f)
+        self.nomesh = np.zeros(len(S), bool)
+        if main is not None and not self.closed:
+            # where a shortcut still lies on the main road, don't mesh it (and keep it a hair below)
+            from scipy.spatial import cKDTree
+            d, j = cKDTree(main.P).query(self.P)
+            self.nomesh = d + self.W / 2 < main.W[j] / 2 + 0.8
+            over = d < main.W[j] / 2 + self.W / 2
+            z = z - 0.06 * over
         self.Z = z
+        self.edge_skip = np.zeros((2, len(S)), bool)      # [left, right] barrier openings (junctions)
         tun = np.array(["tunnel" in t for t in self.tag])
         gap = np.array(["gap" in t for t in self.tag])
         noc = np.array([("nocarve" in t) or ("bridge" in t) for t in self.tag])
@@ -211,6 +222,27 @@ class Track:
         self.gap = gap
         self.bridge = (~tun) & ((z - ground > 3.2) | noc | gap)
         return self
+
+    def open_junctions(self, other, margin=1.5, dz=3.0):
+        """Open this track's barriers where `other` (a shortcut) drives through them, and drop
+        `other`'s own barriers where they would stand on this road."""
+        from scipy.spatial import cKDTree
+        t_other, t_self = cKDTree(other.P), cKDTree(self.P)
+        road = ~other.gap
+        for k, sg in ((0, 1), (1, -1)):
+            q = self.P + self.Nrm * (sg * (self.W / 2 + 0.8))[:, None]
+            d, j = t_other.query(q)
+            self.edge_skip[k] |= (d < other.W[j] / 2 + margin) & road[j] & (np.abs(other.Z[j] - self.Z) < dz)
+            q = other.P + other.Nrm * (sg * (other.W / 2 + 0.8))[:, None]
+            d, j = t_self.query(q)
+            other.edge_skip[k] |= (d < self.W[j] / 2 + margin) & (np.abs(self.Z[j] - other.Z) < dz)
+        # widen the openings a little so the gap reads clearly
+        for arr in (self.edge_skip, other.edge_skip):
+            for k in range(2):
+                a = arr[k]
+                if a.any():
+                    grow = np.convolve(a.astype(float), np.ones(5), mode="same") > 0
+                    arr[k] = grow
 
     def height_at(self, xy):
         d = np.linalg.norm(self.P - np.array(xy), axis=1)
@@ -299,7 +331,7 @@ class Track:
 
     def _road(self, mb, rng, M):
         sub = 6
-        for run in self._runs(rng, lambda i: not self.gap[i]):
+        for run in self._runs(rng, lambda i: not self.gap[i] and not self.nomesh[i]):
             grid, uvs = [], []
             for i in run:
                 hw = self.W[i] / 2
@@ -324,7 +356,8 @@ class Track:
         for side in (1, -1):
             def want(i, side=side):
                 tight = abs(curv[i]) > 1 / 90.0 and np.sign(curv[i]) == side
-                return (tight or "curbs" in self.tag[i]) and not self.gap[i] and self.surf[i] in ("asphalt", "glow", "asphalt_old")
+                return ((tight or "curbs" in self.tag[i]) and not self.gap[i] and not self.nomesh[i]
+                        and self.surf[i] in ("asphalt", "glow", "asphalt_old"))
             for run in self._runs(rng, want):
                 grid = []
                 for i in run:
@@ -339,10 +372,12 @@ class Track:
         for side in ("L", "R"):
             styles = self.Ls if side == "L" else self.Rs
             sg = 1 if side == "L" else -1
+            skip = self.edge_skip[0 if side == "L" else 1]
             for style in set(styles[i] for i in rng):
                 if style in (None, "none"):
                     continue
-                runs = self._runs(rng, lambda i: styles[i] == style and not self.gap[i] and not self.tunnel[i])
+                runs = self._runs(rng, lambda i: styles[i] == style and not self.gap[i] and not self.tunnel[i]
+                                  and not self.nomesh[i] and not skip[i])
                 for run in runs:
                     self._edge_run(mb, run, sg, style, M)
 
@@ -410,7 +445,7 @@ class Track:
                     gap = rnd.uniform(6, 14)
 
     def _bridges(self, mb, rng, M):
-        for run in self._runs(rng, lambda i: self.bridge[i] and not self.gap[i]):
+        for run in self._runs(rng, lambda i: self.bridge[i] and not self.gap[i] and not self.nomesh[i]):
             style = self.deck[run[0]]
             # deck underside
             grid = []
@@ -438,6 +473,9 @@ class Track:
                 top = self.Z[i] - 1.6
                 g = float(self.ground0[i]) - 1.0
                 if top - g < 1.0:
+                    continue
+                if self.pillar_ok is not None and not self.pillar_ok(x, y):
+                    last = -1e9
                     continue
                 h = top - g
                 yaw = math.degrees(math.atan2(self.T[i][1], self.T[i][0]))

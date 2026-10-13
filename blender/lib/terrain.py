@@ -252,6 +252,8 @@ class Terrain:
         col = me.color_attributes.new("Weights", "FLOAT_COLOR", "POINT")
         rgba = np.concatenate([mf, np.ones((len(mf), 1))], 1)
         col.data.foreach_set("color", rgba.ravel())
+        me.color_attributes.active_color = col          # the one the FBX exporter writes
+        me.color_attributes.render_color_index = me.color_attributes.active_color_index
         for p in me.polygons:
             p.use_smooth = True
         if material:
@@ -270,7 +272,7 @@ class Terrain:
             for c in range(tiles):
                 region = (edges[c], edges[c + 1] + 1, edges[r], edges[r + 1] + 1)
                 o = self.mesh_object(f"SM_{name}_Terrain_{r}_{c}", step=step, region=region, material=material)
-                sr.export_fbx(o, os.path.join(folder, f"{o.name}.fbx"))
+                sr.export_fbx(o, os.path.join(folder, f"{o.name}.fbx"), colors="LINEAR")
                 objs.append(o)
         return objs
 

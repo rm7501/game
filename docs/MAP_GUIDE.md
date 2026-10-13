@@ -1,5 +1,8 @@
 # Map guide — making each track instantly recognisable
 
+> **The finished race maps are in [MAPS.md](MAPS.md):** terrain, laps, shortcuts and a one-call Unreal build.
+> This guide covers the kits: what makes each place recognisable. Use it to dress extra tracks or tweak the maps.
+
 The single biggest reason a map "doesn't look like Riyadh" or "doesn't look like AlUla" is missing
 **landmarks on the skyline** and missing **local architecture along the track**. Each kit gives you
 both. Below: what defines each place, which assets to use, a suggested layout and the light.

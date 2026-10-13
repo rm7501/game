@@ -14,6 +14,8 @@ WHAT IT DOES
         M_SR_Glass    (translucent)
         M_SR_Foliage  (two-sided: palm fronds, awnings, flags)
         M_SR_VFX      (additive, unlit: ability effects)
+        M_SR_TerrainBlend (map terrain tiles: 4 texture sets blended by vertex colour R/G/B)
+        M_SR_Water    (sea / lake: two panning wave normals)
   * creates one Material Instance per material in assets/materials.json (MI_<Name>)
   * imports every FBX:
         assets/<kit>/SM_*.fbx         -> /Game/SaharaRacers/<Kit>/          (Nanite on, collision)
@@ -213,8 +215,142 @@ def build_master(name, clear_coat=False, two_sided=False, translucent=False, vfx
     return m
 
 
+def build_terrain_master(name="M_SR_TerrainBlend"):
+    """Vertex-colour layer blend for the Nanite terrain tiles exported by blender/lib/terrain.py.
+    Vertex colour = sequential lerp factors: R blends L0->L1, G blends ->L2, B blends ->L3.
+    Terrain UVs are in metres, so each layer has its own UVScale (= 1 / metres per repeat)."""
+    folder = f"{DEST}/Materials"
+    m, created = new_asset(name, folder, unreal.Material, unreal.MaterialFactoryNew())
+    if not created:
+        return m
+    X = mel.create_material_expression
+    S = unreal.MaterialSamplerType
+    P = unreal.MaterialProperty
+    white, flat, mask = tex_asset("T_Default_D"), tex_asset("T_Default_N"), tex_asset("T_Default_R")
+    uv = X(m, unreal.MaterialExpressionTextureCoordinate, -2200, 0)
+    vc = X(m, unreal.MaterialExpressionVertexColor, -600, -900)
+    layers = []
+    for k in range(4):
+        y = -700 + k * 520
+        sc = X(m, unreal.MaterialExpressionScalarParameter, -2000, y)
+        sc.set_editor_property("parameter_name", f"L{k}_UVScale")
+        sc.set_editor_property("default_value", 0.2)
+        uvm = X(m, unreal.MaterialExpressionMultiply, -1800, y)
+        mel.connect_material_expressions(uv, "", uvm, "A")
+        mel.connect_material_expressions(sc, "", uvm, "B")
+        outs = {}
+        for j, (pname, tex, smp) in enumerate((("Base", white, S.SAMPLERTYPE_COLOR), ("Normal", flat, S.SAMPLERTYPE_NORMAL),
+                                               ("Rough", mask, S.SAMPLERTYPE_MASKS))):
+            t = X(m, unreal.MaterialExpressionTextureSampleParameter2D, -1500, y + j * 160)
+            t.set_editor_property("parameter_name", f"L{k}_{pname}")
+            if tex:
+                t.set_editor_property("texture", tex)
+            t.set_editor_property("sampler_type", smp)
+            try:
+                t.set_editor_property("sampler_source", unreal.SamplerSourceMode.SSM_WRAP_WORLD_GROUP_SETTINGS)
+            except Exception:
+                pass
+            mel.connect_material_expressions(uvm, "", t, "UVs")
+            outs[pname] = t
+        tint = X(m, unreal.MaterialExpressionVectorParameter, -1250, y)
+        tint.set_editor_property("parameter_name", f"L{k}_Tint")
+        tint.set_editor_property("default_value", unreal.LinearColor(1, 1, 1, 1))
+        col = X(m, unreal.MaterialExpressionMultiply, -1050, y)
+        mel.connect_material_expressions(outs["Base"], "RGB", col, "A")
+        mel.connect_material_expressions(tint, "", col, "B")
+        layers.append(dict(col=(col, ""), nrm=(outs["Normal"], "RGB"), rgh=(outs["Rough"], "R")))
+
+    def chain(key, x):
+        cur = layers[0][key]
+        for k, ch in ((1, "R"), (2, "G"), (3, "B")):
+            lp = X(m, unreal.MaterialExpressionLinearInterpolate, x + k * 160, -500 + k * 120)
+            mel.connect_material_expressions(cur[0], cur[1], lp, "A")
+            mel.connect_material_expressions(layers[k][key][0], layers[k][key][1], lp, "B")
+            mel.connect_material_expressions(vc, ch, lp, "Alpha")
+            cur = (lp, "")
+        return cur
+    base = chain("col", -800)
+    nrm = chain("nrm", -800)
+    rgh = chain("rgh", -800)
+    mel.connect_material_property(base[0], base[1], P.MP_BASE_COLOR)
+    mel.connect_material_property(nrm[0], nrm[1], P.MP_NORMAL)
+    rs = X(m, unreal.MaterialExpressionScalarParameter, -300, 400)
+    rs.set_editor_property("parameter_name", "Roughness")
+    rs.set_editor_property("default_value", 1.0)
+    rm = X(m, unreal.MaterialExpressionMultiply, -150, 350)
+    mel.connect_material_expressions(rgh[0], rgh[1], rm, "A")
+    mel.connect_material_expressions(rs, "", rm, "B")
+    mel.connect_material_property(rm, "", P.MP_ROUGHNESS)
+    mel.recompile_material(m)
+    eal.save_loaded_asset(m)
+    return m
+
+
+def build_water_master(name="M_SR_Water"):
+    """Opaque glossy sea: colour + two wave normal maps panning in different directions."""
+    folder = f"{DEST}/Materials"
+    m, created = new_asset(name, folder, unreal.Material, unreal.MaterialFactoryNew())
+    if not created:
+        return m
+    X = mel.create_material_expression
+    P = unreal.MaterialProperty
+    waves = tex_asset("T_WaterWaves_N") or tex_asset("T_Default_N")
+    uv = X(m, unreal.MaterialExpressionTextureCoordinate, -1400, 0)
+    samples = []
+    for k, (sx, sy, scale) in enumerate(((0.012, 0.004, 1.0), (-0.006, 0.01, 0.43))):
+        mul = X(m, unreal.MaterialExpressionMultiply, -1250, k * 300)
+        sc = X(m, unreal.MaterialExpressionConstant, -1400, 150 + k * 300)
+        sc.set_editor_property("r", scale)
+        mel.connect_material_expressions(uv, "", mul, "A")
+        mel.connect_material_expressions(sc, "", mul, "B")
+        pan = X(m, unreal.MaterialExpressionPanner, -1050, k * 300)
+        pan.set_editor_property("speed_x", sx)
+        pan.set_editor_property("speed_y", sy)
+        mel.connect_material_expressions(mul, "", pan, "Coordinate")
+        t = X(m, unreal.MaterialExpressionTextureSampleParameter2D, -800, k * 300)
+        t.set_editor_property("parameter_name", f"Waves{k}")
+        if waves:
+            t.set_editor_property("texture", waves)
+        t.set_editor_property("sampler_type", unreal.MaterialSamplerType.SAMPLERTYPE_NORMAL)
+        mel.connect_material_expressions(pan, "", t, "UVs")
+        samples.append(t)
+    blend = X(m, unreal.MaterialExpressionBlendAngleCorrectedNormals, -500, 150)
+    mel.connect_material_expressions(samples[0], "RGB", blend, "BaseNormal")
+    mel.connect_material_expressions(samples[1], "RGB", blend, "AdditionalNormal")
+    mel.connect_material_property(blend, "", P.MP_NORMAL)
+    col = X(m, unreal.MaterialExpressionVectorParameter, -500, -250)
+    col.set_editor_property("parameter_name", "Tint")
+    col.set_editor_property("default_value", unreal.LinearColor(0.02, 0.12, 0.16, 1))
+    mel.connect_material_property(col, "", P.MP_BASE_COLOR)
+    for pname, val, prop, y in (("Roughness", 0.04, P.MP_ROUGHNESS, 450), ("Specular", 0.6, P.MP_SPECULAR, 550)):
+        e = X(m, unreal.MaterialExpressionScalarParameter, -500, y)
+        e.set_editor_property("parameter_name", pname)
+        e.set_editor_property("default_value", val)
+        mel.connect_material_property(e, "", prop)
+    mel.recompile_material(m)
+    eal.save_loaded_asset(m)
+    return m
+
+
+def setup_terrain_instance(mi, e):
+    LC = unreal.LinearColor
+    tints = e.get("tints") or [[1, 1, 1]] * 4
+    for k, (layer, tile) in enumerate(zip(e.get("layers", []), e.get("tiles", []))):
+        for suf, pname in (("D", "Base"), ("N", "Normal"), ("R", "Rough")):
+            t = tex_asset(f"T_{layer}_{suf}")
+            if t:
+                mel.set_material_instance_texture_parameter_value(mi, f"L{k}_{pname}", t)
+        mel.set_material_instance_scalar_parameter_value(mi, f"L{k}_UVScale", 1.0 / float(tile))
+        c = tints[k] if k < len(tints) else [1, 1, 1]
+        mel.set_material_instance_vector_parameter_value(mi, f"L{k}_Tint", LC(c[0], c[1], c[2], 1))
+
+
 def parent_for(entry, masters):
     kind = entry.get("kind", "opaque")
+    if kind == "terrain":
+        return masters["terrain"]
+    if kind == "water":
+        return masters["water"]
     if kind == "carpaint":
         return masters["carpaint"]
     if kind == "glass":
@@ -231,7 +367,8 @@ def build_instances():
         manifest = json.load(f)
     masters = dict(master=build_master("M_SR_Master"), carpaint=build_master("M_SR_CarPaint", clear_coat=True),
                    glass=build_master("M_SR_Glass", translucent=True), foliage=build_master("M_SR_Foliage", two_sided=True),
-                   vfx=build_master("M_SR_VFX", vfx=True))
+                   vfx=build_master("M_SR_VFX", vfx=True), terrain=build_terrain_master(),
+                   water=build_water_master())
     folder = f"{DEST}/Materials/Instances"
     out = {}
     for name, e in manifest.items():
@@ -241,7 +378,13 @@ def build_instances():
         mel.set_material_instance_parent(mi, parent)
         LC = unreal.LinearColor
         col = e.get("color") or [1, 1, 1]
-        if parent == masters["vfx"]:
+        if parent == masters["terrain"]:
+            setup_terrain_instance(mi, e)
+        elif parent == masters["water"]:
+            col = e.get("color") or [0.02, 0.12, 0.16]
+            mel.set_material_instance_vector_parameter_value(mi, "Tint", LC(col[0], col[1], col[2], 1))
+            mel.set_material_instance_scalar_parameter_value(mi, "Roughness", float(e.get("rough", 0.04)))
+        elif parent == masters["vfx"]:
             em = e.get("emit") or col
             mel.set_material_instance_vector_parameter_value(mi, "EmissiveColor", LC(em[0], em[1], em[2], 1))
             mel.set_material_instance_scalar_parameter_value(mi, "EmissiveStrength", float(e.get("emit_str") or 5.0))
@@ -409,7 +552,8 @@ def main():
     import_kits(instances, manifest)
     if IMPORT_CARS:
         import_cars(instances, manifest)
-    log("done. Next: run unreal/setup_map.py for lighting presets, see docs/UNREAL_SETUP.md for the vehicles.")
+    log("done. Next: unreal/build_map.py assembles the race maps; docs/MAPS.md and docs/UNREAL_SETUP.md explain the rest.")
 
 
-main()
+if __name__ == "__main__":      # build_map.py loads this file as a module to reuse the helpers
+    main()

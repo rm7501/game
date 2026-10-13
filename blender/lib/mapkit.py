@@ -60,6 +60,8 @@ class MapBuild:
         self.main.carve(t, falloff=falloff, layer=carve_layer)
         for tr in [self.main] + self.shortcuts:
             tr.cut_tunnel_holes(t)
+        for sc in self.shortcuts:            # barrier openings where shortcuts leave / rejoin
+            self.main.open_junctions(sc)
         allp = np.concatenate([tr.P for tr in [self.main] + self.shortcuts])
         allw = np.concatenate([tr.W for tr in [self.main] + self.shortcuts])
         self._pts, self._w = allp, allw
@@ -156,7 +158,7 @@ class MapBuild:
         return trk.write_track_json(self.folder, self.name, self.main, self.shortcuts, extra)
 
     def water_object(self):
-        wm = sr.mat("Water_Sea", (0.02, 0.12, 0.16), rough=0.04, metal=0.0, kind="water")
+        wm = sr.mat("Water_Sea", (0.02, 0.12, 0.16), rough=0.04, metal=0.0, kind="water", tex="WaterWaves", tile=24.0)
         mb = sr.MB(f"SM_{self.name}_Water")
         s = self.terrain.size / 2 + 2000
         mb.poly_facing([(-s, -s, self.water), (s, -s, self.water), (s, s, self.water), (-s, s, self.water)], (0, 0, 1), wm)
@@ -184,8 +186,8 @@ class MapBuild:
         # distant ground beyond the map edge (renders only)
         h = self.terrain.h
         hmin = float(min(h[0, :].min(), h[-1, :].min(), h[:, 0].min(), h[:, -1].min()))
-        sr.ground(20000, self.terrain_mat if False else sr.mat("Sand", (1, 1, 1), tex="Sand", tile=6), z=hmin - 0.5,
-                  name="FarGround")
+        far = getattr(self, "far_mat", None) or sr.mat("Sand", (1, 1, 1), tex="Sand", tile=6)
+        sr.ground(20000, far, z=hmin - 0.5, name="FarGround")
         missing = set()
         for kit, asset, loc, yaw, sc in self.place_list:
             o = by.get(asset)

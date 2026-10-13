@@ -75,8 +75,11 @@ def tracks():
     main = [
         CP(-430, -330, 15, surf="asphalt", L=RL, R=N, tags={"curbs"}),       # start: Corniche, sea on the left
         CP(-440, -120, 15),
-        CP(-430, 90, 15),
-        CP(-418, 260, 15, bank=-3),                                          # floating mosque on the left
+        CP(-408, -30, 15, bank=3),                                           # swings inland round the palm park
+        CP(-328, 60, 15, bank=4),
+        CP(-330, 150, 15, bank=-4),
+        CP(-405, 232, 15, bank=-3),
+        CP(-418, 300, 15),                                                   # floating mosque on the left
         CP(-420, 430, 15),
         CP(-430, 560, 14, z=5.5, deck="stone"),                              # cove bridge
         CP(-410, 690, 14, bank=-6),
@@ -105,9 +108,9 @@ def tracks():
         CP(-445, -470, 15, L=RL, R=N),
     ]
     main_t = Track("Track", main, closed=True, surf="asphalt", L=RL, R=N)
-    s_beach = Track("Shortcut_BeachRun", [
-        CP(-440, -150, 10, surf="sand", L=N, R=N), CP(-468, -40, 10, z=0.9), CP(-480, 120, 10, z=0.8),
-        CP(-470, 330, 10, z=0.9), CP(-422, 440, 10)], closed=False, label="Beach run", hidden=False)
+    s_beach = Track("Shortcut_BeachRun", [CP(-440, -120, 10, surf="sand", L=N, R=N)] +
+                    [CP(float(coast_x(y)) + 5, y, 10, z=0.9) for y in (-20, 100, 215)] +
+                    [CP(-418, 300, 10)], closed=False, label="Beach run", hidden=False)
     s_souq = Track("Shortcut_SouqPassage", [
         CP(280, 300, 6, surf="cobble", L=N, R=N), CP(240, 220, 6), CP(200, 150, 6), CP(120, 80, 7)],
         closed=False, label="Souq passage", hidden=True)
@@ -228,6 +231,11 @@ def dress(m: MapBuild):
     s_corn = T.nearest_s((-410, 690))
     m.along(T, "common", ["SM_DatePalm_A", "SM_DatePalm_B"], 16, 6.0, s0=0, s1=s_corn, side=(-1,), jitter=1.5)
     m.along(T, "riyadh", "SM_StreetLight_KFR", 45, 2.0, s0=10, s1=s_corn, side=(-1,))
+    # the palm park the Corniche swings round (the beach run passes in front of it)
+    m.scatter("common", ["SM_DatePalm_A", "SM_DatePalm_B", "SM_DatePalm_C"], 70, (-470, -330, -60, 230), clearance=5,
+              seed=13, min_spacing=9, mask=lambda x, y: x - coast_x(y) > 22)
+    for k, (x, y) in enumerate(((-385, 40), (-392, 110), (-372, 170))):
+        m.place("jeddah", "SM_SouqStall", x, y, yaw=90 + k * 20)
     m.scatter("alula", ["SM_Boulder_A", "SM_Boulder_B"], 260, (-560, -380, -700, 900), clearance=3, seed=3,
               max_slope=3.0, mask=lambda x, y: -14 < x - coast_x(y) < 4, scale=(0.4, 0.9), sink=0.6)
     # Al-Balad: houses lining every lane (facades to the street), string lights and awnings overhead
@@ -296,15 +304,15 @@ def previews(m, props):
     kits = kit_objects("jeddah", "riyadh", "common", "alula") + props
     m.preview_scene(kits)
     T = m.main
-    s_mosque = T.nearest_s((-418, 180))
+    s_mosque = T.nearest_s((-410, 236))
     s_old = T.nearest_s((170, 440))
     cars = [("JeddahGT", s_mosque + 18, -2.5, None), ("Falcon", s_mosque + 34, 3.0, None),
-            ("RiyadhMuscle", s_old + 15, 0.0, None)]
+            ("RiyadhMuscle", s_old + 15, 0.0, None), ("AlUlaRally", 72, 0.0, m.shortcuts[1])]
     shots = [("overview", (-1300, -1100, 600), (100, 100, 0), 30),
              ("chase", s_mosque, dict(back=12, height=3.0, ahead=60, lens=28)),
              ("overview", (-385, 95, 9), (-600, 260, 12), 32),
              ("chase", s_old, dict(back=11, height=3.0, ahead=40, lens=28)),
-             ("chase", 10, dict(back=12, height=3.5, ahead=50, lens=28, track=m.shortcuts[1]))]
+             ("chase", 62, dict(back=9, height=2.3, ahead=45, lens=24, track=m.shortcuts[1]))]
     render_previews(m, shots, lighting, cars)
 
 
