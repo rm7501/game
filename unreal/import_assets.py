@@ -35,7 +35,7 @@ try:
 except NameError:   # exec() from the console has no __file__
     REPO = r"C:/Users/rayan/OneDrive/Desktop/game"          # <-- set to your clone of this repo
 DEST = "/Game/SaharaRacers"
-KITS = ["common", "riyadh", "alula", "jeddah", "asir", "future"]
+KITS = ["common", "riyadh", "alula", "jeddah", "asir", "future", "life"]
 IMPORT_CARS = True
 USE_NANITE = True
 
@@ -229,36 +229,85 @@ def build_terrain_master(name="M_SR_TerrainBlend"):
     white, flat, mask = tex_asset("T_Default_D"), tex_asset("T_Default_N"), tex_asset("T_Default_R")
     uv = X(m, unreal.MaterialExpressionTextureCoordinate, -2200, 0)
     vc = X(m, unreal.MaterialExpressionVertexColor, -600, -900)
+    # cliff layer (L1) is projected from the side (biplanar X/Z + Y/Z) so rock strata follow world height
+    wp = X(m, unreal.MaterialExpressionWorldPosition, -2600, 300)
+    to_m = X(m, unreal.MaterialExpressionMultiply, -2450, 300)
+    cm = X(m, unreal.MaterialExpressionConstant, -2600, 420)
+    cm.set_editor_property("r", 0.01)
+    mel.connect_material_expressions(wp, "", to_m, "A")
+    mel.connect_material_expressions(cm, "", to_m, "B")
+    planes = []
+    for comps in (("r", "b"), ("g", "b")):
+        mk = X(m, unreal.MaterialExpressionComponentMask, -2300, 300 + len(planes) * 120)
+        for c in "rgba":
+            mk.set_editor_property(c, c in comps)
+        mel.connect_material_expressions(to_m, "", mk, "Input")
+        planes.append(mk)
+    nws = X(m, unreal.MaterialExpressionVertexNormalWS, -2600, 600)
+    absn = []
+    for c in ("r", "g"):
+        mk = X(m, unreal.MaterialExpressionComponentMask, -2450, 600 + len(absn) * 100)
+        for cc in "rgba":
+            mk.set_editor_property(cc, cc == c)
+        mel.connect_material_expressions(nws, "", mk, "Input")
+        ab = X(m, unreal.MaterialExpressionAbs, -2300, 600 + len(absn) * 100)
+        mel.connect_material_expressions(mk, "", ab, "Input")
+        absn.append(ab)
+    ssum = X(m, unreal.MaterialExpressionAdd, -2150, 650)
+    mel.connect_material_expressions(absn[0], "", ssum, "A")
+    mel.connect_material_expressions(absn[1], "", ssum, "B")
+    eps = X(m, unreal.MaterialExpressionAdd, -2050, 650)
+    mel.connect_material_expressions(ssum, "", eps, "A")
+    ce = X(m, unreal.MaterialExpressionConstant, -2150, 750)
+    ce.set_editor_property("r", 0.001)
+    mel.connect_material_expressions(ce, "", eps, "B")
+    w_xz = X(m, unreal.MaterialExpressionDivide, -1950, 650)          # |ny| / (|nx| + |ny|)
+    mel.connect_material_expressions(absn[1], "", w_xz, "A")
+    mel.connect_material_expressions(eps, "", w_xz, "B")
     layers = []
     for k in range(4):
         y = -700 + k * 520
         sc = X(m, unreal.MaterialExpressionScalarParameter, -2000, y)
         sc.set_editor_property("parameter_name", f"L{k}_UVScale")
         sc.set_editor_property("default_value", 0.2)
-        uvm = X(m, unreal.MaterialExpressionMultiply, -1800, y)
-        mel.connect_material_expressions(uv, "", uvm, "A")
-        mel.connect_material_expressions(sc, "", uvm, "B")
+        coords = []
+        for src in ([uv] if k != 1 else planes):
+            uvm = X(m, unreal.MaterialExpressionMultiply, -1800, y + 60 * len(coords))
+            mel.connect_material_expressions(src, "", uvm, "A")
+            mel.connect_material_expressions(sc, "", uvm, "B")
+            coords.append(uvm)
         outs = {}
         for j, (pname, tex, smp) in enumerate((("Base", white, S.SAMPLERTYPE_COLOR), ("Normal", flat, S.SAMPLERTYPE_NORMAL),
                                                ("Rough", mask, S.SAMPLERTYPE_MASKS))):
-            t = X(m, unreal.MaterialExpressionTextureSampleParameter2D, -1500, y + j * 160)
-            t.set_editor_property("parameter_name", f"L{k}_{pname}")
-            if tex:
-                t.set_editor_property("texture", tex)
-            t.set_editor_property("sampler_type", smp)
-            try:
-                t.set_editor_property("sampler_source", unreal.SamplerSourceMode.SSM_WRAP_WORLD_GROUP_SETTINGS)
-            except Exception:
-                pass
-            mel.connect_material_expressions(uvm, "", t, "UVs")
-            outs[pname] = t
+            samples = []
+            for ci, uvm in enumerate(coords):
+                t = X(m, unreal.MaterialExpressionTextureSampleParameter2D, -1500 - ci * 250, y + j * 160)
+                t.set_editor_property("parameter_name", f"L{k}_{pname}")
+                if tex:
+                    t.set_editor_property("texture", tex)
+                t.set_editor_property("sampler_type", smp)
+                try:
+                    t.set_editor_property("sampler_source", unreal.SamplerSourceMode.SSM_WRAP_WORLD_GROUP_SETTINGS)
+                except Exception:
+                    pass
+                mel.connect_material_expressions(uvm, "", t, "UVs")
+                samples.append(t)
+            if len(samples) == 1:
+                outs[pname] = (samples[0], "RGB" if pname != "Rough" else "R")
+            else:                               # blend the two side projections by the surface normal
+                lp = X(m, unreal.MaterialExpressionLinearInterpolate, -1300, y + j * 160)
+                ch = "RGB" if pname != "Rough" else "R"
+                mel.connect_material_expressions(samples[1], ch, lp, "A")
+                mel.connect_material_expressions(samples[0], ch, lp, "B")
+                mel.connect_material_expressions(w_xz, "", lp, "Alpha")
+                outs[pname] = (lp, "")
         tint = X(m, unreal.MaterialExpressionVectorParameter, -1250, y)
         tint.set_editor_property("parameter_name", f"L{k}_Tint")
         tint.set_editor_property("default_value", unreal.LinearColor(1, 1, 1, 1))
         col = X(m, unreal.MaterialExpressionMultiply, -1050, y)
-        mel.connect_material_expressions(outs["Base"], "RGB", col, "A")
+        mel.connect_material_expressions(outs["Base"][0], outs["Base"][1], col, "A")
         mel.connect_material_expressions(tint, "", col, "B")
-        layers.append(dict(col=(col, ""), nrm=(outs["Normal"], "RGB"), rgh=(outs["Rough"], "R")))
+        layers.append(dict(col=(col, ""), nrm=outs["Normal"], rgh=outs["Rough"]))
 
     def chain(key, x):
         cur = layers[0][key]
@@ -501,9 +550,16 @@ def complex_collision(asset):
 
 
 SIMPLE_COLLISION_PREFIXES = ("SM_Barrier", "SM_Cone", "SM_TireStack", "SM_Card", "SM_VFX", "SM_Falcon", "SM_Drone",
-                             "SM_Lantern", "SM_StringLights", "SM_Flag", "SM_HotAirBalloon", "SM_Boost")
+                             "SM_Lantern", "SM_StringLights", "SM_Flag", "SM_HotAirBalloon", "SM_Boost",
+                             # life kit: people, animals, traffic and trackside props use cheap convex collision
+                             "SM_Person", "SM_Crowd", "SM_Camel", "SM_Goat", "SM_Sheep", "SM_Car_", "SM_Bus", "SM_Truck",
+                             "SM_Chevron", "SM_Sponsor", "SM_Distance", "SM_Bench", "SM_Lamp", "SM_Kiosk", "SM_Gazebo",
+                             "SM_BeachUmbrella", "SM_Shrub", "SM_StackedTyres", "SM_RockGrey", "SM_FoodTruck",
+                             "SM_MarshalPost", "SM_Campfire", "SM_Bird", "SM_Seagulls", "SM_Helicopter", "SM_Bunting",
+                             "SM_Grass", "SM_Flowers")
 NO_COLLISION_PREFIXES = ("SM_VFX", "SM_Lantern", "SM_StringLights", "SM_Flag", "SM_SouqAwning", "SM_HotAirBalloon",
-                         "SM_Drone", "SM_CardPickup", "SM_Card")
+                         "SM_Drone", "SM_CardPickup", "SM_Card", "SM_BirdFlock", "SM_Seagulls", "SM_Helicopter",
+                         "SM_Bunting", "SM_GrassTuft", "SM_Flowers")
 
 
 def import_kits(instances, manifest):

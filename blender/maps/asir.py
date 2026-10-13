@@ -172,6 +172,66 @@ def mountains(nz, X, Y, scale=300.0):
     return np.clip(0.55 * r + 0.65 * b ** 1.6, 0, 1.2)
 
 
+def far_height(X, Y):
+    """Sarawat ranges all round, getting higher with distance; to the west the escarpment drops away
+    into the hazy Tihama lowlands."""
+    nz = Noise(29)
+    r = np.hypot(X, Y)
+    M = mountains(nz, X * 0.7, Y * 0.7, scale=520.0)
+    base = 70 + 60 * nz.fbm(X, Y, 700, 3)
+    h = base + (120 + 520 * M) * smoothstep(900, 3500, r) * (0.55 + 0.45 * smoothstep(0.3, 0.7, nz.fbm(X, Y, 1500, 2)))
+    # valleys threading between the ranges
+    v = np.abs(nz.fbm(X * 0.8 + 300, Y * 0.8, 900, 3) - 0.5)
+    h -= 120 * smoothstep(0.06, 0.0, v) * smoothstep(1200, 2500, r)
+    # Tihama: the escarpment edge west / south-west of the map, then the lowland plain far below
+    edge = X + 0.45 * Y + 300 * (nz.fbm(X, Y, 800, 3) - 0.5)
+    tih = smoothstep(-2600, -4400, edge)
+    h = h * (1 - tih) + (-420 + 40 * nz.fbm(X, Y, 600, 3)) * tih
+    return h
+
+
+def far_paint(X, Y, H, slope, d):
+    nz = Noise(31)
+    w = np.zeros((4,) + X.shape)
+    w[1] = smoothstep(0.7, 1.1, slope) + smoothstep(420, 600, H) * smoothstep(0.3, 0.6, slope)
+    w[2] = smoothstep(-200, -300, H) * 0.8                      # dry Tihama lowland
+    w[3] = smoothstep(0.35, 0.65, slope) * (1 - w[1]) * smoothstep(0.5, 0.62, nz.fbm(X, Y, 120, 3)) * 0.6
+    w[0] = np.clip(1 - w[1] - w[2] - w[3], 0, 1)
+    return w
+
+
+def far_detail(m):
+    """Juniper forest on the near ranges and stone tower villages on the ridges (merged chunks)."""
+    from backdrop import Merged, scatter_points, outside
+    B = m.backdrop
+    rnd = random.Random(61)
+    fol = sr.mat("Juniper_Foliage", (0.13, 0.22, 0.14), rough=0.8, kind="foliage")
+    bark = sr.mat("Juniper_Bark", (0.32, 0.24, 0.2), rough=0.95, tex="Rock", tile=1.0)
+    stone = sr.mat("Asir_StoneMasonry", (1.25, 1.2, 1.15), rough=0.9, tex="StoneMasonry", tile=2.4)
+    white = sr.mat("Asir_WhitePaint", (0.94, 0.94, 0.9), rough=0.7, tex="Concrete", tile=2.0)
+    mf = Merged(f"SM_{NAME}_Far_Forest")
+    mv = Merged(f"SM_{NAME}_Far_Villages")
+
+    def ok(x, y):
+        if not outside(x, y, pad=30) or math.hypot(x, y) > 5200:
+            return False
+        z = float(B.height(np.array([x]), np.array([y]))[0])
+        sl = float(B.slope(np.array([x]), np.array([y]))[0])
+        return -150 < z < 520 and sl < 0.9
+    for cx, cy in scatter_points(rnd, 2600, ok, (-5200, 5200, -5200, 5200), tries=6):      # juniper groves
+        for k in range(rnd.randint(3, 7)):
+            x, y = cx + rnd.gauss(0, 9), cy + rnd.gauss(0, 9)
+            z = float(B.height(np.array([x]), np.array([y]))[0])
+            mf.tree(x, y, z - 0.5, rnd.uniform(8, 15), fol, None, kind="cone")
+    for cx, cy in scatter_points(rnd, 18, ok, (-4500, 4500, -4500, 4500)):
+        for k in range(rnd.randint(6, 16)):
+            x, y = cx + rnd.gauss(0, 30), cy + rnd.gauss(0, 30)
+            z = float(B.height(np.array([x]), np.array([y]))[0])
+            h = rnd.uniform(9, 20)
+            mv.block(x, y, z, rnd.uniform(6, 9), rnd.uniform(6, 8), h, rnd.uniform(0, 90), stone, white)
+    return mf.objects() + mv.objects()
+
+
 # ----------------------------------------------------------------- terrain ---
 def make_terrain(main, shorts):
     t = Terrain(layers=("Grass", "Rock", "Soil", "Stone"))
@@ -410,11 +470,52 @@ def dress(m: MapBuild):
     for sg in (1, -1):
         q = m0[0][:2] + m0[2] * sg * 9.0
         m.place("asir", "SM_RetainingWall_20m", q[0], q[1], yaw=math.degrees(math.atan2(m0[1][1], m0[1][0])) + 90)
-    # backdrop mountains beyond the map edge
-    for x, y, a, sc, nm in ((0, 1550, 0, 1.2, "A"), (-1300, 900, 60, 1.0, "B"), (1350, 700, 200, 1.0, "A"),
-                            (1500, -500, 120, 1.0, "B"), (-1500, -300, 250, 1.1, "A"), (-600, -1600, 30, 1.0, "B"),
-                            (800, -1550, 160, 1.0, "A")):
-        m.place("asir", f"SM_AsirMountain_{nm}", x, y, z=-30, yaw=a, scale=sc)
+    life(m)
+
+
+def life(m: MapBuild):
+    """Hill-climb day in Asir: spectators on the hairpins, goat and sheep herds with shepherds on the
+    slopes, cars and families at the ridge viewpoints, village life in Rijal Almaa, wild flowers."""
+    import dressing as D
+    rnd = random.Random(37)
+    T = m.main
+    pins = [T.nearest_s((516, -628)), T.nearest_s((224, -556)), T.nearest_s((516, -484))]
+    D.trackside(m, spots=pins + [T.nearest_s((345, 78))], n_spots=1)
+    vx, vy = VILLAGE
+    D.people(m, vx, vy - 40, 40, 70, seed=200, clearance=4)
+    D.cluster(m, "life", ["SM_Car_SUV_White", "SM_Car_Pickup_White", "SM_Car_Sedan_Silver"], -330, -600, 10, 40,
+              seed=201, clearance=7, min_spacing=4)
+    # herds with a shepherd each, on grassy slopes away from the road
+    slope = m.terrain.slope()
+    for k in range(9):
+        for _ in range(60):
+            cx, cy = rnd.uniform(-900, 900), rnd.uniform(-950, 950)
+            if m.clearance(cx, cy) > 50 and float(slope[int((cy + 1008)), int((cx + 1008))]) < 0.5:
+                break
+        herd = ["SM_Goat", "SM_Goat_Brown"] if k % 3 else ["SM_Sheep"]
+        D.cluster(m, "life", herd, cx, cy, rnd.randint(8, 16), 25, seed=210 + k, clearance=20, max_slope=0.7, min_spacing=1.5)
+        m.place("life", "SM_Person_Thobe", cx + 6, cy + 4, yaw=rnd.uniform(0, 360))
+    # ridge viewpoints: pull-outs with parked cars and people taking in the view
+    for k, s in enumerate((T.nearest_s((338, -200)) + 20, T.nearest_s((302, -62)) + 60, T.nearest_s((80, 497)) + 10)):
+        p, t, n, w, b = T.frame(s)
+        for sg in (1, -1):
+            q = p[:2] + n * sg * (w / 2 + 6)
+            if m.clearance(q[0], q[1]) > 4 and float(m.terrain.sample(q[0], q[1])) > p[2] - 3:
+                D.cluster(m, "life", ["SM_Car_SUV_White", "SM_Car_SUV_Black"], q[0], q[1], 2, 8, seed=230 + k, clearance=3,
+                          max_slope=0.9)
+                D.people(m, q[0], q[1], 5, 8, seed=240 + k, clearance=2)
+                break
+    m.scatter("life", ["SM_Flowers", "SM_FlowersPink", "SM_GrassTuft"], 700, (-990, 990, -990, 990), clearance=1.5,
+              seed=250, max_slope=0.8, min_spacing=1.5, scale=(0.8, 1.6))
+    m.scatter("life", ["SM_RockGrey_A", "SM_RockGrey_B"], 140, (-990, 990, -990, 990), clearance=6, seed=251,
+              max_slope=1.2, min_spacing=8, scale=(0.6, 1.4), sink=0.4)
+    for k, x in enumerate(range(-900, 901, 260)):              # power line along the valley
+        y = float(river_y(np.array(x))) + 70
+        if m.clearance(x, y) > 10:
+            m.place("life", "SM_PowerPylon", x, y, yaw=0)
+    for k in range(6):
+        m.place("life", "SM_BirdFlock", rnd.uniform(-700, 700), rnd.uniform(-800, 600), z=rnd.uniform(90, 170),
+                yaw=rnd.uniform(0, 360), scale=1.6)
 
 
 # ------------------------------------------------------------------- build ---
@@ -434,6 +535,8 @@ def build(render=True, layout_only=False):
                           [(1, 1, 1), (0.85, 0.85, 0.88), (0.62, 0.48, 0.36), (0.9, 0.88, 0.85)])
     m = MapBuild(NAME, TITLE, t, tm)
     m.far_mat = sr.mat("Asir_TerraceGrass", (1, 1, 1), rough=0.95, tex="TerraceGrass", tile=4.0)
+    m.set_backdrop(far_height, far_paint, blend=700)
+    m.far_detail.append(far_detail)
     m.set_tracks(main, shorts)
     m.build_tracks(carve_layer=2, falloff=16)
     if layout_only:
@@ -480,7 +583,7 @@ def lighting():
 
 def previews(m, props):
     from mapkit import render_previews
-    kits = kit_objects("asir", "common") + props
+    kits = kit_objects("asir", "common", "life") + props
     m.preview_scene(kits)
     T = m.main
     s_ridge = T.nearest_s((338, -200))

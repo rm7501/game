@@ -1,0 +1,907 @@
+{
+ "SM_Person_Thobe": {
+  "tris": 352,
+  "size_m": [
+   0.5,
+   0.65,
+   1.73
+  ],
+  "materials": [
+   "M_Cloth_ThobeWhite",
+   "M_Skin_Tan",
+   "M_Cloth_ShemaghRed",
+   "M_Cloth_AgalBlack"
+  ]
+ },
+ "SM_Person_Abaya": {
+  "tris": 284,
+  "size_m": [
+   0.5,
+   0.65,
+   1.71
+  ],
+  "materials": [
+   "M_Cloth_AbayaBlack",
+   "M_Skin_Tan"
+  ]
+ },
+ "SM_Person_Casual": {
+  "tris": 320,
+  "size_m": [
+   0.44,
+   0.65,
+   1.72
+  ],
+  "materials": [
+   "M_Cloth_Jeans",
+   "M_Cloth_Shirt_Blue",
+   "M_Skin_Tan",
+   "M_Cloth_Shirt_Green"
+  ]
+ },
+ "SM_Person_Kid": {
+  "tris": 320,
+  "size_m": [
+   0.3,
+   0.45,
+   1.17
+  ],
+  "materials": [
+   "M_Cloth_Jeans",
+   "M_Cloth_Shirt_Yellow",
+   "M_Skin_Tan",
+   "M_Cloth_Shirt_Green"
+  ]
+ },
+ "SM_Crowd_10m": {
+  "tris": 14312,
+  "size_m": [
+   2.45,
+   10.07,
+   2.09
+  ],
+  "materials": [
+   "M_Cloth_ThobeWhite",
+   "M_Skin_Tan",
+   "M_Cloth_ShemaghRed",
+   "M_Cloth_AgalBlack",
+   "M_Cloth_AbayaBlack",
+   "M_Cloth_Jeans",
+   "M_Cloth_Shirt_Grey",
+   "M_Cloth_Shirt_Red",
+   "M_Cloth_Shirt_Orange",
+   "M_Cloth_Shirt_Yellow",
+   "M_Cloth_Shirt_Green",
+   "M_Cloth_Shirt_Blue",
+   "M_SteelGalvanised",
+   "M_SteelDark"
+  ]
+ },
+ "SM_CrowdCheer_10m": {
+  "tris": 12828,
+  "size_m": [
+   2.47,
+   10.18,
+   2.76
+  ],
+  "materials": [
+   "M_Cloth_AbayaBlack",
+   "M_Skin_Tan",
+   "M_Cloth_ThobeWhite",
+   "M_Cloth_ShemaghRed",
+   "M_Cloth_AgalBlack",
+   "M_Cloth_Jeans",
+   "M_Cloth_Shirt_Orange",
+   "M_Cloth_Shirt_Red",
+   "M_Cloth_Shirt_Blue",
+   "M_Cloth_Shirt_Yellow",
+   "M_Cloth_Shirt_Grey",
+   "M_Cloth_Shirt_Green",
+   "M_SteelDark",
+   "M_Flag_Green",
+   "M_SteelGalvanised"
+  ]
+ },
+ "SM_Camel": {
+  "tris": 652,
+  "size_m": [
+   2.32,
+   0.75,
+   2.56
+  ],
+  "materials": [
+   "M_Hide_Camel",
+   "M_Hoof_Dark"
+  ]
+ },
+ "SM_Camel_Sitting": {
+  "tris": 572,
+  "size_m": [
+   2.32,
+   0.89,
+   1.63
+  ],
+  "materials": [
+   "M_Hide_Camel"
+  ]
+ },
+ "SM_Goat": {
+  "tris": 300,
+  "size_m": [
+   1.07,
+   0.41,
+   1.06
+  ],
+  "materials": [
+   "M_Hide_GoatBlack",
+   "M_Hoof_Dark"
+  ]
+ },
+ "SM_Goat_Brown": {
+  "tris": 300,
+  "size_m": [
+   1.07,
+   0.41,
+   1.06
+  ],
+  "materials": [
+   "M_Hide_GoatBrown",
+   "M_Hoof_Dark"
+  ]
+ },
+ "SM_Sheep": {
+  "tris": 248,
+  "size_m": [
+   1.09,
+   0.51,
+   0.91
+  ],
+  "materials": [
+   "M_Hoof_Dark",
+   "M_Hide_Wool"
+  ]
+ },
+ "SM_BirdFlock": {
+  "tris": 28,
+  "size_m": [
+   19.22,
+   18.2,
+   6.93
+  ],
+  "materials": [
+   "M_Bird_Dark"
+  ]
+ },
+ "SM_Seagulls": {
+  "tris": 20,
+  "size_m": [
+   28.7,
+   23.48,
+   6.45
+  ],
+  "materials": [
+   "M_Bird_White"
+  ]
+ },
+ "SM_Car_Sedan_White": {
+  "tris": 516,
+  "size_m": [
+   4.88,
+   1.88,
+   1.47
+  ],
+  "materials": [
+   "M_Traffic_Paint_White",
+   "M_Car_GlassDark",
+   "M_TyreRubber",
+   "M_RimSilver",
+   "M_Light_Head",
+   "M_Light_Tail"
+  ]
+ },
+ "SM_Car_Sedan_Silver": {
+  "tris": 516,
+  "size_m": [
+   4.88,
+   1.88,
+   1.47
+  ],
+  "materials": [
+   "M_Traffic_Paint_Silver",
+   "M_Car_GlassDark",
+   "M_TyreRubber",
+   "M_RimSilver",
+   "M_Light_Head",
+   "M_Light_Tail"
+  ]
+ },
+ "SM_Car_Sedan_Red": {
+  "tris": 516,
+  "size_m": [
+   4.88,
+   1.88,
+   1.47
+  ],
+  "materials": [
+   "M_Traffic_Paint_Red",
+   "M_Car_GlassDark",
+   "M_TyreRubber",
+   "M_RimSilver",
+   "M_Light_Head",
+   "M_Light_Tail"
+  ]
+ },
+ "SM_Car_SUV_White": {
+  "tris": 528,
+  "size_m": [
+   5.03,
+   2.1,
+   2.06
+  ],
+  "materials": [
+   "M_Traffic_Paint_White",
+   "M_Car_GlassDark",
+   "M_SteelDark",
+   "M_TyreRubber",
+   "M_RimSilver",
+   "M_Light_Head",
+   "M_Light_Tail"
+  ]
+ },
+ "SM_Car_SUV_Black": {
+  "tris": 528,
+  "size_m": [
+   5.03,
+   2.1,
+   2.06
+  ],
+  "materials": [
+   "M_Traffic_Paint_Black",
+   "M_Car_GlassDark",
+   "M_SteelDark",
+   "M_TyreRubber",
+   "M_RimSilver",
+   "M_Light_Head",
+   "M_Light_Tail"
+  ]
+ },
+ "SM_Car_Pickup_White": {
+  "tris": 540,
+  "size_m": [
+   5.38,
+   2.0,
+   1.9
+  ],
+  "materials": [
+   "M_Traffic_Paint_White",
+   "M_Car_GlassDark",
+   "M_SteelDark",
+   "M_TyreRubber",
+   "M_RimSilver",
+   "M_Light_Head",
+   "M_Light_Tail"
+  ]
+ },
+ "SM_Bus_City": {
+  "tris": 536,
+  "size_m": [
+   12.08,
+   2.58,
+   3.05
+  ],
+  "materials": [
+   "M_Traffic_Paint_Bus",
+   "M_Car_GlassDark",
+   "M_Paint_SaudiGreen",
+   "M_TyreRubber",
+   "M_RimSilver",
+   "M_Light_Head",
+   "M_Light_Tail"
+  ]
+ },
+ "SM_Truck_Water": {
+  "tris": 720,
+  "size_m": [
+   8.58,
+   2.54,
+   2.9
+  ],
+  "materials": [
+   "M_Traffic_Paint_White",
+   "M_Car_GlassDark",
+   "M_Traffic_Paint_Tanker",
+   "M_SteelDark",
+   "M_TyreRubber",
+   "M_RimSilver",
+   "M_Light_Head",
+   "M_Light_Tail"
+  ]
+ },
+ "SM_Dhow": {
+  "tris": 187,
+  "size_m": [
+   14.0,
+   4.59,
+   13.36
+  ],
+  "materials": [
+   "M_DhowWood",
+   "M_PalmWood",
+   "M_Sail_Canvas"
+  ]
+ },
+ "SM_FishingBoat": {
+  "tris": 122,
+  "size_m": [
+   8.0,
+   2.6,
+   2.97
+  ],
+  "materials": [
+   "M_Hull_Blue",
+   "M_PaintWhite",
+   "M_Paint_RaceRed"
+  ]
+ },
+ "SM_Yacht": {
+  "tris": 370,
+  "size_m": [
+   22.0,
+   5.4,
+   6.6
+  ],
+  "materials": [
+   "M_Hull_White",
+   "M_Car_GlassDark",
+   "M_Hull_Blue"
+  ]
+ },
+ "SM_CargoShip": {
+  "tris": 4626,
+  "size_m": [
+   180.0,
+   30.2,
+   42.0
+  ],
+  "materials": [
+   "M_Hull_Red",
+   "M_SteelDark",
+   "M_PaintWhite",
+   "M_Car_GlassDark",
+   "M_Paint_RaceRed",
+   "M_Container_Green",
+   "M_Container_Grey",
+   "M_Container_Red",
+   "M_Container_Orange",
+   "M_Container_Blue"
+  ]
+ },
+ "SM_BedouinTent": {
+  "tris": 836,
+  "size_m": [
+   12.09,
+   6.02,
+   2.4
+  ],
+  "materials": [
+   "M_Tent_GoatHair",
+   "M_PalmWood",
+   "M_Rug_Red",
+   "M_Cushion_Cream"
+  ]
+ },
+ "SM_EventTent": {
+  "tris": 108,
+  "size_m": [
+   16.14,
+   10.16,
+   6.0
+  ],
+  "materials": [
+   "M_SteelGalvanised",
+   "M_CanopyFabric"
+  ]
+ },
+ "SM_Gazebo_Green": {
+  "tris": 144,
+  "size_m": [
+   3.22,
+   3.22,
+   3.1
+  ],
+  "materials": [
+   "M_SteelGalvanised",
+   "M_Canopy_Green",
+   "M_PaintWhite"
+  ]
+ },
+ "SM_Gazebo_Red": {
+  "tris": 144,
+  "size_m": [
+   3.22,
+   3.22,
+   3.1
+  ],
+  "materials": [
+   "M_SteelGalvanised",
+   "M_Canopy_Red",
+   "M_PaintWhite"
+  ]
+ },
+ "SM_Campfire": {
+  "tris": 472,
+  "size_m": [
+   1.67,
+   1.4,
+   0.97
+  ],
+  "materials": [
+   "M_Stone_Grey",
+   "M_PalmWood",
+   "M_Fire_Glow",
+   "M_Dome_Gold"
+  ]
+ },
+ "SM_FoodTruck": {
+  "tris": 562,
+  "size_m": [
+   6.97,
+   3.34,
+   2.8
+  ],
+  "materials": [
+   "M_Paint_Yellow",
+   "M_Car_GlassDark",
+   "M_Win_LitWarm",
+   "M_Canopy_Red",
+   "M_TyreRubber",
+   "M_RimSilver"
+  ]
+ },
+ "SM_Mosque_Dome": {
+  "tris": 1380,
+  "size_m": [
+   26.14,
+   22.1,
+   37.45
+  ],
+  "materials": [
+   "M_Plaster_White",
+   "M_Win_Dark",
+   "M_Dome_Green",
+   "M_Dome_Gold"
+  ]
+ },
+ "SM_Mosque_Najdi": {
+  "tris": 258,
+  "size_m": [
+   21.0,
+   16.2,
+   18.5
+  ],
+  "materials": [
+   "M_MudBrick",
+   "M_Win_Dark"
+  ]
+ },
+ "SM_Villa": {
+  "tris": 192,
+  "size_m": [
+   26.3,
+   22.33,
+   10.2
+  ],
+  "materials": [
+   "M_Plaster_Beige",
+   "M_SteelDark",
+   "M_Plaster_White",
+   "M_Win_Dark"
+  ]
+ },
+ "SM_ShopRow": {
+  "tris": 204,
+  "size_m": [
+   30.0,
+   12.09,
+   8.0
+  ],
+  "materials": [
+   "M_Plaster_Beige",
+   "M_Plaster_White",
+   "M_Win_LitWarm",
+   "M_Sign_HighwayGreen",
+   "M_Canopy_Green",
+   "M_Paint_Orange",
+   "M_CanopyFabric",
+   "M_Paint_SaudiGreen",
+   "M_Canopy_Red"
+  ]
+ },
+ "SM_GasStation": {
+  "tris": 252,
+  "size_m": [
+   27.35,
+   27.0,
+   11.1
+  ],
+  "materials": [
+   "M_PaintWhite",
+   "M_Paint_SaudiGreen",
+   "M_Plaster_White",
+   "M_Win_LitWarm"
+  ]
+ },
+ "SM_WaterTower": {
+  "tris": 300,
+  "size_m": [
+   18.04,
+   18.04,
+   39.0
+  ],
+  "materials": [
+   "M_Plaster_White",
+   "M_Sign_HighwayGreen"
+  ]
+ },
+ "SM_BeachUmbrella": {
+  "tris": 116,
+  "size_m": [
+   2.9,
+   2.9,
+   2.6
+  ],
+  "materials": [
+   "M_PalmWood",
+   "M_Canopy_Green",
+   "M_PaintWhite"
+  ]
+ },
+ "SM_Kiosk": {
+  "tris": 48,
+  "size_m": [
+   3.8,
+   3.2,
+   3.4
+  ],
+  "materials": [
+   "M_PaintWhite",
+   "M_Win_LitWarm",
+   "M_Canopy_Green",
+   "M_Paint_SaudiGreen"
+  ]
+ },
+ "SM_Bench": {
+  "tris": 48,
+  "size_m": [
+   1.8,
+   0.47,
+   0.93
+  ],
+  "materials": [
+   "M_PalmWood",
+   "M_SteelDark"
+  ]
+ },
+ "SM_LampClassic": {
+  "tris": 204,
+  "size_m": [
+   1.76,
+   0.36,
+   4.73
+  ],
+  "materials": [
+   "M_SteelDark",
+   "M_Lamp_Warm"
+  ]
+ },
+ "SM_PowerPylon": {
+  "tris": 532,
+  "size_m": [
+   8.28,
+   18.0,
+   38.25
+  ],
+  "materials": [
+   "M_SteelGalvanised"
+  ]
+ },
+ "SM_RoadSign": {
+  "tris": 128,
+  "size_m": [
+   0.25,
+   5.5,
+   6.8
+  ],
+  "materials": [
+   "M_SteelGalvanised",
+   "M_Sign_HighwayGreen",
+   "M_PaintWhite"
+  ]
+ },
+ "SM_ChevronBoard": {
+  "tris": 68,
+  "size_m": [
+   0.13,
+   1.8,
+   1.9
+  ],
+  "materials": [
+   "M_SteelGalvanised",
+   "M_Paint_RaceRed",
+   "M_PaintWhite"
+  ]
+ },
+ "SM_SponsorBoard_01": {
+  "tris": 52,
+  "size_m": [
+   0.15,
+   6.0,
+   1.9
+  ],
+  "materials": [
+   "M_SteelDark",
+   "M_PaintWhite",
+   "M_Banner_01"
+  ]
+ },
+ "SM_SponsorBoard_02": {
+  "tris": 52,
+  "size_m": [
+   0.15,
+   6.0,
+   1.9
+  ],
+  "materials": [
+   "M_SteelDark",
+   "M_PaintWhite",
+   "M_Banner_02"
+  ]
+ },
+ "SM_SponsorBoard_03": {
+  "tris": 52,
+  "size_m": [
+   0.15,
+   6.0,
+   1.9
+  ],
+  "materials": [
+   "M_SteelDark",
+   "M_PaintWhite",
+   "M_Banner_03"
+  ]
+ },
+ "SM_SponsorBoard_04": {
+  "tris": 52,
+  "size_m": [
+   0.15,
+   6.0,
+   1.9
+  ],
+  "materials": [
+   "M_SteelDark",
+   "M_PaintWhite",
+   "M_Banner_04"
+  ]
+ },
+ "SM_Bunting_20m": {
+  "tris": 341,
+  "size_m": [
+   20.14,
+   0.16,
+   6.2
+  ],
+  "materials": [
+   "M_SteelDark",
+   "M_Flag_Green",
+   "M_Pennant_White",
+   "M_Pennant_Gold",
+   "M_Paint_RaceRed",
+   "M_SteelGalvanised"
+  ]
+ },
+ "SM_FlagPole": {
+  "tris": 44,
+  "size_m": [
+   3.18,
+   0.48,
+   10.0
+  ],
+  "materials": [
+   "M_SteelGalvanised",
+   "M_Flag_Green"
+  ]
+ },
+ "SM_MarshalPost": {
+  "tris": 430,
+  "size_m": [
+   2.2,
+   2.3,
+   3.64
+  ],
+  "materials": [
+   "M_Concrete",
+   "M_SteelGalvanised",
+   "M_Paint_Orange",
+   "M_Cloth_Jeans",
+   "M_Skin_Tan",
+   "M_Cloth_Shirt_Green",
+   "M_SteelDark",
+   "M_Paint_Yellow"
+  ]
+ },
+ "SM_CameraTower": {
+  "tris": 532,
+  "size_m": [
+   3.0,
+   3.0,
+   10.43
+  ],
+  "materials": [
+   "M_SteelGalvanised",
+   "M_PalmWood",
+   "M_SteelDark",
+   "M_Car_GlassDark",
+   "M_Cloth_Jeans",
+   "M_Cloth_Shirt_Blue",
+   "M_Skin_Tan",
+   "M_CanopyFabric"
+  ]
+ },
+ "SM_Floodlight": {
+  "tris": 144,
+  "size_m": [
+   3.6,
+   1.05,
+   19.5
+  ],
+  "materials": [
+   "M_SteelGalvanised",
+   "M_SteelDark",
+   "M_Lamp_Flood"
+  ]
+ },
+ "SM_DistanceBoard_100": {
+  "tris": 34,
+  "size_m": [
+   0.1,
+   0.9,
+   2.0
+  ],
+  "materials": [
+   "M_SteelGalvanised",
+   "M_PaintWhite",
+   "M_Distance_100"
+  ]
+ },
+ "SM_DistanceBoard_200": {
+  "tris": 34,
+  "size_m": [
+   0.1,
+   0.9,
+   2.0
+  ],
+  "materials": [
+   "M_SteelGalvanised",
+   "M_PaintWhite",
+   "M_Distance_200"
+  ]
+ },
+ "SM_Helicopter": {
+  "tris": 512,
+  "size_m": [
+   11.03,
+   9.97,
+   3.3
+  ],
+  "materials": [
+   "M_PaintWhite",
+   "M_Car_GlassDark",
+   "M_Paint_RaceRed",
+   "M_SteelDark"
+  ]
+ },
+ "SM_StackedTyres": {
+  "tris": 960,
+  "size_m": [
+   0.76,
+   3.16,
+   0.81
+  ],
+  "materials": [
+   "M_TyreRubber",
+   "M_PaintWhite",
+   "M_Paint_RaceRed"
+  ]
+ },
+ "SM_Shrub_A": {
+  "tris": 294,
+  "size_m": [
+   1.67,
+   1.64,
+   1.02
+  ],
+  "materials": [
+   "M_Leaf_Olive"
+  ]
+ },
+ "SM_Shrub_B": {
+  "tris": 294,
+  "size_m": [
+   2.54,
+   2.45,
+   1.44
+  ],
+  "materials": [
+   "M_Leaf_Dark"
+  ]
+ },
+ "SM_SidrTree": {
+  "tris": 690,
+  "size_m": [
+   5.33,
+   5.56,
+   4.89
+  ],
+  "materials": [
+   "M_Bark_Dark",
+   "M_Leaf_Olive"
+  ]
+ },
+ "SM_GrassTuft": {
+  "tris": 22,
+  "size_m": [
+   0.65,
+   0.82,
+   0.74
+  ],
+  "materials": [
+   "M_Grass_Blades"
+  ]
+ },
+ "SM_Flowers": {
+  "tris": 302,
+  "size_m": [
+   0.74,
+   0.8,
+   0.78
+  ],
+  "materials": [
+   "M_Grass_Blades",
+   "M_Flower_Yellow"
+  ]
+ },
+ "SM_FlowersPink": {
+  "tris": 222,
+  "size_m": [
+   0.87,
+   0.69,
+   0.78
+  ],
+  "materials": [
+   "M_Grass_Blades",
+   "M_Flower_Pink"
+  ]
+ },
+ "SM_RockGrey_A": {
+  "tris": 42,
+  "size_m": [
+   2.65,
+   3.05,
+   2.39
+  ],
+  "materials": [
+   "M_Rock_Granite"
+  ]
+ },
+ "SM_RockGrey_B": {
+  "tris": 42,
+  "size_m": [
+   5.27,
+   4.54,
+   4.88
+  ],
+  "materials": [
+   "M_Rock_Granite"
+  ]
+ }
+}

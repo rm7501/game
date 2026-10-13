@@ -12,6 +12,8 @@ What build() does (everything lands in Outliner folders SaharaRacers/<Map>/...):
         SM_<Map>_Terrain_<r>_<c>  Nanite terrain tiles (vertex-colour layer blend, M_SR_TerrainBlend)
         SM_<Map>_<Track>_NN       road chunks: asphalt, kerbs, barriers, bridges, tunnels (complex collision)
         SM_<Map>_Water            sea / lake plane (no collision, tag SR_Water)
+        SM_<Map>_Backdrop         scenery ring from the map edge to the horizon (~24 km), same terrain material
+        SM_<Map>_Far_*            merged distant city / forest / skyline meshes (no collision)
         props/*.fbx               map-specific landmarks (-> .../Maps/<Map>/Props)
   * spawns every prop listed in layout.json (kit meshes from /Game/SaharaRacers/<Kit>/)
   * gameplay from track.json (tags let Blueprints find them with GetAllActorsWithTag):
@@ -87,11 +89,11 @@ def import_map_assets(map_name):
             if task.should_cancel():
                 break
             task.enter_progress_frame(1, os.path.basename(path))
-            for a in import_static(path, folder, vertex_colors="_Terrain_" in os.path.basename(path)):
+            for a in import_static(path, folder, vertex_colors=any(k in os.path.basename(path) for k in ("_Terrain_", "_Backdrop"))):
                 if not isinstance(a, unreal.StaticMesh):
                     continue
                 imp.assign_materials(a, instances, manifest)
-                if not a.get_name().endswith("_Water"):
+                if not a.get_name().endswith("_Water") and "_Far_" not in a.get_name():
                     imp.complex_collision(a)
                 meshes[a.get_name()] = a
     log(f"{map_name}: imported {len(meshes)} meshes")
@@ -160,10 +162,11 @@ def spawn_world(map_name, meshes, terrain=True):
         a = spawn_mesh(mesh, (0, 0, 0))
         if not a:
             continue
-        sub = "Terrain" if is_terrain else "Water" if name.endswith("_Water") else "Track"
-        tags = ["SR_Water"] if sub == "Water" else ["SR_Road"] if sub == "Track" else ["SR_Terrain"]
+        sub = ("Terrain" if is_terrain else "Water" if name.endswith("_Water") else
+               "Backdrop" if ("_Backdrop" in name or "_Far_" in name) else "Track")
+        tags = {"Water": ["SR_Water"], "Track": ["SR_Road"], "Terrain": ["SR_Terrain"], "Backdrop": ["SR_Backdrop"]}[sub]
         _tag_actor(a, map_name, sub, name, tags)
-        if sub == "Water":
+        if sub == "Water" or "_Far_" in name:
             a.set_actor_enable_collision(False)
         n += 1
     log(f"{map_name}: {n} terrain / track / water actors")
@@ -190,7 +193,9 @@ def spawn_layout(map_name):
                 continue
             a = spawn_mesh(mesh, (p["x"], p["y"], p["z"]), p["yaw"], p["scale"])
             if a:
-                _tag_actor(a, map_name, f"Props/{p['kit'].split('/')[-1].capitalize()}", extra=("SR_Prop",))
+                _tag_actor(a, map_name, f"Props/{p['kit'].split('/')[-1].capitalize()}/{p['asset']}", extra=("SR_Prop",))
+                if p["asset"].startswith(imp.NO_COLLISION_PREFIXES):     # birds, flags, bunting, grass...
+                    a.set_actor_enable_collision(False)
                 n += 1
     log(f"{map_name}: {n} props placed")
     if missing:

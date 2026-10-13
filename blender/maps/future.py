@@ -118,6 +118,67 @@ def tracks():
     return main_t, [sky, marina, maglev]
 
 
+def far_height(X, Y):
+    """The NEOM landscape continued: The Line's flat band runs on to both horizons, granite ranges
+    rise behind it (higher with distance), the Red Sea fills the south."""
+    nz = Noise(77)
+    WX = X + 60 * (nz.fbm(X + 900, Y + 300, 280, 3) - 0.5) * 2
+    WY = Y + 60 * (nz.fbm(X - 700, Y + 1300, 280, 3) - 0.5) * 2
+    rid = nz.ridged(WX * 0.8 - WY * 0.6, WX * 0.6 + WY * 0.8, 240, 5)
+    big = nz.fbm(WX, WY, 420, 4)
+    r = np.hypot(X, Y)
+    dunes = nz.ridged(X * 0.35 + 300, Y * 0.9, 90, 3) ** 2
+    h = 24 + 8 * (big - 0.5) + 5 * dunes
+    rng = nz.ridged(WX * 0.3, WY * 0.3, 900, 5)
+    h += (40 + 230 * (0.55 * rid + 0.45 * big ** 1.5) + 600 * rng ** 1.5 * smoothstep(1500, 6000, WY)) * smoothstep(470, 900, WY)
+    h += (60 + 450 * rng ** 1.3) * smoothstep(2000, 5000, np.abs(X)) * smoothstep(-200, 400, Y - LINE_Y + 700)
+    band = smoothstep(150, 110, np.abs(Y - LINE_Y))
+    h = h + (BASE - 0.3 - h) * band
+    cy = coast_y(X)
+    sea = smoothstep(cy + 30, cy - 60, Y)
+    h = h * (1 - sea) + (-8 - 12 * smoothstep(0, 1500, cy - Y)) * sea
+    beach = smoothstep(cy + 170, cy + 10, Y) * (1 - sea)
+    return h + (3.5 - h) * beach ** 1.5 * 0.92
+
+
+def far_paint(X, Y, H, slope, d):
+    w = np.zeros((4,) + X.shape)
+    w[1] = smoothstep(0.35, 0.7, slope) + smoothstep(90, 160, H) * 0.6
+    w[2] = smoothstep(150, 110, np.abs(Y - LINE_Y)) * smoothstep(105, 95, np.abs(Y - LINE_Y))
+    cy = coast_y(X)
+    w[3] = smoothstep(cy + 170, cy + 20, Y) * 0.6
+    w[0] = np.clip(1 - w[1] - w[2] - w[3], 0, 1)
+    return w
+
+
+def far_detail(m):
+    """Solar fields and helix wind farms in the desert, merged."""
+    from backdrop import Merged, scatter_points, outside
+    B = m.backdrop
+    rnd = random.Random(71)
+    pv = sr.mat("SolarPanel", (0.03, 0.06, 0.15), rough=0.08, metal=0.7, tex="HexMesh", tile=0.6)
+    white = sr.mat("Future_White", (0.92, 0.93, 0.95), rough=0.25, metal=0.1, coat=0.6, tex="MetalPanels", tile=3.0)
+    cyan = sr.mat("Neon_Cyan", (0.1, 0.9, 1.0), emit=(0.1, 0.85, 1.0), emit_str=14, kind="emissive")
+    mf = Merged(f"SM_{NAME}_Far_Energy")
+
+    def flat(x, y):
+        return outside(x, y, pad=80) and abs(y - LINE_Y) > 260 and float(B.slope(np.array([x]), np.array([y]))[0]) < 0.08 \
+            and float(B.height(np.array([x]), np.array([y]))[0]) > 4 and math.hypot(x, y) < 6000
+    for cx, cy in scatter_points(rnd, 10, flat, (-6000, 6000, -3000, 3000)):        # solar fields
+        z = float(B.height(np.array([cx]), np.array([cy]))[0])
+        yaw = rnd.uniform(-10, 10)
+        for i in range(-6, 7):
+            mb = mf._mb(cx, cy)
+            mb.box((180, 6, 0.3), (cx, cy + i * 12, z + 1.6), (25, 0, yaw), m=pv)
+    for x, y in scatter_points(rnd, 300, flat, (-6000, 6000, -3000, 6000)):         # helix turbines
+        z = float(B.height(np.array([x]), np.array([y]))[0])
+        mb = mf._mb(x, y)
+        mb.cyl(0.6, 30, (x, y, z + 15), m=white, seg=6)
+        mb.cyl(3.2, 18, (x, y, z + 22), m=white, seg=6, r2=2.0)
+        mb.cyl(0.9, 0.5, (x, y, z + 31.5), m=cyan, seg=6)
+    return mf.objects()
+
+
 # ----------------------------------------------------------------- terrain ---
 def make_terrain():
     t = Terrain(layers=("Sand", "Granite", "Paving", "Gravel"))
@@ -137,10 +198,15 @@ def make_terrain():
     ridge = dist_to_polyline(WX, WY, [(-470, -470), (-430, -200), (-460, 60), (-430, 190)])
     h += (35 + 70 * rid) * np.exp(-(ridge / 70.0) ** 2)
     # granite mountain the banked curve wraps round (road cut into its flank at r ~ 135 m)
-    r = np.hypot(X - MOUNT[0], Y - MOUNT[1])
-    th = np.arctan2(Y - MOUNT[1], X - MOUNT[0])
-    r = r / (1 + 0.12 * np.sin(3 * th) + 0.1 * (nz.fbm(X, Y, 60, 3) - 0.5))
-    h = np.maximum(h, 30 + 150 * (1 - np.clip(r / 150.0, 0, 1)) ** 1.3 + 14 * (rid - 0.4) * smoothstep(150, 60, r))
+    # rugged granite massif of several peaks (the banked curve is cut into its flank at r ~ 135 m)
+    r0 = np.hypot(X - MOUNT[0], Y - MOUNT[1])
+    rk = nz.ridged(X * 0.9 + 37, Y * 0.9 - 11, 45, 4)
+    mnt = np.zeros_like(X)
+    for dx, dy, H, R in ((0, 0, 150, 120), (-38, 46, 118, 85), (45, -30, 128, 90), (-30, -55, 96, 75), (40, 52, 84, 70)):
+        rr = np.hypot(X - MOUNT[0] - dx, Y - MOUNT[1] - dy)
+        mnt = np.maximum(mnt, H * (1 - np.clip(rr / R, 0, 1)) ** 1.6)
+    mnt += 30 * (rk - 0.45) * smoothstep(135, 70, r0) + 10 * (nz.fbm(X, Y, 18, 3) - 0.5) * smoothstep(135, 90, r0)
+    h = np.maximum(h, 30 + mnt * smoothstep(140, 115, r0) + 10 * (1 - np.clip(r0 / 150, 0, 1)))
     h += 30 * smoothstep(170, 120, r) * smoothstep(60, 120, r) * 0.0
     # the gorge from the mountain down to the sea
     g = dist_to_polyline(WX, WY, [(420, -330), (395, -520), (430, -720), (390, -1000)])
@@ -322,7 +388,7 @@ def dress(m: MapBuild):
         return math.degrees(math.atan2(t_[1], t_[0]))
     P = f"maps/{NAME}/props"
     # The Line: endless 200 m segments (portals where the track passes the south wall)
-    for k in range(-11, 10):
+    for k in range(-45, 44):                  # +-9 km: The Line runs on to both horizons
         x = PORTALS[0] + 200 * k
         if any(abs(x - px) < 1 for px in PORTALS):
             m.place(P, "SM_TheLine_Portal", x, LINE_Y, z=BASE - 0.25)
@@ -339,7 +405,7 @@ def dress(m: MapBuild):
     m.along(T, "future", "SM_FutureStreetLight", 45, 2.5, s0=T.nearest_s((-575, -515)),
             s1=T.nearest_s((-785, 175)), face_road=True, min_clear=1.5)
     # maglev line running beside The Line (south side) with two pods
-    for k in range(-34, 34):          # phase chosen so no column lands on the portal roads
+    for k in range(-120, 120):        # phase chosen so no column lands on the portal roads
         m.place("future", "SM_MaglevGuideway_30m", 15.0 + k * 30.0, LINE_Y - 128, yaw=0)
     for x in (-420.0, 260.0):
         m.place("future", "SM_MaglevCar", x, LINE_Y - 128, z=float(m.terrain.sample(x, LINE_Y - 128)) + 14.9)
@@ -365,6 +431,35 @@ def dress(m: MapBuild):
     for k in (-1, 1):
         r = q[0][:2] + q[2] * 9 * k
         m.place("future", "SM_SolarTree", r[0], r[1], scale=1.5)
+    life(m)
+
+
+def life(m: MapBuild):
+    """Race night in NEOM: spectators and fan zones, people in The Line's canyon park, yachts in
+    Oxagon's marina, container ships at its port, air taxis overhead."""
+    import dressing as D
+    rnd = random.Random(41)
+    T = m.main
+    D.trackside(m, spots=[T.nearest_s((705, -190)), T.nearest_s(oct_pt(-67.5, 129))])
+    m.scatter("life", ["SM_Person_Casual", "SM_Person_Thobe", "SM_Person_Abaya", "SM_Person_Kid"], 240,
+              (-1000, 1000, LINE_Y - 55, LINE_Y + 55), clearance=3, seed=300, max_slope=0.2, min_spacing=2.0, sink=-0.28)
+    m.scatter("life", "SM_Bench", 60, (-1000, 1000, LINE_Y - 55, LINE_Y + 55), clearance=4, seed=301, max_slope=0.2,
+              min_spacing=12, yaw=0, sink=-0.28)
+    ox, oy = OXA
+    for k in range(10):                                   # yachts round Oxagon
+        a = rnd.uniform(0, 2 * math.pi)
+        r = rnd.uniform(165, 260)
+        x, y = ox + r * math.cos(a), oy + r * math.sin(a)
+        if float(m.terrain.sample(x, y)) < -2 and m.clearance(x, y) > 15:
+            m.place("life", rnd.choice(["SM_Yacht", "SM_Yacht", "SM_FishingBoat"]), x, y, z=0.0, yaw=math.degrees(a) + 90)
+    for k in range(3):                                    # in the marina basin
+        m.place("life", "SM_Yacht", ox + 66, oy - 40 + k * 38, z=0.0, yaw=90, scale=0.7)
+    for x, y, a in ((ox - 120, oy - 260, 150), (ox + 60, oy - 320, 170), (-2400, -2300, 200), (900, -2600, 10)):
+        m.place("life", "SM_CargoShip", x, y, z=0.0, yaw=a)
+    D.people(m, ox - 40, oy + 20, 40, 70, seed=302, clearance=3)
+    for k in range(8):                                    # air taxis
+        m.place("life", "SM_Helicopter", rnd.uniform(-900, 900), rnd.uniform(-800, 700), z=rnd.uniform(80, 220),
+                yaw=rnd.uniform(0, 360))
 
 
 # ------------------------------------------------------------------- build ---
@@ -374,6 +469,8 @@ def build(render=True, layout_only=False):
     tm = terrain_material(f"{NAME}_Terrain", ["Sand", "Rock", "Concrete", "TrackSand"], [6, 8, 4, 6],
                           [(1.0, 0.9, 0.8), (0.75, 0.5, 0.42), (0.9, 0.92, 0.95), (0.85, 0.75, 0.62)])
     m = MapBuild(NAME, TITLE, t, tm, water=WATER)
+    m.set_backdrop(far_height, far_paint, blend=500)
+    m.far_detail.append(far_detail)
     main, shorts = tracks()
     # elevated decks never drop pillars onto a road below
     from scipy.spatial import cKDTree
@@ -410,7 +507,7 @@ def lighting():
 
 def previews(m, props):
     from mapkit import render_previews
-    kits = kit_objects("future", "common", "alula") + props
+    kits = kit_objects("future", "common", "alula", "life") + props
     m.preview_scene(kits)
     T = m.main
     s_mtn = T.nearest_s((705, -190))

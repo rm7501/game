@@ -38,6 +38,9 @@ class MapBuild:
         self.place_list = []           # (kit, asset, (x, y, z), yaw_deg, scale)
         self._tree = None
         self.objects = {}              # asset name -> blender object (for previews)
+        self.backdrop_args = None      # (far, paint, blend): scenery ring to the horizon
+        self.far_detail = []           # callables returning merged distant-detail objects
+        self._backdrop = None
 
     # -- tracks ------------------------------------------------------------
     def set_tracks(self, main, shortcuts):
@@ -80,7 +83,11 @@ class MapBuild:
     # -- props ----------------------------------------------------------------
     def place(self, kit, asset, x, y, z=None, yaw=0.0, scale=1.0, sink=0.0):
         if z is None:
-            z = float(self.terrain.sample(x, y)) - sink
+            half = self.terrain.size / 2
+            if (abs(x) > half or abs(y) > half) and self.backdrop is not None:
+                z = float(self.backdrop.height(np.array([x]), np.array([y]))[0]) - sink
+            else:
+                z = float(self.terrain.sample(x, y)) - sink
         self.place_list.append((kit, asset, (float(x), float(y), float(z)), float(yaw), float(scale)))
 
     def scatter(self, kit, assets, count, bounds, clearance=12.0, seed=1, max_slope=0.6, scale=(0.8, 1.2),
@@ -129,6 +136,26 @@ class MapBuild:
                     self.place(kit, a, q[0], q[1], z=z, yaw=yaw)
             s += every
 
+    # -- backdrop ---------------------------------------------------------------
+    def set_backdrop(self, far, paint=None, blend=600.0):
+        self.backdrop_args = (far, paint, blend)
+
+    @property
+    def backdrop(self):
+        if self._backdrop is None and self.backdrop_args:
+            from backdrop import Backdrop
+            far, paint, blend = self.backdrop_args
+            self._backdrop = Backdrop(self.terrain, far, paint, blend=blend)
+        return self._backdrop
+
+    def backdrop_objects(self):
+        objs = []
+        if self.backdrop is not None:
+            objs.append(self.backdrop.mesh_object(f"SM_{self.name}_Backdrop", self.terrain_mat))
+        for fn in self.far_detail:
+            objs += fn(self)
+        return objs
+
     # -- export ------------------------------------------------------------------
     def export(self, tiles=4, step=6, landscape=True):
         os.makedirs(self.folder, exist_ok=True)
@@ -145,6 +172,9 @@ class MapBuild:
             w = self.water_object()
             sr.export_fbx(w, os.path.join(self.folder, f"{w.name}.fbx"))
             track_objs.append(w)
+        for o in self.backdrop_objects():
+            sr.export_fbx(o, os.path.join(self.folder, f"{o.name}.fbx"), colors="LINEAR")
+            track_objs.append(o)
         for o in track_objs:          # exported - the preview scene rebuilds its own copies
             bpy_remove(o)
         if landscape:
@@ -160,7 +190,7 @@ class MapBuild:
     def water_object(self):
         wm = sr.mat("Water_Sea", (0.02, 0.12, 0.16), rough=0.04, metal=0.0, kind="water", tex="WaterWaves", tile=24.0)
         mb = sr.MB(f"SM_{self.name}_Water")
-        s = self.terrain.size / 2 + 2000
+        s = 30000.0
         mb.poly_facing([(-s, -s, self.water), (s, -s, self.water), (s, s, self.water), (-s, s, self.water)], (0, 0, 1), wm)
         return mb.to_object(uv=True)
 
@@ -183,11 +213,12 @@ class MapBuild:
             tr.build_meshes(self.name)
         if self.water is not None:
             self.water_object()
-        # distant ground beyond the map edge (renders only)
-        h = self.terrain.h
+        # scenery ring to the horizon, then a distant ground plane beyond it (renders only)
+        self.backdrop_objects()
+        h = self.terrain.h if self.backdrop is None else self.backdrop.H
         hmin = float(min(h[0, :].min(), h[-1, :].min(), h[:, 0].min(), h[:, -1].min()))
         far = getattr(self, "far_mat", None) or sr.mat("Sand", (1, 1, 1), tex="Sand", tile=6)
-        sr.ground(20000, far, z=hmin - 0.5, name="FarGround")
+        sr.ground(120000, far, z=hmin - 0.5, name="FarGround")
         missing = set()
         for kit, asset, loc, yaw, sc in self.place_list:
             o = by.get(asset)

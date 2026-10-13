@@ -305,6 +305,41 @@ def terrain_material(name, layers, tiles, tints=None):
     nt.links.new(attr.outputs["Color"], sep.inputs[0])
     uvn = nt.nodes.new("ShaderNodeUVMap")
     uvn.uv_map = "UVMap"
+    geo = nt.nodes.new("ShaderNodeNewGeometry")
+    sp = nt.nodes.new("ShaderNodeSeparateXYZ")
+    nt.links.new(geo.outputs["Position"], sp.inputs[0])
+    sn = nt.nodes.new("ShaderNodeSeparateXYZ")
+    nt.links.new(geo.outputs["Normal"], sn.inputs[0])
+    ax, ay = nt.nodes.new("ShaderNodeMath"), nt.nodes.new("ShaderNodeMath")
+    for node, comp in ((ax, "X"), (ay, "Y")):
+        node.operation = "ABSOLUTE"
+        nt.links.new(sn.outputs[comp], node.inputs[0])
+    tot = nt.nodes.new("ShaderNodeMath")
+    tot.operation = "ADD"
+    nt.links.new(ax.outputs[0], tot.inputs[0])
+    nt.links.new(ay.outputs[0], tot.inputs[1])
+    tot2 = nt.nodes.new("ShaderNodeMath")
+    tot2.operation = "ADD"
+    tot2.inputs[1].default_value = 1e-3
+    nt.links.new(tot.outputs[0], tot2.inputs[0])
+    bw = nt.nodes.new("ShaderNodeMath")                 # weight of the X/Z projection
+    bw.operation = "DIVIDE"
+    nt.links.new(ay.outputs[0], bw.inputs[0])
+    nt.links.new(tot2.outputs[0], bw.inputs[1])
+    proj = []
+    for comp in ("X", "Y"):
+        cx = nt.nodes.new("ShaderNodeCombineXYZ")
+        nt.links.new(sp.outputs[comp], cx.inputs["X"])
+        nt.links.new(sp.outputs["Z"], cx.inputs["Y"])
+        proj.append(cx)
+
+    def lookup(path, vec, noncolor):
+        it = nt.nodes.new("ShaderNodeTexImage")
+        it.image = sr._img(path)
+        if noncolor:
+            it.image.colorspace_settings.name = "Non-Color"
+        nt.links.new(vec, it.inputs[0])
+        return it.outputs[0]
     shaders = []
     for k, (tex, tile) in enumerate(zip(layers, tiles)):
         bs = nt.nodes.new("ShaderNodeBsdfPrincipled")
@@ -312,13 +347,34 @@ def terrain_material(name, layers, tiles, tints=None):
         mapping.operation = "SCALE"
         mapping.inputs[3].default_value = 1.0 / tile
         nt.links.new(uvn.outputs[0], mapping.inputs[0])
+        cliff = k == 1                                    # layer 1 = steep rock: biplanar, strata follow height
+        if cliff:
+            vecs = []
+            for cx in proj:
+                sc = nt.nodes.new("ShaderNodeVectorMath")
+                sc.operation = "SCALE"
+                sc.inputs[3].default_value = 1.0 / tile
+                nt.links.new(cx.outputs[0], sc.inputs[0])
+                vecs.append(sc.outputs[0])
         for suf, sock in (("D", "Base Color"), ("R", "Roughness"), ("N", None)):
             p = sr._tex_path(tex, suf)
             if not p:
                 continue
-            it = nt.nodes.new("ShaderNodeTexImage")
-            it.image = sr._img(p)
-            nt.links.new(mapping.outputs[0], it.inputs[0])
+            if cliff:
+                a_, b_ = lookup(p, vecs[0], suf != "D"), lookup(p, vecs[1], suf != "D")
+                mixn = nt.nodes.new("ShaderNodeMix")
+                mixn.data_type = "RGBA"
+                nt.links.new(bw.outputs[0], mixn.inputs["Factor"])
+                nt.links.new(b_, mixn.inputs["A"])
+                nt.links.new(a_, mixn.inputs["B"])
+                src = mixn.outputs["Result"]
+            else:
+                src = lookup(p, mapping.outputs[0], suf != "D")
+
+            class _It:                                    # adapter so the wiring below stays unchanged
+                outputs = [src]
+                image = sr._img(p)
+            it = _It()
             if suf == "D":
                 mix = nt.nodes.new("ShaderNodeMix")
                 mix.data_type = "RGBA"
@@ -328,10 +384,8 @@ def terrain_material(name, layers, tiles, tints=None):
                 mix.inputs["B"].default_value = tuple(tints[k]) + (1,)
                 nt.links.new(mix.outputs["Result"], bs.inputs["Base Color"])
             elif suf == "R":
-                it.image.colorspace_settings.name = "Non-Color"
                 nt.links.new(it.outputs[0], bs.inputs["Roughness"])
             else:
-                it.image.colorspace_settings.name = "Non-Color"
                 nm = nt.nodes.new("ShaderNodeNormalMap")
                 nt.links.new(it.outputs[0], nm.inputs["Color"])
                 nt.links.new(nm.outputs[0], bs.inputs["Normal"])
@@ -344,6 +398,6 @@ def terrain_material(name, layers, tiles, tints=None):
         nt.links.new(shaders[k].outputs[0], mx.inputs[2])
         cur = mx.outputs[0]
     nt.links.new(cur, out.inputs["Surface"])
-    sr.MANIFEST["M_" + name] = dict(kind="terrain", layers=list(layers), tiles=list(tiles),
+    sr.MANIFEST["M_" + name] = dict(kind="terrain", layers=list(layers), tiles=list(tiles), cliff_layer=1,
                                     tints=[list(t) for t in tints], color=[1, 1, 1], rough=0.9, metal=0.0)
     return m

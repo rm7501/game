@@ -17,6 +17,7 @@ Shortcuts:
 """
 import math
 import os
+import random
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -92,16 +93,87 @@ def tracks():
     return main_t, [s_arch, s_slot, s_lab, s_dune]
 
 
-def make_terrain(main, shorts):
-    t = Terrain(layers=("Sand", "Sandstone", "PackedSand", "Scree"))
-    X, Y = t.X, t.Y
+def massif_field(X, Y):
+    """Sandstone massif mask (0..1), massif top height and sand undulation for any coordinates."""
     nz = Noise(23)
-    # warped massif mask
     wx = (nz.fbm(X, Y, 400, 3) - 0.5) * 260
     wy = (nz.fbm(X + 900, Y, 400, 3) - 0.5) * 260
     m = nz.fbm(X + wx, Y + wy, 330, 4)
     jag = (nz.ridged(X, Y, 26, 3) - 0.5) * 0.035                             # fluted, jagged cliff outlines
     mask = smoothstep(0.5, 0.56, m + jag)
+    top = 48 + 38 * nz.fbm(X, Y, 160, 4) + 14 * (nz.ridged(X, Y, 60, 3) - 0.5)
+    sand = 1.5 * (nz.fbm(X, Y, 120, 4) - 0.5) + 2.5 * (nz.ridged(X + 50, Y, 70, 3) ** 3)
+    return mask, top, sand, jag
+
+
+def far_height(X, Y):
+    mask, top, sand, jag = massif_field(X, Y)
+    r = np.hypot(X, Y)
+    nz = Noise(24)
+    # the horizon: bigger table mountains and the dark basalt of Harrat Uwayrid to the west
+    far_w = smoothstep(3000, 6500, r)
+    wx = (nz.fbm(X, Y, 1500, 3) - 0.5) * 900
+    wy = (nz.fbm(X + 700, Y, 1500, 3) - 0.5) * 900
+    big = smoothstep(0.5, 0.56, nz.fbm((X + wx) * 0.8 - (Y + wy) * 0.6, (X + wx) * 0.6 + (Y + wy) * 0.8, 1300, 4)) * far_w
+    mask = mask * (1 - far_w)
+    top = top * (1 + 1.2 * smoothstep(2500, 9000, r))
+    harrat = smoothstep(-3500, -6500, X) * (90 + 40 * nz.fbm(X, Y, 500, 3))
+    dunes = 6 * nz.ridged(X * 0.6, Y * 1.4, 220, 3) ** 2
+    h = sand + dunes + np.maximum(mask, big) * top
+    apron = smoothstep(0.0, 0.25, mask) * (1 - smoothstep(0.25, 0.6, mask))
+    return np.maximum(h + apron * 4, harrat)
+
+
+def far_paint(X, Y, H, slope, d):
+    mask, top, sand, jag = massif_field(X, Y)
+    w = np.zeros((4,) + X.shape)
+    w[1] = smoothstep(0.55, 0.9, slope)
+    w[3] = smoothstep(0.25, 0.5, slope) * (1 - w[1]) * smoothstep(-3500, -6000, X) + \
+        smoothstep(0.0, 0.25, mask) * (1 - smoothstep(0.25, 0.6, mask)) * 0.6
+    w[2] = smoothstep(0.55, 0.7, Noise(25).fbm(X, Y, 90, 3)) * 0.5 * (1 - w[1])
+    w[0] = np.clip(1 - w[1] - w[2] - w[3], 0, 1)
+    return w
+
+
+def far_detail(m):
+    """Palm oases in the valleys, scattered acacias, distant old-town clusters (merged chunks)."""
+    from backdrop import Merged, scatter_points, outside
+    B = m.backdrop
+    rnd = random.Random(41)
+    palm_t = sr.mat("Far_PalmTrunk", (0.3, 0.22, 0.15), rough=0.9)
+    palm_f = sr.mat("Far_PalmFrond", (0.16, 0.24, 0.08), rough=0.8, kind="foliage")
+    acacia = sr.mat("Far_AcaciaCrown", (0.22, 0.26, 0.1), rough=0.9, kind="foliage")
+    mud = sr.mat("MudBrick", (1.0, 0.95, 0.9), tex="MudPlaster", tile=3.0)
+    mg = Merged(f"SM_{NAME}_Far_Oasis")
+
+    def flat(x, y):
+        return outside(x, y, pad=50) and float(B.slope(np.array([x]), np.array([y]))[0]) < 0.12 and math.hypot(x, y) < 6000
+    centres = scatter_points(rnd, 14, flat, (-6000, 6000, -6000, 6000))
+    for cx, cy in centres:
+        for k in range(rnd.randint(40, 110)):
+            x, y = cx + rnd.gauss(0, 90), cy + rnd.gauss(0, 90)
+            if not outside(x, y, pad=30):
+                continue
+            z = float(B.height(np.array([x]), np.array([y]))[0])
+            mg.palm(x, y, z, rnd.uniform(7, 11), palm_t, palm_f, rnd)
+        if rnd.random() < 0.5:                  # a mud-brick hamlet next to some oases
+            for k in range(rnd.randint(8, 20)):
+                x, y = cx + rnd.gauss(0, 60) + 140, cy + rnd.gauss(0, 60)
+                if not outside(x, y, pad=30):
+                    continue
+                z = float(B.height(np.array([x]), np.array([y]))[0])
+                mg.block(x, y, z, rnd.uniform(6, 12), rnd.uniform(6, 12), rnd.uniform(4, 9), rnd.uniform(0, 90), mud)
+    for x, y in scatter_points(rnd, 1400, flat, (-6000, 6000, -6000, 6000)):
+        z = float(B.height(np.array([x]), np.array([y]))[0])
+        mg.tree(x, y, z, rnd.uniform(4, 7), acacia, palm_t, kind="round")
+    return mg.objects()
+
+
+def make_terrain(main, shorts):
+    t = Terrain(layers=("Sand", "Sandstone", "PackedSand", "Scree"))
+    X, Y = t.X, t.Y
+    nz = Noise(23)
+    mask, top, sand, jag = massif_field(X, Y)
     # designed massifs: north block (the slot canyon cracks through it), south canyon wall, Hegra cliff
     for (cx, cy, rx, ry) in ((40, 700, 360, 150), (60, 400, 300, 75), (-660, -20, 110, 230), (-180, -170, 160, 120)):
         e = ((X - cx) / rx) ** 2 + ((Y - cy) / ry) ** 2
@@ -121,8 +193,6 @@ def make_terrain(main, shorts):
                         (ELEPHANT[0], ELEPHANT[1], 170), (300, -500, 220)):
         clear *= smoothstep(r * 0.7, r, np.hypot(X - cx, Y - cy))
     mask *= clear
-    top = 48 + 38 * nz.fbm(X, Y, 160, 4) + 14 * (nz.ridged(X, Y, 60, 3) - 0.5)
-    sand = 1.5 * (nz.fbm(X, Y, 120, 4) - 0.5) + 2.5 * (nz.ridged(X + 50, Y, 70, 3) ** 3)
     dune = 22 * np.exp(-(((X - DUNE[0]) / 70) ** 2 + ((Y - DUNE[1]) / 50) ** 2))
     labyrinth_floor = -0.6 * np.exp(-(np.hypot(X - LABY[0], Y - LABY[1]) / 70) ** 4)
     t.h = sand + dune + labyrinth_floor + mask * top
@@ -232,6 +302,41 @@ def dress(m: MapBuild):
     sp = m.shortcuts[1].frame(14)[0]
     for k in range(3):
         m.place("alula", "SM_Boulder_C", sp[0] + 6 + k * 3, sp[1] - 9 + k * 4, scale=0.7)
+    life(m)
+
+
+def life(m: MapBuild):
+    """Rally day in AlUla: spectator zones, Bedouin camps with camels, caravans crossing the plain,
+    goats by the old town, visitors at Elephant Rock and the labyrinth."""
+    import dressing as D
+    rnd = random.Random(23)
+    T = m.main
+    D.trackside(m, spots=[T.nearest_s((480, 545)), T.nearest_s((-420, -260))])
+    cars = ["SM_Car_SUV_White", "SM_Car_SUV_Black", "SM_Car_Pickup_White"]
+    for k, (cx, cy) in enumerate(((380, -40), (180, -470), (-230, -420), (560, 680), (-700, 520))):
+        D.cluster(m, "life", "SM_BedouinTent", cx, cy, 1, 15, seed=100 + k, clearance=25, max_slope=0.2)
+        D.cluster(m, "life", "SM_Campfire", cx, cy, 1, 18, seed=110 + k, clearance=25, max_slope=0.2)
+        D.cluster(m, "life", "SM_Camel_Sitting", cx, cy, rnd.randint(3, 5), 30, seed=120 + k, clearance=22, max_slope=0.25)
+        D.cluster(m, "life", "SM_Camel", cx, cy, rnd.randint(2, 4), 45, seed=130 + k, clearance=22, max_slope=0.25)
+        D.cluster(m, "life", cars, cx, cy, 2, 35, seed=140 + k, clearance=20, max_slope=0.2, min_spacing=5)
+        D.people(m, cx, cy, 6, 20, seed=150 + k, clearance=20, kinds=("SM_Person_Thobe", "SM_Person_Kid"))
+    # camel caravans walking across the open plains
+    for k, (x0, y0, a) in enumerate(((430, 260, 30), (120, -640, 160), (-560, -620, 80))):
+        for j in range(7):
+            x = x0 + j * 4.2 * math.cos(math.radians(a))
+            y = y0 + j * 4.2 * math.sin(math.radians(a))
+            if m.clearance(x, y) > 12:
+                m.place("life", "SM_Camel", x, y, yaw=a + 180 + rnd.uniform(-6, 6))
+        m.place("life", "SM_Person_Thobe", x0 - 3 * math.cos(math.radians(a)), y0 - 3 * math.sin(math.radians(a)), yaw=a + 180)
+    D.cluster(m, "life", ["SM_Goat", "SM_Goat_Brown", "SM_Sheep"], 330, 760, 24, 60, seed=160, clearance=15)
+    D.people(m, ELEPHANT[0], ELEPHANT[1], 34, 100, seed=161, clearance=4)
+    D.people(m, LABY[0], LABY[1], 16, 70, seed=162, clearance=4)
+    D.people(m, 760, -140, 20, 60, seed=163, clearance=6)               # at Maraya
+    m.scatter("life", ["SM_Shrub_A", "SM_Shrub_B"], 260, (-950, 950, -950, 950), clearance=5, seed=164, max_slope=0.25,
+              min_spacing=6, scale=(0.6, 1.2))
+    for k in range(4):
+        m.place("life", "SM_BirdFlock", rnd.uniform(-600, 600), rnd.uniform(-600, 600), z=rnd.uniform(60, 120),
+                yaw=rnd.uniform(0, 360), scale=1.6)
 
 
 def build(render=True, layout_only=False):
@@ -241,6 +346,8 @@ def build(render=True, layout_only=False):
     tm = terrain_material(f"{NAME}_Terrain", ["Sand", "SandstoneStrata", "TrackSand", "Rock"], [6, 16, 8, 5],
                           [(1, 1, 1), (1.0, 0.95, 0.92), (0.95, 0.85, 0.75), (0.95, 0.7, 0.55)])
     m = MapBuild(NAME, TITLE, t, tm)
+    m.set_backdrop(far_height, far_paint, blend=500)
+    m.far_detail.append(far_detail)
     m.set_tracks(main, shorts)
     m.build_tracks(carve_layer=2, falloff=14)
     if layout_only:
@@ -263,7 +370,7 @@ def lighting():
 
 def previews(m, props):
     from mapkit import render_previews
-    kits = kit_objects("alula", "common") + props
+    kits = kit_objects("alula", "common", "life") + props
     m.preview_scene(kits)
     cars = [("AlUlaRally", 120, -2.5, None), ("DuneFox", 140, 3.0, None), ("NajdiGXR", 1060, 0.0, None),
             ("HiluxRaider", 3150, 2.0, None)]

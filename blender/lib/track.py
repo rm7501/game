@@ -212,7 +212,12 @@ class Track:
             d, j = cKDTree(main.P).query(self.P)
             self.nomesh = d + self.W / 2 < main.W[j] / 2 + 0.8
             over = d < main.W[j] / 2 + self.W / 2
-            z = z - 0.06 * over
+            # where it overlaps the main road, sit exactly on the main's (banked) surface, a hair below it
+            lat = np.einsum("ij,ij->i", self.P - main.P[j], main.Nrm[j])
+            surf = main.Z[j] + lat * np.sin(main.bank[j])
+            blend = np.clip(1.0 - (d - main.W[j] / 2) / (self.W / 2 + 4.0), 0, 1) * over
+            z = z * (1 - blend) + (surf - 0.06) * blend
+            self.bank = self.bank * (1 - blend) + main.bank[j] * blend
         self.Z = z
         self.edge_skip = np.zeros((2, len(S)), bool)      # [left, right] barrier openings (junctions)
         tun = np.array(["tunnel" in t for t in self.tag])

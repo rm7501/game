@@ -17,6 +17,7 @@ Shortcuts:
 """
 import math
 import os
+import random
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -40,9 +41,9 @@ def valley_center(y):
     return -620 + 70 * np.sin(y / 260.0) + 30 * np.sin(y / 97.0 + 1.0)
 
 
-def make_terrain():
-    t = Terrain(layers=("Sand", "Limestone", "WadiSoil", "Paving"))
-    X, Y = t.X, t.Y
+def field(X, Y, far=False):
+    """Height field of the Riyadh landscape. far=True: the version used beyond the map edge
+    (city plateau everywhere, Tuwaiq escarpment on the western horizon, dunes far to the east)."""
     nz = Noise(11)
     vc = valley_center(Y)
     dx = np.abs(X - vc)
@@ -59,9 +60,23 @@ def make_terrain():
     # western desert plateau is higher and rougher
     west = smoothstep(0, 1, (vc - 240 - X) / 120)
     h += west * (6 + (nz.ridged(X, Y, 220, 4) - 0.4) * 10)
-    # eastern desert beyond the city: low dunes
     east = smoothstep(780, 950, X)
+    if far:
+        # Tuwaiq escarpment: a stepped limestone wall on the western horizon
+        tw = -5200 + 600 * (nz.fbm(X * 0.2, Y * 0.2, 400, 3) - 0.5)
+        esc = smoothstep(tw + 300, tw - 300, X)
+        h += esc * (110 + 40 * nz.ridged(X, Y, 700, 3))
+        # open desert with red dunes far to the east
+        east = smoothstep(7000, 9500, X)
     h += east * (nz.ridged(X + 300, Y, 140, 3) ** 2) * 9
+    return h, wall, east
+
+
+def make_terrain():
+    t = Terrain(layers=("Sand", "Limestone", "WadiSoil", "Paving"))
+    X, Y = t.X, t.Y
+    nz = Noise(11)
+    h, wall, east = field(X, Y)
     # the pond (Wadi Hanifa lake)
     pond = np.exp(-(((X - (-600)) / 60) ** 2 + ((Y - 360) / 42) ** 2))
     h -= pond * 4.0
@@ -73,6 +88,101 @@ def make_terrain():
     city = smoothstep(-330, -260, X) * (1 - east)
     t.set_layer(3, city * smoothstep(0.45, 0.55, nz.fbm(X, Y, 25, 2) * 0.3 + 0.5))
     return t
+
+
+def far_height(X, Y):
+    return field(X, Y, far=True)[0]
+
+
+def far_paint(X, Y, H, slope, d):
+    nz = Noise(12)
+    vc = valley_center(Y)
+    floor = 1 - smoothstep(95, 200, np.abs(X - vc))
+    w = np.zeros((4,) + X.shape)
+    w[0] = 1
+    w[1] = smoothstep(0.25, 0.6, slope)
+    w[2] = floor * (1 - w[1])
+    city = (1 - floor) * (1 - w[1]) * (1 - smoothstep(6000, 8000, X)) * (1 - smoothstep(-4500, -5200, X))
+    w[3] = city * smoothstep(0.45, 0.55, nz.fbm(X, Y, 60, 2) * 0.3 + 0.5)
+    w[0] = np.clip(1 - w[1] - w[2] - w[3], 0, 1)
+    return w
+
+
+def far_city(m):
+    """Night-time Riyadh sprawling to the horizon: lit blocks, a tower corridor continuing King Fahd Road,
+    glowing street grid, palms in the wadi. Merged into 4 chunk meshes."""
+    from backdrop import Merged, scatter_points, outside
+    B = m.backdrop
+    rnd = random.Random(31)
+    tower = sr.mat("Riyadh_FacadeNight", (1, 1, 1), rough=0.1, metal=0.6, tex="FacadeNight", tile=24.0, emit_str=2.0)
+    homes = sr.mat("Far_NajdiNight", (1.0, 0.9, 0.75), rough=0.8, tex="FacadeNight", tile=16.0, emit_str=0.9)
+    roof = sr.mat("Far_RoofDark", (0.16, 0.14, 0.13), rough=0.9)
+    crown = sr.mat("LED_White", (0.9, 0.95, 1.0), emit=(0.85, 0.9, 1.0), emit_str=10, kind="emissive")
+    street = sr.mat("Far_StreetGlow", (0.9, 0.45, 0.15), emit=(1.0, 0.5, 0.16), emit_str=2.2, kind="emissive")
+    palm_t = sr.mat("Far_PalmTrunk", (0.3, 0.22, 0.15), rough=0.9)
+    palm_f = sr.mat("Far_PalmFrond", (0.12, 0.2, 0.08), rough=0.8, kind="foliage")
+    mg = Merged(f"SM_{NAME}_Far_City")
+    mt = Merged(f"SM_{NAME}_Far_Towers")
+    ms = Merged(f"SM_{NAME}_Far_Streets")
+
+    def city_ok(x, y):
+        vc = float(valley_center(np.array(y)))
+        return outside(x, y, pad=60) and abs(x - vc) > 280 and x > -4700 and x < 6500 and math.hypot(x, y) < 7500
+    pts = scatter_points(rnd, 4200, lambda x, y: city_ok(x, y) and rnd.random() < 2200 / max(math.hypot(x, y), 1100),
+                         (-4700, 6500, -7500, 7500))
+    zs = B.height(np.array([p[0] for p in pts]), np.array([p[1] for p in pts]))
+    for (x, y), z in zip(pts, zs):
+        w, d = rnd.uniform(18, 40), rnd.uniform(18, 40)
+        h = rnd.choice((7, 9, 11, 14, 18, 24)) * rnd.uniform(0.9, 1.1)
+        mg.block(x, y, float(z), w, d, h, rnd.choice((0, 0, 0, 90)) + rnd.uniform(-3, 3), homes, roof)
+    # tower corridor along King Fahd Road (x ~ 320) running north and south to the horizon
+    for k in range(260):
+        y = rnd.choice((-1, 1)) * rnd.uniform(1150, 7000)
+        x = 320 + rnd.choice((-1, 1)) * rnd.uniform(60, 230)
+        z = float(B.height(np.array([x]), np.array([y]))[0])
+        h = rnd.uniform(60, 220) * (1.25 if abs(y) < 3500 else 0.9)
+        if rnd.random() < 0.3:
+            mt.tower(x, y, z, rnd.uniform(14, 22), h, tower, crown, seg=rnd.choice((4, 6, 8)))
+        else:
+            mt.block(x, y, z, rnd.uniform(26, 40), rnd.uniform(26, 40), h, rnd.uniform(0, 90), tower, None, crown)
+    # a second business cluster to the north-east (Olaya / Al Murooj) and one south (the old centre)
+    for cx, cy, n in ((1900, 2600, 45), (1400, -2900, 30), (-2600, 3400, 25)):
+        for k in range(n):
+            x, y = cx + rnd.gauss(0, 260), cy + rnd.gauss(0, 260)
+            z = float(B.height(np.array([x]), np.array([y]))[0])
+            mt.block(x, y, z, rnd.uniform(24, 40), rnd.uniform(24, 40), rnd.uniform(50, 170), rnd.uniform(0, 90),
+                     tower, None, crown)
+    # glowing street grid on the plateau
+    for g in np.arange(-7200, 7300, 180.0):
+        for horiz in (True, False):
+            seg_pts = []
+            for u in np.arange(-7200, 7300, 60.0):
+                x, y = (u, g) if horiz else (g, u)
+                ok = city_ok(x, y)
+                if ok:
+                    seg_pts.append((x, y))
+                if (not ok or u >= 7240) and len(seg_pts) > 1:
+                    xs = np.array([p[0] for p in seg_pts])
+                    ys = np.array([p[1] for p in seg_pts])
+                    zz = B.height(xs, ys) + 0.4
+                    mb = ms._mb(xs.mean(), ys.mean())
+                    grid = []
+                    for x, y, z in zip(xs, ys, zz):
+                        nx, ny = (0, 1.4) if horiz else (1.4, 0)
+                        grid.append([(x - nx, y - ny, z), (x + nx, y + ny, z)])
+                    mb.strip([r[::-1] for r in grid] if horiz else grid, None, street, smooth=False, keep=False)
+                    seg_pts = []
+                elif not ok:
+                    seg_pts = []
+    # palm groves continuing along Wadi Hanifa
+    for k in range(1600):
+        y = rnd.uniform(-7000, 7000)
+        if abs(y) < 1050:
+            continue
+        x = float(valley_center(np.array(y))) + rnd.gauss(0, 55)
+        z = float(B.height(np.array([x]), np.array([y]))[0])
+        mg.palm(x, y, z, rnd.uniform(7, 11), palm_t, palm_f, rnd)
+    return mg.objects() + mt.objects() + ms.objects()
 
 
 def tracks():
@@ -192,6 +302,50 @@ def dress(m: MapBuild):
     for k in range(6):
         m.place("common", "SM_Cone", pm[0] + k * 1.2 - 3, pm[1] + 2.0, z=pm[2])
     m.place("common", "SM_Barrier_Water", pm[0] + 3, pm[1] - 1, z=pm[2], yaw=30)
+    life(m)
+
+
+def life(m: MapBuild):
+    """Race night in Riyadh: crowds and floodlights, mosques, villas, shops and traffic in the city,
+    families picnicking in Wadi Hanifa, visitors in Diriyah."""
+    import dressing as D
+    rnd = random.Random(19)
+    T = m.main
+    D.trackside(m, night=True, spots=[T.nearest_s((140, 430)), T.nearest_s((-470, 255))])
+    plateau = lambda x, y: abs(x - float(valley_center(np.array(y)))) > 260 and x > -300  # noqa: E731
+    # city fabric between the blocks
+    m.scatter("life", ["SM_Villa"], 45, (-280, 950, -950, 950), clearance=14, seed=31, max_slope=0.12, min_spacing=40,
+              mask=plateau, yaw=0)
+    m.scatter("life", "SM_ShopRow", 18, (-280, 950, -950, 950), clearance=10, seed=32, max_slope=0.12, min_spacing=60,
+              mask=plateau, yaw=None)
+    for x, y in ((700, 120), (-60, -260), (760, -420)):
+        m.place("life", "SM_Mosque_Dome", x, y, yaw=rnd.uniform(0, 90))
+    m.place("life", "SM_GasStation", 395, -230, yaw=90)
+    m.place("life", "SM_WaterTower", 860, 380)
+    m.place("life", "SM_Mosque_Najdi", -330, -690, yaw=10)
+    cars = ["SM_Car_Sedan_White", "SM_Car_Sedan_Silver", "SM_Car_Sedan_Red", "SM_Car_SUV_White", "SM_Car_SUV_Black",
+            "SM_Car_Pickup_White"]
+    m.scatter("life", cars, 220, (-280, 950, -950, 950), clearance=6, seed=33, max_slope=0.1, min_spacing=4,
+              mask=plateau, yaw=None)
+    m.scatter("life", ["SM_Bus_City", "SM_Truck_Water"], 10, (-280, 950, -950, 950), clearance=8, seed=34,
+              max_slope=0.1, min_spacing=30, mask=plateau)
+    D.people(m, 560, -100, 40, 70, seed=35)                 # Kingdom Centre plaza
+    D.people(m, 120, 560, 50, 90, seed=36)                  # KAFD
+    D.people(m, -170, -560, 45, 90, seed=37)                # Diriyah visitors
+    # Wadi Hanifa picnics: tent / gazebo, campfire, cars and families
+    for k, y in enumerate((-820, -420, 120, 520, 820)):
+        x = float(valley_center(np.array(y))) + rnd.uniform(-40, 40)
+        if m.clearance(x, y) < 25:
+            x += 60
+        D.cluster(m, "life", ["SM_BedouinTent", "SM_Gazebo_Green"], x, y, 1, 10, seed=40 + k, clearance=12)
+        D.cluster(m, "life", "SM_Campfire", x, y, 1, 14, seed=50 + k, clearance=12)
+        D.cluster(m, "life", cars[3:], x, y, 3, 30, seed=60 + k, clearance=10, min_spacing=5)
+        D.people(m, x, y, 9, 22, seed=70 + k, clearance=8)
+    for k in range(5):
+        m.place("life", "SM_BirdFlock", -650 + rnd.uniform(-80, 80), rnd.uniform(-700, 700), z=rnd.uniform(35, 70),
+                yaw=rnd.uniform(0, 360), scale=1.4)
+    for k, y in enumerate(range(-900, 901, 300)):              # power line along the wadi rim
+        m.place("life", "SM_PowerPylon", float(valley_center(np.array(y))) + 330, y, yaw=0)
 
 
 def build(render=True, layout_only=False):
@@ -200,6 +354,8 @@ def build(render=True, layout_only=False):
     tm = terrain_material(f"{NAME}_Terrain", ["Sand", "SandstoneStrata", "TerraceGrass", "Concrete"], [6, 14, 6, 4],
                           [(1, 1, 1), (1.05, 1.0, 0.92), (0.85, 0.82, 0.6), (1.0, 0.94, 0.85)])
     m = MapBuild(NAME, TITLE, t, tm, water=WATER)
+    m.set_backdrop(far_height, far_paint, blend=700)
+    m.far_detail.append(far_city)
     main, shorts = tracks()
     m.set_tracks(main, shorts)
     m.build_tracks(carve_layer=3)
@@ -222,7 +378,7 @@ def lighting():
 
 def previews(m):
     from mapkit import render_previews
-    kits = kit_objects("riyadh", "common", "alula")
+    kits = kit_objects("riyadh", "common", "alula", "life")
     m.preview_scene(kits)
     L = m.main.length
     cars = [("Falcon", 280, -2.5, None), ("JeddahGT", 296, 3.0, None), ("RiyadhMuscle", 318, -1.0, None),

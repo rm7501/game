@@ -39,6 +39,101 @@ def coast_x(y):
     return -470 + 22 * np.sin(y / 170.0) + 10 * np.sin(y / 61.0)
 
 
+def far_height(X, Y):
+    """Red Sea to the west, the city plain rising gently inland, the Hijaz mountains on the eastern horizon."""
+    nz = Noise(38)
+    cx = coast_x(Y)
+    d = X - cx
+    land = 2.2 + np.clip(d, 0, None) * 0.008 + (nz.fbm(X, Y, 300, 4) - 0.5) * 3.0
+    sea = -np.clip(-d, 0, 600) * 0.05 - 1.5
+    h = np.where(d > 0, land, sea)
+    h = h * smoothstep(-25, 25, d) + np.minimum(h, sea) * (1 - smoothstep(-25, 25, d))
+    beach = smoothstep(-20, 0, d) * (1 - smoothstep(0, 45, d))
+    h = h * (1 - beach) + (0.3 + np.clip(d, 0, None) * 0.05) * beach
+    # Hijaz escarpment: dark rocky ranges 8-20 km inland, with foothills
+    wx = X + 400 * (nz.fbm(X, Y, 900, 3) - 0.5)
+    rng = nz.ridged(wx * 0.6, Y * 0.6, 900, 5)
+    h += (60 + 650 * rng ** 1.4) * smoothstep(6500, 14000, wx)
+    h += 40 * nz.ridged(X, Y, 400, 3) ** 2 * smoothstep(3000, 7000, wx)
+    # offshore reefs: a few low sandy islands far out to sea
+    isl = smoothstep(0.7, 0.76, nz.fbm(X, Y, 700, 3)) * smoothstep(-3000, -5000, d)
+    return np.maximum(h, -1.5 + isl * 3.5)
+
+
+def far_paint(X, Y, H, slope, d):
+    cx = coast_x(Y)
+    dd = X - cx
+    w = np.zeros((4,) + X.shape)
+    w[1] = smoothstep(0.3, 0.6, slope) + smoothstep(120, 300, H)
+    w[3] = smoothstep(1.2, 0.2, H) * (H > -0.5)
+    w[2] = smoothstep(150, 300, dd) * (1 - smoothstep(9000, 12000, dd)) * smoothstep(0.55, 0.62, Noise(39).fbm(X, Y, 80, 2)) * 0.6
+    w[0] = np.clip(1 - w[1] - w[2] - w[3], 0, 1)
+    return w
+
+
+def far_city(m):
+    """Jeddah spreading inland and along the coast at sunset: white and beige blocks, towers on the
+    Corniche, palms; merged chunk meshes."""
+    from backdrop import Merged, scatter_points, outside
+    B = m.backdrop
+    rnd = random.Random(52)
+    wall = sr.mat("Far_JeddahWhite", (0.95, 0.92, 0.86), rough=0.7, tex="FacadeNight", tile=14.0, emit_str=0.5)
+    beige = sr.mat("Far_JeddahBeige", (0.95, 0.82, 0.66), rough=0.75, tex="FacadeNight", tile=14.0, emit_str=0.5)
+    glass = sr.mat("KC_FacadeNight", (0.8, 0.85, 0.95), rough=0.08, metal=0.7, tex="FacadeTower", tile=24.0, emit_str=1.6)
+    roof = sr.mat("Far_RoofLight", (0.75, 0.72, 0.66), rough=0.9)
+    palm_t = sr.mat("Far_PalmTrunk", (0.3, 0.22, 0.15), rough=0.9)
+    palm_f = sr.mat("Far_PalmFrond", (0.16, 0.24, 0.08), rough=0.8, kind="foliage")
+    mg = Merged(f"SM_{NAME}_Far_City")
+    mt = Merged(f"SM_{NAME}_Far_Towers")
+
+    def land(x, y, inset=60):
+        return outside(x, y, pad=50) and x - float(coast_x(np.array(y))) > inset and x < 7000 and abs(y) < 9000
+    street = sr.mat("Far_Asphalt", (0.22, 0.22, 0.23), rough=0.8)
+    ms = Merged(f"SM_{NAME}_Far_Streets")
+    for g in np.arange(-9000, 9001, 140.0):          # street grid (rotated 12 deg like the old city plan)
+        for horiz in (True, False):
+            run = []
+            for u in np.arange(-9000, 9001, 50.0):
+                x0, y0 = (u, g) if horiz else (g, u)
+                c, s_ = math.cos(math.radians(12)), math.sin(math.radians(12))
+                x, y = x0 * c - y0 * s_, x0 * s_ + y0 * c
+                ok = land(x, y, 120)
+                if ok:
+                    run.append((x, y))
+                if (not ok or u >= 8950) and len(run) > 1:
+                    xs, ys = np.array([p[0] for p in run]), np.array([p[1] for p in run])
+                    zz = B.height(xs, ys) + 0.25
+                    nx, ny = ((-s_ * 3.0, c * 3.0) if horiz else (c * 3.0, s_ * 3.0))
+                    rows = [[(x - nx, y - ny, z), (x + nx, y + ny, z)] for x, y, z in zip(xs, ys, zz)]
+                    ms._mb(xs.mean(), ys.mean()).strip([r[::-1] for r in rows] if horiz else rows, None, street,
+                                                     smooth=False, keep=False)
+                    run = []
+                elif not ok:
+                    run = []
+    pts = scatter_points(rnd, 9000, lambda x, y: land(x, y) and rnd.random() < 3000 / max(math.hypot(x, y), 1100),
+                         (-1500, 7000, -9000, 9000))
+    zs = B.height(np.array([p[0] for p in pts]), np.array([p[1] for p in pts]))
+    for (x, y), z in zip(pts, zs):
+        h = rnd.choice((6, 9, 12, 15, 18, 24, 30))
+        mg.block(x, y, float(z), rnd.uniform(14, 36), rnd.uniform(14, 36), h, rnd.uniform(-4, 4) + rnd.choice((0, 90)),
+                 rnd.choice((wall, beige)), roof)
+    # towers along the Corniche to the north (Al-Shati, Obhur) and south
+    for k in range(150):
+        y = rnd.choice((1, -1)) * rnd.uniform(1100, 8500)
+        x = float(coast_x(np.array(y))) + rnd.uniform(90, 600)
+        z = float(B.height(np.array([x]), np.array([y]))[0])
+        if rnd.random() < 0.35:
+            mt.tower(x, y, z, rnd.uniform(12, 20), rnd.uniform(60, 180), glass, seg=rnd.choice((6, 8)))
+        else:
+            mt.block(x, y, z, rnd.uniform(22, 36), rnd.uniform(22, 36), rnd.uniform(40, 150), rnd.uniform(0, 90), glass)
+    for k in range(900):                    # Corniche palms continuing both ways
+        y = rnd.choice((1, -1)) * rnd.uniform(1050, 8500)
+        x = float(coast_x(np.array(y))) + rnd.uniform(25, 60)
+        z = float(B.height(np.array([x]), np.array([y]))[0])
+        mg.palm(x, y, z, rnd.uniform(7, 10), palm_t, palm_f, rnd)
+    return mg.objects() + mt.objects() + ms.objects()
+
+
 def make_terrain():
     t = Terrain(layers=("Sand", "CoralRock", "Paving", "WetSand"))
     X, Y = t.X, t.Y
@@ -270,6 +365,66 @@ def dress(m: MapBuild):
     m.scatter("jeddah", houses, 90, (-60, 460, -460, 520), clearance=14, seed=7, max_slope=0.2, min_spacing=14)
     m.scatter("common", ["SM_DatePalm_A", "SM_DatePalm_B"], 120, (-430, 450, -950, 950), clearance=8, seed=8,
               max_slope=0.2, min_spacing=10, mask=lambda x, y: x - coast_x(y) > 20)
+    life(m)
+
+
+def life(m: MapBuild):
+    """Race evening in Jeddah: crowds on the Corniche, families on the beach, dhows, fishing boats and
+    yachts on the water, cargo ships on the horizon, people in the Al-Balad lanes, the city behind."""
+    import dressing as D
+    rnd = random.Random(29)
+    T = m.main
+    D.trackside(m, spots=[T.nearest_s((-410, 236)), T.nearest_s((160, 560))])
+    t = m.terrain
+
+    def sea(x, y, depth=1.2):
+        return float(t.sample(x, y)) < -depth
+    boats = []
+    for k in range(70):                                      # fishing boats and dhows along the coast
+        y = rnd.uniform(-950, 950)
+        x = float(coast_x(np.array(y))) - rnd.uniform(40, 260)
+        if sea(x, y) and all((x - bx) ** 2 + (y - by) ** 2 > 400 for bx, by in boats) and abs(y - MOSQUE[1]) > 80:
+            m.place("life", rnd.choice(["SM_FishingBoat", "SM_FishingBoat", "SM_Dhow"]), x, y, z=0.0, yaw=rnd.uniform(0, 360))
+            boats.append((x, y))
+    for k in range(40):                                      # boats moored in the lagoon and the cove
+        x, y = rnd.uniform(-460, -150), rnd.uniform(-620, -500)
+        if rnd.random() < 0.3:
+            x, y = -430 + rnd.uniform(-50, 50), 620 + rnd.uniform(-30, 30)
+        if sea(x, y, 1.5) and m.clearance(x, y) > 8 and all((x - bx) ** 2 + (y - by) ** 2 > 200 for bx, by in boats):
+            m.place("life", rnd.choice(["SM_FishingBoat", "SM_Dhow", "SM_Yacht"]), x, y, z=0.0, yaw=rnd.uniform(0, 360))
+            boats.append((x, y))
+    for x, y in ((-700, 450), (-760, 150), (-680, -40), (-820, 620)):
+        m.place("life", "SM_Yacht", x, y, z=0.0, yaw=rnd.uniform(0, 360))
+    for x, y, a in ((-2600, -900, 15), (-3400, 600, 190), (-2200, 1800, 20), (-4200, -2200, 200), (-1800, 3400, 160)):
+        m.place("life", "SM_CargoShip", x, y, z=0.0, yaw=a)
+    # families on the beach: umbrellas, people, kiosks and benches on the promenade
+    m.scatter("life", "SM_BeachUmbrella", 90, (-520, -300, -950, 950), clearance=4, seed=31, max_slope=0.3, min_spacing=9,
+              mask=lambda x, y: 6 < x - float(coast_x(np.array(y))) < 40, yaw=None)
+    m.scatter("life", ["SM_Person_Thobe", "SM_Person_Abaya", "SM_Person_Casual", "SM_Person_Kid"], 160,
+              (-520, -300, -950, 950), clearance=2.5, seed=32, max_slope=0.3, min_spacing=1.5,
+              mask=lambda x, y: 2 < x - float(coast_x(np.array(y))) < 45, scale=(0.95, 1.05))
+    s_corn = T.nearest_s((-410, 690))
+    m.along(T, "life", "SM_Bench", 30, 3.2, s0=15, s1=s_corn, side=(1,), min_clear=2.2, yaw_add=180)
+    m.along(T, "life", "SM_LampClassic", 30, 3.4, s0=30, s1=s_corn, side=(1,), min_clear=2.2)
+    m.along(T, "life", "SM_Kiosk", 170, 9.0, s0=80, s1=s_corn, side=(-1,), min_clear=6)
+    m.along(T, "life", ["SM_Person_Thobe", "SM_Person_Abaya", "SM_Person_Casual", "SM_Person_Kid"], 9, 4.5, s0=10,
+            s1=s_corn, side=(1, -1), jitter=1.5, min_clear=2.0, seed=33)
+    # people in the Al-Balad lanes (on the edges, under the awnings)
+    s_old0, s_old1 = T.nearest_s((160, 560)), T.nearest_s((40, -420))
+    m.along(T, "life", ["SM_Person_Thobe", "SM_Person_Abaya", "SM_Person_Casual", "SM_Person_Kid"], 13, 0.6, s0=s_old0 + 20,
+            s1=s_old1, side=(1, -1), jitter=0.3, min_clear=0.4, seed=34)
+    # modern city: mosques, traffic, a water tower
+    for x, y in ((620, 300), (720, -380), (300, 820)):
+        m.place("life", "SM_Mosque_Dome", x, y, yaw=rnd.uniform(0, 90))
+    m.place("life", "SM_WaterTower", 860, -760)
+    cars = ["SM_Car_Sedan_White", "SM_Car_Sedan_Silver", "SM_Car_Sedan_Red", "SM_Car_SUV_White", "SM_Car_SUV_Black",
+            "SM_Car_Pickup_White", "SM_Bus_City"]
+    m.scatter("life", cars, 180, (450, 980, -950, 950), clearance=6, seed=35, max_slope=0.15, min_spacing=5)
+    m.scatter("life", ["SM_ShopRow", "SM_Villa"], 30, (420, 980, -950, 950), clearance=12, seed=36, max_slope=0.15,
+              min_spacing=45, yaw=0)
+    for k in range(8):
+        m.place("life", "SM_Seagulls", float(coast_x(np.array(0.0))) - rnd.uniform(-20, 200), rnd.uniform(-900, 900),
+                z=rnd.uniform(15, 45), yaw=rnd.uniform(0, 360), scale=1.4)
 
 
 def build(render=True, layout_only=False):
@@ -278,6 +433,8 @@ def build(render=True, layout_only=False):
     tm = terrain_material(f"{NAME}_Terrain", ["Sand", "CoralStone", "Concrete", "Sand"], [6, 4, 3, 6],
                           [(1.05, 1.0, 0.95), (0.9, 0.88, 0.82), (0.98, 0.95, 0.9), (0.7, 0.62, 0.52)])
     m = MapBuild(NAME, TITLE, t, tm, water=WATER)
+    m.set_backdrop(far_height, far_paint, blend=500)
+    m.far_detail.append(far_city)
     main, shorts = tracks()
     m.set_tracks(main, shorts)
     m.build_tracks(carve_layer=2, falloff=14)
@@ -301,7 +458,7 @@ def lighting():
 
 def previews(m, props):
     from mapkit import render_previews
-    kits = kit_objects("jeddah", "riyadh", "common", "alula") + props
+    kits = kit_objects("jeddah", "riyadh", "common", "alula", "life") + props
     m.preview_scene(kits)
     T = m.main
     s_mosque = T.nearest_s((-410, 236))
