@@ -1,7 +1,7 @@
 {
 "map": "RiyadhNights",
 "units": "Unreal cm / degrees",
-"count": 3029,
+"count": 3015,
 "props": [
 {
 "kit": "common",
@@ -1491,15 +1491,6 @@
 {
 "kit": "riyadh",
 "asset": "SM_StreetLight_KFR",
-"x": 95000.0,
-"y": 91900.0,
-"z": 5514.4,
-"yaw": -90.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
 "x": -28600.0,
 "y": 80100.0,
 "z": 5417.7,
@@ -1971,24 +1962,6 @@
 "x": 91400.0,
 "y": 68300.0,
 "z": 5501.5,
-"yaw": -90.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
-"x": 98000.0,
-"y": 68300.0,
-"z": 5689.0,
-"yaw": -90.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
-"x": -28600.0,
-"y": 56500.0,
-"z": 5435.3,
 "yaw": -90.0,
 "scale": 1.0
 },
@@ -2652,15 +2625,6 @@
 {
 "kit": "riyadh",
 "asset": "SM_StreetLight_KFR",
-"x": 45800.0,
-"y": 21100.0,
-"z": 5443.3,
-"yaw": -90.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
 "x": 66200.0,
 "y": 21100.0,
 "z": 5452.1,
@@ -2823,15 +2787,6 @@
 {
 "kit": "riyadh",
 "asset": "SM_StreetLight_KFR",
-"x": 45800.0,
-"y": 9300.0,
-"z": 5404.9,
-"yaw": -90.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
 "x": 66200.0,
 "y": 9300.0,
 "z": 5424.6,
@@ -2871,15 +2826,6 @@
 "x": 85400.0,
 "y": 9300.0,
 "z": 5569.8,
-"yaw": -90.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
-"x": 95000.0,
-"y": 9300.0,
-"z": 5733.5,
 "yaw": -90.0,
 "scale": 1.0
 },
@@ -2979,15 +2925,6 @@
 "x": 19400.0,
 "y": -2500.0,
 "z": 5424.9,
-"yaw": -90.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
-"x": 45800.0,
-"y": -2500.0,
-"z": 5427.7,
 "yaw": -90.0,
 "scale": 1.0
 },
@@ -3141,15 +3078,6 @@
 "x": 15200.0,
 "y": -14300.0,
 "z": 5401.8,
-"yaw": -90.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
-"x": 45800.0,
-"y": -14300.0,
-"z": 5465.0,
 "yaw": -90.0,
 "scale": 1.0
 },
@@ -3318,15 +3246,6 @@
 {
 "kit": "riyadh",
 "asset": "SM_StreetLight_KFR",
-"x": 45800.0,
-"y": -26100.0,
-"z": 5436.7,
-"yaw": -90.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
 "x": 66200.0,
 "y": -26100.0,
 "z": 5401.1,
@@ -3384,15 +3303,6 @@
 "x": 95000.0,
 "y": -26100.0,
 "z": 5752.9,
-"yaw": -90.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
-"x": -28600.0,
-"y": -37900.0,
-"z": 5453.1,
 "yaw": -90.0,
 "scale": 1.0
 },
@@ -5740,15 +5650,6 @@
 "kit": "riyadh",
 "asset": "SM_StreetLight_KFR",
 "x": 27500.0,
-"y": -30600.0,
-"z": 5438.0,
-"yaw": 180.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
-"x": 27500.0,
 "y": -78600.0,
 "z": 5487.5,
 "yaw": 180.0,
@@ -7333,24 +7234,6 @@
 "kit": "riyadh",
 "asset": "SM_StreetLight_KFR",
 "x": 98300.0,
-"y": 49200.0,
-"z": 5635.8,
-"yaw": 180.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
-"x": 98300.0,
-"y": 41400.0,
-"z": 5491.5,
-"yaw": 180.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
-"x": 98300.0,
 "y": 33600.0,
 "z": 5510.0,
 "yaw": 180.0,
@@ -7560,15 +7443,6 @@
 "x": 98300.0,
 "y": -81600.0,
 "z": 5725.8,
-"yaw": 180.0,
-"scale": 1.0
-},
-{
-"kit": "riyadh",
-"asset": "SM_StreetLight_KFR",
-"x": 98300.0,
-"y": -85800.0,
-"z": 5704.9,
 "yaw": 180.0,
 "scale": 1.0
 },
