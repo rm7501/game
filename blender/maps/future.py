@@ -520,7 +520,8 @@ def previews(m, props):
              ("chase", s_mtn - 4, dict(back=13, height=4.0, ahead=70, lens=26)),
              ("overview", (-60, -560, 70), (OXA[0], OXA[1], 10), 30),
              ("chase", 100, dict(back=12, height=3.5, ahead=60, lens=26, track=m.shortcuts[0])),
-             ("overview", (300, -650, 160), (60, 320, 190), 26)]
+             ("overview", (300, -650, 160), (60, 320, 190), 26),
+             ("side", -30, dict(side=1, off=15, height=6.5, ahead=80, lens=26))]
     render_previews(m, shots, lighting, cars)
 
 

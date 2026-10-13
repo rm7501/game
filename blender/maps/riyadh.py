@@ -375,7 +375,9 @@ def life(m: MapBuild):
         m.place("life", "SM_BirdFlock", -650 + rnd.uniform(-80, 80), rnd.uniform(-700, 700), z=rnd.uniform(35, 70),
                 yaw=rnd.uniform(0, 360), scale=1.4)
     for k, y in enumerate(range(-900, 901, 300)):              # power line along the wadi rim
-        m.place("life", "SM_PowerPylon", float(valley_center(np.array(y))) + 330, y, yaw=0)
+        x = float(valley_center(np.array(y))) + 330
+        if m.clearance(x, y) > 15:
+            m.place("life", "SM_PowerPylon", x, y, yaw=0)
 
 
 def build(render=True, layout_only=False):
@@ -416,9 +418,10 @@ def previews(m):
     shots = [("overview", (1150, -1250, 760), (-120, 40, 0), 30),
              ("chase", 262, dict(back=12, height=3.0, ahead=60, lens=28)),
              ("overview", (520, 300, PL + 70), (330, 500, PL), 26),
-             ("chase", 1780, dict(back=12, height=4.0, ahead=80, lens=26)),
+             ("side", m.main.nearest_s((140, 430)) + 40, dict(side=-1, off=20, height=7, ahead=-80, lens=28)),
              ("chase", 2362, dict(back=12, height=3.5, ahead=60, lens=28)),
-             ("chase", 3402, dict(back=11, height=3.2, ahead=50, lens=30))]
+             ("chase", 3402, dict(back=11, height=3.2, ahead=50, lens=30)),
+             ("side", -30, dict(side=1, off=15, height=6.5, ahead=80, lens=26))]
     render_previews(m, shots, lighting, cars)
 
 

@@ -262,6 +262,14 @@ def render_previews(m, shots, lighting, cars=(), res=(1600, 900), samples=64, pr
         if shot[0] == "overview":
             _, loc, target, lens = shot
             sr.camera(loc, target, lens)
+        elif shot[0] == "side":            # spectator's view from beside the track
+            _, s, kw = shot
+            tr = kw.get("track") or m.main
+            p, t, n, w, b = tr.frame(s % tr.length)
+            p2, *_ = tr.frame((s + kw.get("ahead", 60)) % tr.length)
+            side = kw.get("side", 1)
+            cam = p + np.array([n[0], n[1], 0]) * side * (w / 2 + kw.get("off", 14)) + np.array([0, 0, kw.get("height", 6)])
+            sr.camera(tuple(cam), tuple(p2 + np.array([0, 0, 1.0])), kw.get("lens", 26))
         else:
             _, s, kw = shot
             m.chase_camera(s, **kw)

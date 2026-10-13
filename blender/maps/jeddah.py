@@ -500,7 +500,8 @@ def previews(m, props):
              ("chase", s_mosque, dict(back=12, height=3.0, ahead=60, lens=28)),
              ("overview", (-385, 95, 9), (-600, 260, 12), 32),
              ("chase", s_old, dict(back=11, height=3.0, ahead=40, lens=28)),
-             ("chase", 62, dict(back=9, height=2.3, ahead=45, lens=24, track=m.shortcuts[1]))]
+             ("chase", 62, dict(back=9, height=2.3, ahead=45, lens=24, track=m.shortcuts[1])),
+             ("side", -30, dict(side=1, off=15, height=6.5, ahead=80, lens=26))]
     render_previews(m, shots, lighting, cars)
 
 
