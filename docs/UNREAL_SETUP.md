@@ -16,7 +16,7 @@ The script creates `/Game/SaharaRacers/`:
 | Folder | Contents |
 |---|---|
 | `Textures/` | all tileable PBR textures (+ per-kit signs, plates, card art). Normal maps are flipped to DirectX automatically. |
-| `Materials/` | 5 master materials: `M_SR_Master`, `M_SR_CarPaint` (clear coat), `M_SR_Glass`, `M_SR_Foliage` (two-sided), `M_SR_VFX` (additive) |
+| `Materials/` | 7 master materials: `M_SR_Master`, `M_SR_CarPaint` (clear coat), `M_SR_Glass`, `M_SR_Foliage` (two-sided), `M_SR_VFX` (additive), `M_SR_TerrainBlend` (4 texture sets blended by vertex colour, for the map terrain) and `M_SR_Water` (panning wave normals) |
 | `Materials/Instances/` | one `MI_*` per material in `assets/materials.json` (car paints, facades, sandstone, coral stone…) |
 | `Common/ Riyadh/ Alula/ Jeddah/ Asir/ Future/` | static meshes, Nanite on, collision set up |
 | `Cars/<Car>/` | `SK_<Car>` skeletal mesh + skeleton + physics asset, `SM_<Car>_Body`, `SM_<Car>_Wheel_F/R` |
@@ -54,6 +54,29 @@ setup("alula", showcase=True)   # also lays out every AlUla asset in a row so yo
 | Future City | blue hour, cyan/magenta haze, strong bloom for the neon |
 
 They are starting points — every value lives in `PRESETS` at the top of `setup_map.py`.
+
+---
+
+## 2b. The race maps
+
+`unreal/build_map.py` assembles one of the five finished maps into the open level: terrain, road,
+props, gameplay markers and lighting. Run it after the import above. The full guide is in
+**[MAPS.md](MAPS.md)**.
+
+```python
+exec(open(r"C:/path/to/game/unreal/build_map.py").read())
+build("AsirMountains")          # RiyadhNights | AlUla | JeddahCorniche | AsirMountains | FutureCity
+```
+
+* **Terrain:** 16 Nanite mesh tiles (2 km × 2 km, 6 m grid) using `M_SR_TerrainBlend`. You can use a
+  Landscape instead: `build(..., terrain="none")` and import the heightmap from `assets/maps/<Map>/landscape/`.
+* **Roads:** road chunks with complex collision, so cars drive on the exact surface, kerbs and banking.
+  Barriers are part of the same mesh.
+* **Props:** several thousand actors on the forest maps (Asir has ~1,800 junipers). For the best performance,
+  select a prop type in the Outliner folder `SaharaRacers/<Map>/Props/...`, then use **Tools → Merge Actors →
+  Batch** (instanced) to turn it into one instanced actor.
+* **Gameplay:** everything is tagged, see MAPS.md. Checkpoint index 0 is the start/finish line, and checkpoints
+  are about 250 m apart.
 
 ---
 

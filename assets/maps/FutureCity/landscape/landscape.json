@@ -1,0 +1,33 @@
+{
+ "heightmap": "H_FutureCity.png",
+ "resolution": 2017,
+ "size_m": 2016.0,
+ "ue_location_cm": [
+  -100800.0,
+  -100800.0,
+  0.0
+ ],
+ "ue_scale": [
+  100.0,
+  100.0,
+  154
+ ],
+ "layers": [
+  "Sand",
+  "Granite",
+  "Paving",
+  "Gravel"
+ ],
+ "weightmaps": [
+  "W_FutureCity_Sand.png",
+  "W_FutureCity_Granite.png",
+  "W_FutureCity_Paving.png",
+  "W_FutureCity_Gravel.png"
+ ],
+ "height_range_m": [
+  -7.8703741582874605,
+  382.8355012929194
+ ],
+ "water_level_m": 0.0,
+ "note": "Landscape mode > New > Import from File. Use the location/scale above exactly."
+}

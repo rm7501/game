@@ -29,10 +29,10 @@
   ]
  },
  "SM_KingFahdFountain": {
-  "tris": 384,
+  "tris": 288,
   "size_m": [
-   52.0,
-   52.0,
+   20.0,
+   20.0,
    312.0
   ],
   "materials": [

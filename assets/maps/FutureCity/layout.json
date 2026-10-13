@@ -1,0 +1,5533 @@
+{
+"map": "FutureCity",
+"units": "Unreal cm / degrees",
+"count": 614,
+"props": [
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -178000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -158000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -138000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -118000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -98000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/FutureCity/props",
+"asset": "SM_TheLine_Portal",
+"x": -78000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -58000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -38000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -18000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 2000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 22000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/FutureCity/props",
+"asset": "SM_TheLine_Portal",
+"x": 42000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 62000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 82000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 102000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 122000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 142000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 162000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 182000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 202000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 222000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_HoloArch",
+"x": -60000.0,
+"y": -32000.0,
+"z": 3000.0,
+"yaw": -90.64,
+"scale": 0.85
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 76475.7,
+"y": -36037.5,
+"z": 17408.0,
+"yaw": -30.08,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 16564.9,
+"y": -31313.7,
+"z": 12045.3,
+"yaw": -46.91,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -55440.5,
+"y": -31501.2,
+"z": 7471.4,
+"yaw": -163.81,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -85541.9,
+"y": -28272.0,
+"z": 14708.1,
+"yaw": -151.65,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 2274.1,
+"y": -34107.9,
+"z": 9513.1,
+"yaw": -20.72,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 50958.4,
+"y": -32802.1,
+"z": 13937.1,
+"yaw": -223.56,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 84732.3,
+"y": -30765.1,
+"z": 15444.8,
+"yaw": -132.73,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 12968.4,
+"y": -33444.8,
+"z": 8853.0,
+"yaw": -30.87,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -4668.0,
+"y": -33961.2,
+"z": 12941.0,
+"yaw": -161.08,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 25628.1,
+"y": -29138.3,
+"z": 6842.4,
+"yaw": -116.43,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 56857.2,
+"y": -29260.5,
+"z": 5891.7,
+"yaw": -35.5,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -82992.0,
+"y": -29980.1,
+"z": 12677.8,
+"yaw": -295.44,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -30455.1,
+"y": -30826.9,
+"z": 8469.6,
+"yaw": -109.72,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 49964.8,
+"y": -32440.9,
+"z": 8024.6,
+"yaw": -38.57,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 51085.6,
+"y": -33864.3,
+"z": 16462.8,
+"yaw": -85.69,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 8186.2,
+"y": -35768.7,
+"z": 12971.9,
+"yaw": -340.37,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -59893.2,
+"y": -36275.1,
+"z": 5027.6,
+"yaw": -149.84,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -85794.7,
+"y": -34786.1,
+"z": 14370.6,
+"yaw": -350.54,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 54893.5,
+"y": -36039.5,
+"z": 12171.2,
+"yaw": -355.76,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 44822.6,
+"y": -30615.3,
+"z": 18621.0,
+"yaw": -135.72,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -55203.5,
+"y": -28182.9,
+"z": 11096.2,
+"yaw": -70.79,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 78044.1,
+"y": -36054.1,
+"z": 7396.1,
+"yaw": -37.26,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 5214.6,
+"y": -29027.1,
+"z": 12246.0,
+"yaw": -292.62,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -44448.8,
+"y": -31295.8,
+"z": 17532.9,
+"yaw": -160.09,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -28300.3,
+"y": -35531.0,
+"z": 16243.6,
+"yaw": -322.27,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 33794.0,
+"y": -31213.6,
+"z": 14456.7,
+"yaw": -298.74,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 25112.2,
+"y": -29645.8,
+"z": 8569.7,
+"yaw": -147.46,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 48899.8,
+"y": -32513.8,
+"z": 12339.1,
+"yaw": -297.55,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -70479.7,
+"y": -33181.1,
+"z": 9121.0,
+"yaw": -201.37,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 60362.9,
+"y": -29735.2,
+"z": 18282.5,
+"yaw": -28.29,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 11163.8,
+"y": -32376.3,
+"z": 7679.2,
+"yaw": -201.91,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -5269.1,
+"y": -31546.4,
+"z": 14832.0,
+"yaw": -1.42,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -22108.2,
+"y": -34570.4,
+"z": 6299.6,
+"yaw": -312.26,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -53353.7,
+"y": -33630.1,
+"z": 6762.8,
+"yaw": -161.76,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -13941.0,
+"y": -28236.2,
+"z": 14554.2,
+"yaw": -172.86,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 34021.7,
+"y": -32352.2,
+"z": 12426.9,
+"yaw": -189.41,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -36397.0,
+"y": -35588.8,
+"z": 5478.6,
+"yaw": -315.58,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 65423.5,
+"y": -31980.3,
+"z": 15698.8,
+"yaw": -242.41,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": 18913.2,
+"y": -30124.6,
+"z": 8930.8,
+"yaw": -125.78,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_Drone",
+"x": -35609.1,
+"y": -36137.3,
+"z": 9250.9,
+"yaw": -139.52,
+"scale": 2.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 43547.5,
+"y": -16728.0,
+"z": 2958.5,
+"yaw": -7.83,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 41566.1,
+"y": -16455.4,
+"z": 2958.5,
+"yaw": 172.17,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 44278.0,
+"y": -12248.2,
+"z": 2964.7,
+"yaw": -11.3,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 42316.8,
+"y": -11856.2,
+"z": 2964.7,
+"yaw": 168.7,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 45353.6,
+"y": -8122.4,
+"z": 2965.0,
+"yaw": -18.95,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 43462.0,
+"y": -7473.0,
+"z": 2965.1,
+"yaw": 161.05,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 47125.5,
+"y": -4030.6,
+"z": 2947.4,
+"yaw": -26.86,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 45341.3,
+"y": -3126.9,
+"z": 2947.4,
+"yaw": 153.14,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 49281.3,
+"y": -337.6,
+"z": 2907.7,
+"yaw": -33.82,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 47619.7,
+"y": 775.5,
+"z": 2907.7,
+"yaw": 146.18,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 52020.9,
+"y": 3125.4,
+"z": 2888.5,
+"yaw": -44.09,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 50584.4,
+"y": 4517.0,
+"z": 2888.4,
+"yaw": 135.91,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 55274.9,
+"y": 5760.2,
+"z": 2969.9,
+"yaw": -55.88,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 54152.9,
+"y": 7415.8,
+"z": 2969.9,
+"yaw": 124.12,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 59126.9,
+"y": 8270.4,
+"z": 3086.2,
+"yaw": -56.01,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 58008.8,
+"y": 9928.6,
+"z": 3086.3,
+"yaw": 123.99,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 62694.8,
+"y": 10894.2,
+"z": 3332.8,
+"yaw": -54.32,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 61528.4,
+"y": 12518.8,
+"z": 3332.8,
+"yaw": 125.68,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 66457.9,
+"y": 13572.7,
+"z": 3334.9,
+"yaw": -53.24,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 65260.9,
+"y": 15174.9,
+"z": 3334.9,
+"yaw": 126.76,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 69905.6,
+"y": 16589.6,
+"z": 3532.5,
+"yaw": -42.47,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 68430.4,
+"y": 17940.1,
+"z": 3533.2,
+"yaw": 137.53,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 72546.2,
+"y": 20702.6,
+"z": 3591.1,
+"yaw": -24.8,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 70730.7,
+"y": 21541.6,
+"z": 3591.1,
+"yaw": 155.2,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 74052.1,
+"y": 25038.5,
+"z": 3681.2,
+"yaw": -13.5,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 72107.4,
+"y": 25505.4,
+"z": 3681.2,
+"yaw": 166.5,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 74590.9,
+"y": 29861.8,
+"z": 3993.9,
+"yaw": 1.81,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 72591.9,
+"y": 29798.6,
+"z": 3993.9,
+"yaw": 181.81,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 73643.9,
+"y": 34466.4,
+"z": 3948.2,
+"yaw": 20.26,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 71767.6,
+"y": 33773.8,
+"z": 3948.2,
+"yaw": 200.26,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 71471.2,
+"y": 38760.1,
+"z": 3800.1,
+"yaw": 32.96,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 69793.1,
+"y": 37671.9,
+"z": 3800.1,
+"yaw": 212.96,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 68582.1,
+"y": 42347.1,
+"z": 3702.4,
+"yaw": 45.25,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 67174.0,
+"y": 40926.8,
+"z": 3702.4,
+"yaw": 225.25,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 64606.2,
+"y": 45180.3,
+"z": 3598.0,
+"yaw": 62.53,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 63683.5,
+"y": 43405.8,
+"z": 3598.0,
+"yaw": 242.53,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 60408.4,
+"y": 46930.2,
+"z": 3403.7,
+"yaw": 71.24,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 59765.2,
+"y": 45036.5,
+"z": 3403.7,
+"yaw": 251.24,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 55918.7,
+"y": 48253.9,
+"z": 3198.9,
+"yaw": 75.92,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 55431.9,
+"y": 46314.0,
+"z": 3198.9,
+"yaw": 255.92,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 51420.3,
+"y": 48964.8,
+"z": 3153.3,
+"yaw": 85.01,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 51246.5,
+"y": 46972.3,
+"z": 3153.3,
+"yaw": 265.01,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 46788.6,
+"y": 49230.0,
+"z": 3082.9,
+"yaw": 87.27,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 46693.4,
+"y": 47232.2,
+"z": 3083.0,
+"yaw": 267.27,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 42404.7,
+"y": 49510.4,
+"z": 3100.0,
+"yaw": 86.87,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 42295.3,
+"y": 47513.4,
+"z": 3100.0,
+"yaw": 266.87,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 37794.3,
+"y": 49693.9,
+"z": 3100.0,
+"yaw": 87.66,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 37712.6,
+"y": 47695.6,
+"z": 3100.0,
+"yaw": 267.66,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 33482.7,
+"y": 50003.0,
+"z": 3065.0,
+"yaw": 83.28,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 33248.6,
+"y": 48016.7,
+"z": 3065.0,
+"yaw": 263.28,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 29067.2,
+"y": 50801.8,
+"z": 2927.0,
+"yaw": 76.93,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 28615.0,
+"y": 48853.6,
+"z": 2927.1,
+"yaw": 256.93,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 24869.5,
+"y": 51916.9,
+"z": 2532.2,
+"yaw": 73.7,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 24308.3,
+"y": 49997.2,
+"z": 2532.1,
+"yaw": 253.7,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 20481.1,
+"y": 53252.1,
+"z": 2307.5,
+"yaw": 72.95,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 19894.7,
+"y": 51340.0,
+"z": 2307.5,
+"yaw": 252.95,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 16277.1,
+"y": 54530.5,
+"z": 2023.2,
+"yaw": 72.6,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 15679.0,
+"y": 52622.0,
+"z": 2023.2,
+"yaw": 252.6,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 12001.6,
+"y": 56016.4,
+"z": 1414.7,
+"yaw": 68.43,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 11266.2,
+"y": 54156.5,
+"z": 1414.7,
+"yaw": 248.43,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 8139.6,
+"y": 57828.5,
+"z": 1111.9,
+"yaw": 60.92,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 7167.4,
+"y": 56080.7,
+"z": 1111.8,
+"yaw": 240.92,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 4345.5,
+"y": 60235.2,
+"z": 826.7,
+"yaw": 54.89,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 3195.3,
+"y": 58599.0,
+"z": 826.8,
+"yaw": 234.89,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": 856.1,
+"y": 62835.7,
+"z": 465.1,
+"yaw": 52.15,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -371.2,
+"y": 61256.5,
+"z": 465.3,
+"yaw": 232.15,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -58285.4,
+"y": 52119.3,
+"z": 1302.6,
+"yaw": -219.13,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -56733.9,
+"y": 50857.2,
+"z": 1303.9,
+"yaw": -39.13,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -61384.6,
+"y": 48872.2,
+"z": 1959.4,
+"yaw": -225.39,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -60001.4,
+"y": 47469.7,
+"z": 1959.6,
+"yaw": -45.39,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -64403.1,
+"y": 45430.3,
+"z": 2548.3,
+"yaw": -214.47,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -62820.2,
+"y": 44343.6,
+"z": 2548.3,
+"yaw": -34.47,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -63717.5,
+"y": 40862.4,
+"z": 2855.6,
+"yaw": 17.58,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -63108.4,
+"y": 36252.6,
+"z": 2956.4,
+"yaw": -142.61,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -61598.9,
+"y": 37406.4,
+"z": 2956.4,
+"yaw": 37.39,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -60536.7,
+"y": 32624.0,
+"z": 2914.3,
+"yaw": -151.54,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -58866.3,
+"y": 33529.3,
+"z": 2914.1,
+"yaw": 28.46,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -60255.7,
+"y": 29397.2,
+"z": 2894.5,
+"yaw": -210.77,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -58623.2,
+"y": 28425.0,
+"z": 2894.5,
+"yaw": -30.77,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -63312.8,
+"y": 26564.1,
+"z": 2927.1,
+"yaw": -235.14,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -62226.9,
+"y": 25005.0,
+"z": 2927.0,
+"yaw": -55.14,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -66979.7,
+"y": 24237.1,
+"z": 2963.8,
+"yaw": -238.56,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -65988.6,
+"y": 22616.1,
+"z": 2963.8,
+"yaw": -58.56,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -70904.0,
+"y": 21683.6,
+"z": 2922.7,
+"yaw": -233.54,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -69774.9,
+"y": 20155.4,
+"z": 2922.7,
+"yaw": -53.54,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -74178.4,
+"y": 18089.6,
+"z": 2893.0,
+"yaw": -202.15,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -72418.7,
+"y": 17373.1,
+"z": 2892.9,
+"yaw": -22.15,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -72868.9,
+"y": 12936.3,
+"z": 2918.5,
+"yaw": -141.95,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -71372.8,
+"y": 14107.4,
+"z": 2918.3,
+"yaw": 38.05,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -68442.3,
+"y": 10991.4,
+"z": 2961.8,
+"yaw": 45.28,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -66807.2,
+"y": 6363.5,
+"z": 2911.1,
+"yaw": -144.97,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -65251.3,
+"y": 7454.0,
+"z": 2911.1,
+"yaw": 35.03,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -66199.6,
+"y": 3193.1,
+"z": 2895.0,
+"yaw": -204.4,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -64469.3,
+"y": 2408.2,
+"z": 2895.0,
+"yaw": -24.4,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -68915.9,
+"y": 48.0,
+"z": 2932.6,
+"yaw": -229.34,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -67677.9,
+"y": -1393.4,
+"z": 2932.5,
+"yaw": -49.34,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -72332.8,
+"y": -2632.7,
+"z": 2954.1,
+"yaw": -232.75,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -71182.8,
+"y": -4145.2,
+"z": 2954.1,
+"yaw": -52.75,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -75964.1,
+"y": -5643.1,
+"z": 2915.0,
+"yaw": -225.53,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -74633.1,
+"y": -6999.0,
+"z": 2915.0,
+"yaw": -45.53,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -78523.5,
+"y": -9698.5,
+"z": 2908.0,
+"yaw": -198.41,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -76714.0,
+"y": -10300.9,
+"z": 2908.0,
+"yaw": -18.41,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_FutureStreetLight",
+"x": -79377.7,
+"y": -14462.7,
+"z": 2944.8,
+"yaw": -183.36,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -100500.0,
+"y": -19200.0,
+"z": 5977.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -97500.0,
+"y": -19200.0,
+"z": 6816.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -94500.0,
+"y": -19200.0,
+"z": 5938.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -91500.0,
+"y": -19200.0,
+"z": 3924.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -88500.0,
+"y": -19200.0,
+"z": 3000.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -85500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -82500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -79500.0,
+"y": -19200.0,
+"z": 2952.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -76500.0,
+"y": -19200.0,
+"z": 2973.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -73500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -70500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -67500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -64500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -61500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -58500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -55500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -52500.0,
+"y": -19200.0,
+"z": 3204.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -49500.0,
+"y": -19200.0,
+"z": 3693.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -46500.0,
+"y": -19200.0,
+"z": 4627.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -43500.0,
+"y": -19200.0,
+"z": 4558.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -40500.0,
+"y": -19200.0,
+"z": 4388.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -37500.0,
+"y": -19200.0,
+"z": 3811.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -34500.0,
+"y": -19200.0,
+"z": 3475.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -31500.0,
+"y": -19200.0,
+"z": 3089.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -28500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -25500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -22500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -19500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -16500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -13500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -10500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -7500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -4500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -1500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 1500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 4500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 7500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 10500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 13500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 16500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 19500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 22500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 25500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 28500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 31500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 34500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 37500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 40500.0,
+"y": -19200.0,
+"z": 2963.7,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 43500.0,
+"y": -19200.0,
+"z": 2952.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 46500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 49500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 52500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 55500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 58500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 61500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 64500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 67500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 70500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 73500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 76500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 79500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 82500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 85500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 88500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 91500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 94500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 97500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 100500.0,
+"y": -19200.0,
+"z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevCar",
+"x": -42000.0,
+"y": -19200.0,
+"z": 5993.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevCar",
+"x": 26000.0,
+"y": -19200.0,
+"z": 4472.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/FutureCity/props",
+"asset": "SM_OxagonPlatform",
+"x": -33000.0,
+"y": 76000.0,
+"z": 0.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_NeomTower_Halo",
+"x": -35000.0,
+"y": 70200.0,
+"z": 260.0,
+"yaw": -0.0,
+"scale": 0.55
+},
+{
+"kit": "future",
+"asset": "SM_NeomTower_Petal",
+"x": -33200.0,
+"y": 82000.0,
+"z": 260.0,
+"yaw": -40.0,
+"scale": 0.45
+},
+{
+"kit": "future",
+"asset": "SM_NeomTower_Halo",
+"x": -39000.0,
+"y": 80800.0,
+"z": 260.0,
+"yaw": -10.0,
+"scale": 0.4
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -22296.4,
+"y": 36222.7,
+"z": 3000.0,
+"yaw": -142.58,
+"scale": 1.062
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 28846.6,
+"y": -2825.3,
+"z": 3000.0,
+"yaw": -275.46,
+"scale": 1.089
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 251.0,
+"y": 26505.8,
+"z": 3000.0,
+"yaw": -62.16,
+"scale": 1.042
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -23920.0,
+"y": -9938.6,
+"z": 3000.0,
+"yaw": -298.41,
+"scale": 1.323
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 20033.6,
+"y": 31167.6,
+"z": 3000.0,
+"yaw": -111.55,
+"scale": 1.251
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 14892.1,
+"y": -5860.3,
+"z": 3000.0,
+"yaw": -316.82,
+"scale": 1.035
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 5438.9,
+"y": 4384.7,
+"z": 3000.0,
+"yaw": -182.14,
+"scale": 1.071
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -4480.9,
+"y": 36996.6,
+"z": 3000.0,
+"yaw": -336.45,
+"scale": 1.346
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 1072.9,
+"y": 25186.2,
+"z": 3000.0,
+"yaw": -327.19,
+"scale": 1.229
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 26173.8,
+"y": -5490.5,
+"z": 3000.0,
+"yaw": -183.01,
+"scale": 1.166
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 4918.4,
+"y": 17861.6,
+"z": 3000.0,
+"yaw": -58.08,
+"scale": 1.122
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 20944.4,
+"y": 39578.6,
+"z": 3000.0,
+"yaw": -16.68,
+"scale": 1.251
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -18967.5,
+"y": 12061.2,
+"z": 3000.0,
+"yaw": -169.65,
+"scale": 1.137
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 34795.9,
+"y": 31047.9,
+"z": 3000.0,
+"yaw": -148.61,
+"scale": 1.081
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 7449.9,
+"y": 26526.9,
+"z": 3000.0,
+"yaw": -128.1,
+"scale": 1.299
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -15949.8,
+"y": 10722.4,
+"z": 3000.0,
+"yaw": -325.55,
+"scale": 1.04
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 17387.2,
+"y": 7535.8,
+"z": 3000.0,
+"yaw": -85.47,
+"scale": 1.132
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -26684.5,
+"y": 16294.9,
+"z": 3000.0,
+"yaw": -15.41,
+"scale": 1.279
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 27194.6,
+"y": -11465.3,
+"z": 3000.0,
+"yaw": -264.56,
+"scale": 1.384
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 32450.5,
+"y": -1413.4,
+"z": 3000.0,
+"yaw": -147.75,
+"scale": 1.377
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 6538.3,
+"y": -3804.0,
+"z": 3000.0,
+"yaw": -105.63,
+"scale": 1.077
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -6689.3,
+"y": 34359.5,
+"z": 3000.0,
+"yaw": -137.39,
+"scale": 1.385
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -15152.0,
+"y": 41473.8,
+"z": 3000.0,
+"yaw": -16.13,
+"scale": 1.068
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 18780.9,
+"y": 21687.4,
+"z": 3000.0,
+"yaw": -104.52,
+"scale": 1.039
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 33631.1,
+"y": 18258.7,
+"z": 3000.0,
+"yaw": -74.85,
+"scale": 1.024
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 10762.0,
+"y": 33620.1,
+"z": 3000.0,
+"yaw": -14.72,
+"scale": 1.196
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -21320.6,
+"y": -13867.6,
+"z": 3000.0,
+"yaw": -44.02,
+"scale": 1.212
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 18034.4,
+"y": 19078.0,
+"z": 3000.0,
+"yaw": -355.56,
+"scale": 1.191
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -21860.3,
+"y": 19005.1,
+"z": 3000.0,
+"yaw": -13.27,
+"scale": 1.168
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -21356.1,
+"y": -7800.8,
+"z": 3000.0,
+"yaw": -299.18,
+"scale": 1.199
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -21820.8,
+"y": 30348.3,
+"z": 3000.0,
+"yaw": -83.33,
+"scale": 1.348
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -29372.4,
+"y": 39128.7,
+"z": 3000.0,
+"yaw": -334.09,
+"scale": 1.226
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 27571.4,
+"y": 5377.5,
+"z": 3000.0,
+"yaw": -284.71,
+"scale": 1.298
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -2928.4,
+"y": 36797.1,
+"z": 3000.0,
+"yaw": -75.93,
+"scale": 1.35
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 27482.1,
+"y": -9776.3,
+"z": 3000.0,
+"yaw": -121.17,
+"scale": 1.263
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 19962.8,
+"y": 6020.3,
+"z": 3000.0,
+"yaw": -293.34,
+"scale": 1.211
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 9104.9,
+"y": 3586.2,
+"z": 3000.0,
+"yaw": -96.59,
+"scale": 1.369
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 31720.9,
+"y": 37834.7,
+"z": 3000.0,
+"yaw": -349.59,
+"scale": 1.385
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 10126.4,
+"y": 39505.5,
+"z": 3000.0,
+"yaw": -323.63,
+"scale": 1.051
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 32640.1,
+"y": 4637.4,
+"z": 3000.0,
+"yaw": -21.77,
+"scale": 1.067
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 7639.2,
+"y": 10124.5,
+"z": 3000.0,
+"yaw": -268.74,
+"scale": 1.371
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -23609.4,
+"y": 41816.7,
+"z": 3000.0,
+"yaw": -332.05,
+"scale": 1.005
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 25731.8,
+"y": 35510.2,
+"z": 3000.0,
+"yaw": -291.55,
+"scale": 1.313
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 25840.8,
+"y": 11165.9,
+"z": 3000.0,
+"yaw": -316.33,
+"scale": 1.081
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 10361.1,
+"y": 23484.0,
+"z": 3000.0,
+"yaw": -321.03,
+"scale": 1.309
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -4636.7,
+"y": 12521.1,
+"z": 3000.0,
+"yaw": -9.5,
+"scale": 1.014
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 4586.5,
+"y": 14625.5,
+"z": 3000.0,
+"yaw": -311.3,
+"scale": 1.243
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -29592.9,
+"y": 21696.1,
+"z": 3000.0,
+"yaw": -276.33,
+"scale": 1.209
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 22067.1,
+"y": 37232.1,
+"z": 3000.0,
+"yaw": -195.62,
+"scale": 1.152
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 19054.1,
+"y": 24574.5,
+"z": 3000.0,
+"yaw": -84.13,
+"scale": 1.195
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -31416.2,
+"y": 7226.1,
+"z": 3000.0,
+"yaw": -318.72,
+"scale": 1.205
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -7453.5,
+"y": -6039.3,
+"z": 3000.0,
+"yaw": -279.57,
+"scale": 1.027
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 26099.4,
+"y": 31032.3,
+"z": 3000.0,
+"yaw": -108.83,
+"scale": 1.335
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -8315.2,
+"y": -2707.5,
+"z": 3000.0,
+"yaw": -60.26,
+"scale": 1.35
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -26773.7,
+"y": 33638.8,
+"z": 3000.0,
+"yaw": -177.93,
+"scale": 1.135
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 639.7,
+"y": -8628.1,
+"z": 3000.0,
+"yaw": -255.78,
+"scale": 1.002
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -3512.0,
+"y": 1927.1,
+"z": 3000.0,
+"yaw": -174.33,
+"scale": 1.03
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -21591.9,
+"y": -5463.9,
+"z": 3000.0,
+"yaw": -128.44,
+"scale": 1.307
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 33935.4,
+"y": 6904.8,
+"z": 3000.0,
+"yaw": -243.62,
+"scale": 1.244
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -16504.6,
+"y": -9116.3,
+"z": 3000.0,
+"yaw": -168.13,
+"scale": 1.365
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -17076.2,
+"y": -6581.5,
+"z": 3000.0,
+"yaw": -283.27,
+"scale": 1.245
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 9656.5,
+"y": 34537.7,
+"z": 3000.0,
+"yaw": -29.72,
+"scale": 1.058
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 27643.5,
+"y": 21168.7,
+"z": 3000.0,
+"yaw": -207.35,
+"scale": 1.14
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 6562.3,
+"y": 36765.8,
+"z": 3000.0,
+"yaw": -144.92,
+"scale": 1.374
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -26524.3,
+"y": 5361.9,
+"z": 3000.0,
+"yaw": -117.6,
+"scale": 1.12
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 31204.4,
+"y": -4467.3,
+"z": 3000.0,
+"yaw": -288.4,
+"scale": 1.323
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 31499.9,
+"y": 33125.9,
+"z": 3000.0,
+"yaw": -210.3,
+"scale": 1.198
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 3039.8,
+"y": -10523.0,
+"z": 3000.0,
+"yaw": -273.69,
+"scale": 1.387
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -31238.2,
+"y": 5512.9,
+"z": 3000.0,
+"yaw": -243.14,
+"scale": 1.298
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -9541.6,
+"y": 8454.1,
+"z": 3000.0,
+"yaw": -322.87,
+"scale": 1.281
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -16774.3,
+"y": 29099.4,
+"z": 3000.0,
+"yaw": -117.58,
+"scale": 1.251
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 34733.7,
+"y": -8345.0,
+"z": 3000.0,
+"yaw": -144.08,
+"scale": 1.16
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 21311.8,
+"y": 26108.8,
+"z": 3000.0,
+"yaw": -148.16,
+"scale": 1.005
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -26208.1,
+"y": 11748.9,
+"z": 3000.0,
+"yaw": -249.58,
+"scale": 1.246
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -12677.4,
+"y": -11259.7,
+"z": 3000.0,
+"yaw": -224.36,
+"scale": 1.062
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 5285.3,
+"y": 24514.7,
+"z": 3000.0,
+"yaw": -32.88,
+"scale": 1.103
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 26942.3,
+"y": -1563.5,
+"z": 3000.0,
+"yaw": -53.54,
+"scale": 1.095
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -17559.0,
+"y": -11084.0,
+"z": 3000.0,
+"yaw": -58.8,
+"scale": 1.316
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 11052.2,
+"y": 11360.4,
+"z": 3000.0,
+"yaw": -345.35,
+"scale": 1.105
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -672.5,
+"y": 33178.9,
+"z": 3000.0,
+"yaw": -34.83,
+"scale": 1.013
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -16261.1,
+"y": 35180.8,
+"z": 3000.0,
+"yaw": -22.05,
+"scale": 1.397
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -18320.8,
+"y": -7853.0,
+"z": 3000.0,
+"yaw": -252.71,
+"scale": 1.293
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 9138.5,
+"y": -11346.3,
+"z": 3000.0,
+"yaw": -316.25,
+"scale": 1.288
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 1996.8,
+"y": 3149.3,
+"z": 3000.0,
+"yaw": -260.53,
+"scale": 1.221
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -2308.8,
+"y": 33364.7,
+"z": 3000.0,
+"yaw": -303.96,
+"scale": 1.194
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 25608.7,
+"y": 27660.1,
+"z": 3000.0,
+"yaw": -140.88,
+"scale": 1.273
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 24619.7,
+"y": 23608.4,
+"z": 3000.0,
+"yaw": -139.25,
+"scale": 1.169
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -28561.5,
+"y": 33226.3,
+"z": 3000.0,
+"yaw": -305.49,
+"scale": 1.329
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -22598.6,
+"y": 11002.6,
+"z": 3000.0,
+"yaw": -171.61,
+"scale": 1.287
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -26117.9,
+"y": -4227.5,
+"z": 3000.0,
+"yaw": -358.72,
+"scale": 1.283
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 29092.2,
+"y": -10478.9,
+"z": 3000.0,
+"yaw": -136.6,
+"scale": 1.339
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 22531.9,
+"y": 9115.3,
+"z": 3000.0,
+"yaw": -38.58,
+"scale": 1.248
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 28380.3,
+"y": 24911.7,
+"z": 3000.0,
+"yaw": -232.87,
+"scale": 1.359
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 5007.6,
+"y": 39915.4,
+"z": 3000.0,
+"yaw": -227.5,
+"scale": 1.102
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 24347.3,
+"y": 4930.8,
+"z": 3000.0,
+"yaw": -110.66,
+"scale": 1.358
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 6879.1,
+"y": 23007.8,
+"z": 3000.0,
+"yaw": -300.3,
+"scale": 1.357
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 26989.7,
+"y": -7462.8,
+"z": 3000.0,
+"yaw": -237.0,
+"scale": 1.279
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 5351.1,
+"y": 12482.8,
+"z": 3000.0,
+"yaw": -355.48,
+"scale": 1.141
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -33886.7,
+"y": 2043.5,
+"z": 3000.0,
+"yaw": -179.31,
+"scale": 1.218
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 4840.5,
+"y": 28007.0,
+"z": 3000.0,
+"yaw": -72.31,
+"scale": 1.029
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 18619.1,
+"y": -8873.9,
+"z": 3000.0,
+"yaw": -250.82,
+"scale": 1.047
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 33388.8,
+"y": -4294.4,
+"z": 3000.0,
+"yaw": -183.35,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 23289.3,
+"y": 7091.7,
+"z": 3000.0,
+"yaw": -224.01,
+"scale": 1.007
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 14977.1,
+"y": 40079.4,
+"z": 3000.0,
+"yaw": -172.11,
+"scale": 1.058
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -13012.4,
+"y": -7849.1,
+"z": 3000.0,
+"yaw": -269.42,
+"scale": 1.326
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -17640.5,
+"y": 20246.2,
+"z": 3000.0,
+"yaw": -217.73,
+"scale": 1.014
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -9077.7,
+"y": -12593.7,
+"z": 3000.0,
+"yaw": -271.45,
+"scale": 1.345
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -17592.1,
+"y": 3319.0,
+"z": 3000.0,
+"yaw": -283.98,
+"scale": 1.282
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -7194.8,
+"y": 32207.3,
+"z": 3000.0,
+"yaw": -6.46,
+"scale": 1.355
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 29887.5,
+"y": 26547.1,
+"z": 3000.0,
+"yaw": -272.08,
+"scale": 1.163
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 7064.0,
+"y": -5146.8,
+"z": 3000.0,
+"yaw": -115.63,
+"scale": 1.248
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -20800.9,
+"y": 13377.3,
+"z": 3000.0,
+"yaw": -10.83,
+"scale": 1.105
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -30069.9,
+"y": -463.6,
+"z": 3000.0,
+"yaw": -31.23,
+"scale": 1.395
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -27550.7,
+"y": 36840.7,
+"z": 3000.0,
+"yaw": -76.18,
+"scale": 1.373
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 10156.7,
+"y": -7871.0,
+"z": 3000.0,
+"yaw": -179.73,
+"scale": 1.046
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -14462.7,
+"y": 16485.0,
+"z": 3000.0,
+"yaw": -356.51,
+"scale": 1.067
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -31449.7,
+"y": -12398.1,
+"z": 3000.0,
+"yaw": -106.78,
+"scale": 1.227
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -34321.6,
+"y": -5420.2,
+"z": 3000.0,
+"yaw": -64.54,
+"scale": 1.287
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -26419.0,
+"y": 30455.1,
+"z": 3000.0,
+"yaw": -12.55,
+"scale": 1.13
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -15389.4,
+"y": -13043.7,
+"z": 3000.0,
+"yaw": -218.45,
+"scale": 1.146
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 34258.2,
+"y": 32375.0,
+"z": 3000.0,
+"yaw": -77.39,
+"scale": 1.382
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 31357.7,
+"y": 3689.4,
+"z": 3000.0,
+"yaw": -352.31,
+"scale": 1.023
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 27767.1,
+"y": 2558.1,
+"z": 3000.0,
+"yaw": -240.51,
+"scale": 1.337
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -29665.0,
+"y": 15188.7,
+"z": 3000.0,
+"yaw": -196.62,
+"scale": 1.216
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -12835.4,
+"y": 352.2,
+"z": 3000.0,
+"yaw": -301.83,
+"scale": 1.303
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -23556.3,
+"y": 28656.7,
+"z": 3000.0,
+"yaw": -206.57,
+"scale": 1.078
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -12724.0,
+"y": 2347.5,
+"z": 3000.0,
+"yaw": -339.97,
+"scale": 1.076
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -13882.5,
+"y": -12967.5,
+"z": 3000.0,
+"yaw": -76.54,
+"scale": 1.011
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 14846.5,
+"y": -10552.3,
+"z": 3000.0,
+"yaw": -179.04,
+"scale": 1.017
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -17032.5,
+"y": 1724.5,
+"z": 3000.0,
+"yaw": -141.42,
+"scale": 1.056
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -11822.6,
+"y": 16030.1,
+"z": 3000.0,
+"yaw": -128.13,
+"scale": 1.179
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 18777.8,
+"y": 994.5,
+"z": 3000.0,
+"yaw": -150.63,
+"scale": 1.046
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -17835.1,
+"y": 10735.6,
+"z": 3000.0,
+"yaw": -322.08,
+"scale": 1.193
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 33031.1,
+"y": 12488.6,
+"z": 3000.0,
+"yaw": -65.2,
+"scale": 1.246
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 5006.9,
+"y": 8443.6,
+"z": 3000.0,
+"yaw": -260.87,
+"scale": 1.009
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -26277.9,
+"y": 26008.7,
+"z": 3000.0,
+"yaw": -156.65,
+"scale": 1.126
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 7580.1,
+"y": 32474.4,
+"z": 3000.0,
+"yaw": -124.39,
+"scale": 1.27
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 825.8,
+"y": -11687.7,
+"z": 3000.0,
+"yaw": -337.03,
+"scale": 1.103
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -14869.2,
+"y": 11893.1,
+"z": 3000.0,
+"yaw": -195.87,
+"scale": 1.146
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 24700.4,
+"y": 30972.3,
+"z": 3000.0,
+"yaw": -169.62,
+"scale": 1.048
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 26231.7,
+"y": 8642.1,
+"z": 3000.0,
+"yaw": -355.59,
+"scale": 1.057
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 13333.0,
+"y": 8574.5,
+"z": 3000.0,
+"yaw": -18.52,
+"scale": 1.328
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 25564.1,
+"y": 37490.3,
+"z": 3000.0,
+"yaw": -339.01,
+"scale": 1.314
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -20263.9,
+"y": 38792.5,
+"z": 3000.0,
+"yaw": -171.17,
+"scale": 1.346
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -24316.9,
+"y": 15540.9,
+"z": 3000.0,
+"yaw": -101.7,
+"scale": 1.276
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 31972.8,
+"y": -7730.8,
+"z": 3000.0,
+"yaw": -103.62,
+"scale": 1.167
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 24016.5,
+"y": -5308.3,
+"z": 3000.0,
+"yaw": -25.94,
+"scale": 1.173
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 23429.0,
+"y": -11496.7,
+"z": 3000.0,
+"yaw": -294.62,
+"scale": 1.081
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 34893.9,
+"y": 41406.9,
+"z": 2914.7,
+"yaw": -1.3,
+"scale": 1.117
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -1174.7,
+"y": 18252.5,
+"z": 3000.0,
+"yaw": -33.29,
+"scale": 1.256
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 10080.5,
+"y": 6700.4,
+"z": 3000.0,
+"yaw": -183.82,
+"scale": 1.22
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 11734.1,
+"y": 38390.4,
+"z": 3000.0,
+"yaw": -157.05,
+"scale": 1.054
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -32198.5,
+"y": -672.1,
+"z": 3000.0,
+"yaw": -116.76,
+"scale": 1.136
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -19218.7,
+"y": 9114.2,
+"z": 3000.0,
+"yaw": -42.55,
+"scale": 1.256
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -28221.0,
+"y": -989.2,
+"z": 3000.0,
+"yaw": -196.29,
+"scale": 1.17
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -17183.0,
+"y": 21879.6,
+"z": 3000.0,
+"yaw": -273.19,
+"scale": 1.21
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 228.8,
+"y": 28135.7,
+"z": 3000.0,
+"yaw": -224.94,
+"scale": 1.068
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -3815.7,
+"y": 5519.3,
+"z": 3000.0,
+"yaw": -195.91,
+"scale": 1.232
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": 2762.3,
+"y": 31142.7,
+"z": 3000.0,
+"yaw": -344.76,
+"scale": 1.274
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -6124.2,
+"y": 23368.0,
+"z": 3000.0,
+"yaw": -109.45,
+"scale": 1.127
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 47979.7,
+"y": -95727.9,
+"z": 15542.8,
+"yaw": -10.44,
+"scale": 1.772
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 80180.1,
+"y": -51226.3,
+"z": 3000.0,
+"yaw": -168.86,
+"scale": 1.597
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 53145.1,
+"y": -53778.2,
+"z": 3745.7,
+"yaw": -286.97,
+"scale": 1.511
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 23490.5,
+"y": -51968.5,
+"z": 3000.0,
+"yaw": -0.64,
+"scale": 2.097
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -27762.0,
+"y": -54127.6,
+"z": 3565.5,
+"yaw": -52.45,
+"scale": 1.452
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -39728.2,
+"y": -78171.0,
+"z": 10402.4,
+"yaw": -1.22,
+"scale": 1.942
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -32420.6,
+"y": -62047.7,
+"z": 6546.7,
+"yaw": -294.67,
+"scale": 1.785
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 40933.8,
+"y": -48135.1,
+"z": 3000.0,
+"yaw": -351.04,
+"scale": 1.418
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -63816.1,
+"y": -97534.9,
+"z": 13299.1,
+"yaw": -70.75,
+"scale": 2.005
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -81764.0,
+"y": -63740.7,
+"z": 7310.4,
+"yaw": -219.9,
+"scale": 2.134
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -32008.1,
+"y": -95830.9,
+"z": 11792.2,
+"yaw": -196.25,
+"scale": 1.65
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -84360.8,
+"y": -53187.7,
+"z": 3113.0,
+"yaw": -248.1,
+"scale": 2.197
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -67694.1,
+"y": -47670.4,
+"z": 3000.0,
+"yaw": -355.21,
+"scale": 1.827
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -93455.8,
+"y": -72146.0,
+"z": 14020.7,
+"yaw": -301.83,
+"scale": 1.504
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -78673.9,
+"y": -68900.5,
+"z": 9386.9,
+"yaw": -53.73,
+"scale": 2.076
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -41037.4,
+"y": -69923.5,
+"z": 9543.9,
+"yaw": -359.75,
+"scale": 2.082
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -27734.8,
+"y": -88231.2,
+"z": 12889.0,
+"yaw": -278.96,
+"scale": 1.956
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 32803.7,
+"y": -86780.1,
+"z": 13991.4,
+"yaw": -130.84,
+"scale": 1.964
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 47565.5,
+"y": -90550.4,
+"z": 15523.5,
+"yaw": -126.02,
+"scale": 2.074
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -11786.3,
+"y": -80756.4,
+"z": 14942.4,
+"yaw": -78.85,
+"scale": 1.949
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 26173.0,
+"y": -47302.4,
+"z": 3000.0,
+"yaw": -169.77,
+"scale": 1.581
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -61328.0,
+"y": -46961.2,
+"z": 3000.0,
+"yaw": -167.52,
+"scale": 1.704
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -52430.7,
+"y": -94675.0,
+"z": 11701.6,
+"yaw": -0.24,
+"scale": 1.724
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -44294.4,
+"y": -67552.3,
+"z": 9198.6,
+"yaw": -41.43,
+"scale": 2.065
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -25224.1,
+"y": -46983.4,
+"z": 3000.0,
+"yaw": -220.88,
+"scale": 1.476
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 9044.2,
+"y": -63665.5,
+"z": 4869.5,
+"yaw": -209.12,
+"scale": 2.167
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 78693.4,
+"y": -45052.1,
+"z": 2985.6,
+"yaw": -38.85,
+"scale": 1.853
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -24830.3,
+"y": -68742.6,
+"z": 9085.1,
+"yaw": -81.48,
+"scale": 1.633
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 19162.0,
+"y": -59290.4,
+"z": 3793.7,
+"yaw": -353.15,
+"scale": 1.797
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 56341.3,
+"y": -90474.3,
+"z": 22668.2,
+"yaw": -4.75,
+"scale": 1.826
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -45242.5,
+"y": -96438.9,
+"z": 10338.6,
+"yaw": -281.49,
+"scale": 1.597
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -46462.3,
+"y": -53512.1,
+"z": 3554.1,
+"yaw": -355.98,
+"scale": 1.635
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 48694.6,
+"y": -51499.8,
+"z": 3240.0,
+"yaw": -273.74,
+"scale": 1.641
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -40635.6,
+"y": -74142.7,
+"z": 10246.0,
+"yaw": -167.16,
+"scale": 1.689
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 77588.1,
+"y": -75007.6,
+"z": 14070.5,
+"yaw": -5.24,
+"scale": 2.023
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 41636.2,
+"y": -79772.9,
+"z": 14604.3,
+"yaw": -173.48,
+"scale": 2.129
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 70380.3,
+"y": -55805.7,
+"z": 3824.8,
+"yaw": -106.72,
+"scale": 2.064
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 62364.6,
+"y": -48763.1,
+"z": 3000.0,
+"yaw": -82.81,
+"scale": 2.056
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 42488.7,
+"y": -52404.4,
+"z": 3526.5,
+"yaw": -105.3,
+"scale": 2.134
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -17212.8,
+"y": -53864.9,
+"z": 4075.7,
+"yaw": -224.07,
+"scale": 1.435
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -85599.2,
+"y": -48165.9,
+"z": 3000.0,
+"yaw": -207.09,
+"scale": 1.994
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 75691.4,
+"y": -52388.3,
+"z": 3000.0,
+"yaw": -155.4,
+"scale": 1.652
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -69778.2,
+"y": -79724.0,
+"z": 9366.8,
+"yaw": -182.1,
+"scale": 2.128
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 3399.1,
+"y": -52357.9,
+"z": 3000.0,
+"yaw": -84.39,
+"scale": 1.697
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -82951.3,
+"y": -81737.4,
+"z": 10767.5,
+"yaw": -32.82,
+"scale": 1.5
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -55382.4,
+"y": -51384.3,
+"z": 3363.6,
+"yaw": -350.17,
+"scale": 1.932
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 64119.2,
+"y": -52687.1,
+"z": 3103.5,
+"yaw": -224.93,
+"scale": 1.683
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -22850.4,
+"y": -52503.4,
+"z": 3324.1,
+"yaw": -299.2,
+"scale": 1.918
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -80600.2,
+"y": -46824.1,
+"z": 2999.8,
+"yaw": -72.87,
+"scale": 1.432
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 52069.5,
+"y": -45024.2,
+"z": 2985.3,
+"yaw": -169.27,
+"scale": 2.112
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 23893.1,
+"y": -68575.5,
+"z": 10142.3,
+"yaw": -167.61,
+"scale": 1.48
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -69065.3,
+"y": -53747.3,
+"z": 3404.6,
+"yaw": -134.87,
+"scale": 1.709
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -49186.6,
+"y": -60258.7,
+"z": 6214.7,
+"yaw": -58.15,
+"scale": 1.63
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 37542.8,
+"y": -82059.8,
+"z": 13345.4,
+"yaw": -169.82,
+"scale": 2.156
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -67329.4,
+"y": -58229.3,
+"z": 4674.3,
+"yaw": -241.99,
+"scale": 2.152
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 95086.3,
+"y": -45345.0,
+"z": 2988.8,
+"yaw": -21.91,
+"scale": 2.023
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -17966.2,
+"y": -47472.2,
+"z": 3000.0,
+"yaw": -197.43,
+"scale": 2.192
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 3788.0,
+"y": -64250.7,
+"z": 5256.1,
+"yaw": -33.77,
+"scale": 1.457
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 87147.2,
+"y": -47956.9,
+"z": 3000.0,
+"yaw": -87.65,
+"scale": 1.44
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": -38810.2,
+"y": -47823.8,
+"z": 3000.0,
+"yaw": -13.54,
+"scale": 2.177
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 93800.2,
+"y": 4243.7,
+"z": 3000.0,
+"yaw": -174.61,
+"scale": 1.609
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 84107.6,
+"y": 9221.5,
+"z": 3000.0,
+"yaw": -134.34,
+"scale": 2.016
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 78180.9,
+"y": 5846.8,
+"z": 3000.0,
+"yaw": -262.74,
+"scale": 1.731
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 86149.2,
+"y": 15435.9,
+"z": 3000.0,
+"yaw": -69.47,
+"scale": 1.843
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 94153.7,
+"y": 48758.3,
+"z": 3000.0,
+"yaw": -289.21,
+"scale": 1.949
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 95328.5,
+"y": 43153.4,
+"z": 3000.0,
+"yaw": -33.53,
+"scale": 2.04
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 94143.4,
+"y": 34383.0,
+"z": 3000.0,
+"yaw": -33.76,
+"scale": 1.558
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 89047.6,
+"y": 46705.3,
+"z": 3000.0,
+"yaw": -342.49,
+"scale": 1.871
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 76026.2,
+"y": 17567.7,
+"z": 3000.0,
+"yaw": -129.74,
+"scale": 2.146
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 97285.3,
+"y": 28827.9,
+"z": 3000.0,
+"yaw": -232.05,
+"scale": 1.958
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 94165.1,
+"y": -8110.0,
+"z": 3000.0,
+"yaw": -10.23,
+"scale": 1.689
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 87674.7,
+"y": 62825.0,
+"z": 3000.0,
+"yaw": -316.83,
+"scale": 1.82
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 79368.4,
+"y": 54302.1,
+"z": 3000.0,
+"yaw": -174.15,
+"scale": 1.51
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 76296.6,
+"y": 756.9,
+"z": 3000.0,
+"yaw": -251.36,
+"scale": 1.41
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 93341.7,
+"y": 68635.3,
+"z": 3000.0,
+"yaw": -119.85,
+"scale": 2.124
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 81322.1,
+"y": 38866.8,
+"z": 3000.0,
+"yaw": -45.66,
+"scale": 2.2
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 92389.4,
+"y": 38178.9,
+"z": 3000.0,
+"yaw": -353.15,
+"scale": 1.596
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 99377.7,
+"y": -1380.6,
+"z": 3000.0,
+"yaw": -241.28,
+"scale": 2.112
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 83415.8,
+"y": 3499.2,
+"z": 3000.0,
+"yaw": -286.6,
+"scale": 1.813
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 82271.9,
+"y": 63125.5,
+"z": 3000.0,
+"yaw": -268.75,
+"scale": 1.613
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 75163.8,
+"y": 68250.1,
+"z": 3000.0,
+"yaw": -44.46,
+"scale": 1.872
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 80831.5,
+"y": 49495.0,
+"z": 3000.0,
+"yaw": -162.55,
+"scale": 2.142
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 77642.9,
+"y": 37154.3,
+"z": 3000.0,
+"yaw": -316.55,
+"scale": 1.89
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 78038.1,
+"y": 32023.3,
+"z": 3000.0,
+"yaw": -172.27,
+"scale": 1.514
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 89777.3,
+"y": -7661.3,
+"z": 3000.0,
+"yaw": -332.31,
+"scale": 1.701
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 81948.4,
+"y": 30960.1,
+"z": 3000.0,
+"yaw": -285.64,
+"scale": 2.149
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 70903.4,
+"y": 8114.2,
+"z": 3000.0,
+"yaw": -40.37,
+"scale": 1.975
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 80860.3,
+"y": -5075.2,
+"z": 3000.0,
+"yaw": -307.26,
+"scale": 1.45
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 75778.9,
+"y": -5791.3,
+"z": 3000.0,
+"yaw": -220.84,
+"scale": 1.738
+},
+{
+"kit": "future",
+"asset": "SM_WindHelix",
+"x": 73004.7,
+"y": 41042.2,
+"z": 3000.0,
+"yaw": -52.19,
+"scale": 1.9
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -88400.2,
+"y": 39107.7,
+"z": 2960.0,
+"yaw": -30.94,
+"scale": 0.751
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -51867.4,
+"y": 33874.3,
+"z": 5326.6,
+"yaw": -297.67,
+"scale": 0.574
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -55352.2,
+"y": 24708.0,
+"z": 2960.0,
+"yaw": -207.76,
+"scale": 0.738
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 95251.0,
+"y": 94410.1,
+"z": 871.5,
+"yaw": -104.26,
+"scale": 0.587
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 63225.3,
+"y": 78312.8,
+"z": 2960.0,
+"yaw": -134.06,
+"scale": 0.829
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -58808.3,
+"y": 18352.0,
+"z": 2960.0,
+"yaw": -279.8,
+"scale": 0.779
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 84688.3,
+"y": 56610.1,
+"z": 2960.0,
+"yaw": -285.98,
+"scale": 0.919
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -51180.7,
+"y": 31069.2,
+"z": 4679.6,
+"yaw": -315.05,
+"scale": 0.938
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -76386.8,
+"y": 49825.3,
+"z": 2188.5,
+"yaw": -54.71,
+"scale": 0.793
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -92158.5,
+"y": 19814.1,
+"z": 7107.9,
+"yaw": -122.44,
+"scale": 0.71
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -665.0,
+"y": 4373.0,
+"z": 2960.0,
+"yaw": -302.39,
+"scale": 1.067
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -5180.3,
+"y": 20301.7,
+"z": 2960.0,
+"yaw": -263.22,
+"scale": 0.686
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 15589.2,
+"y": 18251.5,
+"z": 2960.0,
+"yaw": -102.45,
+"scale": 0.731
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 53646.6,
+"y": 84479.2,
+"z": 2959.6,
+"yaw": -143.24,
+"scale": 1.05
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -72614.8,
+"y": 48337.4,
+"z": 2346.3,
+"yaw": -254.3,
+"scale": 1.092
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -70864.7,
+"y": 35849.1,
+"z": 2960.0,
+"yaw": -343.12,
+"scale": 0.914
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 3098.3,
+"y": 25888.9,
+"z": 2960.0,
+"yaw": -164.39,
+"scale": 1.023
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 90377.2,
+"y": 18331.0,
+"z": 2960.0,
+"yaw": -143.31,
+"scale": 0.736
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -3695.4,
+"y": 51946.9,
+"z": 1796.6,
+"yaw": -24.25,
+"scale": 0.625
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -67539.4,
+"y": 59193.6,
+"z": 786.1,
+"yaw": -36.86,
+"scale": 0.84
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 7323.7,
+"y": -13873.9,
+"z": 2960.0,
+"yaw": -25.31,
+"scale": 0.625
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -24754.1,
+"y": 23870.9,
+"z": 2960.0,
+"yaw": -216.82,
+"scale": 0.784
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -76929.3,
+"y": 41431.8,
+"z": 2960.0,
+"yaw": -172.94,
+"scale": 0.687
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -71176.5,
+"y": 10039.1,
+"z": 2932.1,
+"yaw": -172.3,
+"scale": 0.915
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 90404.2,
+"y": 56589.7,
+"z": 2960.0,
+"yaw": -272.93,
+"scale": 0.679
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 81651.7,
+"y": 57316.5,
+"z": 2960.0,
+"yaw": -191.73,
+"scale": 0.967
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 62302.2,
+"y": -18191.1,
+"z": 2953.6,
+"yaw": -290.19,
+"scale": 0.991
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 47974.6,
+"y": 72791.3,
+"z": 2913.9,
+"yaw": -128.0,
+"scale": 0.517
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 91303.0,
+"y": 46332.7,
+"z": 2960.0,
+"yaw": -343.8,
+"scale": 0.719
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 24813.3,
+"y": -8037.0,
+"z": 2960.0,
+"yaw": -172.61,
+"scale": 0.892
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 59928.7,
+"y": 89826.6,
+"z": 2861.3,
+"yaw": -327.52,
+"scale": 0.969
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 50028.1,
+"y": 42636.1,
+"z": 2960.0,
+"yaw": -156.21,
+"scale": 0.882
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -82650.0,
+"y": -13539.8,
+"z": 2960.0,
+"yaw": -166.74,
+"scale": 0.946
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 98622.5,
+"y": 96694.1,
+"z": 671.3,
+"yaw": -290.34,
+"scale": 0.588
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 65302.1,
+"y": -17636.7,
+"z": 2958.0,
+"yaw": -56.13,
+"scale": 0.829
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 49899.2,
+"y": 83289.9,
+"z": 2914.9,
+"yaw": -297.42,
+"scale": 0.627
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -51892.1,
+"y": 29627.5,
+"z": 4141.4,
+"yaw": -195.97,
+"scale": 1.001
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -87819.1,
+"y": 11209.4,
+"z": 4958.1,
+"yaw": -238.49,
+"scale": 0.989
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 3352.2,
+"y": 743.2,
+"z": 2960.0,
+"yaw": -191.46,
+"scale": 0.814
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 59834.1,
+"y": 79318.4,
+"z": 2960.0,
+"yaw": -222.88,
+"scale": 0.572
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -87648.9,
+"y": 18120.2,
+"z": 4276.4,
+"yaw": -282.34,
+"scale": 0.564
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -44616.6,
+"y": 7328.7,
+"z": 11196.1,
+"yaw": -202.22,
+"scale": 0.956
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 82497.6,
+"y": 46810.2,
+"z": 2960.0,
+"yaw": -249.38,
+"scale": 0.771
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 6657.1,
+"y": 42635.6,
+"z": 2939.7,
+"yaw": -251.72,
+"scale": 1.026
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 88436.1,
+"y": 68848.9,
+"z": 2960.0,
+"yaw": -302.4,
+"scale": 0.582
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -75675.6,
+"y": 46945.8,
+"z": 2703.3,
+"yaw": -241.62,
+"scale": 0.757
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -75530.0,
+"y": 6768.1,
+"z": 2960.0,
+"yaw": -51.47,
+"scale": 1.03
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 93509.0,
+"y": 73649.5,
+"z": 2960.0,
+"yaw": -143.37,
+"scale": 0.792
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 97974.3,
+"y": 106.6,
+"z": 2960.0,
+"yaw": -254.28,
+"scale": 1.096
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -19238.0,
+"y": 49446.8,
+"z": 2694.9,
+"yaw": -114.67,
+"scale": 0.933
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -33700.4,
+"y": 25128.8,
+"z": 3721.8,
+"yaw": -40.63,
+"scale": 1.051
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -54289.2,
+"y": -5167.1,
+"z": 3668.2,
+"yaw": -95.6,
+"scale": 0.524
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 55799.5,
+"y": 67546.5,
+"z": 2960.0,
+"yaw": -295.12,
+"scale": 1.01
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 35194.7,
+"y": -13520.2,
+"z": 2960.0,
+"yaw": -53.77,
+"scale": 1.052
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 14119.0,
+"y": 15949.9,
+"z": 2960.0,
+"yaw": -100.46,
+"scale": 0.98
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -63331.2,
+"y": -7434.2,
+"z": 2960.0,
+"yaw": -337.81,
+"scale": 0.881
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 60325.7,
+"y": 89950.9,
+"z": 2849.1,
+"yaw": -23.98,
+"scale": 1.018
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -9245.3,
+"y": 59301.8,
+"z": 759.3,
+"yaw": -333.6,
+"scale": 0.661
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -74155.0,
+"y": 36770.2,
+"z": 2960.0,
+"yaw": -337.73,
+"scale": 1.082
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 86449.4,
+"y": 24559.5,
+"z": 2960.0,
+"yaw": -104.39,
+"scale": 0.8
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -64420.0,
+"y": 58359.9,
+"z": 882.0,
+"yaw": -358.02,
+"scale": 0.522
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 95610.3,
+"y": 38291.8,
+"z": 2960.0,
+"yaw": -336.47,
+"scale": 0.564
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 63784.0,
+"y": 48138.7,
+"z": 2960.0,
+"yaw": -196.53,
+"scale": 1.033
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 94062.5,
+"y": 63066.0,
+"z": 2960.0,
+"yaw": -353.68,
+"scale": 0.706
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 48177.8,
+"y": 69328.7,
+"z": 2956.2,
+"yaw": -19.94,
+"scale": 0.899
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -23823.6,
+"y": 39286.9,
+"z": 2960.0,
+"yaw": -215.56,
+"scale": 0.916
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -27171.7,
+"y": 60528.9,
+"z": 969.9,
+"yaw": -88.0,
+"scale": 1.079
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -38090.4,
+"y": 57209.9,
+"z": 708.7,
+"yaw": -120.72,
+"scale": 0.55
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -44214.2,
+"y": 21277.9,
+"z": 8697.7,
+"yaw": -181.7,
+"scale": 0.503
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -53438.1,
+"y": 29730.0,
+"z": 3587.2,
+"yaw": -236.72,
+"scale": 0.93
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 75818.1,
+"y": 53258.0,
+"z": 2960.0,
+"yaw": -259.44,
+"scale": 0.797
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -43164.7,
+"y": 25755.1,
+"z": 8538.3,
+"yaw": -15.76,
+"scale": 1.001
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 78388.5,
+"y": 24720.1,
+"z": 2960.0,
+"yaw": -327.56,
+"scale": 0.952
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 13695.9,
+"y": 2451.4,
+"z": 2960.0,
+"yaw": -297.51,
+"scale": 0.85
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 78565.9,
+"y": 18052.6,
+"z": 2960.0,
+"yaw": -30.63,
+"scale": 0.525
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 27424.0,
+"y": -15141.9,
+"z": 2960.0,
+"yaw": -300.9,
+"scale": 0.835
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 25553.4,
+"y": 24852.8,
+"z": 2960.0,
+"yaw": -176.15,
+"scale": 0.502
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 594.2,
+"y": 35776.0,
+"z": 2960.0,
+"yaw": -268.46,
+"scale": 0.784
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 61843.8,
+"y": -1536.0,
+"z": 2960.0,
+"yaw": -262.56,
+"scale": 0.623
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 47965.7,
+"y": -17088.2,
+"z": 2960.0,
+"yaw": -304.39,
+"scale": 0.546
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 82093.3,
+"y": 65521.7,
+"z": 2960.0,
+"yaw": -222.11,
+"scale": 0.886
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -39116.6,
+"y": 31868.6,
+"z": 6750.1,
+"yaw": -173.67,
+"scale": 0.791
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 94501.8,
+"y": 88057.7,
+"z": 2419.7,
+"yaw": -243.25,
+"scale": 0.675
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 3307.1,
+"y": 44240.5,
+"z": 2896.5,
+"yaw": -276.18,
+"scale": 1.096
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -82829.1,
+"y": 43246.6,
+"z": 2960.0,
+"yaw": -165.23,
+"scale": 0.992
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 93621.7,
+"y": 46065.9,
+"z": 2960.0,
+"yaw": -139.27,
+"scale": 1.05
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 86107.2,
+"y": 91046.5,
+"z": 1847.8,
+"yaw": -51.03,
+"scale": 0.814
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 90548.1,
+"y": 84087.4,
+"z": 2920.4,
+"yaw": -319.27,
+"scale": 0.922
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -53723.3,
+"y": -7724.7,
+"z": 3702.1,
+"yaw": -141.87,
+"scale": 0.595
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 89991.9,
+"y": 18209.4,
+"z": 2960.0,
+"yaw": -108.7,
+"scale": 0.584
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -31208.0,
+"y": 62070.6,
+"z": 764.0,
+"yaw": -0.63,
+"scale": 0.95
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 67822.2,
+"y": 85595.0,
+"z": 2960.0,
+"yaw": -256.69,
+"scale": 1.041
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -42033.4,
+"y": 55333.4,
+"z": 914.2,
+"yaw": -140.46,
+"scale": 1.022
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -84719.9,
+"y": -11049.9,
+"z": 2960.0,
+"yaw": -307.53,
+"scale": 0.668
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -89676.5,
+"y": 20562.6,
+"z": 4891.7,
+"yaw": -89.76,
+"scale": 0.659
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -25330.1,
+"y": -14739.8,
+"z": 2960.0,
+"yaw": -292.31,
+"scale": 0.879
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 82684.8,
+"y": -12883.9,
+"z": 2960.0,
+"yaw": -259.05,
+"scale": 0.53
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 46470.5,
+"y": 45896.7,
+"z": 2963.1,
+"yaw": -232.02,
+"scale": 0.672
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -74537.7,
+"y": 43337.9,
+"z": 2950.2,
+"yaw": -101.43,
+"scale": 0.653
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 47749.1,
+"y": 21661.9,
+"z": 5055.8,
+"yaw": -236.16,
+"scale": 0.681
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 11464.3,
+"y": 52675.9,
+"z": 1076.0,
+"yaw": -231.55,
+"scale": 0.545
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 121.0,
+"y": 2580.8,
+"z": 2960.0,
+"yaw": -163.07,
+"scale": 0.7
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -65061.0,
+"y": 33295.1,
+"z": 2968.0,
+"yaw": -86.09,
+"scale": 0.655
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 13923.5,
+"y": -6470.2,
+"z": 2960.0,
+"yaw": -137.82,
+"scale": 0.948
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 50422.2,
+"y": 40222.5,
+"z": 2959.9,
+"yaw": -45.31,
+"scale": 0.802
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 25925.4,
+"y": -3543.4,
+"z": 2960.0,
+"yaw": -33.34,
+"scale": 1.038
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -23087.8,
+"y": 22505.0,
+"z": 2960.0,
+"yaw": -343.42,
+"scale": 1.009
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 74578.2,
+"y": 97382.7,
+"z": 810.4,
+"yaw": -153.07,
+"scale": 0.958
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 60849.9,
+"y": -16193.8,
+"z": 2960.0,
+"yaw": -0.06,
+"scale": 0.735
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 85365.5,
+"y": 929.3,
+"z": 2960.0,
+"yaw": -350.01,
+"scale": 0.649
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 4473.1,
+"y": 18151.0,
+"z": 2960.0,
+"yaw": -30.6,
+"scale": 0.966
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 25294.5,
+"y": 36609.6,
+"z": 2960.0,
+"yaw": -251.49,
+"scale": 0.567
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -85929.6,
+"y": 37067.6,
+"z": 2960.0,
+"yaw": -139.71,
+"scale": 0.634
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 91788.0,
+"y": 22650.9,
+"z": 2960.0,
+"yaw": -171.11,
+"scale": 0.641
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -50588.3,
+"y": -15273.7,
+"z": 4705.3,
+"yaw": -19.91,
+"scale": 0.616
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 76969.7,
+"y": 22339.8,
+"z": 2960.0,
+"yaw": -92.61,
+"scale": 0.9
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 85032.2,
+"y": 72785.7,
+"z": 2960.0,
+"yaw": -250.5,
+"scale": 0.931
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -27536.0,
+"y": 52437.0,
+"z": 1958.0,
+"yaw": -286.94,
+"scale": 0.943
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 93971.7,
+"y": 62594.1,
+"z": 2960.0,
+"yaw": -83.09,
+"scale": 0.633
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 52094.1,
+"y": 64608.1,
+"z": 2960.0,
+"yaw": -219.64,
+"scale": 1.038
+},
+{
+"kit": "future",
+"asset": "SM_HoloArch",
+"x": 41921.8,
+"y": -23958.5,
+"z": 3000.0,
+"yaw": -4.83,
+"scale": 0.85
+},
+{
+"kit": "future",
+"asset": "SM_HoloArch",
+"x": 33763.1,
+"y": 48964.8,
+"z": 3100.0,
+"yaw": 83.87,
+"scale": 0.85
+},
+{
+"kit": "future",
+"asset": "SM_HoloArch",
+"x": -42885.2,
+"y": 65499.9,
+"z": 321.3,
+"yaw": -229.2,
+"scale": 0.85
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -64675.5,
+"y": 38869.0,
+"z": 2900.7,
+"yaw": -0.0,
+"scale": 1.5
+},
+{
+"kit": "future",
+"asset": "SM_SolarTree",
+"x": -66426.8,
+"y": 39285.0,
+"z": 3020.1,
+"yaw": -0.0,
+"scale": 1.5
+}
+]
+}

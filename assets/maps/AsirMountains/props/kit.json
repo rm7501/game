@@ -1,0 +1,27 @@
+{
+ "SM_SoudahCableRopes": {
+  "tris": 1968,
+  "size_m": [
+   403.51,
+   358.96,
+   21.09
+  ],
+  "materials": [
+   "M_SteelDark"
+  ]
+ },
+ "SM_SoudahCableStation": {
+  "tris": 140,
+  "size_m": [
+   26.0,
+   18.5,
+   11.6
+  ],
+  "materials": [
+   "M_Asir_StoneMasonry",
+   "M_Car_Glass",
+   "M_Concrete",
+   "M_CableCar_Red"
+  ]
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "SM_TheLine_Portal": {
+  "tris": 99868,
+  "size_m": [
+   200.07,
+   200.74,
+   500.4
+  ],
+  "materials": [
+   "M_Line_Backing",
+   "M_Line_MirrorFacade",
+   "M_Line_InnerGlass",
+   "M_Line_SlabWhite",
+   "M_Line_Planting",
+   "M_Neon_Warm",
+   "M_Future_White",
+   "M_Neon_Cyan",
+   "M_Future_GlassBlue"
+  ]
+ },
+ "SM_OxagonPlatform": {
+  "tris": 5260,
+  "size_m": [
+   278.95,
+   286.52,
+   31.4
+  ],
+  "materials": [
+   "M_Future_White",
+   "M_Neon_Cyan",
+   "M_Neon_Magenta",
+   "M_Future_GlassBlue",
+   "M_Line_Planting",
+   "M_Future_Graphite"
+  ]
+ }
+}
