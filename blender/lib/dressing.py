@@ -247,10 +247,10 @@ def city_grid(m, bounds, mask, block=120.0, street=16.0, angle=0.0, lamps=("riya
                 if ok(x, y):
                     cur.append((x, y))
                 else:
-                    if len(cur) > 3:
+                    if len(cur) > 12:
                         runs.append((np.array(cur), horiz))
                     cur = []
-            if len(cur) > 3:
+            if len(cur) > 12:
                 runs.append((np.array(cur), horiz))
     # lots: cell centres that are clear of the race track
     lots = []

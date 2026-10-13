@@ -724,6 +724,8 @@ def export_glb(objs, path):
 
 # ----------------------------------------------------------------- render ---
 def setup_render(res=(1600, 900), samples=64, exposure=0.0):
+    if os.environ.get("SR_SAMPLES"):
+        samples = int(os.environ["SR_SAMPLES"])
     if os.environ.get("SR_PREVIEW"):          # fast iteration mode
         res = (res[0] * 3 // 5, res[1] * 3 // 5)
         samples = max(16, samples // 3)
