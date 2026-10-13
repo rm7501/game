@@ -127,6 +127,7 @@
    8,
    5
   ],
+  "cliff_layer": 1,
   "tints": [
    [
     1,
@@ -3329,6 +3330,25 @@
   "image": null,
   "image_emit": false
  },
+ "M_Far_AcaciaCrown": {
+  "kind": "foliage",
+  "color": [
+   0.22,
+   0.26,
+   0.1
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
  "M_Far_NajdiNight": {
   "kind": "opaque",
   "color": [
@@ -3351,8 +3371,8 @@
  "M_Far_PalmFrond": {
   "kind": "foliage",
   "color": [
-   0.12,
-   0.2,
+   0.16,
+   0.24,
    0.08
   ],
   "rough": 0.8,
