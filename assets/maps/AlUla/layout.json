@@ -1,0 +1,5992 @@
+{
+"map": "AlUla",
+"units": "Unreal cm / degrees",
+"count": 665,
+"props": [
+{
+"kit": "common",
+"asset": "SM_StartGantry",
+"x": 64000.0,
+"y": 26000.0,
+"z": -6.7,
+"yaw": -168.62,
+"scale": 1.0
+},
+{
+"kit": "alula",
+"asset": "SM_Maraya",
+"x": 76000.0,
+"y": 14000.0,
+"z": 96.4,
+"yaw": -90.0,
+"scale": 1.0
+},
+{
+"kit": "alula",
+"asset": "SM_QasrAlFarid",
+"x": 47000.0,
+"y": -15000.0,
+"z": 36.6,
+"yaw": 50.0,
+"scale": 1.0
+},
+{
+"kit": "alula",
+"asset": "SM_RainbowRock",
+"x": 47374.8,
+"y": -53671.4,
+"z": -54.7,
+"yaw": -230.72,
+"scale": 1.0
+},
+{
+"kit": "alula",
+"asset": "SM_HegraTombCliff",
+"x": -58500.0,
+"y": -6000.0,
+"z": 7890.3,
+"yaw": 95.0,
+"scale": 1.0
+},
+{
+"kit": "alula",
+"asset": "SM_HegraTombCliff",
+"x": -60000.0,
+"y": 11000.0,
+"z": 6381.1,
+"yaw": 80.0,
+"scale": 0.9
+},
+{
+"kit": "alula",
+"asset": "SM_ElephantRock",
+"x": -4000.0,
+"y": 64000.0,
+"z": 36.6,
+"yaw": -25.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLabyrinth",
+"x": -42000.0,
+"y": -36000.0,
+"z": -8.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": -42000.0,
+"y": -36000.0,
+"z": -8.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -4665.7,
+"y": 74474.0,
+"z": -46.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 3401.9,
+"y": 62635.9,
+"z": 44.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -9987.8,
+"y": 62821.4,
+"z": 17.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -11921.4,
+"y": 66234.7,
+"z": -60.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 1888.7,
+"y": 63513.7,
+"z": 56.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -5925.9,
+"y": 53722.6,
+"z": 103.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -3453.8,
+"y": 69510.4,
+"z": 75.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -2423.1,
+"y": 69166.7,
+"z": 35.7,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -7938.5,
+"y": 67581.6,
+"z": 44.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 6163.5,
+"y": 63886.7,
+"z": 32.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -2513.1,
+"y": 58289.8,
+"z": 64.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 6108.7,
+"y": 65121.1,
+"z": 44.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -6627.8,
+"y": 53576.5,
+"z": 98.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -1024.0,
+"y": 53809.3,
+"z": 5.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -7928.9,
+"y": 74041.4,
+"z": 84.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -7588.0,
+"y": 59728.2,
+"z": 71.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -999.6,
+"y": 60096.5,
+"z": 67.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -6670.3,
+"y": 56014.4,
+"z": 61.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 4904.6,
+"y": 63810.7,
+"z": 71.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -817.9,
+"y": 70929.1,
+"z": 32.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -7064.3,
+"y": 57014.6,
+"z": 75.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -5368.5,
+"y": 68674.3,
+"z": 54.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 591.8,
+"y": 64724.3,
+"z": 37.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 5558.4,
+"y": 62910.2,
+"z": 134.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 795.9,
+"y": 63726.1,
+"z": 48.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 503.5,
+"y": 54284.3,
+"z": 28.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -896.5,
+"y": 55114.1,
+"z": 10.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 5602.4,
+"y": 68544.0,
+"z": 12.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 3288.0,
+"y": 58119.5,
+"z": 15.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 6366.9,
+"y": 61570.9,
+"z": 13.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 1642.7,
+"y": 60360.1,
+"z": 32.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -12030.6,
+"y": 70714.1,
+"z": -79.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -9627.8,
+"y": 55127.0,
+"z": 142.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -10270.0,
+"y": 65827.7,
+"z": 23.7,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -6303.9,
+"y": 58837.1,
+"z": 80.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 820.9,
+"y": 61420.4,
+"z": 38.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -8094.4,
+"y": 74186.7,
+"z": 129.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -1458.9,
+"y": 59909.5,
+"z": 118.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 3940.1,
+"y": 64665.1,
+"z": 42.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -9016.7,
+"y": 60631.4,
+"z": 16.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -10962.3,
+"y": 62008.8,
+"z": 15.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 5820.6,
+"y": 60415.0,
+"z": 103.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 3545.8,
+"y": 62426.4,
+"z": 40.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -1178.7,
+"y": 68544.1,
+"z": 36.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -5227.0,
+"y": 74602.9,
+"z": -33.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 1741.3,
+"y": 59451.6,
+"z": 18.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 1910.7,
+"y": 55945.2,
+"z": 31.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -6068.8,
+"y": 56847.7,
+"z": 86.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 6039.5,
+"y": 64044.2,
+"z": 40.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 3363.5,
+"y": 65118.5,
+"z": 40.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -13216.2,
+"y": 63313.1,
+"z": -64.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -10336.3,
+"y": 63160.8,
+"z": 19.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -8486.0,
+"y": 60901.1,
+"z": 21.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -11821.3,
+"y": 56372.9,
+"z": 49.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": 4303.4,
+"y": 66142.2,
+"z": 22.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_SandLantern",
+"x": -10700.1,
+"y": 63971.5,
+"z": 25.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_LoungeSeat",
+"x": 1697.9,
+"y": 60427.2,
+"z": 33.6,
+"yaw": -122.09,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_LoungeSeat",
+"x": -2656.1,
+"y": 72520.4,
+"z": -29.9,
+"yaw": -368.96,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_LoungeSeat",
+"x": -5480.5,
+"y": 56458.4,
+"z": 57.8,
+"yaw": -191.11,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_LoungeSeat",
+"x": -2934.6,
+"y": 72542.8,
+"z": -35.1,
+"yaw": -367.11,
+"scale": 1.0
+},
+{
+"kit": "maps/AlUla/props",
+"asset": "SM_LoungeSeat",
+"x": -6653.9,
+"y": 54613.0,
+"z": 66.3,
+"yaw": -195.79,
+"scale": 1.0
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_A",
+"x": -24708.5,
+"y": -19744.8,
+"z": -5.6,
+"yaw": -218.02,
+"scale": 1.245
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_B",
+"x": -58568.6,
+"y": -41258.1,
+"z": 69.7,
+"yaw": -142.97,
+"scale": 1.217
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_B",
+"x": -50934.8,
+"y": 66191.7,
+"z": 63.6,
+"yaw": -266.85,
+"scale": 1.103
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_A",
+"x": -82834.0,
+"y": -49063.7,
+"z": 7070.9,
+"yaw": -108.46,
+"scale": 0.719
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_B",
+"x": 69450.2,
+"y": 5177.7,
+"z": 152.5,
+"yaw": -257.09,
+"scale": 1.253
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_A",
+"x": 71984.7,
+"y": 76483.7,
+"z": -9.0,
+"yaw": -178.16,
+"scale": 0.855
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_B",
+"x": 32687.8,
+"y": -53004.8,
+"z": 113.2,
+"yaw": -151.61,
+"scale": 1.2
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_B",
+"x": 14064.3,
+"y": -6479.6,
+"z": 48.2,
+"yaw": -210.33,
+"scale": 1.243
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_B",
+"x": 34576.6,
+"y": -81499.7,
+"z": 113.3,
+"yaw": -356.76,
+"scale": 1.103
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_A",
+"x": -64011.1,
+"y": -68521.1,
+"z": 22.9,
+"yaw": -256.97,
+"scale": 0.827
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_B",
+"x": -40858.1,
+"y": 82942.5,
+"z": 86.3,
+"yaw": -31.87,
+"scale": 1.18
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_A",
+"x": -39160.7,
+"y": -51070.5,
+"z": 13.2,
+"yaw": -15.91,
+"scale": 1.069
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_A",
+"x": 91320.8,
+"y": -1029.9,
+"z": 8.5,
+"yaw": -111.48,
+"scale": 0.746
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_A",
+"x": 18954.9,
+"y": 89038.2,
+"z": 5081.7,
+"yaw": -349.71,
+"scale": 0.875
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_B",
+"x": -26562.6,
+"y": 68718.1,
+"z": 26.7,
+"yaw": -135.63,
+"scale": 1.222
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_A",
+"x": -21623.3,
+"y": -69698.2,
+"z": 6706.4,
+"yaw": -223.25,
+"scale": 1.264
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_A",
+"x": 1335.1,
+"y": 13073.6,
+"z": 6729.6,
+"yaw": -337.12,
+"scale": 0.962
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_B",
+"x": -30607.5,
+"y": -54795.3,
+"z": -6.4,
+"yaw": -7.22,
+"scale": 1.069
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_A",
+"x": 39320.5,
+"y": -45226.5,
+"z": -4.7,
+"yaw": -212.18,
+"scale": 1.273
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_B",
+"x": 24314.2,
+"y": 38259.1,
+"z": -12.7,
+"yaw": -63.87,
+"scale": 0.811
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_B",
+"x": 49040.4,
+"y": -65329.8,
+"z": 0.2,
+"yaw": -108.15,
+"scale": 0.926
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_A",
+"x": 51731.9,
+"y": 89885.0,
+"z": -25.6,
+"yaw": -111.61,
+"scale": 0.834
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_B",
+"x": 37632.6,
+"y": 75650.1,
+"z": 38.5,
+"yaw": -341.69,
+"scale": 1.105
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_A",
+"x": 87531.2,
+"y": 79809.8,
+"z": 2.6,
+"yaw": -318.56,
+"scale": 0.971
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_A",
+"x": 5629.2,
+"y": 58747.3,
+"z": 8.7,
+"yaw": -310.94,
+"scale": 0.904
+},
+{
+"kit": "alula",
+"asset": "SM_RockPillar_B",
+"x": 62309.8,
+"y": 78748.5,
+"z": 12.5,
+"yaw": -212.21,
+"scale": 0.953
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -50150.9,
+"y": 75398.5,
+"z": -14.0,
+"yaw": -172.4,
+"scale": 0.572
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -40018.6,
+"y": -93104.7,
+"z": 7627.6,
+"yaw": -79.89,
+"scale": 0.929
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -42430.3,
+"y": 62193.7,
+"z": -34.0,
+"yaw": -94.22,
+"scale": 1.254
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -90128.5,
+"y": -26730.8,
+"z": 6538.1,
+"yaw": -288.16,
+"scale": 0.655
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -36128.5,
+"y": -24125.4,
+"z": 8.3,
+"yaw": -345.93,
+"scale": 1.179
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -24245.3,
+"y": -65510.0,
+"z": 6627.5,
+"yaw": -241.81,
+"scale": 0.905
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -61219.9,
+"y": 5018.3,
+"z": 6511.0,
+"yaw": -340.05,
+"scale": 1.154
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 84019.4,
+"y": -64687.9,
+"z": 6275.1,
+"yaw": -327.19,
+"scale": 0.958
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 72640.3,
+"y": -66128.4,
+"z": 6457.6,
+"yaw": -70.25,
+"scale": 0.839
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -40241.3,
+"y": 9239.2,
+"z": 65.1,
+"yaw": -109.84,
+"scale": 1.15
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -86784.7,
+"y": 86198.8,
+"z": -58.1,
+"yaw": -359.09,
+"scale": 0.915
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -67438.1,
+"y": -33018.0,
+"z": 33.5,
+"yaw": -148.61,
+"scale": 0.662
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 25206.3,
+"y": 42502.1,
+"z": 41.5,
+"yaw": -156.93,
+"scale": 0.971
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 25542.1,
+"y": 57244.7,
+"z": -23.6,
+"yaw": -36.35,
+"scale": 0.549
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -51514.8,
+"y": -50380.8,
+"z": -3.4,
+"yaw": -310.36,
+"scale": 0.598
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -90121.5,
+"y": 27154.0,
+"z": 7895.9,
+"yaw": -322.53,
+"scale": 1.264
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 44626.8,
+"y": -87374.8,
+"z": -20.6,
+"yaw": -116.21,
+"scale": 0.757
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -65947.2,
+"y": -28865.3,
+"z": -25.0,
+"yaw": -244.82,
+"scale": 0.562
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 22368.6,
+"y": -74875.9,
+"z": 6341.8,
+"yaw": -49.12,
+"scale": 0.805
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 87744.6,
+"y": 32051.6,
+"z": 6401.7,
+"yaw": -130.8,
+"scale": 0.864
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -25613.7,
+"y": -57826.3,
+"z": -23.4,
+"yaw": -205.72,
+"scale": 0.851
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -55625.0,
+"y": -79140.7,
+"z": -18.8,
+"yaw": -21.36,
+"scale": 0.544
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -62952.6,
+"y": -33597.2,
+"z": 15.3,
+"yaw": -218.35,
+"scale": 0.937
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 28806.3,
+"y": 56950.3,
+"z": -12.8,
+"yaw": -87.07,
+"scale": 0.828
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -47768.7,
+"y": -73967.1,
+"z": 27.0,
+"yaw": -179.49,
+"scale": 0.525
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -46665.2,
+"y": 48946.1,
+"z": -58.5,
+"yaw": -278.03,
+"scale": 0.834
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -45279.4,
+"y": 33247.3,
+"z": 36.0,
+"yaw": -203.52,
+"scale": 1.292
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -18437.2,
+"y": -76180.9,
+"z": 6949.6,
+"yaw": -313.52,
+"scale": 1.074
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -13279.6,
+"y": -81686.3,
+"z": 7034.6,
+"yaw": -323.91,
+"scale": 1.24
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -31048.0,
+"y": -29812.7,
+"z": -40.2,
+"yaw": -113.41,
+"scale": 0.836
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -54104.8,
+"y": -57265.5,
+"z": -53.4,
+"yaw": -121.87,
+"scale": 0.814
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -685.8,
+"y": -68135.8,
+"z": 6379.3,
+"yaw": -346.24,
+"scale": 1.035
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -86536.6,
+"y": -75804.2,
+"z": -41.4,
+"yaw": -276.06,
+"scale": 0.716
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 67699.5,
+"y": -70315.2,
+"z": 6826.8,
+"yaw": -228.67,
+"scale": 0.955
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 46834.0,
+"y": -81221.4,
+"z": -13.9,
+"yaw": -287.28,
+"scale": 0.669
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -65218.9,
+"y": -20901.7,
+"z": -34.2,
+"yaw": -41.72,
+"scale": 1.148
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 53764.2,
+"y": -71796.8,
+"z": 16.9,
+"yaw": -19.22,
+"scale": 1.261
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -64238.7,
+"y": -20572.8,
+"z": -43.0,
+"yaw": -278.49,
+"scale": 0.877
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -88505.2,
+"y": -17952.5,
+"z": 6523.6,
+"yaw": -201.89,
+"scale": 0.706
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 52081.4,
+"y": 87138.5,
+"z": 48.2,
+"yaw": -276.33,
+"scale": 0.918
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -92995.3,
+"y": -64160.9,
+"z": 6448.7,
+"yaw": -30.65,
+"scale": 0.935
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -35877.8,
+"y": 50596.9,
+"z": -45.2,
+"yaw": -307.97,
+"scale": 0.82
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -80333.1,
+"y": -78993.5,
+"z": 71.9,
+"yaw": -184.49,
+"scale": 0.847
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -82285.6,
+"y": -72451.7,
+"z": 58.6,
+"yaw": -229.3,
+"scale": 1.244
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 11075.3,
+"y": 24395.4,
+"z": -21.8,
+"yaw": -63.49,
+"scale": 0.619
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -1091.5,
+"y": 30668.9,
+"z": -17.8,
+"yaw": -350.55,
+"scale": 0.504
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -62945.5,
+"y": -28139.8,
+"z": -7.4,
+"yaw": -196.18,
+"scale": 0.889
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 40961.5,
+"y": 2992.6,
+"z": -19.9,
+"yaw": -187.46,
+"scale": 0.829
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -39244.3,
+"y": 51450.3,
+"z": -67.6,
+"yaw": -354.89,
+"scale": 1.001
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 33579.3,
+"y": -20811.6,
+"z": 16.8,
+"yaw": -195.87,
+"scale": 1.227
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 53666.1,
+"y": -12984.4,
+"z": 8.9,
+"yaw": -283.27,
+"scale": 0.99
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 51498.0,
+"y": 26185.9,
+"z": 10.2,
+"yaw": -122.42,
+"scale": 0.847
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 20067.9,
+"y": -33323.6,
+"z": 5601.5,
+"yaw": -63.96,
+"scale": 1.222
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -24322.3,
+"y": -14436.7,
+"z": -38.7,
+"yaw": -242.99,
+"scale": 1.207
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -80358.4,
+"y": -27679.6,
+"z": -36.5,
+"yaw": -118.67,
+"scale": 0.798
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -61821.7,
+"y": -72824.0,
+"z": -17.1,
+"yaw": -7.24,
+"scale": 1.26
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 62657.1,
+"y": -57209.8,
+"z": 6767.6,
+"yaw": -57.05,
+"scale": 0.967
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -904.2,
+"y": -14034.3,
+"z": 6676.6,
+"yaw": -273.69,
+"scale": 1.275
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -72803.4,
+"y": -28795.7,
+"z": -25.8,
+"yaw": -319.08,
+"scale": 0.678
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 54468.6,
+"y": -30450.1,
+"z": -47.5,
+"yaw": -146.2,
+"scale": 0.979
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 75406.2,
+"y": -38682.0,
+"z": 57.6,
+"yaw": -132.34,
+"scale": 1.097
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 1194.1,
+"y": -89207.5,
+"z": 69.9,
+"yaw": -102.16,
+"scale": 0.829
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -92495.2,
+"y": 60060.5,
+"z": 26.2,
+"yaw": -165.07,
+"scale": 0.949
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 61940.3,
+"y": 18202.7,
+"z": -26.8,
+"yaw": -224.36,
+"scale": 0.625
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -82133.9,
+"y": -90020.1,
+"z": -50.7,
+"yaw": -331.19,
+"scale": 0.983
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -35675.0,
+"y": 77645.5,
+"z": 43.5,
+"yaw": -174.04,
+"scale": 1.012
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -4399.4,
+"y": -19689.4,
+"z": -40.9,
+"yaw": -53.54,
+"scale": 0.691
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -38149.4,
+"y": -85106.4,
+"z": 17.9,
+"yaw": -143.25,
+"scale": 0.965
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 22927.5,
+"y": -40476.7,
+"z": 6861.4,
+"yaw": -94.44,
+"scale": 0.919
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -65071.3,
+"y": 76615.1,
+"z": -50.4,
+"yaw": -341.73,
+"scale": 0.566
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -43580.6,
+"y": -71956.3,
+"z": -47.9,
+"yaw": -104.06,
+"scale": 1.212
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 38376.8,
+"y": -43952.0,
+"z": -43.9,
+"yaw": -149.39,
+"scale": 0.604
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 39742.2,
+"y": 79551.5,
+"z": 10.8,
+"yaw": -249.75,
+"scale": 1.079
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -65701.7,
+"y": -65423.8,
+"z": -44.3,
+"yaw": -182.73,
+"scale": 0.801
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -63951.2,
+"y": -74035.0,
+"z": 121.5,
+"yaw": -140.88,
+"scale": 1.046
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 68703.3,
+"y": 32599.8,
+"z": -45.5,
+"yaw": -22.29,
+"scale": 1.284
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -42065.9,
+"y": -33480.4,
+"z": -60.0,
+"yaw": -345.63,
+"scale": 0.622
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -65231.9,
+"y": -66231.9,
+"z": -31.1,
+"yaw": -83.53,
+"scale": 0.943
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -4426.3,
+"y": -41523.2,
+"z": 5961.3,
+"yaw": -318.77,
+"scale": 0.862
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 44022.6,
+"y": -70216.4,
+"z": -37.7,
+"yaw": -337.36,
+"scale": 0.804
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 66026.4,
+"y": -63414.2,
+"z": 7036.5,
+"yaw": -67.66,
+"scale": 0.88
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 76585.2,
+"y": 27210.6,
+"z": -39.9,
+"yaw": -299.46,
+"scale": 0.831
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 45235.5,
+"y": -60933.6,
+"z": -45.5,
+"yaw": -92.04,
+"scale": 1.186
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 30770.5,
+"y": 36595.5,
+"z": 10.4,
+"yaw": -225.02,
+"scale": 0.771
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 63492.6,
+"y": -74408.1,
+"z": 5793.6,
+"yaw": -317.98,
+"scale": 1.027
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 37758.7,
+"y": -19889.5,
+"z": -31.4,
+"yaw": -171.41,
+"scale": 1.264
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 81378.0,
+"y": 61344.2,
+"z": -61.1,
+"yaw": -179.31,
+"scale": 0.937
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 18595.8,
+"y": 47523.8,
+"z": -46.9,
+"yaw": -243.35,
+"scale": 0.769
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 19326.4,
+"y": 68813.2,
+"z": -59.2,
+"yaw": -42.04,
+"scale": 1.283
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 62070.2,
+"y": -1767.1,
+"z": 9.0,
+"yaw": -25.74,
+"scale": 0.681
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -93003.7,
+"y": -37559.3,
+"z": 7143.8,
+"yaw": -129.54,
+"scale": 1.212
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 47194.5,
+"y": -60024.2,
+"z": -31.5,
+"yaw": -308.85,
+"scale": 1.006
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -18500.8,
+"y": 62155.6,
+"z": 31.4,
+"yaw": -350.96,
+"scale": 1.103
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 36239.2,
+"y": -54878.7,
+"z": 52.1,
+"yaw": -253.22,
+"scale": 0.757
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -54205.3,
+"y": 4064.1,
+"z": -24.5,
+"yaw": -335.46,
+"scale": 0.721
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 48598.8,
+"y": 17648.6,
+"z": -21.4,
+"yaw": -333.97,
+"scale": 0.828
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 47553.7,
+"y": 55068.6,
+"z": -15.8,
+"yaw": -184.0,
+"scale": 0.524
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -44921.5,
+"y": 40442.1,
+"z": -38.8,
+"yaw": -47.66,
+"scale": 1.107
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -63461.8,
+"y": 77495.3,
+"z": -20.9,
+"yaw": -336.38,
+"scale": 0.703
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -53937.1,
+"y": -27003.8,
+"z": -35.0,
+"yaw": -232.38,
+"scale": 0.506
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 13314.4,
+"y": 56290.4,
+"z": -19.2,
+"yaw": -87.9,
+"scale": 1.175
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -73339.2,
+"y": -89565.0,
+"z": 7239.1,
+"yaw": -312.93,
+"scale": 0.966
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -66354.9,
+"y": -46790.2,
+"z": -43.4,
+"yaw": -304.84,
+"scale": 0.643
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 41473.6,
+"y": 89828.2,
+"z": -38.2,
+"yaw": -243.58,
+"scale": 0.71
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 44830.2,
+"y": -51307.8,
+"z": -37.1,
+"yaw": -355.06,
+"scale": 0.63
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 48531.2,
+"y": 85592.5,
+"z": -47.5,
+"yaw": -342.52,
+"scale": 1.047
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 76676.7,
+"y": -38820.8,
+"z": 14.4,
+"yaw": -241.34,
+"scale": 0.895
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 65903.6,
+"y": -56574.3,
+"z": 7081.9,
+"yaw": -172.36,
+"scale": 0.937
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 46305.0,
+"y": -64300.7,
+"z": -40.1,
+"yaw": -65.24,
+"scale": 0.787
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -38631.5,
+"y": 25899.7,
+"z": 517.2,
+"yaw": -338.06,
+"scale": 1.042
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -22098.3,
+"y": -6759.1,
+"z": -24.5,
+"yaw": -339.97,
+"scale": 0.653
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -54604.0,
+"y": 89878.5,
+"z": -60.5,
+"yaw": -106.87,
+"scale": 1.052
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -33892.9,
+"y": -7800.3,
+"z": -9.0,
+"yaw": -342.24,
+"scale": 1.14
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 57411.7,
+"y": 63890.3,
+"z": 1.4,
+"yaw": -222.24,
+"scale": 0.781
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -93888.2,
+"y": -37616.0,
+"z": 6753.3,
+"yaw": -10.72,
+"scale": 1.127
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -73168.6,
+"y": 38848.9,
+"z": 6585.4,
+"yaw": -19.56,
+"scale": 0.563
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -64345.1,
+"y": -33329.4,
+"z": 63.5,
+"yaw": -65.2,
+"scale": 0.992
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 42682.3,
+"y": 90654.2,
+"z": -47.0,
+"yaw": -83.29,
+"scale": 0.968
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 19979.4,
+"y": 50632.6,
+"z": 12.9,
+"yaw": -113.17,
+"scale": 1.008
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -62681.2,
+"y": 29349.0,
+"z": 7245.1,
+"yaw": -301.24,
+"scale": 1.027
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 18397.0,
+"y": -88371.8,
+"z": -27.7,
+"yaw": -195.87,
+"scale": 0.793
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 68907.6,
+"y": 57584.5,
+"z": -37.3,
+"yaw": -298.32,
+"scale": 0.559
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 24253.6,
+"y": 57745.2,
+"z": -22.7,
+"yaw": -51.57,
+"scale": 1.069
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 18408.1,
+"y": 85227.2,
+"z": 5113.0,
+"yaw": -314.71,
+"scale": 0.564
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 83923.6,
+"y": -54142.6,
+"z": -13.2,
+"yaw": -53.72,
+"scale": 0.641
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 23735.5,
+"y": 38911.9,
+"z": -33.2,
+"yaw": -75.28,
+"scale": 0.878
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -40309.5,
+"y": 15775.5,
+"z": -21.7,
+"yaw": -124.77,
+"scale": 0.983
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 79291.7,
+"y": 26540.2,
+"z": -12.4,
+"yaw": -156.02,
+"scale": 0.564
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -14352.7,
+"y": -78442.6,
+"z": 6921.0,
+"yaw": -71.58,
+"scale": 1.042
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -57766.1,
+"y": 62328.8,
+"z": -56.6,
+"yaw": -330.56,
+"scale": 1.238
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -77428.4,
+"y": -26695.6,
+"z": -16.6,
+"yaw": -60.67,
+"scale": 0.66
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -83185.9,
+"y": 68556.3,
+"z": -1.6,
+"yaw": -320.97,
+"scale": 1.272
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 16216.4,
+"y": -15209.4,
+"z": 666.3,
+"yaw": -25.34,
+"scale": 1.264
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -65160.0,
+"y": -50856.2,
+"z": -58.1,
+"yaw": -231.75,
+"scale": 1.119
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 17643.7,
+"y": -88087.6,
+"z": -36.1,
+"yaw": -188.91,
+"scale": 0.929
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -62587.4,
+"y": 3333.1,
+"z": 6815.7,
+"yaw": -208.86,
+"scale": 0.521
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 11013.1,
+"y": -88722.8,
+"z": 62.2,
+"yaw": -344.76,
+"scale": 1.047
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 42867.3,
+"y": -86457.7,
+"z": -17.7,
+"yaw": -339.68,
+"scale": 0.63
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -64506.0,
+"y": -86967.8,
+"z": 6136.2,
+"yaw": -254.09,
+"scale": 0.927
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 22276.9,
+"y": 43875.5,
+"z": 5.0,
+"yaw": -59.7,
+"scale": 0.578
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -50725.9,
+"y": -75480.1,
+"z": -28.1,
+"yaw": -300.39,
+"scale": 0.641
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -76792.7,
+"y": -94020.5,
+"z": 6985.6,
+"yaw": -187.6,
+"scale": 0.537
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 34886.8,
+"y": 61082.6,
+"z": 90.3,
+"yaw": -134.24,
+"scale": 1.016
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -21577.5,
+"y": -25184.9,
+"z": -44.1,
+"yaw": -155.63,
+"scale": 0.906
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -29697.2,
+"y": 86708.0,
+"z": 64.2,
+"yaw": -19.94,
+"scale": 0.504
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 93761.4,
+"y": 12506.7,
+"z": -25.4,
+"yaw": -15.94,
+"scale": 0.678
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -23947.2,
+"y": -1596.0,
+"z": -46.1,
+"yaw": -47.75,
+"scale": 0.777
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -76638.8,
+"y": 23076.2,
+"z": 6671.4,
+"yaw": -176.37,
+"scale": 1.249
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -20439.9,
+"y": 78578.4,
+"z": -16.7,
+"yaw": -188.99,
+"scale": 1.101
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -77500.3,
+"y": 75915.1,
+"z": 138.0,
+"yaw": -164.37,
+"scale": 1.09
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 49014.8,
+"y": -72858.7,
+"z": -40.1,
+"yaw": -144.48,
+"scale": 0.747
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 54061.3,
+"y": -75394.9,
+"z": 54.6,
+"yaw": -37.05,
+"scale": 1.237
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 72412.5,
+"y": -91199.0,
+"z": 6109.7,
+"yaw": -255.89,
+"scale": 0.848
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 41316.2,
+"y": -71921.3,
+"z": -55.4,
+"yaw": -307.91,
+"scale": 0.631
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -13725.3,
+"y": 71486.6,
+"z": -48.5,
+"yaw": -12.79,
+"scale": 1.202
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -49769.3,
+"y": 59936.3,
+"z": 10.9,
+"yaw": -83.31,
+"scale": 0.914
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 80511.9,
+"y": 11468.2,
+"z": -21.8,
+"yaw": -304.0,
+"scale": 0.599
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 69466.3,
+"y": 92768.3,
+"z": -41.8,
+"yaw": -155.16,
+"scale": 0.786
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 72634.4,
+"y": -47372.2,
+"z": -15.9,
+"yaw": -50.79,
+"scale": 0.788
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -44630.5,
+"y": -41217.0,
+"z": -38.2,
+"yaw": -329.68,
+"scale": 1.28
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -3002.4,
+"y": -18950.5,
+"z": -10.4,
+"yaw": -349.2,
+"scale": 1.243
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 54472.5,
+"y": -75975.7,
+"z": 35.3,
+"yaw": -287.02,
+"scale": 0.848
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 17480.2,
+"y": -36907.0,
+"z": 5392.5,
+"yaw": -192.96,
+"scale": 1.177
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -7693.5,
+"y": -35403.8,
+"z": 6232.9,
+"yaw": -109.74,
+"scale": 0.536
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 60542.4,
+"y": -51551.5,
+"z": 8.4,
+"yaw": -113.53,
+"scale": 0.762
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 55906.0,
+"y": -31932.5,
+"z": -10.3,
+"yaw": -158.77,
+"scale": 1.077
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 26266.0,
+"y": 52289.9,
+"z": -59.1,
+"yaw": -22.72,
+"scale": 0.991
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -61929.5,
+"y": 93968.2,
+"z": 5938.2,
+"yaw": -184.8,
+"scale": 0.652
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 86479.8,
+"y": -211.9,
+"z": 7.3,
+"yaw": -125.64,
+"scale": 0.959
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 14683.7,
+"y": -39486.4,
+"z": 6073.2,
+"yaw": -237.65,
+"scale": 1.059
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 22163.8,
+"y": 44852.2,
+"z": 1.6,
+"yaw": -310.36,
+"scale": 0.77
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 40006.4,
+"y": -71682.8,
+"z": -22.3,
+"yaw": -24.79,
+"scale": 1.07
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 49106.1,
+"y": -41273.9,
+"z": 3.2,
+"yaw": -304.33,
+"scale": 1.08
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 61565.4,
+"y": -38729.9,
+"z": 152.6,
+"yaw": -184.63,
+"scale": 0.8
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 37600.5,
+"y": 62541.5,
+"z": 70.8,
+"yaw": -61.14,
+"scale": 0.865
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 69226.1,
+"y": -5071.6,
+"z": -7.5,
+"yaw": -131.92,
+"scale": 0.952
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -43676.3,
+"y": 93589.0,
+"z": -24.9,
+"yaw": -248.24,
+"scale": 0.766
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 38150.5,
+"y": -54261.9,
+"z": 61.8,
+"yaw": -292.19,
+"scale": 0.626
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 52945.5,
+"y": -82731.6,
+"z": -16.5,
+"yaw": -249.09,
+"scale": 0.812
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 8317.8,
+"y": -28646.9,
+"z": -53.5,
+"yaw": -290.57,
+"scale": 0.95
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 59160.5,
+"y": 89087.8,
+"z": -18.7,
+"yaw": -165.9,
+"scale": 0.575
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 62163.2,
+"y": -51068.6,
+"z": 9.1,
+"yaw": -42.0,
+"scale": 0.704
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -19208.9,
+"y": -5321.9,
+"z": -48.2,
+"yaw": -2.28,
+"scale": 0.819
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 18756.8,
+"y": 64098.4,
+"z": 46.3,
+"yaw": -216.4,
+"scale": 1.079
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 85727.5,
+"y": -47152.2,
+"z": -0.3,
+"yaw": -347.06,
+"scale": 0.632
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -88940.6,
+"y": 54924.3,
+"z": 39.9,
+"yaw": -193.85,
+"scale": 1.254
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -33687.8,
+"y": -20826.1,
+"z": -10.7,
+"yaw": -208.15,
+"scale": 0.844
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 49382.3,
+"y": 80157.2,
+"z": -41.3,
+"yaw": -174.46,
+"scale": 0.708
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -73720.4,
+"y": -29915.1,
+"z": -1.4,
+"yaw": -157.9,
+"scale": 1.275
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 17910.7,
+"y": -29282.7,
+"z": 5445.4,
+"yaw": -347.36,
+"scale": 0.569
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -23794.8,
+"y": -8641.0,
+"z": -36.0,
+"yaw": -108.85,
+"scale": 0.507
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -22221.7,
+"y": -73579.4,
+"z": 6910.9,
+"yaw": -138.22,
+"scale": 0.643
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -34245.3,
+"y": -24112.8,
+"z": -24.5,
+"yaw": -191.75,
+"scale": 0.653
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -21343.4,
+"y": 31570.7,
+"z": 84.2,
+"yaw": -250.44,
+"scale": 0.529
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 32859.1,
+"y": 84551.3,
+"z": 7266.1,
+"yaw": -68.82,
+"scale": 1.159
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -88549.6,
+"y": 1271.2,
+"z": 6551.2,
+"yaw": -273.52,
+"scale": 1.29
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -84146.1,
+"y": 23859.8,
+"z": 6808.4,
+"yaw": -262.91,
+"scale": 0.835
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -24175.2,
+"y": 28798.4,
+"z": 476.6,
+"yaw": -143.3,
+"scale": 0.522
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 45232.1,
+"y": 68750.5,
+"z": -47.9,
+"yaw": -355.86,
+"scale": 1.113
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 41483.9,
+"y": -81248.2,
+"z": -24.4,
+"yaw": -190.66,
+"scale": 0.794
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -60699.2,
+"y": 37131.8,
+"z": 7067.8,
+"yaw": -238.29,
+"scale": 0.622
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -1301.1,
+"y": -39494.3,
+"z": 6223.7,
+"yaw": -13.97,
+"scale": 1.047
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -41804.6,
+"y": -46422.4,
+"z": -0.9,
+"yaw": -155.23,
+"scale": 0.716
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -63306.9,
+"y": -62973.7,
+"z": -12.4,
+"yaw": -39.31,
+"scale": 1.238
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -43013.7,
+"y": 9180.1,
+"z": -15.2,
+"yaw": -228.36,
+"scale": 0.707
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 44540.2,
+"y": -41111.3,
+"z": -31.8,
+"yaw": -61.57,
+"scale": 0.518
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -30177.9,
+"y": 46387.1,
+"z": 107.7,
+"yaw": -123.16,
+"scale": 0.957
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -61301.6,
+"y": -67753.4,
+"z": -32.4,
+"yaw": -36.55,
+"scale": 0.959
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -76120.3,
+"y": -68482.3,
+"z": 5.5,
+"yaw": -147.32,
+"scale": 1.083
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 89769.1,
+"y": 11888.0,
+"z": 40.2,
+"yaw": -187.75,
+"scale": 0.858
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 72388.3,
+"y": 63832.7,
+"z": -44.7,
+"yaw": -185.3,
+"scale": 0.728
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 25182.4,
+"y": 11256.6,
+"z": 6652.1,
+"yaw": -215.61,
+"scale": 1.084
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 4501.3,
+"y": 58631.1,
+"z": -30.1,
+"yaw": -254.53,
+"scale": 0.926
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -5989.5,
+"y": -4542.7,
+"z": 6134.4,
+"yaw": -117.42,
+"scale": 0.997
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -24022.4,
+"y": -65993.9,
+"z": 6511.3,
+"yaw": -51.01,
+"scale": 0.686
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -25107.9,
+"y": 80561.5,
+"z": -12.1,
+"yaw": -339.27,
+"scale": 0.837
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -9763.5,
+"y": -28838.6,
+"z": -18.5,
+"yaw": -61.2,
+"scale": 1.07
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -41198.9,
+"y": 35567.4,
+"z": 125.0,
+"yaw": -319.62,
+"scale": 0.705
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 83938.1,
+"y": 56666.4,
+"z": -21.3,
+"yaw": -232.46,
+"scale": 0.974
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -83123.4,
+"y": -87835.1,
+"z": -18.9,
+"yaw": -53.49,
+"scale": 0.818
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -80084.3,
+"y": -1867.9,
+"z": 6034.1,
+"yaw": -133.37,
+"scale": 1.076
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 47020.7,
+"y": 78628.1,
+"z": -21.7,
+"yaw": -200.51,
+"scale": 0.945
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -6434.6,
+"y": 11325.2,
+"z": 5931.1,
+"yaw": -250.0,
+"scale": 0.649
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 46889.3,
+"y": 34384.0,
+"z": 6743.2,
+"yaw": -301.07,
+"scale": 1.269
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 39958.0,
+"y": -62543.3,
+"z": 73.9,
+"yaw": -335.34,
+"scale": 0.681
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 94169.0,
+"y": 11609.1,
+"z": -31.7,
+"yaw": -146.73,
+"scale": 0.937
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -36179.3,
+"y": -80442.9,
+"z": -28.4,
+"yaw": -215.79,
+"scale": 0.768
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -35149.7,
+"y": 13605.8,
+"z": -37.4,
+"yaw": -296.56,
+"scale": 1.186
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -38165.6,
+"y": 11652.3,
+"z": 2.1,
+"yaw": -103.82,
+"scale": 1.153
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 23989.9,
+"y": -20805.8,
+"z": 31.2,
+"yaw": -266.26,
+"scale": 1.158
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -77504.4,
+"y": 69045.5,
+"z": -36.0,
+"yaw": -221.98,
+"scale": 1.185
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -61380.9,
+"y": 44911.6,
+"z": 6038.8,
+"yaw": -17.24,
+"scale": 1.198
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -34988.0,
+"y": 43075.6,
+"z": -26.6,
+"yaw": -53.7,
+"scale": 1.218
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 50.1,
+"y": -91588.2,
+"z": -10.8,
+"yaw": -91.08,
+"scale": 1.026
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -36216.3,
+"y": -4384.6,
+"z": 10.1,
+"yaw": -357.16,
+"scale": 1.033
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 55369.1,
+"y": -64257.2,
+"z": -56.1,
+"yaw": -23.87,
+"scale": 0.708
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 17851.6,
+"y": -44508.5,
+"z": 6776.7,
+"yaw": -159.06,
+"scale": 1.036
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -3135.3,
+"y": 6275.7,
+"z": 7015.0,
+"yaw": -199.87,
+"scale": 1.177
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -1836.8,
+"y": -12598.4,
+"z": 6091.5,
+"yaw": -76.48,
+"scale": 1.028
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -63229.1,
+"y": -14912.1,
+"z": 7409.3,
+"yaw": -127.59,
+"scale": 1.07
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -24937.1,
+"y": -71730.5,
+"z": 7027.9,
+"yaw": -151.35,
+"scale": 1.065
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 14862.9,
+"y": -16314.9,
+"z": 18.3,
+"yaw": -64.84,
+"scale": 0.593
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 42000.8,
+"y": -30603.8,
+"z": 50.3,
+"yaw": -27.69,
+"scale": 0.884
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -67507.1,
+"y": -13328.9,
+"z": 6452.0,
+"yaw": -346.15,
+"scale": 0.952
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -62813.8,
+"y": 82349.4,
+"z": 17.8,
+"yaw": -271.81,
+"scale": 0.711
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -38283.6,
+"y": -53853.9,
+"z": -6.4,
+"yaw": -256.21,
+"scale": 1.149
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -14279.9,
+"y": -92110.5,
+"z": -10.1,
+"yaw": -187.63,
+"scale": 1.231
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 90402.0,
+"y": 54578.5,
+"z": 6810.6,
+"yaw": -159.92,
+"scale": 1.003
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 54415.3,
+"y": 3264.0,
+"z": -3.8,
+"yaw": -106.93,
+"scale": 0.785
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -58413.6,
+"y": 59042.9,
+"z": -3.8,
+"yaw": -79.72,
+"scale": 0.943
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -67881.1,
+"y": 25023.2,
+"z": 7008.6,
+"yaw": -291.27,
+"scale": 0.688
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 75028.3,
+"y": 90510.5,
+"z": 67.9,
+"yaw": -215.0,
+"scale": 0.69
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 94446.0,
+"y": 84410.5,
+"z": -43.3,
+"yaw": -125.23,
+"scale": 1.03
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": -19617.1,
+"y": -16177.6,
+"z": 43.3,
+"yaw": -224.85,
+"scale": 0.684
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": 64963.6,
+"y": 66101.2,
+"z": -31.9,
+"yaw": -67.52,
+"scale": 0.658
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": 80918.3,
+"y": 73077.7,
+"z": -79.7,
+"yaw": -45.12,
+"scale": 1.136
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 65337.3,
+"y": -88822.0,
+"z": 6003.0,
+"yaw": -75.43,
+"scale": 1.074
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -19608.9,
+"y": 69336.2,
+"z": 65.0,
+"yaw": -108.85,
+"scale": 1.193
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_B",
+"x": -74496.2,
+"y": 76771.0,
+"z": -25.8,
+"yaw": -141.1,
+"scale": 1.078
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_A",
+"x": -57988.1,
+"y": 34931.3,
+"z": 6462.6,
+"yaw": -305.26,
+"scale": 0.956
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 56086.8,
+"y": -84065.6,
+"z": 6780.7,
+"yaw": -266.36,
+"scale": 1.169
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 84237.8,
+"y": -28305.2,
+"z": 87.2,
+"yaw": -324.32,
+"scale": 0.845
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -92508.3,
+"y": 53821.3,
+"z": 19.2,
+"yaw": -100.61,
+"scale": 1.167
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 50487.8,
+"y": 64675.2,
+"z": -25.3,
+"yaw": -286.97,
+"scale": 0.856
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -94662.8,
+"y": -70566.9,
+"z": 6017.5,
+"yaw": -75.4,
+"scale": 0.886
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 91660.0,
+"y": -70757.5,
+"z": 22.3,
+"yaw": -104.15,
+"scale": 1.185
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -56091.9,
+"y": -83785.4,
+"z": 12.8,
+"yaw": -248.63,
+"scale": 1.187
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -26373.9,
+"y": 63468.3,
+"z": 45.4,
+"yaw": -52.45,
+"scale": 0.826
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -37741.8,
+"y": -19590.9,
+"z": 38.2,
+"yaw": -1.22,
+"scale": 1.071
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 60518.4,
+"y": 3658.4,
+"z": 68.5,
+"yaw": -113.69,
+"scale": 0.992
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 38887.1,
+"y": 84169.8,
+"z": 80.8,
+"yaw": -351.04,
+"scale": 0.809
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 47461.1,
+"y": -65527.4,
+"z": 45.4,
+"yaw": -6.5,
+"scale": 1.115
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -25424.9,
+"y": -14918.6,
+"z": -8.6,
+"yaw": -3.27,
+"scale": 0.819
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -57660.9,
+"y": -48589.9,
+"z": 19.4,
+"yaw": -334.68,
+"scale": 1.177
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 4693.3,
+"y": -52364.6,
+"z": 74.6,
+"yaw": -38.9,
+"scale": 1.099
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -88040.0,
+"y": -84702.0,
+"z": -6.9,
+"yaw": -32.82,
+"scale": 0.936
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -30407.7,
+"y": -80597.5,
+"z": 2.8,
+"yaw": -196.25,
+"scale": 0.925
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -34808.0,
+"y": 61279.2,
+"z": -30.1,
+"yaw": -28.15,
+"scale": 0.86
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 35943.2,
+"y": -94378.1,
+"z": -5.2,
+"yaw": -58.15,
+"scale": 0.819
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 92472.8,
+"y": -6370.8,
+"z": 45.9,
+"yaw": -146.12,
+"scale": 0.895
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 64301.6,
+"y": 70191.4,
+"z": 21.6,
+"yaw": -263.4,
+"scale": 1.18
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -66643.4,
+"y": -65499.4,
+"z": 2.6,
+"yaw": -106.13,
+"scale": 0.981
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 94867.0,
+"y": -66928.0,
+"z": 11.9,
+"yaw": -351.36,
+"scale": 0.981
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -3981.9,
+"y": 39705.7,
+"z": -14.0,
+"yaw": -145.36,
+"scale": 0.859
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -23369.9,
+"y": -92793.7,
+"z": -34.2,
+"yaw": -345.53,
+"scale": 1.051
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -128.7,
+"y": 30689.0,
+"z": 20.5,
+"yaw": -32.09,
+"scale": 0.909
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 53583.6,
+"y": -69803.5,
+"z": 39.5,
+"yaw": -130.08,
+"scale": 1.114
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 52230.6,
+"y": -36973.4,
+"z": -14.5,
+"yaw": -239.05,
+"scale": 1.104
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -25948.0,
+"y": -38849.2,
+"z": 149.9,
+"yaw": -101.11,
+"scale": 0.994
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 51252.0,
+"y": -36267.8,
+"z": -12.5,
+"yaw": -105.79,
+"scale": 1.178
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 28441.5,
+"y": -15325.6,
+"z": -12.5,
+"yaw": -4.17,
+"scale": 1.019
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -7041.6,
+"y": -60169.1,
+"z": 7288.7,
+"yaw": -233.08,
+"scale": 1.119
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -28901.9,
+"y": -27372.0,
+"z": 10.4,
+"yaw": -265.62,
+"scale": 1.131
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 70283.1,
+"y": -35784.0,
+"z": 16.9,
+"yaw": -351.4,
+"scale": 1.183
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -63427.2,
+"y": -63957.9,
+"z": 20.3,
+"yaw": -337.46,
+"scale": 0.991
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 36370.9,
+"y": -41740.4,
+"z": 5.7,
+"yaw": -262.93,
+"scale": 0.869
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 53270.6,
+"y": -15360.6,
+"z": 27.2,
+"yaw": -239.6,
+"scale": 0.968
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 23510.0,
+"y": -52193.9,
+"z": 87.9,
+"yaw": -229.27,
+"scale": 1.088
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -89751.8,
+"y": 64595.6,
+"z": 16.9,
+"yaw": -158.78,
+"scale": 1.06
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -53382.7,
+"y": -35331.9,
+"z": 52.4,
+"yaw": -227.11,
+"scale": 0.817
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -5398.8,
+"y": 52013.9,
+"z": 37.9,
+"yaw": -19.49,
+"scale": 0.853
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -58261.6,
+"y": 88225.1,
+"z": -27.9,
+"yaw": -167.52,
+"scale": 0.952
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -73135.9,
+"y": -62960.3,
+"z": 2.4,
+"yaw": -134.6,
+"scale": 0.814
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 8592.0,
+"y": 30519.1,
+"z": 23.2,
+"yaw": -209.12,
+"scale": 1.183
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 60519.2,
+"y": 15370.6,
+"z": 2.3,
+"yaw": -292.68,
+"scale": 1.057
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -24805.9,
+"y": 67998.6,
+"z": 41.1,
+"yaw": -214.54,
+"scale": 1.026
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 74758.7,
+"y": 94820.0,
+"z": 69.0,
+"yaw": -38.85,
+"scale": 1.026
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -51996.2,
+"y": 39616.0,
+"z": 13.9,
+"yaw": -350.08,
+"scale": 0.952
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 87616.4,
+"y": -78612.0,
+"z": 6760.7,
+"yaw": -214.49,
+"scale": 0.904
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 91386.3,
+"y": 702.0,
+"z": 40.1,
+"yaw": -149.58,
+"scale": 0.928
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -40584.3,
+"y": 4382.2,
+"z": 77.6,
+"yaw": -43.88,
+"scale": 1.049
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -10741.1,
+"y": 39310.4,
+"z": 14.2,
+"yaw": -281.41,
+"scale": 1.131
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -44139.2,
+"y": 65594.5,
+"z": -14.0,
+"yaw": -355.98,
+"scale": 0.917
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 20527.1,
+"y": 4820.0,
+"z": 7433.3,
+"yaw": -232.16,
+"scale": 1.042
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 46259.9,
+"y": 72546.0,
+"z": 33.6,
+"yaw": -273.74,
+"scale": 0.92
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -38603.8,
+"y": -5674.8,
+"z": 47.9,
+"yaw": -167.16,
+"scale": 0.944
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 46553.3,
+"y": -17252.9,
+"z": 133.7,
+"yaw": -13.11,
+"scale": 0.901
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 73708.7,
+"y": -8662.5,
+"z": 34.6,
+"yaw": -5.24,
+"scale": 1.111
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -13731.0,
+"y": -14371.9,
+"z": -9.4,
+"yaw": -254.95,
+"scale": 1.053
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 66861.3,
+"y": 57671.0,
+"z": -5.5,
+"yaw": -106.72,
+"scale": 1.132
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -82449.7,
+"y": -63892.9,
+"z": 42.3,
+"yaw": -250.06,
+"scale": 0.973
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -40591.4,
+"y": -53338.5,
+"z": 85.1,
+"yaw": -327.84,
+"scale": 0.857
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -440.4,
+"y": 32160.0,
+"z": 14.5,
+"yaw": -55.27,
+"scale": 1.034
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 59246.4,
+"y": 82000.3,
+"z": 16.1,
+"yaw": -82.81,
+"scale": 1.128
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 55432.6,
+"y": -31084.3,
+"z": -7.4,
+"yaw": -9.2,
+"scale": 1.089
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 90950.3,
+"y": -94683.6,
+"z": 7751.6,
+"yaw": -252.45,
+"scale": 0.82
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 64991.9,
+"y": 53345.9,
+"z": -10.2,
+"yaw": -232.47,
+"scale": 1.181
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 40364.2,
+"y": 69421.1,
+"z": 24.2,
+"yaw": -105.3,
+"scale": 1.167
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -66551.3,
+"y": -21016.3,
+"z": 10.6,
+"yaw": -149.02,
+"scale": 0.864
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -74439.2,
+"y": 22952.2,
+"z": 6756.2,
+"yaw": -25.92,
+"scale": 0.823
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 71906.9,
+"y": 69476.8,
+"z": 15.2,
+"yaw": -155.4,
+"scale": 0.926
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -84407.3,
+"y": -37486.3,
+"z": 50.5,
+"yaw": -54.4,
+"scale": 1.053
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 1110.4,
+"y": -77980.3,
+"z": 7475.6,
+"yaw": -199.76,
+"scale": 1.048
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -44983.1,
+"y": -9818.3,
+"z": 70.8,
+"yaw": -91.51,
+"scale": 1.1
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 3229.2,
+"y": 69581.6,
+"z": 29.9,
+"yaw": -84.39,
+"scale": 0.948
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 44983.0,
+"y": 60929.1,
+"z": 16.4,
+"yaw": -256.79,
+"scale": 1.062
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -78803.8,
+"y": -31911.1,
+"z": 68.0,
+"yaw": -32.82,
+"scale": 0.85
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 17855.1,
+"y": 49668.8,
+"z": 10.8,
+"yaw": -315.69,
+"scale": 0.992
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -33575.6,
+"y": -56328.1,
+"z": -31.8,
+"yaw": -10.61,
+"scale": 1.09
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -84804.8,
+"y": 66347.8,
+"z": 16.8,
+"yaw": -342.73,
+"scale": 1.072
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -52613.3,
+"y": 72945.2,
+"z": -4.4,
+"yaw": -350.17,
+"scale": 1.066
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 60913.3,
+"y": 68444.6,
+"z": -12.7,
+"yaw": -224.93,
+"scale": 0.942
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -21707.9,
+"y": 69079.2,
+"z": 23.5,
+"yaw": -299.2,
+"scale": 1.059
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 57855.6,
+"y": 12655.0,
+"z": 15.6,
+"yaw": -306.57,
+"scale": 1.007
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -56542.6,
+"y": 87503.9,
+"z": -16.0,
+"yaw": -320.13,
+"scale": 0.992
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 49466.0,
+"y": 94916.5,
+"z": 43.8,
+"yaw": -169.27,
+"scale": 1.156
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 22698.4,
+"y": 13557.5,
+"z": 7027.3,
+"yaw": -167.61,
+"scale": 0.84
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -65612.1,
+"y": 64782.2,
+"z": 12.5,
+"yaw": -134.87,
+"scale": 0.954
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 72265.1,
+"y": 66098.4,
+"z": 50.7,
+"yaw": -91.46,
+"scale": 0.911
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 35665.7,
+"y": -33024.6,
+"z": 31.8,
+"yaw": -169.82,
+"scale": 1.178
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -72596.5,
+"y": -32027.4,
+"z": 37.9,
+"yaw": -104.8,
+"scale": 1.07
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -51210.2,
+"y": 80141.4,
+"z": 92.8,
+"yaw": -144.39,
+"scale": 1.189
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -25791.9,
+"y": 35750.5,
+"z": 252.0,
+"yaw": -168.49,
+"scale": 0.913
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 44146.1,
+"y": -41406.4,
+"z": 12.4,
+"yaw": -58.81,
+"scale": 0.896
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 32715.4,
+"y": -83691.5,
+"z": 23.0,
+"yaw": -232.51,
+"scale": 0.972
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -83435.3,
+"y": -53060.0,
+"z": 7831.0,
+"yaw": -147.66,
+"scale": 0.818
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 9199.1,
+"y": -93025.1,
+"z": 107.7,
+"yaw": -186.82,
+"scale": 0.94
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -77175.2,
+"y": 81468.5,
+"z": 1.6,
+"yaw": -323.57,
+"scale": 0.996
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 82789.9,
+"y": 84785.3,
+"z": 58.6,
+"yaw": -87.65,
+"scale": 0.82
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -19509.4,
+"y": 83573.6,
+"z": 24.2,
+"yaw": -91.95,
+"scale": 0.963
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -36869.7,
+"y": 85245.2,
+"z": 107.4,
+"yaw": -13.54,
+"scale": 1.189
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -18552.1,
+"y": -5948.7,
+"z": -5.0,
+"yaw": -30.37,
+"scale": 0.926
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 80047.5,
+"y": -18674.4,
+"z": 7.1,
+"yaw": -308.44,
+"scale": 0.886
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -91692.4,
+"y": -7530.3,
+"z": 6733.0,
+"yaw": -175.15,
+"scale": 1.029
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -23440.6,
+"y": -23768.9,
+"z": 72.6,
+"yaw": -261.23,
+"scale": 1.165
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -36553.9,
+"y": 9682.0,
+"z": 83.2,
+"yaw": -297.51,
+"scale": 0.89
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -70335.4,
+"y": 79422.9,
+"z": 26.3,
+"yaw": -88.15,
+"scale": 0.834
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -48376.6,
+"y": 83326.0,
+"z": -11.6,
+"yaw": -252.22,
+"scale": 0.819
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -57027.8,
+"y": 40656.5,
+"z": 6648.0,
+"yaw": -134.55,
+"scale": 0.839
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -15090.2,
+"y": 35353.4,
+"z": -30.8,
+"yaw": -270.83,
+"scale": 1.022
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 75257.1,
+"y": -29278.6,
+"z": 37.7,
+"yaw": -273.5,
+"scale": 1.03
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 29537.1,
+"y": -86405.3,
+"z": -1.6,
+"yaw": -262.09,
+"scale": 1.08
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -44138.0,
+"y": -59294.4,
+"z": 35.5,
+"yaw": -137.67,
+"scale": 0.852
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -82473.5,
+"y": 62821.1,
+"z": 81.3,
+"yaw": -94.53,
+"scale": 1.07
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -40751.0,
+"y": 82930.5,
+"z": 88.1,
+"yaw": -274.96,
+"scale": 1.023
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -89780.3,
+"y": 85380.2,
+"z": -36.7,
+"yaw": -46.84,
+"scale": 0.943
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 21280.3,
+"y": 51091.5,
+"z": -7.4,
+"yaw": -154.41,
+"scale": 0.945
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -32229.3,
+"y": 92635.3,
+"z": 18.3,
+"yaw": -210.39,
+"scale": 1.131
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 43098.3,
+"y": 76893.6,
+"z": 16.5,
+"yaw": -190.91,
+"scale": 0.868
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 83322.1,
+"y": -56007.4,
+"z": -1.0,
+"yaw": -42.55,
+"scale": 0.927
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 78848.4,
+"y": 7410.5,
+"z": 5.1,
+"yaw": -156.3,
+"scale": 0.977
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 50825.2,
+"y": -82896.3,
+"z": -8.2,
+"yaw": -191.74,
+"scale": 1.188
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 18242.9,
+"y": 75323.0,
+"z": 44.3,
+"yaw": -293.13,
+"scale": 0.968
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -85060.9,
+"y": -90821.9,
+"z": -20.4,
+"yaw": -11.83,
+"scale": 1.031
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -20383.6,
+"y": 54032.2,
+"z": 98.3,
+"yaw": -99.74,
+"scale": 0.88
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 11862.2,
+"y": 27172.0,
+"z": 43.7,
+"yaw": -270.39,
+"scale": 0.897
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -28163.5,
+"y": 47834.5,
+"z": 35.9,
+"yaw": -353.67,
+"scale": 1.136
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 66468.5,
+"y": -22449.3,
+"z": -30.0,
+"yaw": -144.31,
+"scale": 0.857
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -87828.6,
+"y": 62784.3,
+"z": -23.0,
+"yaw": -35.54,
+"scale": 1.087
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 76034.5,
+"y": 57129.8,
+"z": 37.1,
+"yaw": -286.93,
+"scale": 0.93
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 34751.7,
+"y": -68992.7,
+"z": 6494.5,
+"yaw": -224.32,
+"scale": 1.12
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -23477.3,
+"y": 93084.4,
+"z": 19.1,
+"yaw": -184.23,
+"scale": 1.035
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -59899.5,
+"y": 21072.1,
+"z": 6098.0,
+"yaw": -114.21,
+"scale": 0.811
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -19170.1,
+"y": -91653.6,
+"z": 60.0,
+"yaw": -293.59,
+"scale": 1.17
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 34097.7,
+"y": -4219.6,
+"z": 8.2,
+"yaw": -102.3,
+"scale": 0.831
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -78418.9,
+"y": 27385.3,
+"z": 7217.2,
+"yaw": -208.94,
+"scale": 1.104
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 81546.0,
+"y": 42826.2,
+"z": 136.9,
+"yaw": -257.78,
+"scale": 0.829
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 48144.8,
+"y": -32288.8,
+"z": 16.3,
+"yaw": -344.49,
+"scale": 1.159
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 45336.5,
+"y": -21086.4,
+"z": 117.6,
+"yaw": -75.15,
+"scale": 1.007
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 75264.8,
+"y": 49573.7,
+"z": 4.8,
+"yaw": -350.88,
+"scale": 1.018
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -20252.2,
+"y": 94437.6,
+"z": 43.2,
+"yaw": -140.46,
+"scale": 0.871
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 77933.2,
+"y": -21570.7,
+"z": -7.9,
+"yaw": -139.2,
+"scale": 0.844
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 35869.5,
+"y": -10150.1,
+"z": 15.9,
+"yaw": -257.49,
+"scale": 0.95
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 73486.1,
+"y": 54585.4,
+"z": 10.9,
+"yaw": -110.01,
+"scale": 0.907
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -63189.9,
+"y": -25233.4,
+"z": 34.9,
+"yaw": -275.94,
+"scale": 0.89
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -83089.1,
+"y": -12519.6,
+"z": 6041.3,
+"yaw": -298.9,
+"scale": 1.151
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 76899.3,
+"y": 37558.6,
+"z": 6963.1,
+"yaw": -101.07,
+"scale": 1.042
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -89209.0,
+"y": 73036.7,
+"z": 6.8,
+"yaw": -202.53,
+"scale": 1.041
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -60063.2,
+"y": 58846.2,
+"z": 23.0,
+"yaw": -214.03,
+"scale": 1.059
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 36142.8,
+"y": -43495.5,
+"z": -4.3,
+"yaw": -22.1,
+"scale": 0.994
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -34495.2,
+"y": -66564.1,
+"z": 36.6,
+"yaw": -232.27,
+"scale": 1.171
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -51476.9,
+"y": -37392.2,
+"z": 92.1,
+"yaw": -302.66,
+"scale": 0.991
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -75848.7,
+"y": 58229.8,
+"z": 8.9,
+"yaw": -56.39,
+"scale": 0.837
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -75068.8,
+"y": -49032.7,
+"z": -20.8,
+"yaw": -265.04,
+"scale": 1.127
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 23769.0,
+"y": -88368.2,
+"z": 38.5,
+"yaw": -37.2,
+"scale": 0.841
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -82753.1,
+"y": 55780.5,
+"z": 27.1,
+"yaw": -134.8,
+"scale": 0.983
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 34295.1,
+"y": -46157.0,
+"z": -22.2,
+"yaw": -30.16,
+"scale": 0.961
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -72665.7,
+"y": -18446.3,
+"z": 26.0,
+"yaw": -134.79,
+"scale": 1.073
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": -853.1,
+"y": -87912.6,
+"z": 41.5,
+"yaw": -340.21,
+"scale": 0.829
+},
+{
+"kit": "common",
+"asset": "SM_Acacia",
+"x": 49360.6,
+"y": -42038.1,
+"z": 73.3,
+"yaw": -106.53,
+"scale": 0.847
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 15022.6,
+"y": -84884.6,
+"z": -3.6,
+"yaw": -347.59,
+"scale": 1.094
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 41962.5,
+"y": -67826.3,
+"z": 17.5,
+"yaw": -238.64,
+"scale": 1.044
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 49981.0,
+"y": -87667.1,
+"z": -7.9,
+"yaw": -35.12,
+"scale": 0.818
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 60633.8,
+"y": -79601.1,
+"z": 6170.2,
+"yaw": -185.27,
+"scale": 1.058
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 49895.5,
+"y": -89165.1,
+"z": -7.6,
+"yaw": -228.05,
+"scale": 0.898
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 20979.2,
+"y": -80004.7,
+"z": 6754.9,
+"yaw": -42.06,
+"scale": 1.065
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 25494.3,
+"y": -90966.2,
+"z": 5.1,
+"yaw": -67.95,
+"scale": 0.868
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 47399.4,
+"y": -81732.4,
+"z": 57.8,
+"yaw": -134.87,
+"scale": 1.011
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 29457.5,
+"y": -85361.9,
+"z": 2.1,
+"yaw": -19.38,
+"scale": 0.969
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 52315.7,
+"y": -76932.9,
+"z": 87.6,
+"yaw": -88.31,
+"scale": 1.192
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 40834.3,
+"y": -79127.9,
+"z": 87.6,
+"yaw": -338.66,
+"scale": 0.877
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 49009.0,
+"y": -78540.7,
+"z": 36.5,
+"yaw": -6.67,
+"scale": 1.015
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 27556.9,
+"y": -89053.3,
+"z": 73.2,
+"yaw": -92.27,
+"scale": 0.981
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 35528.6,
+"y": -91378.8,
+"z": 27.4,
+"yaw": -96.46,
+"scale": 0.99
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 33873.9,
+"y": -74170.2,
+"z": 7230.3,
+"yaw": -116.42,
+"scale": 1.064
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 33802.1,
+"y": -83090.9,
+"z": 47.0,
+"yaw": -232.6,
+"scale": 1.19
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 51465.3,
+"y": -69745.6,
+"z": 31.3,
+"yaw": -201.55,
+"scale": 1.05
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 45498.1,
+"y": -82093.1,
+"z": 8.5,
+"yaw": -130.32,
+"scale": 1.175
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 24631.6,
+"y": -93421.7,
+"z": 26.1,
+"yaw": -151.96,
+"scale": 1.113
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 33098.6,
+"y": -69348.8,
+"z": 6516.6,
+"yaw": -218.37,
+"scale": 0.858
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 46400.4,
+"y": -67919.7,
+"z": 2.6,
+"yaw": -16.3,
+"scale": 0.991
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 51204.7,
+"y": -67069.9,
+"z": 13.3,
+"yaw": -252.49,
+"scale": 0.851
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 45906.1,
+"y": -92342.0,
+"z": 18.0,
+"yaw": -179.89,
+"scale": 0.808
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 46872.5,
+"y": -89547.5,
+"z": -4.5,
+"yaw": -327.16,
+"scale": 0.976
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 53924.9,
+"y": -78412.4,
+"z": 33.6,
+"yaw": -171.88,
+"scale": 1.032
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 38655.0,
+"y": -78327.0,
+"z": 26.5,
+"yaw": -11.49,
+"scale": 0.834
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 55818.6,
+"y": -84157.2,
+"z": 6749.1,
+"yaw": -266.06,
+"scale": 0.935
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 16598.2,
+"y": -93556.8,
+"z": 9.2,
+"yaw": -252.25,
+"scale": 0.937
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 18879.7,
+"y": -86945.6,
+"z": 84.8,
+"yaw": -143.88,
+"scale": 0.854
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 52151.0,
+"y": -84182.1,
+"z": -18.6,
+"yaw": -26.63,
+"scale": 1.008
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 16523.8,
+"y": -80762.7,
+"z": 6167.0,
+"yaw": -66.13,
+"scale": 1.096
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 40366.0,
+"y": -90502.1,
+"z": 50.9,
+"yaw": -340.23,
+"scale": 1.078
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 50760.8,
+"y": -68775.6,
+"z": 9.0,
+"yaw": -272.62,
+"scale": 1.197
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 43050.7,
+"y": -65142.9,
+"z": 146.0,
+"yaw": -67.73,
+"scale": 0.93
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 34054.1,
+"y": -78228.3,
+"z": 58.8,
+"yaw": -304.15,
+"scale": 1.012
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 52143.9,
+"y": -73157.0,
+"z": 9.7,
+"yaw": -350.13,
+"scale": 0.866
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 46273.2,
+"y": -76541.0,
+"z": 89.1,
+"yaw": -4.41,
+"scale": 0.989
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 17961.4,
+"y": -84526.0,
+"z": 6.5,
+"yaw": -242.54,
+"scale": 1.038
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 35342.2,
+"y": -87909.3,
+"z": 39.3,
+"yaw": -33.38,
+"scale": 0.831
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 43670.3,
+"y": -66764.3,
+"z": 15.5,
+"yaw": -43.22,
+"scale": 0.845
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 60990.0,
+"y": -87503.4,
+"z": 5529.8,
+"yaw": -234.35,
+"scale": 0.915
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 57963.5,
+"y": -88364.3,
+"z": 5956.3,
+"yaw": -100.01,
+"scale": 0.805
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 41352.0,
+"y": -86955.2,
+"z": 39.4,
+"yaw": -279.73,
+"scale": 0.837
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 44768.2,
+"y": -65982.2,
+"z": 6.3,
+"yaw": -248.87,
+"scale": 0.891
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 53142.4,
+"y": -75811.0,
+"z": 67.5,
+"yaw": -156.83,
+"scale": 1.133
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 15129.0,
+"y": -89849.9,
+"z": 2.3,
+"yaw": -243.76,
+"scale": 1.046
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 42288.5,
+"y": -72288.9,
+"z": -7.4,
+"yaw": -353.51,
+"scale": 0.972
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 40878.5,
+"y": -89916.5,
+"z": 46.4,
+"yaw": -91.14,
+"scale": 0.92
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 16643.1,
+"y": -87741.9,
+"z": -6.4,
+"yaw": -291.01,
+"scale": 1.03
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 62403.8,
+"y": -89286.0,
+"z": 6440.2,
+"yaw": -43.17,
+"scale": 1.037
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 38684.8,
+"y": -90852.7,
+"z": 46.5,
+"yaw": -77.54,
+"scale": 1.058
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 34417.7,
+"y": -88114.6,
+"z": 51.2,
+"yaw": -313.11,
+"scale": 1.142
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 53411.8,
+"y": -92798.7,
+"z": 6476.1,
+"yaw": -69.92,
+"scale": 0.965
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 22376.9,
+"y": -92863.5,
+"z": 33.1,
+"yaw": -187.3,
+"scale": 1.111
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 39402.8,
+"y": -75927.9,
+"z": 36.0,
+"yaw": -303.01,
+"scale": 1.037
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 54888.9,
+"y": -67001.7,
+"z": -8.5,
+"yaw": -14.84,
+"scale": 1.036
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 45570.2,
+"y": -94676.9,
+"z": 16.6,
+"yaw": -281.61,
+"scale": 1.106
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 27211.3,
+"y": -93953.2,
+"z": 17.8,
+"yaw": -226.4,
+"scale": 1.144
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 51947.8,
+"y": -78733.0,
+"z": 99.0,
+"yaw": -261.52,
+"scale": 0.855
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 18414.0,
+"y": -87581.5,
+"z": 29.2,
+"yaw": -317.67,
+"scale": 0.812
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 18064.2,
+"y": -73239.7,
+"z": 6331.9,
+"yaw": -138.27,
+"scale": 1.05
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 20096.5,
+"y": -90069.3,
+"z": 5.3,
+"yaw": -51.11,
+"scale": 1.102
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 33519.1,
+"y": -87857.9,
+"z": 31.0,
+"yaw": -283.51,
+"scale": 1.178
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 59637.5,
+"y": -93275.1,
+"z": 6527.0,
+"yaw": -244.23,
+"scale": 0.992
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 42092.0,
+"y": -75377.2,
+"z": 58.8,
+"yaw": -163.06,
+"scale": 1.192
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 50917.8,
+"y": -66372.2,
+"z": 55.0,
+"yaw": -238.15,
+"scale": 1.049
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 15164.4,
+"y": -91366.8,
+"z": 5.6,
+"yaw": -200.49,
+"scale": 0.902
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 28632.4,
+"y": -74077.0,
+"z": 6800.4,
+"yaw": -78.35,
+"scale": 1.091
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 44723.9,
+"y": -67703.1,
+"z": -7.8,
+"yaw": -207.74,
+"scale": 0.94
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 38875.1,
+"y": -84177.9,
+"z": 48.7,
+"yaw": -138.35,
+"scale": 1.019
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 32957.5,
+"y": -84679.2,
+"z": 26.8,
+"yaw": -349.64,
+"scale": 0.822
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 41359.1,
+"y": -80632.7,
+"z": 32.5,
+"yaw": -108.25,
+"scale": 0.97
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 33546.8,
+"y": -94794.8,
+"z": -7.6,
+"yaw": -322.61,
+"scale": 0.865
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 28881.4,
+"y": -84492.2,
+"z": -2.5,
+"yaw": -294.27,
+"scale": 1.193
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 19529.4,
+"y": -85583.6,
+"z": 36.5,
+"yaw": -0.43,
+"scale": 0.906
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 44660.5,
+"y": -90581.1,
+"z": -2.5,
+"yaw": -266.67,
+"scale": 0.913
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 39778.4,
+"y": -86804.7,
+"z": 45.0,
+"yaw": -86.56,
+"scale": 0.806
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 17544.0,
+"y": -80461.0,
+"z": 6301.2,
+"yaw": -55.21,
+"scale": 1.114
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 47054.9,
+"y": -90914.9,
+"z": 27.4,
+"yaw": -38.64,
+"scale": 1.117
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 34932.0,
+"y": -79663.5,
+"z": 61.3,
+"yaw": -262.19,
+"scale": 1.106
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 44746.6,
+"y": -91771.7,
+"z": 22.7,
+"yaw": -220.31,
+"scale": 0.995
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 31144.5,
+"y": -83439.4,
+"z": 27.3,
+"yaw": -288.23,
+"scale": 1.013
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 26051.8,
+"y": -89663.1,
+"z": 39.1,
+"yaw": -80.22,
+"scale": 0.941
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 43198.0,
+"y": -84426.2,
+"z": 13.0,
+"yaw": -205.02,
+"scale": 0.89
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 60912.6,
+"y": -66029.0,
+"z": 7213.7,
+"yaw": -131.02,
+"scale": 1.0
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 27655.1,
+"y": -92287.3,
+"z": 20.2,
+"yaw": -109.2,
+"scale": 1.01
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 44380.4,
+"y": -82508.9,
+"z": 1.9,
+"yaw": -148.05,
+"scale": 1.036
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 30245.7,
+"y": -82682.2,
+"z": 27.3,
+"yaw": -86.61,
+"scale": 0.984
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 43804.0,
+"y": -75993.2,
+"z": 64.2,
+"yaw": -243.78,
+"scale": 0.987
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 64977.2,
+"y": -65356.9,
+"z": 6954.2,
+"yaw": -218.61,
+"scale": 0.992
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 46891.0,
+"y": -84192.0,
+"z": 62.5,
+"yaw": -359.34,
+"scale": 0.864
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 35306.3,
+"y": -82987.6,
+"z": 66.3,
+"yaw": -124.83,
+"scale": 1.06
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 45626.1,
+"y": -81094.6,
+"z": 22.2,
+"yaw": -299.49,
+"scale": 0.954
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 50526.5,
+"y": -65088.3,
+"z": 7.8,
+"yaw": -150.52,
+"scale": 0.87
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 15784.7,
+"y": -89095.3,
+"z": -3.2,
+"yaw": -278.93,
+"scale": 1.129
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 25580.9,
+"y": -93021.8,
+"z": 17.4,
+"yaw": -150.35,
+"scale": 0.943
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 40085.7,
+"y": -71024.0,
+"z": -12.3,
+"yaw": -242.6,
+"scale": 1.056
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 16219.4,
+"y": -92423.7,
+"z": 8.1,
+"yaw": -263.55,
+"scale": 0.848
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 45343.0,
+"y": -88722.2,
+"z": 17.8,
+"yaw": -186.6,
+"scale": 1.028
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 57779.3,
+"y": -94044.1,
+"z": 6615.6,
+"yaw": -117.44,
+"scale": 1.017
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 44715.3,
+"y": -84624.5,
+"z": 6.0,
+"yaw": -32.04,
+"scale": 1.147
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 44715.0,
+"y": -81183.7,
+"z": 12.2,
+"yaw": -339.52,
+"scale": 1.069
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 24970.0,
+"y": -86051.9,
+"z": 38.0,
+"yaw": -151.66,
+"scale": 1.079
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 25750.0,
+"y": -73928.6,
+"z": 6389.0,
+"yaw": -130.72,
+"scale": 0.819
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 47653.5,
+"y": -72729.9,
+"z": 9.1,
+"yaw": -219.54,
+"scale": 1.001
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 46470.8,
+"y": -65224.9,
+"z": 35.7,
+"yaw": -80.53,
+"scale": 0.902
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 45210.2,
+"y": -94048.4,
+"z": 17.2,
+"yaw": -20.97,
+"scale": 1.146
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 43099.8,
+"y": -79694.5,
+"z": 43.4,
+"yaw": -126.03,
+"scale": 0.855
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 29502.4,
+"y": -94686.4,
+"z": -20.7,
+"yaw": -285.96,
+"scale": 1.145
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 52132.3,
+"y": -80883.2,
+"z": 9.9,
+"yaw": -357.81,
+"scale": 1.031
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 60587.5,
+"y": -72271.6,
+"z": 5849.7,
+"yaw": -75.34,
+"scale": 0.972
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 35409.0,
+"y": -88718.6,
+"z": 32.3,
+"yaw": -21.26,
+"scale": 1.062
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 41192.7,
+"y": -72450.4,
+"z": -15.9,
+"yaw": -92.25,
+"scale": 1.043
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 32673.0,
+"y": -81923.0,
+"z": 70.9,
+"yaw": -57.63,
+"scale": 0.85
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 54902.3,
+"y": -78578.1,
+"z": 36.8,
+"yaw": -28.91,
+"scale": 1.022
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 28855.6,
+"y": -87782.6,
+"z": 10.5,
+"yaw": -333.81,
+"scale": 1.032
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 31351.7,
+"y": -84150.1,
+"z": 14.9,
+"yaw": -290.04,
+"scale": 1.016
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 34562.6,
+"y": -83510.2,
+"z": 92.8,
+"yaw": -119.57,
+"scale": 1.045
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 49315.3,
+"y": -68015.3,
+"z": 2.6,
+"yaw": -35.66,
+"scale": 0.875
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 39843.2,
+"y": -93536.3,
+"z": 31.8,
+"yaw": -281.43,
+"scale": 0.802
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 16744.7,
+"y": -65216.6,
+"z": 6867.6,
+"yaw": -249.86,
+"scale": 1.082
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 25043.8,
+"y": -69787.0,
+"z": 6074.4,
+"yaw": -170.79,
+"scale": 1.057
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 35711.4,
+"y": -81764.3,
+"z": 54.6,
+"yaw": -317.04,
+"scale": 1.055
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 53405.7,
+"y": -68462.4,
+"z": 14.5,
+"yaw": -167.11,
+"scale": 1.073
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 46480.8,
+"y": -90172.8,
+"z": -3.2,
+"yaw": -204.26,
+"scale": 0.891
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 56333.6,
+"y": -92754.5,
+"z": 6841.6,
+"yaw": -28.07,
+"scale": 1.168
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 40285.1,
+"y": -65527.4,
+"z": 45.1,
+"yaw": -45.35,
+"scale": 0.805
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 52935.9,
+"y": -82627.0,
+"z": 18.9,
+"yaw": -248.58,
+"scale": 0.93
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 53996.5,
+"y": -67137.3,
+"z": 13.8,
+"yaw": -260.93,
+"scale": 1.02
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 59333.2,
+"y": -88133.1,
+"z": 5753.9,
+"yaw": -18.78,
+"scale": 1.028
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 60792.1,
+"y": -88623.6,
+"z": 5581.7,
+"yaw": -228.02,
+"scale": 1.043
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 46554.0,
+"y": -83165.8,
+"z": 29.5,
+"yaw": -229.0,
+"scale": 0.92
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 20485.6,
+"y": -83866.9,
+"z": 25.7,
+"yaw": -128.31,
+"scale": 1.086
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 42424.4,
+"y": -89702.5,
+"z": 15.4,
+"yaw": -297.07,
+"scale": 1.107
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 20875.3,
+"y": -75881.5,
+"z": 5947.9,
+"yaw": -4.77,
+"scale": 1.15
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 50159.8,
+"y": -70171.4,
+"z": 10.3,
+"yaw": -245.24,
+"scale": 1.126
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 28704.0,
+"y": -87068.4,
+"z": -3.3,
+"yaw": -79.44,
+"scale": 0.932
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_A",
+"x": 43762.5,
+"y": -93786.4,
+"z": 7.5,
+"yaw": -277.07,
+"scale": 1.177
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 39319.7,
+"y": -94549.1,
+"z": 29.4,
+"yaw": -47.2,
+"scale": 1.139
+},
+{
+"kit": "common",
+"asset": "SM_DatePalm_C",
+"x": 46553.8,
+"y": -86119.9,
+"z": 58.6,
+"yaw": -76.31,
+"scale": 0.845
+},
+{
+"kit": "alula",
+"asset": "SM_AlUlaOldTown",
+"x": 38000.0,
+"y": -82000.0,
+"z": 33.8,
+"yaw": 20.0,
+"scale": 1.0
+},
+{
+"kit": "alula",
+"asset": "SM_HotAirBalloon_A",
+"x": 30000.0,
+"y": -0.0,
+"z": 15000.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "alula",
+"asset": "SM_HotAirBalloon_B",
+"x": -20000.0,
+"y": -20000.0,
+"z": 19000.0,
+"yaw": -70.0,
+"scale": 1.0
+},
+{
+"kit": "alula",
+"asset": "SM_HotAirBalloon_C",
+"x": 10000.0,
+"y": 30000.0,
+"z": 17000.0,
+"yaw": -140.0,
+"scale": 1.0
+},
+{
+"kit": "alula",
+"asset": "SM_HotAirBalloon_A",
+"x": -50000.0,
+"y": 50000.0,
+"z": 21000.0,
+"yaw": -210.0,
+"scale": 1.0
+},
+{
+"kit": "alula",
+"asset": "SM_HotAirBalloon_B",
+"x": 65000.0,
+"y": -60000.0,
+"z": 16000.0,
+"yaw": -280.0,
+"scale": 1.0
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 28486.4,
+"y": -58944.4,
+"z": 44.9,
+"yaw": -0.0,
+"scale": 0.7
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 28786.4,
+"y": -59344.4,
+"z": 41.5,
+"yaw": -0.0,
+"scale": 0.7
+},
+{
+"kit": "alula",
+"asset": "SM_Boulder_C",
+"x": 29086.4,
+"y": -59744.4,
+"z": 38.5,
+"yaw": -0.0,
+"scale": 0.7
+}
+]
+}

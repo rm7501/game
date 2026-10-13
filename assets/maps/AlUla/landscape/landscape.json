@@ -1,0 +1,33 @@
+{
+ "heightmap": "H_AlUla.png",
+ "resolution": 2017,
+ "size_m": 2016.0,
+ "ue_location_cm": [
+  -100800.0,
+  -100800.0,
+  0.0
+ ],
+ "ue_scale": [
+  100.0,
+  100.0,
+  35
+ ],
+ "layers": [
+  "Sand",
+  "Sandstone",
+  "PackedSand",
+  "Scree"
+ ],
+ "weightmaps": [
+  "W_AlUla_Sand.png",
+  "W_AlUla_Sandstone.png",
+  "W_AlUla_PackedSand.png",
+  "W_AlUla_Scree.png"
+ ],
+ "height_range_m": [
+  -0.9761394673759326,
+  85.04496164155108
+ ],
+ "water_level_m": null,
+ "note": "Landscape mode > New > Import from File. Use the location/scale above exactly."
+}

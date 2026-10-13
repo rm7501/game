@@ -351,7 +351,62 @@ def defaults(out):
     print("texture Default")
 
 
-ALL = [defaults, facade_tower, hex_mesh, sand, sandstone_strata, rock, asphalt, road_lanes, coral_stone, mud_plaster,
+def track_asphalt(out):
+    """Race-track asphalt. U = across the whole road (edge lines at both sides), V = 16 m along."""
+    yy, xx = np.mgrid[0:N, 0:N] / N
+    a = fbm(beta=0.4, seed=141)
+    b = fbm(beta=2.6, seed=142)
+    f1, _, ids = voronoi(cells=7000, seed=143)
+    agg = np.clip(1 - f1 / 4.0, 0, 1) * (np.random.default_rng(144).random(ids.max() + 1)[ids] > 0.6)
+    v = 0.17 + a * 0.07 + b * 0.07 + agg * 0.1
+    racing = np.exp(-((xx - 0.42 - 0.06 * np.sin(yy * 2 * np.pi)) / 0.13) ** 2)   # rubbered racing line
+    patch = np.clip((fbm(beta=3.4, seed=145) - 0.62) * 5, 0, 1)                       # repair patches
+    v = v * (1 - 0.35 * racing) * (1 - 0.25 * patch)
+    col = np.stack([v, v, v * 1.03], -1)
+    paint = ((np.abs(xx - 0.035) < 0.011) | (np.abs(xx - 0.965) < 0.011)).astype(float)
+    wear = np.clip(fbm(beta=1.0, seed=146) * 1.5, 0.5, 1)
+    paint *= wear
+    col = col * (1 - paint[..., None]) + np.array([0.92, 0.92, 0.9]) * paint[..., None]
+    h = a * 0.4 + agg * 0.6
+    rough = np.clip(0.82 - agg * 0.25 - racing * 0.25 + b * 0.1, 0.3, 1) * (1 - paint) + 0.5 * paint
+    save(out, "TrackAsphalt", col, normal_from_height(h, 3), rough)
+
+
+def track_sand(out):
+    """Packed desert rally road: compacted centre with tyre ruts, loose bright sand at the edges."""
+    yy, xx = np.mgrid[0:N, 0:N] / N
+    warp = fbm(beta=3.0, seed=151) * 0.04
+    ruts = sum(np.exp(-((xx - c + warp) / 0.035) ** 2) for c in (0.3, 0.42, 0.58, 0.7))
+    edge = np.clip(np.maximum(0.12 - xx, xx - 0.88) / 0.12, 0, 1)
+    grain = fbm(beta=0.6, seed=152)
+    big = fbm(beta=3.0, seed=153)
+    ripple = np.sin((yy * 30 + fbm(beta=3, seed=154) * 3) * 2 * np.pi) * 0.5 + 0.5
+    col = ramp(big * 0.6 + grain * 0.4, [(0, (170, 120, 76)), (0.5, (196, 146, 96)), (1, (214, 168, 116))])
+    col *= (1 - 0.22 * ruts[..., None])
+    col = col * (1 - edge[..., None] * 0.5) + np.array([0.9, 0.74, 0.54]) * edge[..., None] * 0.5
+    h = grain * 0.3 + big * 0.3 - ruts * 0.4 + edge * ripple * 0.3
+    save(out, "TrackSand", col, normal_from_height(h, 4), np.clip(0.95 - ruts * 0.1, 0, 1))
+
+
+def track_glow(out):
+    """Future-city track: dark glossy composite panels, cyan edge lines and centre dashes (E map)."""
+    yy, xx = np.mgrid[0:N, 0:N] / N
+    seams = (((xx * 4) % 1 < 0.006) | ((yy * 8) % 1 < 0.006))
+    a = fbm(beta=2.2, seed=161)
+    col = np.stack([0.04 + 0.03 * a] * 3, -1) * np.array([0.9, 0.95, 1.1])
+    col[seams] = 0.15
+    em = np.zeros((N, N, 3))
+    edge = (np.abs(xx - 0.03) < 0.008) | (np.abs(xx - 0.97) < 0.008)
+    dash = (np.abs(xx - 0.5) < 0.006) & ((yy * 4) % 1 < 0.5)
+    chev = (np.abs(((yy * 8) % 1) - 0.5 - np.abs(xx - 0.5) * 0.6) < 0.01) & (np.abs(xx - 0.5) < 0.35) & ((yy * 2) % 1 < 0.12)
+    em[edge] = [0.1, 0.85, 1.0]
+    em[dash] = [0.1, 0.85, 1.0]
+    em[chev] = [1.0, 0.25, 0.8]
+    rough = np.where(seams, 0.6, 0.18 + 0.1 * a)
+    save(out, "TrackGlow", col, None, rough, em)
+
+
+ALL = [track_asphalt, track_sand, track_glow, defaults, facade_tower, hex_mesh, sand, sandstone_strata, rock, asphalt, road_lanes, coral_stone, mud_plaster,
        stone_masonry, concrete, wood_painted, facade_night, metal_panels, terrace_grass]
 
 if __name__ == "__main__":

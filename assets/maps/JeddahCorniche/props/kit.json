@@ -1,0 +1,42 @@
+{
+ "SM_FloatingMosque": {
+  "tris": 5880,
+  "size_m": [
+   210.0,
+   69.0,
+   45.0
+  ],
+  "materials": [
+   "M_Mosque_White",
+   "M_Mosque_Trim",
+   "M_WindowDarkHole",
+   "M_Mosque_Glass",
+   "M_Brass"
+  ]
+ },
+ "SM_JeddahTower": {
+  "tris": 3062,
+  "size_m": [
+   107.1,
+   112.76,
+   736.0
+  ],
+  "materials": [
+   "M_Riyadh_FacadeNight",
+   "M_ConcreteWarm",
+   "M_SteelDark",
+   "M_AviationRed"
+  ]
+ },
+ "SM_KingFahdFountain": {
+  "tris": 384,
+  "size_m": [
+   52.0,
+   52.0,
+   312.0
+  ],
+  "materials": [
+   "M_FountainJet"
+  ]
+ }
+}

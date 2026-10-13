@@ -1,0 +1,38 @@
+{
+ "SM_SandLabyrinth": {
+  "tris": 5564,
+  "size_m": [
+   108.87,
+   109.0,
+   0.42
+  ],
+  "materials": [
+   "M_LabyrinthSand"
+  ]
+ },
+ "SM_SandLantern": {
+  "tris": 116,
+  "size_m": [
+   0.4,
+   0.4,
+   0.47
+  ],
+  "materials": [
+   "M_LanternBase",
+   "M_LanternGlowWarm"
+  ]
+ },
+ "SM_LoungeSeat": {
+  "tris": 348,
+  "size_m": [
+   3.0,
+   2.0,
+   0.36
+  ],
+  "materials": [
+   "M_Rug_Red",
+   "M_Cushion_Cream",
+   "M_LowTable"
+  ]
+ }
+}

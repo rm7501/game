@@ -113,6 +113,50 @@
   "image": null,
   "image_emit": false
  },
+ "M_AlUla_Terrain": {
+  "kind": "terrain",
+  "layers": [
+   "Sand",
+   "SandstoneStrata",
+   "TrackSand",
+   "Rock"
+  ],
+  "tiles": [
+   6,
+   16,
+   8,
+   5
+  ],
+  "tints": [
+   [
+    1,
+    1,
+    1
+   ],
+   [
+    1.0,
+    0.95,
+    0.92
+   ],
+   [
+    0.95,
+    0.85,
+    0.75
+   ],
+   [
+    0.95,
+    0.7,
+    0.55
+   ]
+  ],
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.9,
+  "metal": 0.0
+ },
  "M_ArchTrimDark": {
   "kind": "opaque",
   "color": [
@@ -2381,6 +2425,63 @@
   "image": null,
   "image_emit": false
  },
+ "M_Curb_Red": {
+  "kind": "opaque",
+  "color": [
+   0.7,
+   0.05,
+   0.04
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Curb_White": {
+  "kind": "opaque",
+  "color": [
+   0.9,
+   0.9,
+   0.88
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Cushion_Cream": {
+  "kind": "opaque",
+  "color": [
+   0.85,
+   0.78,
+   0.64
+  ],
+  "rough": 0.85,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
  "M_Cushion_Green": {
   "kind": "opaque",
   "color": [
@@ -2552,6 +2653,29 @@
   "emit_str": 0.0,
   "transmission": 0.0,
   "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_FountainJet": {
+  "kind": "emissive",
+  "color": [
+   0.95,
+   0.97,
+   1.0
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   0.9,
+   0.95,
+   1.0
+  ],
+  "emit_str": 2.5,
+  "transmission": 0.0,
+  "alpha": 0.55,
   "coat": 0.0,
   "image": null,
   "image_emit": false
@@ -2783,6 +2907,50 @@
   "coat": 0.0,
   "image": null,
   "image_emit": false
+ },
+ "M_JeddahCorniche_Terrain": {
+  "kind": "terrain",
+  "layers": [
+   "Sand",
+   "CoralStone",
+   "Concrete",
+   "Sand"
+  ],
+  "tiles": [
+   6,
+   4,
+   3,
+   6
+  ],
+  "tints": [
+   [
+    1.05,
+    1.0,
+    0.95
+   ],
+   [
+    0.9,
+    0.88,
+    0.82
+   ],
+   [
+    0.98,
+    0.95,
+    0.9
+   ],
+   [
+    0.7,
+    0.62,
+    0.52
+   ]
+  ],
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.9,
+  "metal": 0.0
  },
  "M_Jeddah_CoralStone": {
   "kind": "opaque",
@@ -3051,6 +3219,44 @@
   "image": null,
   "image_emit": false
  },
+ "M_LabyrinthSand": {
+  "kind": "opaque",
+  "color": [
+   0.95,
+   0.86,
+   0.72
+  ],
+  "rough": 0.95,
+  "metal": 0.0,
+  "tex": "Sand",
+  "tile": 4,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_LanternBase": {
+  "kind": "opaque",
+  "color": [
+   0.25,
+   0.2,
+   0.15
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
  "M_LanternGlow": {
   "kind": "emissive",
   "color": [
@@ -3068,6 +3274,29 @@
    0.3
   ],
   "emit_str": 14,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_LanternGlowWarm": {
+  "kind": "emissive",
+  "color": [
+   1.0,
+   0.75,
+   0.4
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": [
+   1.0,
+   0.68,
+   0.32
+  ],
+  "emit_str": 9,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
@@ -3207,6 +3436,25 @@
   "image": null,
   "image_emit": false
  },
+ "M_LowTable": {
+  "kind": "opaque",
+  "color": [
+   0.3,
+   0.2,
+   0.12
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
  "M_Maraya_Backing": {
   "kind": "opaque",
   "color": [
@@ -3317,6 +3565,63 @@
   "metal": 0.0,
   "tex": null,
   "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Mosque_Glass": {
+  "kind": "opaque",
+  "color": [
+   0.1,
+   0.25,
+   0.3
+  ],
+  "rough": 0.1,
+  "metal": 0.5,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Mosque_Trim": {
+  "kind": "opaque",
+  "color": [
+   0.75,
+   0.72,
+   0.65
+  ],
+  "rough": 0.5,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Mosque_White": {
+  "kind": "opaque",
+  "color": [
+   0.93,
+   0.93,
+   0.9
+  ],
+  "rough": 0.6,
+  "metal": 0.0,
+  "tex": "Concrete",
+  "tile": 3.0,
   "emit": null,
   "emit_str": 0.0,
   "transmission": 0.0,
@@ -3740,6 +4045,25 @@
   "image": "assets/asir/textures/T_QattAsiri.png",
   "image_emit": false
  },
+ "M_Railing_White": {
+  "kind": "opaque",
+  "color": [
+   0.88,
+   0.88,
+   0.86
+  ],
+  "rough": 0.35,
+  "metal": 0.6,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
  "M_RampSteel": {
   "kind": "opaque",
   "color": [
@@ -3823,6 +4147,50 @@
   "coat": 0.0,
   "image": null,
   "image_emit": false
+ },
+ "M_RiyadhNights_Terrain": {
+  "kind": "terrain",
+  "layers": [
+   "Sand",
+   "SandstoneStrata",
+   "TerraceGrass",
+   "Concrete"
+  ],
+  "tiles": [
+   6,
+   14,
+   6,
+   4
+  ],
+  "tints": [
+   [
+    1,
+    1,
+    1
+   ],
+   [
+    1.05,
+    1.0,
+    0.92
+   ],
+   [
+    0.85,
+    0.82,
+    0.6
+   ],
+   [
+    1.0,
+    0.94,
+    0.85
+   ]
+  ],
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.9,
+  "metal": 0.0
  },
  "M_Riyadh_FacadeNight": {
   "kind": "opaque",
@@ -4082,6 +4450,25 @@
   "metal": 0.0,
   "tex": "WoodPainted",
   "tile": 1.2,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Rug_Red": {
+  "kind": "opaque",
+  "color": [
+   0.5,
+   0.08,
+   0.06
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
   "emit": null,
   "emit_str": 0.0,
   "transmission": 0.0,
@@ -4422,6 +4809,177 @@
   "image": null,
   "image_emit": false
  },
+ "M_Track_Asphalt": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.75,
+  "metal": 0.0,
+  "tex": "TrackAsphalt",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Track_AsphaltWorn": {
+  "kind": "opaque",
+  "color": [
+   0.95,
+   0.93,
+   0.9
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": "TrackAsphalt",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Track_Cobble": {
+  "kind": "opaque",
+  "color": [
+   0.95,
+   0.9,
+   0.82
+  ],
+  "rough": 0.85,
+  "metal": 0.0,
+  "tex": "StoneMasonry",
+  "tile": 3.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Track_Dirt": {
+  "kind": "opaque",
+  "color": [
+   0.75,
+   0.62,
+   0.5
+  ],
+  "rough": 0.95,
+  "metal": 0.0,
+  "tex": "MudPlaster",
+  "tile": 4.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Track_Glow": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.3,
+  "metal": 0.3,
+  "tex": "TrackGlow",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 6.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Track_MetalDeck": {
+  "kind": "opaque",
+  "color": [
+   0.6,
+   0.62,
+   0.66
+  ],
+  "rough": 0.45,
+  "metal": 0.8,
+  "tex": "MetalPanels",
+  "tile": 4.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Track_PackedSand": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.95,
+  "metal": 0.0,
+  "tex": "TrackSand",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Track_Shoulder": {
+  "kind": "opaque",
+  "color": [
+   0.75,
+   0.7,
+   0.62
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": "Concrete",
+  "tile": 2.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Track_StoneWall": {
+  "kind": "opaque",
+  "color": [
+   0.95,
+   0.85,
+   0.72
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": "StoneMasonry",
+  "tile": 2.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
  "M_Tree_Bark": {
   "kind": "opaque",
   "color": [
@@ -4477,6 +5035,25 @@
    0.55
   ],
   "emit_str": 10,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Tunnel_Lining": {
+  "kind": "opaque",
+  "color": [
+   0.8,
+   0.8,
+   0.78
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": "Concrete",
+  "tile": 3.0,
+  "emit": null,
+  "emit_str": 0.0,
   "transmission": 0.0,
   "alpha": 1.0,
   "coat": 0.0,
@@ -4594,6 +5171,25 @@
   "image": null,
   "image_emit": false
  },
+ "M_VergeRock": {
+  "kind": "opaque",
+  "color": [
+   0.62,
+   0.48,
+   0.4
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": "Rock",
+  "tile": 1.5,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
  "M_WaterTank": {
   "kind": "opaque",
   "color": [
@@ -4621,6 +5217,25 @@
    0.55
   ],
   "rough": 0.45,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Water_Sea": {
+  "kind": "water",
+  "color": [
+   0.02,
+   0.12,
+   0.16
+  ],
+  "rough": 0.04,
   "metal": 0.0,
   "tex": null,
   "tile": 1.0,

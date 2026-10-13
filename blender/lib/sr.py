@@ -360,6 +360,29 @@ class MB:
         f = self.bm.faces.new([self.bm.verts.new(Vector(p)) for p in pts])
         return self._tag([f], m, smooth)
 
+    def strip(self, grid, uvs=None, mat=None, smooth=True, keep=True, closed=False):
+        """Quad grid from rows of points grid[i][k] (rows along the path, k across).
+        Face (i,k)->(i,k+1)->(i+1,k+1)->(i+1,k): with k running left->right and i forward this faces UP.
+        uvs: same shape list of (u,v) or None (world UVs); mat: material or callable(i, k) -> material."""
+        vs = [[self.bm.verts.new(Vector(p)) for p in row] for row in grid]
+        faces = []
+        nrow = len(vs)
+        for i in range(nrow - 1 + (1 if closed else 0)):
+            A, B = vs[i], vs[(i + 1) % nrow]
+            for k in range(len(A) - 1):
+                f = self.bm.faces.new((A[k], A[k + 1], B[k + 1], B[k]))
+                m = mat(i, k) if callable(mat) else mat
+                self._tag([f], m, smooth)
+                if keep:
+                    f[self.keep] = 1
+                if uvs is not None:
+                    f[self.uvfix] = 1
+                    U0, U1 = uvs[i], uvs[(i + 1) % nrow]
+                    for lp, uv in zip(f.loops, (U0[k], U0[k + 1], U1[k + 1], U1[k])):
+                        lp[self.uvl].uv = uv
+                faces.append(f)
+        return faces
+
     def poly_facing(self, pts, normal, m=None, smooth=False):
         """Single face guaranteed to face `normal` (isolated faces cannot be auto-oriented)."""
         f = self.bm.faces.new([self.bm.verts.new(Vector(p)) for p in pts])
