@@ -301,7 +301,7 @@ def jeddah_tower(name="SM_JeddahTower", H=650.0):
 
 
 def fountain(name="SM_KingFahdFountain"):
-    jet = sr.mat("FountainJet", (0.95, 0.97, 1.0), emit=(0.9, 0.95, 1.0), emit_str=2.5, kind="emissive", alpha=0.55)
+    jet = sr.mat("FountainJet", (0.95, 0.97, 1.0), emit=(0.9, 0.95, 1.0), emit_str=1.6, kind="emissive", alpha=0.3)
     mb = sr.MB(name)
     mb.lathe([(1.6, 0), (0.9, 60), (0.6, 200), (1.4, 290), (3.0, 305), (0, 312)], seg=16, m=jet)   # the jet
     mb.lathe([(0, 300), (5, 292), (8, 250), (9.5, 180), (10, 120)], seg=16, m=jet)                  # falling spray veil

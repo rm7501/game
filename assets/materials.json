@@ -2604,6 +2604,25 @@
   "image": null,
   "image_emit": false
  },
+ "M_CityStreet": {
+  "kind": "opaque",
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": "RoadLanes",
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
  "M_Cloth_AbayaBlack": {
   "kind": "opaque",
   "color": [
@@ -3349,6 +3368,63 @@
   "image": null,
   "image_emit": false
  },
+ "M_Far_Asphalt": {
+  "kind": "opaque",
+  "color": [
+   0.22,
+   0.22,
+   0.23
+  ],
+  "rough": 0.8,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Far_JeddahBeige": {
+  "kind": "opaque",
+  "color": [
+   0.95,
+   0.82,
+   0.66
+  ],
+  "rough": 0.75,
+  "metal": 0.0,
+  "tex": "FacadeNight",
+  "tile": 14.0,
+  "emit": null,
+  "emit_str": 0.5,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Far_JeddahWhite": {
+  "kind": "opaque",
+  "color": [
+   0.95,
+   0.92,
+   0.86
+  ],
+  "rough": 0.7,
+  "metal": 0.0,
+  "tex": "FacadeNight",
+  "tile": 14.0,
+  "emit": null,
+  "emit_str": 0.5,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
  "M_Far_NajdiNight": {
   "kind": "opaque",
   "color": [
@@ -3412,6 +3488,25 @@
    0.16,
    0.14,
    0.13
+  ],
+  "rough": 0.9,
+  "metal": 0.0,
+  "tex": null,
+  "tile": 1.0,
+  "emit": null,
+  "emit_str": 0.0,
+  "transmission": 0.0,
+  "alpha": 1.0,
+  "coat": 0.0,
+  "image": null,
+  "image_emit": false
+ },
+ "M_Far_RoofLight": {
+  "kind": "opaque",
+  "color": [
+   0.75,
+   0.72,
+   0.66
   ],
   "rough": 0.9,
   "metal": 0.0,
@@ -4008,6 +4103,7 @@
    3,
    6
   ],
+  "cliff_layer": 1,
   "tints": [
    [
     1.05,
