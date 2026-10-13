@@ -1,8 +1,314 @@
 {
 "map": "FutureCity",
 "units": "Unreal cm / degrees",
-"count": 614,
+"count": 1447,
 "props": [
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -858000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -838000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -818000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -798000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -778000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -758000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -738000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -718000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -698000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -678000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -658000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -638000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -618000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -598000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -578000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -558000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -538000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -518000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -498000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -478000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -458000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -438000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -418000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -398000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -378000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -358000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -338000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -318000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -298000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -278000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -258000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -238000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -218000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": -198000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
 {
 "kit": "future",
 "asset": "SM_TheLine_Segment",
@@ -187,6 +493,312 @@
 "kit": "future",
 "asset": "SM_TheLine_Segment",
 "x": 222000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 242000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 262000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 282000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 302000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 322000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 342000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 362000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 382000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 402000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 422000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 442000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 462000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 482000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 502000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 522000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 542000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 562000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 582000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 602000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 622000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 642000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 662000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 682000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 702000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 722000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 742000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 762000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 782000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 802000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 822000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 842000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 862000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 882000.0,
+"y": -32000.0,
+"z": 2975.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_TheLine_Segment",
+"x": 902000.0,
 "y": -32000.0,
 "z": 2975.0,
 "yaw": -0.0,
@@ -692,7 +1304,7 @@
 "asset": "SM_FutureStreetLight",
 "x": 59126.9,
 "y": 8270.4,
-"z": 3086.2,
+"z": 3086.3,
 "yaw": -56.01,
 "scale": 1.0
 },
@@ -701,7 +1313,7 @@
 "asset": "SM_FutureStreetLight",
 "x": 58008.8,
 "y": 9928.6,
-"z": 3086.3,
+"z": 3086.4,
 "yaw": 123.99,
 "scale": 1.0
 },
@@ -710,7 +1322,7 @@
 "asset": "SM_FutureStreetLight",
 "x": 62694.8,
 "y": 10894.2,
-"z": 3332.8,
+"z": 3139.4,
 "yaw": -54.32,
 "scale": 1.0
 },
@@ -719,7 +1331,7 @@
 "asset": "SM_FutureStreetLight",
 "x": 61528.4,
 "y": 12518.8,
-"z": 3332.8,
+"z": 3139.7,
 "yaw": 125.68,
 "scale": 1.0
 },
@@ -728,7 +1340,7 @@
 "asset": "SM_FutureStreetLight",
 "x": 66457.9,
 "y": 13572.7,
-"z": 3334.9,
+"z": 3544.5,
 "yaw": -53.24,
 "scale": 1.0
 },
@@ -737,7 +1349,7 @@
 "asset": "SM_FutureStreetLight",
 "x": 65260.9,
 "y": 15174.9,
-"z": 3334.9,
+"z": 3544.5,
 "yaw": 126.76,
 "scale": 1.0
 },
@@ -746,7 +1358,7 @@
 "asset": "SM_FutureStreetLight",
 "x": 69905.6,
 "y": 16589.6,
-"z": 3532.5,
+"z": 3758.5,
 "yaw": -42.47,
 "scale": 1.0
 },
@@ -755,7 +1367,7 @@
 "asset": "SM_FutureStreetLight",
 "x": 68430.4,
 "y": 17940.1,
-"z": 3533.2,
+"z": 3758.5,
 "yaw": 137.53,
 "scale": 1.0
 },
@@ -764,7 +1376,7 @@
 "asset": "SM_FutureStreetLight",
 "x": 72546.2,
 "y": 20702.6,
-"z": 3591.1,
+"z": 3820.2,
 "yaw": -24.8,
 "scale": 1.0
 },
@@ -773,7 +1385,7 @@
 "asset": "SM_FutureStreetLight",
 "x": 70730.7,
 "y": 21541.6,
-"z": 3591.1,
+"z": 3820.2,
 "yaw": 155.2,
 "scale": 1.0
 },
@@ -782,7 +1394,7 @@
 "asset": "SM_FutureStreetLight",
 "x": 74052.1,
 "y": 25038.5,
-"z": 3681.2,
+"z": 3910.3,
 "yaw": -13.5,
 "scale": 1.0
 },
@@ -791,7 +1403,7 @@
 "asset": "SM_FutureStreetLight",
 "x": 72107.4,
 "y": 25505.4,
-"z": 3681.2,
+"z": 3910.3,
 "yaw": 166.5,
 "scale": 1.0
 },
@@ -1295,7 +1907,7 @@
 "asset": "SM_FutureStreetLight",
 "x": -66979.7,
 "y": 24237.1,
-"z": 2963.8,
+"z": 2966.3,
 "yaw": -238.56,
 "scale": 1.0
 },
@@ -1367,7 +1979,7 @@
 "asset": "SM_FutureStreetLight",
 "x": -68442.3,
 "y": 10991.4,
-"z": 2961.8,
+"z": 2965.5,
 "yaw": 45.28,
 "scale": 1.0
 },
@@ -1439,7 +2051,7 @@
 "asset": "SM_FutureStreetLight",
 "x": -71182.8,
 "y": -4145.2,
-"z": 2954.1,
+"z": 3092.8,
 "yaw": -52.75,
 "scale": 1.0
 },
@@ -1486,6 +2098,780 @@
 "y": -14462.7,
 "z": 2944.8,
 "yaw": -183.36,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -358500.0,
+"y": -19200.0,
+"z": 10864.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -355500.0,
+"y": -19200.0,
+"z": 10568.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -352500.0,
+"y": -19200.0,
+"z": 10272.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -349500.0,
+"y": -19200.0,
+"z": 9976.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -346500.0,
+"y": -19200.0,
+"z": 9679.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -343500.0,
+"y": -19200.0,
+"z": 9383.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -340500.0,
+"y": -19200.0,
+"z": 9160.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -337500.0,
+"y": -19200.0,
+"z": 8979.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -334500.0,
+"y": -19200.0,
+"z": 8798.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -331500.0,
+"y": -19200.0,
+"z": 8618.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -328500.0,
+"y": -19200.0,
+"z": 8437.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -325500.0,
+"y": -19200.0,
+"z": 8256.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -322500.0,
+"y": -19200.0,
+"z": 8040.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -319500.0,
+"y": -19200.0,
+"z": 7822.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -316500.0,
+"y": -19200.0,
+"z": 7603.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -313500.0,
+"y": -19200.0,
+"z": 7384.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -310500.0,
+"y": -19200.0,
+"z": 7166.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -307500.0,
+"y": -19200.0,
+"z": 6965.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -304500.0,
+"y": -19200.0,
+"z": 6775.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -301500.0,
+"y": -19200.0,
+"z": 6586.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -298500.0,
+"y": -19200.0,
+"z": 6397.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -295500.0,
+"y": -19200.0,
+"z": 6208.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -292500.0,
+"y": -19200.0,
+"z": 5994.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -289500.0,
+"y": -19200.0,
+"z": 5765.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -286500.0,
+"y": -19200.0,
+"z": 5536.7,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -283500.0,
+"y": -19200.0,
+"z": 5307.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -280500.0,
+"y": -19200.0,
+"z": 5079.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -277500.0,
+"y": -19200.0,
+"z": 4924.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -274500.0,
+"y": -19200.0,
+"z": 4774.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -271500.0,
+"y": -19200.0,
+"z": 4623.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -268500.0,
+"y": -19200.0,
+"z": 4473.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -265500.0,
+"y": -19200.0,
+"z": 4330.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -262500.0,
+"y": -19200.0,
+"z": 4192.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -259500.0,
+"y": -19200.0,
+"z": 4055.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -256500.0,
+"y": -19200.0,
+"z": 3917.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -253500.0,
+"y": -19200.0,
+"z": 3802.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -250500.0,
+"y": -19200.0,
+"z": 3706.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -247500.0,
+"y": -19200.0,
+"z": 3610.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -244500.0,
+"y": -19200.0,
+"z": 3514.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -241500.0,
+"y": -19200.0,
+"z": 3440.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -238500.0,
+"y": -19200.0,
+"z": 3374.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -235500.0,
+"y": -19200.0,
+"z": 3308.7,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -232500.0,
+"y": -19200.0,
+"z": 3239.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -229500.0,
+"y": -19200.0,
+"z": 3157.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -226500.0,
+"y": -19200.0,
+"z": 3075.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -223500.0,
+"y": -19200.0,
+"z": 2992.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -220500.0,
+"y": -19200.0,
+"z": 2948.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -217500.0,
+"y": -19200.0,
+"z": 2909.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -214500.0,
+"y": -19200.0,
+"z": 2870.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -211500.0,
+"y": -19200.0,
+"z": 2845.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -208500.0,
+"y": -19200.0,
+"z": 2823.7,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -205500.0,
+"y": -19200.0,
+"z": 2802.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -202500.0,
+"y": -19200.0,
+"z": 2791.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -199500.0,
+"y": -19200.0,
+"z": 2783.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -196500.0,
+"y": -19200.0,
+"z": 2774.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -193500.0,
+"y": -19200.0,
+"z": 2770.7,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -190500.0,
+"y": -19200.0,
+"z": 2766.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -187500.0,
+"y": -19200.0,
+"z": 2762.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -184500.0,
+"y": -19200.0,
+"z": 2758.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -181500.0,
+"y": -19200.0,
+"z": 2752.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -178500.0,
+"y": -19200.0,
+"z": 2740.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -175500.0,
+"y": -19200.0,
+"z": 2728.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -172500.0,
+"y": -19200.0,
+"z": 2732.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -169500.0,
+"y": -19200.0,
+"z": 2735.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -166500.0,
+"y": -19200.0,
+"z": 2744.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -163500.0,
+"y": -19200.0,
+"z": 2752.7,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -160500.0,
+"y": -19200.0,
+"z": 2754.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -157500.0,
+"y": -19200.0,
+"z": 2754.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -154500.0,
+"y": -19200.0,
+"z": 2746.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -151500.0,
+"y": -19200.0,
+"z": 2748.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -148500.0,
+"y": -19200.0,
+"z": 2760.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -145500.0,
+"y": -19200.0,
+"z": 2877.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -142500.0,
+"y": -19200.0,
+"z": 3034.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -139500.0,
+"y": -19200.0,
+"z": 3237.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -136500.0,
+"y": -19200.0,
+"z": 3496.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -133500.0,
+"y": -19200.0,
+"z": 3788.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -130500.0,
+"y": -19200.0,
+"z": 4101.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -127500.0,
+"y": -19200.0,
+"z": 4422.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -124500.0,
+"y": -19200.0,
+"z": 4742.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -121500.0,
+"y": -19200.0,
+"z": 5062.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -118500.0,
+"y": -19200.0,
+"z": 5374.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -115500.0,
+"y": -19200.0,
+"z": 5669.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -112500.0,
+"y": -19200.0,
+"z": 5929.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -109500.0,
+"y": -19200.0,
+"z": 6143.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -106500.0,
+"y": -19200.0,
+"z": 6214.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": -103500.0,
+"y": -19200.0,
+"z": 6077.4,
+"yaw": -0.0,
 "scale": 1.0
 },
 {
@@ -2097,6 +3483,780 @@
 "x": 100500.0,
 "y": -19200.0,
 "z": 2982.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 103500.0,
+"y": -19200.0,
+"z": 2981.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 106500.0,
+"y": -19200.0,
+"z": 2975.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 109500.0,
+"y": -19200.0,
+"z": 2968.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 112500.0,
+"y": -19200.0,
+"z": 2960.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 115500.0,
+"y": -19200.0,
+"z": 2949.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 118500.0,
+"y": -19200.0,
+"z": 2929.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 121500.0,
+"y": -19200.0,
+"z": 2906.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 124500.0,
+"y": -19200.0,
+"z": 2888.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 127500.0,
+"y": -19200.0,
+"z": 2861.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 130500.0,
+"y": -19200.0,
+"z": 2819.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 133500.0,
+"y": -19200.0,
+"z": 2775.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 136500.0,
+"y": -19200.0,
+"z": 2737.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 139500.0,
+"y": -19200.0,
+"z": 2723.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 142500.0,
+"y": -19200.0,
+"z": 2710.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 145500.0,
+"y": -19200.0,
+"z": 2711.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 148500.0,
+"y": -19200.0,
+"z": 2725.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 151500.0,
+"y": -19200.0,
+"z": 2757.7,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 154500.0,
+"y": -19200.0,
+"z": 2799.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 157500.0,
+"y": -19200.0,
+"z": 2851.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 160500.0,
+"y": -19200.0,
+"z": 2830.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 163500.0,
+"y": -19200.0,
+"z": 2788.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 166500.0,
+"y": -19200.0,
+"z": 2780.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 169500.0,
+"y": -19200.0,
+"z": 2773.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 172500.0,
+"y": -19200.0,
+"z": 2754.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 175500.0,
+"y": -19200.0,
+"z": 2736.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 178500.0,
+"y": -19200.0,
+"z": 2748.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 181500.0,
+"y": -19200.0,
+"z": 2760.7,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 184500.0,
+"y": -19200.0,
+"z": 2756.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 187500.0,
+"y": -19200.0,
+"z": 2745.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 190500.0,
+"y": -19200.0,
+"z": 2742.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 193500.0,
+"y": -19200.0,
+"z": 2750.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 196500.0,
+"y": -19200.0,
+"z": 2758.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 199500.0,
+"y": -19200.0,
+"z": 2772.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 202500.0,
+"y": -19200.0,
+"z": 2786.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 205500.0,
+"y": -19200.0,
+"z": 2806.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 208500.0,
+"y": -19200.0,
+"z": 2858.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 211500.0,
+"y": -19200.0,
+"z": 2910.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 214500.0,
+"y": -19200.0,
+"z": 2954.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 217500.0,
+"y": -19200.0,
+"z": 2972.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 220500.0,
+"y": -19200.0,
+"z": 2991.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 223500.0,
+"y": -19200.0,
+"z": 3019.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 226500.0,
+"y": -19200.0,
+"z": 3101.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 229500.0,
+"y": -19200.0,
+"z": 3183.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 232500.0,
+"y": -19200.0,
+"z": 3266.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 235500.0,
+"y": -19200.0,
+"z": 3387.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 238500.0,
+"y": -19200.0,
+"z": 3517.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 241500.0,
+"y": -19200.0,
+"z": 3646.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 244500.0,
+"y": -19200.0,
+"z": 3778.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 247500.0,
+"y": -19200.0,
+"z": 3915.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 250500.0,
+"y": -19200.0,
+"z": 4051.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 253500.0,
+"y": -19200.0,
+"z": 4188.7,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 256500.0,
+"y": -19200.0,
+"z": 4328.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 259500.0,
+"y": -19200.0,
+"z": 4471.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 262500.0,
+"y": -19200.0,
+"z": 4614.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 265500.0,
+"y": -19200.0,
+"z": 4757.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 268500.0,
+"y": -19200.0,
+"z": 4888.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 271500.0,
+"y": -19200.0,
+"z": 5000.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 274500.0,
+"y": -19200.0,
+"z": 5112.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 277500.0,
+"y": -19200.0,
+"z": 5224.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 280500.0,
+"y": -19200.0,
+"z": 5335.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 283500.0,
+"y": -19200.0,
+"z": 5435.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 286500.0,
+"y": -19200.0,
+"z": 5534.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 289500.0,
+"y": -19200.0,
+"z": 5634.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 292500.0,
+"y": -19200.0,
+"z": 5733.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 295500.0,
+"y": -19200.0,
+"z": 5839.7,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 298500.0,
+"y": -19200.0,
+"z": 5955.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 301500.0,
+"y": -19200.0,
+"z": 6072.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 304500.0,
+"y": -19200.0,
+"z": 6188.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 307500.0,
+"y": -19200.0,
+"z": 6304.7,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 310500.0,
+"y": -19200.0,
+"z": 6439.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 313500.0,
+"y": -19200.0,
+"z": 6601.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 316500.0,
+"y": -19200.0,
+"z": 6764.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 319500.0,
+"y": -19200.0,
+"z": 6926.2,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 322500.0,
+"y": -19200.0,
+"z": 7088.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 325500.0,
+"y": -19200.0,
+"z": 7250.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 328500.0,
+"y": -19200.0,
+"z": 7414.6,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 331500.0,
+"y": -19200.0,
+"z": 7578.4,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 334500.0,
+"y": -19200.0,
+"z": 7742.3,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 337500.0,
+"y": -19200.0,
+"z": 7906.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 340500.0,
+"y": -19200.0,
+"z": 8069.9,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 343500.0,
+"y": -19200.0,
+"z": 8279.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 346500.0,
+"y": -19200.0,
+"z": 8567.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 349500.0,
+"y": -19200.0,
+"z": 8855.1,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 352500.0,
+"y": -19200.0,
+"z": 9142.8,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 355500.0,
+"y": -19200.0,
+"z": 9430.5,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "future",
+"asset": "SM_MaglevGuideway_30m",
+"x": 358500.0,
+"y": -19200.0,
+"z": 9718.2,
 "yaw": -0.0,
 "scale": 1.0
 },
@@ -4616,7 +6776,7 @@
 "asset": "SM_Boulder_B",
 "x": -71176.5,
 "y": 10039.1,
-"z": 2932.1,
+"z": 2931.4,
 "yaw": -172.3,
 "scale": 0.915
 },
@@ -5300,7 +7460,7 @@
 "asset": "SM_Boulder_B",
 "x": 47749.1,
 "y": 21661.9,
-"z": 5055.8,
+"z": 3098.9,
 "yaw": -236.16,
 "scale": 0.681
 },
@@ -5516,7 +7676,7 @@
 "asset": "SM_SolarTree",
 "x": -64675.5,
 "y": 38869.0,
-"z": 2900.7,
+"z": 2982.3,
 "yaw": -0.0,
 "scale": 1.5
 },
@@ -5525,9 +7685,5346 @@
 "asset": "SM_SolarTree",
 "x": -66426.8,
 "y": 39285.0,
-"z": 3020.1,
+"z": 3042.4,
 "yaw": -0.0,
 "scale": 1.5
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -44205.6,
+"y": -28318.5,
+"z": 2924.7,
+"yaw": 22.21,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -43360.1,
+"y": -28021.5,
+"z": 2919.6,
+"yaw": 16.89,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -42451.6,
+"y": -27809.3,
+"z": 2915.5,
+"yaw": 9.49,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -41470.1,
+"y": -27734.5,
+"z": 2913.1,
+"yaw": -0.82,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -40444.9,
+"y": -27862.7,
+"z": 2913.1,
+"yaw": -13.93,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -39484.8,
+"y": -28225.5,
+"z": 2916.5,
+"yaw": -26.65,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -38673.5,
+"y": -28712.6,
+"z": 2922.5,
+"yaw": -34.84,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -37967.3,
+"y": -29256.0,
+"z": 2930.2,
+"yaw": -39.92,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -40941.1,
+"y": -27589.3,
+"z": 2914.3,
+"yaw": -96.87,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -35446.4,
+"y": -34602.7,
+"z": 2936.0,
+"yaw": -220.86,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -34756.1,
+"y": -35156.1,
+"z": 2927.4,
+"yaw": -216.13,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -33970.1,
+"y": -35660.8,
+"z": 2920.0,
+"yaw": -208.63,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -33040.4,
+"y": -36059.4,
+"z": 2914.6,
+"yaw": -196.75,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -31969.3,
+"y": -36228.9,
+"z": 2912.7,
+"yaw": -180.71,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -30886.9,
+"y": -36075.0,
+"z": 2914.9,
+"yaw": -164.17,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -29959.4,
+"y": -35703.5,
+"z": 2920.0,
+"yaw": -152.99,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -29165.7,
+"y": -35230.5,
+"z": 2927.0,
+"yaw": -146.06,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -32825.6,
+"y": -36303.2,
+"z": 2915.3,
+"yaw": -103.15,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -32262.2,
+"y": -36394.3,
+"z": 2914.4,
+"yaw": -95.03,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -31670.0,
+"y": -36400.8,
+"z": 2914.5,
+"yaw": -85.89,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -25401.6,
+"y": -29213.5,
+"z": 2931.5,
+"yaw": 37.25,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -24673.1,
+"y": -28704.2,
+"z": 2924.2,
+"yaw": 32.29,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -23864.2,
+"y": -28255.1,
+"z": 2918.1,
+"yaw": 25.29,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -22939.8,
+"y": -27913.0,
+"z": 2914.0,
+"yaw": 14.87,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -21899.8,
+"y": -27769.5,
+"z": 2912.8,
+"yaw": 0.8,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -20882.6,
+"y": -27871.7,
+"z": 2914.6,
+"yaw": -11.7,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -19957.7,
+"y": -28149.1,
+"z": 2918.8,
+"yaw": -20.98,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -19120.3,
+"y": -28532.7,
+"z": 2924.6,
+"yaw": -27.74,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -22448.4,
+"y": -27628.7,
+"z": 2914.6,
+"yaw": -82.19,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -14030.8,
+"y": -34572.9,
+"z": 2937.0,
+"yaw": -208.76,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -13226.1,
+"y": -34968.9,
+"z": 2931.8,
+"yaw": -203.35,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -12363.9,
+"y": -35285.0,
+"z": 2927.9,
+"yaw": -196.74,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -11424.3,
+"y": -35490.9,
+"z": 2925.9,
+"yaw": -187.68,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -10461.2,
+"y": -35538.6,
+"z": 2926.2,
+"yaw": -178.48,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -9537.4,
+"y": -35457.4,
+"z": 2927.9,
+"yaw": -171.36,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -8655.5,
+"y": -35274.9,
+"z": 2931.0,
+"yaw": -165.74,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -11933.2,
+"y": -35582.0,
+"z": 2928.1,
+"yaw": -102.07,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -10953.1,
+"y": -35712.7,
+"z": 2927.2,
+"yaw": -93.07,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": 40973.0,
+"y": -29207.8,
+"z": 2904.8,
+"yaw": -132.31,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": 41543.5,
+"y": -28526.3,
+"z": 2910.2,
+"yaw": -127.36,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": 42061.0,
+"y": -27766.8,
+"z": 2912.7,
+"yaw": -120.71,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": 42486.3,
+"y": -26866.5,
+"z": 2917.2,
+"yaw": -109.74,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": 42735.2,
+"y": -25942.5,
+"z": 2929.6,
+"yaw": -100.96,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": 42861.0,
+"y": -25061.5,
+"z": 2944.8,
+"yaw": -95.94,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": 42341.0,
+"y": -27638.1,
+"z": 2914.6,
+"yaw": -28.17,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": 42563.4,
+"y": -27167.0,
+"z": 2916.9,
+"yaw": -22.43,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": 42735.8,
+"y": -26687.2,
+"z": 2921.4,
+"yaw": -17.22,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -18843.2,
+"y": 73738.7,
+"z": 312.5,
+"yaw": 166.21,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -19685.2,
+"y": 73974.7,
+"z": 307.8,
+"yaw": 162.06,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -20560.8,
+"y": 74319.0,
+"z": 303.7,
+"yaw": 154.18,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -21467.0,
+"y": 74906.0,
+"z": 300.9,
+"yaw": 138.43,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -22405.9,
+"y": 77106.7,
+"z": 300.0,
+"yaw": 89.74,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -22312.2,
+"y": 78066.2,
+"z": 300.0,
+"yaw": 80.56,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -22027.8,
+"y": 75248.4,
+"z": 300.2,
+"yaw": 36.53,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -20174.3,
+"y": 78279.8,
+"z": 300.0,
+"yaw": -101.58,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -20013.5,
+"y": 79098.2,
+"z": 300.0,
+"yaw": -99.69,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -19913.1,
+"y": 80047.5,
+"z": 300.0,
+"yaw": -91.04,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -20077.9,
+"y": 81191.2,
+"z": 300.0,
+"yaw": -70.91,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -20587.1,
+"y": 82149.7,
+"z": 300.0,
+"yaw": -54.85,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -21210.6,
+"y": 82887.7,
+"z": 300.0,
+"yaw": -45.56,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -21863.3,
+"y": 83491.5,
+"z": 300.0,
+"yaw": -40.58,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -19736.2,
+"y": 80323.2,
+"z": 300.0,
+"yaw": 2.7,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -19817.3,
+"y": 80933.5,
+"z": 300.0,
+"yaw": 12.96,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -20026.4,
+"y": 81542.1,
+"z": 300.0,
+"yaw": 24.55,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -25415.4,
+"y": 87026.8,
+"z": 300.0,
+"yaw": -49.93,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -26003.1,
+"y": 87680.2,
+"z": 300.0,
+"yaw": -45.53,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -26713.9,
+"y": 88312.9,
+"z": 300.0,
+"yaw": -37.05,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -27611.0,
+"y": 88844.4,
+"z": 300.0,
+"yaw": -23.41,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -28622.8,
+"y": 89134.1,
+"z": 300.0,
+"yaw": -9.21,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -29580.4,
+"y": 89207.0,
+"z": 300.0,
+"yaw": -0.24,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -30466.2,
+"y": 89168.6,
+"z": 300.0,
+"yaw": -355.4,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -27042.4,
+"y": 88753.3,
+"z": 300.0,
+"yaw": 59.03,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -28069.0,
+"y": 89197.4,
+"z": 300.0,
+"yaw": 74.27,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -35266.2,
+"y": 89144.9,
+"z": 300.0,
+"yaw": -5.44,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -36131.8,
+"y": 89202.9,
+"z": 300.0,
+"yaw": -1.68,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -37064.8,
+"y": 89175.0,
+"z": 300.0,
+"yaw": -354.22,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -38067.7,
+"y": 88967.2,
+"z": 300.0,
+"yaw": -341.63,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -39024.8,
+"y": 88498.2,
+"z": 300.0,
+"yaw": -326.67,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -39788.5,
+"y": 87885.1,
+"z": 300.0,
+"yaw": -316.63,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -40407.8,
+"y": 87233.6,
+"z": 300.0,
+"yaw": -311.11,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -37597.7,
+"y": 89277.1,
+"z": 300.0,
+"yaw": -258.5,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -38650.4,
+"y": 88921.4,
+"z": 300.0,
+"yaw": -243.61,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -43930.4,
+"y": 83665.0,
+"z": 300.0,
+"yaw": -320.31,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -44583.5,
+"y": 83090.2,
+"z": 300.0,
+"yaw": -316.41,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -45222.8,
+"y": 82401.8,
+"z": 300.0,
+"yaw": -308.62,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -45777.3,
+"y": 81535.2,
+"z": 300.0,
+"yaw": -295.77,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -46107.9,
+"y": 80525.5,
+"z": 300.0,
+"yaw": -280.99,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -46205.3,
+"y": 79556.9,
+"z": 300.0,
+"yaw": -271.28,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -46178.3,
+"y": 78660.9,
+"z": 300.0,
+"yaw": -265.9,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -45810.3,
+"y": 81859.8,
+"z": 300.0,
+"yaw": -209.47,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -46053.4,
+"y": 81355.4,
+"z": 300.0,
+"yaw": -201.87,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -46226.4,
+"y": 80821.4,
+"z": 300.0,
+"yaw": -194.21,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -46152.9,
+"y": 73648.3,
+"z": 300.0,
+"yaw": -275.19,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -46205.2,
+"y": 72777.1,
+"z": 300.0,
+"yaw": -271.14,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -46164.3,
+"y": 71835.0,
+"z": 300.0,
+"yaw": -263.14,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -45929.4,
+"y": 70823.5,
+"z": 300.0,
+"yaw": -249.75,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -45301.7,
+"y": 69807.9,
+"z": 300.0,
+"yaw": -227.36,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -44558.6,
+"y": 69154.7,
+"z": 300.0,
+"yaw": -216.75,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -43847.2,
+"y": 68665.2,
+"z": 300.0,
+"yaw": -213.21,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -46187.0,
+"y": 71033.2,
+"z": 300.0,
+"yaw": -163.83,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -45976.3,
+"y": 70469.2,
+"z": 300.0,
+"yaw": -154.23,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -45628.5,
+"y": 69913.0,
+"z": 300.0,
+"yaw": -142.05,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -42553.4,
+"y": 70281.0,
+"z": 300.0,
+"yaw": -33.07,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -41850.7,
+"y": 69809.2,
+"z": 300.0,
+"yaw": -35.66,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -41091.7,
+"y": 69169.5,
+"z": 300.0,
+"yaw": -46.45,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -40431.2,
+"y": 67963.3,
+"z": 300.2,
+"yaw": -79.56,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -40655.9,
+"y": 66559.9,
+"z": 302.7,
+"yaw": -115.48,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -41243.8,
+"y": 65678.3,
+"z": 308.9,
+"yaw": -130.1,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -41885.0,
+"y": 65013.8,
+"z": 317.0,
+"yaw": -136.99,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -40554.1,
+"y": 68770.0,
+"z": 300.0,
+"yaw": -148.98,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -40268.5,
+"y": 67137.2,
+"z": 300.9,
+"yaw": -191.55,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -65003.7,
+"y": 44500.3,
+"z": 2644.3,
+"yaw": -298.16,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -65387.1,
+"y": 43666.6,
+"z": 2708.2,
+"yaw": -291.27,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -65665.3,
+"y": 42761.7,
+"z": 2761.1,
+"yaw": -282.66,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -65793.0,
+"y": 41768.7,
+"z": 2804.1,
+"yaw": -270.8,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -65889.8,
+"y": 42556.4,
+"z": 2775.6,
+"yaw": -190.21,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -65958.3,
+"y": 42051.9,
+"z": 2796.6,
+"yaw": -184.8,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -65966.4,
+"y": 41494.9,
+"z": 2815.1,
+"yaw": -177.02,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -58205.9,
+"y": 32085.8,
+"z": 2900.3,
+"yaw": -72.79,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -57998.8,
+"y": 31132.2,
+"z": 2894.7,
+"yaw": -83.15,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -57994.5,
+"y": 30105.0,
+"z": 2892.0,
+"yaw": -96.61,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -58264.9,
+"y": 29076.7,
+"z": 2892.5,
+"yaw": -112.21,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -59288.0,
+"y": 27467.2,
+"z": 2899.7,
+"yaw": -130.72,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -59904.3,
+"y": 26819.7,
+"z": 2904.9,
+"yaw": -136.24,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -57793.1,
+"y": 30348.5,
+"z": 2894.7,
+"yaw": -183.38,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -57859.3,
+"y": 29794.0,
+"z": 2894.3,
+"yaw": -191.23,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -57998.9,
+"y": 29266.4,
+"z": 2894.4,
+"yaw": -198.45,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -72396.8,
+"y": 20503.8,
+"z": 2908.2,
+"yaw": -317.41,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -73023.0,
+"y": 19877.4,
+"z": 2902.4,
+"yaw": -312.37,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -73602.6,
+"y": 19169.1,
+"z": 2897.4,
+"yaw": -305.6,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -74431.8,
+"y": 17339.0,
+"z": 2891.9,
+"yaw": -280.68,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -74481.3,
+"y": 16263.6,
+"z": 2892.9,
+"yaw": -264.25,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -74253.4,
+"y": 15265.6,
+"z": 2897.0,
+"yaw": -251.03,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -73871.6,
+"y": 14392.8,
+"z": 2903.1,
+"yaw": -242.04,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -73406.0,
+"y": 13620.4,
+"z": 2910.4,
+"yaw": -236.06,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -74676.4,
+"y": 16801.1,
+"z": 2894.4,
+"yaw": -181.97,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -64432.1,
+"y": 6091.0,
+"z": 2899.0,
+"yaw": -66.39,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -64115.3,
+"y": 5161.9,
+"z": 2894.2,
+"yaw": -77.1,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -64015.5,
+"y": 4111.6,
+"z": 2891.9,
+"yaw": -92.2,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -64182.2,
+"y": 3089.6,
+"z": 2892.8,
+"yaw": -106.13,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -65015.4,
+"y": 1382.8,
+"z": 2901.0,
+"yaw": -124.09,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -65552.9,
+"y": 669.0,
+"z": 2907.1,
+"yaw": -129.58,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -63889.6,
+"y": 4930.1,
+"z": 2895.7,
+"yaw": -170.88,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -63832.5,
+"y": 4385.0,
+"z": 2894.7,
+"yaw": -178.22,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -63853.4,
+"y": 3830.3,
+"z": 2894.4,
+"yaw": -185.91,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -78250.9,
+"y": -26896.9,
+"z": 2905.0,
+"yaw": -253.3,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -77959.9,
+"y": -27738.9,
+"z": 2886.2,
+"yaw": -248.23,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -77564.1,
+"y": -28580.4,
+"z": 2870.7,
+"yaw": -240.97,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -77025.0,
+"y": -29390.0,
+"z": 2861.6,
+"yaw": -231.3,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -76336.2,
+"y": -30098.8,
+"z": 2861.4,
+"yaw": -220.75,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -75580.4,
+"y": -30663.1,
+"z": 2865.9,
+"yaw": -212.76,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_ChevronBoard",
+"x": -74798.0,
+"y": -31116.8,
+"z": 2873.1,
+"yaw": -206.97,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -77319.8,
+"y": -29300.6,
+"z": 2864.6,
+"yaw": -143.87,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -76997.1,
+"y": -29702.8,
+"z": 2862.2,
+"yaw": -138.38,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_StackedTyres",
+"x": -76638.8,
+"y": -30068.6,
+"z": 2862.5,
+"yaw": -133.06,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -78801.3,
+"y": -24248.9,
+"z": 2959.2,
+"yaw": -169.24,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -76856.1,
+"y": -23879.2,
+"z": 2959.2,
+"yaw": -169.24,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -78650.0,
+"y": -25040.6,
+"z": 2946.4,
+"yaw": -168.9,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -76707.1,
+"y": -24659.2,
+"z": 2946.3,
+"yaw": -168.9,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -78525.5,
+"y": -25647.2,
+"z": 2933.8,
+"yaw": -167.78,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -76590.4,
+"y": -25228.1,
+"z": 2933.8,
+"yaw": -167.78,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -78329.5,
+"y": -26469.5,
+"z": 2914.8,
+"yaw": -165.15,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -76415.6,
+"y": -25962.2,
+"z": 2914.8,
+"yaw": -165.15,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -76262.5,
+"y": -26488.9,
+"z": 2900.5,
+"yaw": -162.17,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -76017.8,
+"y": -27148.8,
+"z": 2881.9,
+"yaw": -156.63,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -75797.9,
+"y": -27600.2,
+"z": 2870.7,
+"yaw": -150.97,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -75448.5,
+"y": -28127.0,
+"z": 2861.5,
+"yaw": -141.3,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -75136.2,
+"y": -28461.0,
+"z": 2860.9,
+"yaw": -133.06,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -74624.9,
+"y": -28863.5,
+"z": 2864.4,
+"yaw": -124.48,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -75171.9,
+"y": -30866.7,
+"z": 2869.3,
+"yaw": -119.66,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -74184.8,
+"y": -29133.2,
+"z": 2869.4,
+"yaw": -119.66,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -74383.8,
+"y": -31276.1,
+"z": 2877.3,
+"yaw": -114.6,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -73547.8,
+"y": -29450.1,
+"z": 2877.3,
+"yaw": -114.6,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -73786.5,
+"y": -31536.5,
+"z": 2884.1,
+"yaw": -111.66,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -73041.0,
+"y": -29659.8,
+"z": 2884.1,
+"yaw": -111.66,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -72986.4,
+"y": -31836.6,
+"z": 2893.5,
+"yaw": -108.58,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -72338.2,
+"y": -29908.1,
+"z": 2893.5,
+"yaw": -108.58,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -72385.0,
+"y": -32033.4,
+"z": 2900.5,
+"yaw": -106.74,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -71796.0,
+"y": -30074.5,
+"z": 2900.6,
+"yaw": -106.74,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -71582.9,
+"y": -32265.9,
+"z": 2909.1,
+"yaw": -104.78,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -71057.8,
+"y": -30275.2,
+"z": 2909.1,
+"yaw": -104.78,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -70981.9,
+"y": -32422.0,
+"z": 2914.7,
+"yaw": -103.62,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -70495.2,
+"y": -30412.8,
+"z": 2914.7,
+"yaw": -103.62,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -69735.5,
+"y": -30583.8,
+"z": 2920.3,
+"yaw": -102.44,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -69585.2,
+"y": -32740.7,
+"z": 2922.7,
+"yaw": -101.82,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -69159.4,
+"y": -30705.5,
+"z": 2922.7,
+"yaw": -101.82,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -68760.1,
+"y": -32902.3,
+"z": 2923.4,
+"yaw": -99.57,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -68414.4,
+"y": -30851.2,
+"z": 2923.4,
+"yaw": -99.57,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -68121.6,
+"y": -32995.2,
+"z": 2924.8,
+"yaw": -97.07,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -67865.4,
+"y": -30931.0,
+"z": 2924.8,
+"yaw": -97.07,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -67275.9,
+"y": -33078.8,
+"z": 2928.0,
+"yaw": -94.33,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -67119.0,
+"y": -31004.7,
+"z": 2928.0,
+"yaw": -94.33,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -66646.6,
+"y": -33116.8,
+"z": 2931.1,
+"yaw": -92.65,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -66550.5,
+"y": -31039.1,
+"z": 2931.1,
+"yaw": -92.65,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -65813.8,
+"y": -33141.4,
+"z": 2936.1,
+"yaw": -90.82,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -65783.9,
+"y": -31061.6,
+"z": 2936.1,
+"yaw": -90.82,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -65195.6,
+"y": -33144.6,
+"z": 2940.1,
+"yaw": -89.82,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -65202.1,
+"y": -31064.6,
+"z": 2940.0,
+"yaw": -89.82,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -64377.9,
+"y": -33134.6,
+"z": 2945.6,
+"yaw": -88.84,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -64419.9,
+"y": -31055.0,
+"z": 2945.6,
+"yaw": -88.84,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -63770.0,
+"y": -33119.7,
+"z": 2949.6,
+"yaw": -88.4,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -63828.1,
+"y": -31040.5,
+"z": 2949.6,
+"yaw": -88.4,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -62965.8,
+"y": -33095.0,
+"z": 2954.7,
+"yaw": -88.15,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -63032.9,
+"y": -31016.1,
+"z": 2954.7,
+"yaw": -88.15,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -62367.4,
+"y": -33075.8,
+"z": 2958.0,
+"yaw": -88.22,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -62431.9,
+"y": -30996.8,
+"z": 2958.0,
+"yaw": -88.22,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -61575.1,
+"y": -33053.6,
+"z": 2961.7,
+"yaw": -88.63,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -61624.7,
+"y": -30974.1,
+"z": 2961.7,
+"yaw": -88.63,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -60985.8,
+"y": -33042.3,
+"z": 2963.6,
+"yaw": -89.22,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -61014.2,
+"y": -30962.5,
+"z": 2963.6,
+"yaw": -89.22,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -60205.2,
+"y": -33038.5,
+"z": 2964.9,
+"yaw": -90.28,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -60194.8,
+"y": -30958.5,
+"z": 2964.9,
+"yaw": -90.28,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -59623.2,
+"y": -33046.7,
+"z": 2965.0,
+"yaw": -91.28,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -59576.9,
+"y": -30967.2,
+"z": 2965.0,
+"yaw": -91.28,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -58841.3,
+"y": -33071.0,
+"z": 2965.0,
+"yaw": -92.26,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -58759.5,
+"y": -30992.6,
+"z": 2965.0,
+"yaw": -92.26,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -58250.3,
+"y": -33097.0,
+"z": 2965.0,
+"yaw": -92.72,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -58151.6,
+"y": -31019.3,
+"z": 2965.0,
+"yaw": -92.72,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -57656.6,
+"y": -33127.0,
+"z": 2965.0,
+"yaw": -93.03,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -57546.8,
+"y": -31049.9,
+"z": 2965.0,
+"yaw": -93.03,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -56859.5,
+"y": -33170.2,
+"z": 2965.0,
+"yaw": -93.12,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -56746.1,
+"y": -31093.3,
+"z": 2965.0,
+"yaw": -93.12,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -56056.7,
+"y": -33213.0,
+"z": 2965.0,
+"yaw": -92.91,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -55450.8,
+"y": -33241.9,
+"z": 2965.0,
+"yaw": -92.55,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -54840.9,
+"y": -33266.3,
+"z": 2965.0,
+"yaw": -91.98,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -53987.9,
+"y": -31208.2,
+"z": 2965.0,
+"yaw": -90.96,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -53212.1,
+"y": -31212.9,
+"z": 2965.0,
+"yaw": -89.63,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -52576.0,
+"y": -33281.9,
+"z": 2965.0,
+"yaw": -88.38,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -52634.7,
+"y": -31202.7,
+"z": 2965.0,
+"yaw": -88.38,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -51948.7,
+"y": -33256.3,
+"z": 2965.0,
+"yaw": -86.85,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -52063.0,
+"y": -31179.4,
+"z": 2965.0,
+"yaw": -86.85,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -51110.0,
+"y": -33194.6,
+"z": 2965.0,
+"yaw": -84.59,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -51306.0,
+"y": -31123.8,
+"z": 2965.0,
+"yaw": -84.59,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -50266.6,
+"y": -33094.4,
+"z": 2965.0,
+"yaw": -81.87,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -50560.7,
+"y": -31035.3,
+"z": 2965.0,
+"yaw": -81.87,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -49613.2,
+"y": -32984.5,
+"z": 2964.9,
+"yaw": -78.42,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -50030.6,
+"y": -30946.9,
+"z": 2964.9,
+"yaw": -78.42,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -48949.5,
+"y": -32818.4,
+"z": 2963.9,
+"yaw": -73.77,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -49530.3,
+"y": -30823.1,
+"z": 2964.0,
+"yaw": -73.77,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -48860.3,
+"y": -30595.0,
+"z": 2961.0,
+"yaw": -68.69,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -48181.6,
+"y": -30308.8,
+"z": 2956.8,
+"yaw": -65.19,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -47666.3,
+"y": -30064.9,
+"z": 2953.0,
+"yaw": -63.52,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -47147.5,
+"y": -29803.6,
+"z": 2948.8,
+"yaw": -62.45,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -45487.5,
+"y": -31238.6,
+"z": 2942.9,
+"yaw": -62.0,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -46445.0,
+"y": -29438.3,
+"z": 2942.8,
+"yaw": -62.0,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -45723.8,
+"y": -29065.0,
+"z": 2936.6,
+"yaw": -62.67,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -45166.8,
+"y": -28788.6,
+"z": 2932.0,
+"yaw": -63.91,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -43770.9,
+"y": -30358.7,
+"z": 2927.5,
+"yaw": -66.01,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -44588.1,
+"y": -28522.5,
+"z": 2927.5,
+"yaw": -66.01,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -43101.2,
+"y": -30080.6,
+"z": 2922.0,
+"yaw": -70.28,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_02",
+"x": -43775.5,
+"y": -28198.9,
+"z": 2922.0,
+"yaw": -70.28,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -42440.6,
+"y": -29875.6,
+"z": 2917.4,
+"yaw": -76.49,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_04",
+"x": -42905.4,
+"y": -27941.1,
+"z": 2917.4,
+"yaw": -76.49,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -41960.0,
+"y": -29783.2,
+"z": 2914.8,
+"yaw": -82.86,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -41498.9,
+"y": -29755.2,
+"z": 2913.1,
+"yaw": -90.82,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -40931.1,
+"y": -29823.3,
+"z": 2913.0,
+"yaw": -103.93,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_03",
+"x": -40390.7,
+"y": -30031.0,
+"z": 2916.5,
+"yaw": -116.65,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_SponsorBoard_01",
+"x": -39969.5,
+"y": -30274.2,
+"z": 2920.8,
+"yaw": -123.2,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_MarshalPost",
+"x": -38822.3,
+"y": -28054.3,
+"z": 2929.3,
+"yaw": 58.93,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_MarshalPost",
+"x": 43303.8,
+"y": -25332.2,
+"z": 2947.2,
+"yaw": -6.84,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_MarshalPost",
+"x": -74697.9,
+"y": 15112.8,
+"z": 2915.5,
+"yaw": -161.03,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_CrowdCheer_10m",
+"x": -61558.2,
+"y": -33763.3,
+"z": 2965.0,
+"yaw": 91.37,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Crowd_10m",
+"x": -59447.2,
+"y": -33761.2,
+"z": 2967.0,
+"yaw": 88.46,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_FlagPole",
+"x": -57253.4,
+"y": -34020.4,
+"z": 2967.8,
+"yaw": -234.34,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Helicopter",
+"x": -59966.5,
+"y": -29000.2,
+"z": 6800.0,
+"yaw": -30.64,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_CrowdCheer_10m",
+"x": -61023.9,
+"y": -30252.6,
+"z": 2966.2,
+"yaw": -89.22,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Crowd_10m",
+"x": -59980.4,
+"y": -30250.1,
+"z": 2967.0,
+"yaw": -90.64,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_CrowdCheer_10m",
+"x": -58938.3,
+"y": -30275.4,
+"z": 2967.0,
+"yaw": -92.03,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_FlagPole",
+"x": -57282.3,
+"y": -30134.0,
+"z": 2968.1,
+"yaw": -327.49,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Crowd_10m",
+"x": -75335.9,
+"y": 17509.5,
+"z": 2953.7,
+"yaw": -10.68,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Crowd_10m",
+"x": -75348.4,
+"y": 15837.9,
+"z": 2954.7,
+"yaw": 9.88,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_FlagPole",
+"x": -75262.2,
+"y": 14178.0,
+"z": 2991.1,
+"yaw": -25.15,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 19539.2,
+"y": -30291.8,
+"z": 2998.0,
+"yaw": -176.58,
+"scale": 1.012
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 79395.1,
+"y": -32793.6,
+"z": 2998.0,
+"yaw": -58.22,
+"scale": 0.971
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -26360.3,
+"y": -28024.2,
+"z": 2997.7,
+"yaw": -311.81,
+"scale": 1.159
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 83269.9,
+"y": -27025.1,
+"z": 2998.0,
+"yaw": -106.85,
+"scale": 1.155
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 11348.0,
+"y": -37027.5,
+"z": 2998.0,
+"yaw": -207.14,
+"scale": 0.808
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 60968.1,
+"y": -27457.6,
+"z": 2998.0,
+"yaw": -291.26,
+"scale": 0.95
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 83809.7,
+"y": -34766.0,
+"z": 2998.0,
+"yaw": -212.01,
+"scale": 0.869
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -90452.8,
+"y": -31804.2,
+"z": 2998.0,
+"yaw": -222.53,
+"scale": 0.908
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -60716.6,
+"y": -36318.4,
+"z": 2998.0,
+"yaw": -85.72,
+"scale": 0.964
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 64174.4,
+"y": -28047.0,
+"z": 2998.0,
+"yaw": -163.55,
+"scale": 0.896
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 50574.9,
+"y": -33742.4,
+"z": 2998.0,
+"yaw": -54.55,
+"scale": 1.198
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 59126.4,
+"y": -35541.7,
+"z": 2998.0,
+"yaw": -96.47,
+"scale": 0.972
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -58251.7,
+"y": -27076.5,
+"z": 2998.0,
+"yaw": -42.74,
+"scale": 1.039
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 87117.9,
+"y": -35457.3,
+"z": 2998.0,
+"yaw": -326.36,
+"scale": 1.175
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -29475.3,
+"y": -28390.5,
+"z": 2998.0,
+"yaw": -214.77,
+"scale": 1.12
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 77340.2,
+"y": -35620.8,
+"z": 2998.0,
+"yaw": -357.34,
+"scale": 1.083
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -62738.5,
+"y": -26556.2,
+"z": 2998.0,
+"yaw": -67.85,
+"scale": 0.818
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 78312.7,
+"y": -31893.8,
+"z": 2998.0,
+"yaw": -111.15,
+"scale": 0.944
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -20946.9,
+"y": -31421.3,
+"z": 2994.2,
+"yaw": -294.25,
+"scale": 1.155
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -23142.3,
+"y": -33743.0,
+"z": 2998.0,
+"yaw": -339.38,
+"scale": 0.983
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 88331.5,
+"y": -37189.1,
+"z": 2998.0,
+"yaw": -184.25,
+"scale": 1.077
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 15881.3,
+"y": -27843.8,
+"z": 2998.0,
+"yaw": -340.97,
+"scale": 1.136
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 58729.0,
+"y": -30284.3,
+"z": 2998.0,
+"yaw": -274.83,
+"scale": 1.163
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 42989.7,
+"y": -29282.6,
+"z": 2997.9,
+"yaw": -268.19,
+"scale": 1.158
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -62313.7,
+"y": -36565.5,
+"z": 2998.0,
+"yaw": -229.03,
+"scale": 1.132
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -32012.3,
+"y": -36959.0,
+"z": 2964.5,
+"yaw": -93.88,
+"scale": 0.921
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -33997.8,
+"y": -35689.9,
+"z": 2948.0,
+"yaw": -242.4,
+"scale": 1.166
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -81597.9,
+"y": -27639.1,
+"z": 2998.0,
+"yaw": -52.2,
+"scale": 0.956
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -75256.8,
+"y": -27644.4,
+"z": 2904.5,
+"yaw": -99.26,
+"scale": 0.948
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 50560.1,
+"y": -27657.3,
+"z": 2998.0,
+"yaw": -121.83,
+"scale": 0.932
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 77886.0,
+"y": -28093.4,
+"z": 2998.0,
+"yaw": -27.68,
+"scale": 1.034
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -57259.6,
+"y": -35681.8,
+"z": 2998.0,
+"yaw": -64.63,
+"scale": 1.12
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 52541.9,
+"y": -35443.0,
+"z": 2998.0,
+"yaw": -330.77,
+"scale": 0.858
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 39848.8,
+"y": -36168.4,
+"z": 2998.0,
+"yaw": -92.24,
+"scale": 1.101
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -45509.7,
+"y": -28039.6,
+"z": 2978.3,
+"yaw": -343.98,
+"scale": 0.986
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -56432.8,
+"y": -30393.1,
+"z": 2995.1,
+"yaw": -172.28,
+"scale": 0.816
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 88978.0,
+"y": -33933.2,
+"z": 2998.0,
+"yaw": -226.53,
+"scale": 0.836
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -32339.0,
+"y": -28920.0,
+"z": 2998.0,
+"yaw": -331.44,
+"scale": 1.088
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 65789.8,
+"y": -31928.3,
+"z": 2998.0,
+"yaw": -286.82,
+"scale": 0.953
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 22271.1,
+"y": -36094.2,
+"z": 2997.6,
+"yaw": -143.77,
+"scale": 1.039
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -78421.7,
+"y": -36938.8,
+"z": 2998.0,
+"yaw": -159.83,
+"scale": 1.036
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -35469.4,
+"y": -28054.4,
+"z": 2998.0,
+"yaw": -109.06,
+"scale": 0.988
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 86565.2,
+"y": -36267.5,
+"z": 2998.0,
+"yaw": -166.63,
+"scale": 1.032
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -80204.2,
+"y": -35309.0,
+"z": 2998.0,
+"yaw": -267.35,
+"scale": 1.06
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -32277.4,
+"y": -36534.0,
+"z": 2946.1,
+"yaw": -315.0,
+"scale": 0.934
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 77422.3,
+"y": -31615.8,
+"z": 2998.0,
+"yaw": -202.05,
+"scale": 1.015
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -78642.1,
+"y": -37045.0,
+"z": 2998.0,
+"yaw": -20.52,
+"scale": 1.193
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -69148.4,
+"y": -36228.2,
+"z": 2998.0,
+"yaw": -18.41,
+"scale": 1.08
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 61772.5,
+"y": -31066.3,
+"z": 2998.0,
+"yaw": -163.05,
+"scale": 1.045
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -99964.7,
+"y": -33393.8,
+"z": 2998.0,
+"yaw": -4.43,
+"scale": 1.198
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -97475.5,
+"y": -31851.7,
+"z": 2998.0,
+"yaw": -143.88,
+"scale": 1.018
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 88427.7,
+"y": -35245.2,
+"z": 2998.0,
+"yaw": -149.79,
+"scale": 1.079
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -88431.9,
+"y": -33875.1,
+"z": 2998.0,
+"yaw": -217.01,
+"scale": 1.176
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 41181.0,
+"y": -35157.1,
+"z": 2998.0,
+"yaw": -162.6,
+"scale": 0.984
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 92881.7,
+"y": -26722.2,
+"z": 2998.0,
+"yaw": -28.63,
+"scale": 1.13
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 83704.1,
+"y": -32395.2,
+"z": 2998.0,
+"yaw": -42.92,
+"scale": 0.902
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -63906.5,
+"y": -34039.9,
+"z": 2989.0,
+"yaw": -131.63,
+"scale": 1.017
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -36879.0,
+"y": -27818.1,
+"z": 2998.0,
+"yaw": -339.35,
+"scale": 0.827
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -51393.4,
+"y": -33722.7,
+"z": 2994.1,
+"yaw": -198.63,
+"scale": 1.104
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 91017.7,
+"y": -30964.6,
+"z": 2998.0,
+"yaw": -4.16,
+"scale": 1.192
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 27038.0,
+"y": -28592.1,
+"z": 2998.0,
+"yaw": -326.15,
+"scale": 0.838
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 67272.4,
+"y": -35567.1,
+"z": 2998.0,
+"yaw": -359.46,
+"scale": 0.853
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 60069.5,
+"y": -34761.9,
+"z": 2998.0,
+"yaw": -118.8,
+"scale": 1.079
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 45697.8,
+"y": -29642.8,
+"z": 2998.0,
+"yaw": -345.5,
+"scale": 0.822
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 94867.1,
+"y": -30307.9,
+"z": 2998.0,
+"yaw": -108.19,
+"scale": 1.111
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -10780.5,
+"y": -26977.8,
+"z": 2998.0,
+"yaw": -162.39,
+"scale": 1.015
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 82153.7,
+"y": -27724.6,
+"z": 2998.0,
+"yaw": -192.08,
+"scale": 0.962
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -92499.0,
+"y": -34497.0,
+"z": 2998.0,
+"yaw": -239.73,
+"scale": 0.845
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 78596.5,
+"y": -31651.1,
+"z": 2998.0,
+"yaw": -89.16,
+"scale": 1.198
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -67430.3,
+"y": -26527.4,
+"z": 2998.0,
+"yaw": -8.02,
+"scale": 0.823
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 94314.7,
+"y": -34837.8,
+"z": 2998.0,
+"yaw": -322.94,
+"scale": 1.187
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 9625.0,
+"y": -26661.7,
+"z": 2998.0,
+"yaw": -250.21,
+"scale": 1.045
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -43679.8,
+"y": -30878.2,
+"z": 2965.1,
+"yaw": -317.11,
+"scale": 0.815
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 87630.5,
+"y": -30421.0,
+"z": 2998.0,
+"yaw": -229.97,
+"scale": 0.96
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 10905.9,
+"y": -30060.2,
+"z": 2995.9,
+"yaw": -160.58,
+"scale": 1.134
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 54805.9,
+"y": -30642.8,
+"z": 2998.0,
+"yaw": -52.2,
+"scale": 1.18
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -49399.6,
+"y": -35966.9,
+"z": 2998.0,
+"yaw": -312.13,
+"scale": 1.147
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -5223.6,
+"y": -27328.3,
+"z": 2998.0,
+"yaw": -273.27,
+"scale": 1.019
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 59213.0,
+"y": -27332.1,
+"z": 2998.0,
+"yaw": -89.25,
+"scale": 0.812
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 23452.0,
+"y": -37126.1,
+"z": 2998.0,
+"yaw": -267.04,
+"scale": 1.115
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 17908.4,
+"y": -29964.0,
+"z": 2998.0,
+"yaw": -290.39,
+"scale": 0.962
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 24283.9,
+"y": -27911.5,
+"z": 2998.0,
+"yaw": -56.2,
+"scale": 0.871
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -28382.8,
+"y": -36948.7,
+"z": 2998.0,
+"yaw": -346.43,
+"scale": 0.943
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 13369.0,
+"y": -28836.9,
+"z": 2998.0,
+"yaw": -277.79,
+"scale": 1.16
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -10578.6,
+"y": -29034.3,
+"z": 2998.0,
+"yaw": -59.58,
+"scale": 1.041
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -95439.2,
+"y": -36972.3,
+"z": 2998.0,
+"yaw": -265.54,
+"scale": 0.821
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -56133.0,
+"y": -27651.5,
+"z": 2998.0,
+"yaw": -27.05,
+"scale": 0.841
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 23756.0,
+"y": -36465.9,
+"z": 2998.0,
+"yaw": -297.62,
+"scale": 1.157
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 81762.7,
+"y": -36813.1,
+"z": 2998.0,
+"yaw": -93.08,
+"scale": 1.189
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 53456.0,
+"y": -27305.6,
+"z": 2998.0,
+"yaw": -232.07,
+"scale": 1.161
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 49181.0,
+"y": -32987.7,
+"z": 2998.0,
+"yaw": -337.31,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 5195.6,
+"y": -28172.9,
+"z": 2972.0,
+"yaw": -186.69,
+"scale": 0.982
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 27369.2,
+"y": -37331.0,
+"z": 2998.0,
+"yaw": -123.26,
+"scale": 0.921
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 72581.3,
+"y": -36595.2,
+"z": 2998.0,
+"yaw": -37.7,
+"scale": 0.958
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 3411.0,
+"y": -36347.2,
+"z": 2998.0,
+"yaw": -61.47,
+"scale": 0.82
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 18103.0,
+"y": -28020.4,
+"z": 2998.0,
+"yaw": -59.11,
+"scale": 1.112
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -11509.5,
+"y": -26618.8,
+"z": 2998.0,
+"yaw": -357.72,
+"scale": 1.008
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 32938.8,
+"y": -33787.4,
+"z": 2979.1,
+"yaw": -347.0,
+"scale": 0.957
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 11576.6,
+"y": -31077.2,
+"z": 2984.0,
+"yaw": -218.47,
+"scale": 1.075
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -87086.9,
+"y": -32205.9,
+"z": 2998.0,
+"yaw": -241.92,
+"scale": 1.004
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -73670.2,
+"y": -36361.7,
+"z": 2998.0,
+"yaw": -275.74,
+"scale": 1.078
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 94937.2,
+"y": -28135.1,
+"z": 2998.0,
+"yaw": -186.26,
+"scale": 1.17
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 33625.7,
+"y": -26746.7,
+"z": 2998.0,
+"yaw": -295.21,
+"scale": 1.098
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -85148.5,
+"y": -31376.6,
+"z": 2998.0,
+"yaw": -70.77,
+"scale": 0.983
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -89987.9,
+"y": -28945.9,
+"z": 2998.0,
+"yaw": -265.92,
+"scale": 0.919
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -29487.7,
+"y": -30211.9,
+"z": 2998.0,
+"yaw": -321.04,
+"scale": 1.183
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -47043.9,
+"y": -33936.2,
+"z": 2998.1,
+"yaw": -338.55,
+"scale": 0.94
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 52016.3,
+"y": -35936.2,
+"z": 2998.0,
+"yaw": -293.8,
+"scale": 1.006
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 56091.7,
+"y": -27518.8,
+"z": 2998.0,
+"yaw": -4.97,
+"scale": 1.062
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 47559.1,
+"y": -35926.5,
+"z": 2998.0,
+"yaw": -246.13,
+"scale": 0.889
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -64013.6,
+"y": -27152.5,
+"z": 2998.0,
+"yaw": -324.64,
+"scale": 1.031
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 9235.6,
+"y": -37333.5,
+"z": 2998.0,
+"yaw": -343.87,
+"scale": 0.846
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -39244.4,
+"y": -36126.2,
+"z": 2998.0,
+"yaw": -76.17,
+"scale": 0.833
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -69374.1,
+"y": -29715.2,
+"z": 2976.9,
+"yaw": -87.18,
+"scale": 0.934
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -91882.7,
+"y": -27240.2,
+"z": 2998.0,
+"yaw": -145.55,
+"scale": 1.157
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -3537.0,
+"y": -28272.3,
+"z": 2998.0,
+"yaw": -173.71,
+"scale": 1.011
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -75566.7,
+"y": -27767.8,
+"z": 2894.1,
+"yaw": -166.14,
+"scale": 1.139
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -80697.1,
+"y": -32482.8,
+"z": 2998.0,
+"yaw": -42.76,
+"scale": 1.153
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 77131.9,
+"y": -36820.4,
+"z": 2998.0,
+"yaw": -153.48,
+"scale": 1.186
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 25741.2,
+"y": -33886.8,
+"z": 2986.7,
+"yaw": -336.94,
+"scale": 1.008
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -35995.9,
+"y": -37234.9,
+"z": 2998.0,
+"yaw": -248.16,
+"scale": 0.867
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -86241.1,
+"y": -36395.7,
+"z": 2998.0,
+"yaw": -336.9,
+"scale": 1.046
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -18970.3,
+"y": -36719.0,
+"z": 2998.0,
+"yaw": -225.33,
+"scale": 1.024
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 33481.8,
+"y": -33213.8,
+"z": 2945.9,
+"yaw": -215.2,
+"scale": 1.072
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -75614.1,
+"y": -34434.1,
+"z": 2998.0,
+"yaw": -255.33,
+"scale": 1.198
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -33621.5,
+"y": -28305.5,
+"z": 2998.0,
+"yaw": -72.14,
+"scale": 0.927
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 72578.2,
+"y": -31344.4,
+"z": 2998.0,
+"yaw": -116.91,
+"scale": 0.901
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 31954.7,
+"y": -33048.3,
+"z": 2962.7,
+"yaw": -185.06,
+"scale": 1.103
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 68295.5,
+"y": -31993.7,
+"z": 2998.0,
+"yaw": -337.58,
+"scale": 0.931
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 80005.5,
+"y": -33716.4,
+"z": 2998.0,
+"yaw": -283.97,
+"scale": 0.812
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -88307.7,
+"y": -34189.5,
+"z": 2998.0,
+"yaw": -144.18,
+"scale": 1.03
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -96510.0,
+"y": -33055.5,
+"z": 2998.0,
+"yaw": -167.84,
+"scale": 1.107
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 78309.7,
+"y": -28685.4,
+"z": 2998.0,
+"yaw": -40.12,
+"scale": 1.045
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 89074.1,
+"y": -34792.6,
+"z": 2998.0,
+"yaw": -116.76,
+"scale": 1.1
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -83642.3,
+"y": -31295.8,
+"z": 2998.0,
+"yaw": -327.9,
+"scale": 1.026
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -95620.3,
+"y": -37112.6,
+"z": 2998.0,
+"yaw": -236.32,
+"scale": 0.819
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -90953.0,
+"y": -28310.7,
+"z": 2998.0,
+"yaw": -30.11,
+"scale": 0.924
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -37216.1,
+"y": -27084.4,
+"z": 2998.0,
+"yaw": -204.73,
+"scale": 1.171
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 55649.3,
+"y": -37184.3,
+"z": 2998.0,
+"yaw": -222.14,
+"scale": 0.94
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -53049.1,
+"y": -29569.9,
+"z": 2998.0,
+"yaw": -3.95,
+"scale": 0.933
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -40250.4,
+"y": -36728.9,
+"z": 2998.0,
+"yaw": -210.34,
+"scale": 0.874
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -15793.1,
+"y": -30366.7,
+"z": 2988.4,
+"yaw": -66.05,
+"scale": 0.935
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -73413.7,
+"y": -34332.7,
+"z": 2998.0,
+"yaw": -252.38,
+"scale": 0.944
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -36075.9,
+"y": -34569.9,
+"z": 2973.7,
+"yaw": -176.89,
+"scale": 1.124
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 37233.5,
+"y": -32452.4,
+"z": 2913.8,
+"yaw": -102.68,
+"scale": 1.176
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -90479.6,
+"y": -28403.3,
+"z": 2998.0,
+"yaw": -108.12,
+"scale": 1.13
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -60084.4,
+"y": -34067.1,
+"z": 2996.5,
+"yaw": -240.77,
+"scale": 0.819
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 42818.4,
+"y": -36287.9,
+"z": 2998.0,
+"yaw": -226.34,
+"scale": 0.913
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 67631.2,
+"y": -36160.9,
+"z": 2998.0,
+"yaw": -198.07,
+"scale": 0.966
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -34408.9,
+"y": -35755.3,
+"z": 2954.1,
+"yaw": -333.48,
+"scale": 0.822
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 22643.9,
+"y": -28800.2,
+"z": 2998.0,
+"yaw": -217.74,
+"scale": 0.922
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -53787.5,
+"y": -36064.3,
+"z": 2998.0,
+"yaw": -276.11,
+"scale": 0.961
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -29495.8,
+"y": -29621.5,
+"z": 2998.0,
+"yaw": -41.76,
+"scale": 0.82
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -66789.9,
+"y": -33893.3,
+"z": 2975.8,
+"yaw": -55.29,
+"scale": 0.949
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 98781.2,
+"y": -29873.1,
+"z": 2998.0,
+"yaw": -227.76,
+"scale": 1.137
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -50181.7,
+"y": -35131.1,
+"z": 2998.0,
+"yaw": -20.53,
+"scale": 0.968
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 43086.8,
+"y": -30382.4,
+"z": 2998.0,
+"yaw": -186.46,
+"scale": 1.017
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 13262.8,
+"y": -29953.1,
+"z": 2998.0,
+"yaw": -121.51,
+"scale": 1.046
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 45688.6,
+"y": -32480.5,
+"z": 2998.0,
+"yaw": -60.85,
+"scale": 1.138
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -32292.6,
+"y": -29405.5,
+"z": 2998.0,
+"yaw": -328.16,
+"scale": 1.103
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 3639.9,
+"y": -37144.5,
+"z": 2998.0,
+"yaw": -277.22,
+"scale": 1.064
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -78881.5,
+"y": -31200.4,
+"z": 2998.0,
+"yaw": -122.4,
+"scale": 0.905
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 4785.6,
+"y": -27226.8,
+"z": 2997.3,
+"yaw": -2.18,
+"scale": 1.086
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 44839.2,
+"y": -33405.9,
+"z": 2998.0,
+"yaw": -214.84,
+"scale": 1.105
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 48288.0,
+"y": -32128.1,
+"z": 2998.0,
+"yaw": -109.72,
+"scale": 1.095
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 86884.2,
+"y": -26601.9,
+"z": 2998.0,
+"yaw": -147.88,
+"scale": 0.883
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -99080.8,
+"y": -29398.3,
+"z": 2998.0,
+"yaw": -85.41,
+"scale": 1.067
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -55027.1,
+"y": -28990.9,
+"z": 2998.0,
+"yaw": -330.59,
+"scale": 0.841
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 22553.6,
+"y": -27132.2,
+"z": 2998.0,
+"yaw": -20.18,
+"scale": 0.857
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -83636.5,
+"y": -34372.0,
+"z": 2998.0,
+"yaw": -307.64,
+"scale": 1.009
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -8974.0,
+"y": -30728.1,
+"z": 2998.0,
+"yaw": -341.91,
+"scale": 1.152
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 47446.6,
+"y": -33154.1,
+"z": 2998.0,
+"yaw": -271.45,
+"scale": 0.807
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 48899.4,
+"y": -37108.0,
+"z": 2998.0,
+"yaw": -223.76,
+"scale": 0.95
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -31273.6,
+"y": -31248.8,
+"z": 2998.0,
+"yaw": -252.91,
+"scale": 0.878
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -23955.9,
+"y": -36880.8,
+"z": 2998.0,
+"yaw": -61.52,
+"scale": 0.881
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -67818.6,
+"y": -33989.0,
+"z": 2980.4,
+"yaw": -24.88,
+"scale": 0.965
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 68502.2,
+"y": -35931.0,
+"z": 2998.0,
+"yaw": -145.37,
+"scale": 0.885
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 28173.9,
+"y": -30460.2,
+"z": 2993.7,
+"yaw": -176.4,
+"scale": 0.84
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -30322.0,
+"y": -26509.0,
+"z": 2998.0,
+"yaw": -231.02,
+"scale": 0.996
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 13581.4,
+"y": -27299.6,
+"z": 2998.0,
+"yaw": -297.46,
+"scale": 1.096
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 9480.5,
+"y": -34755.2,
+"z": 2998.0,
+"yaw": -125.5,
+"scale": 0.971
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -54082.6,
+"y": -30185.2,
+"z": 2996.5,
+"yaw": -238.14,
+"scale": 1.157
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 46503.1,
+"y": -34828.0,
+"z": 2998.0,
+"yaw": -140.28,
+"scale": 0.861
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 54204.4,
+"y": -32056.5,
+"z": 2998.0,
+"yaw": -78.84,
+"scale": 1.105
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 72927.9,
+"y": -36634.2,
+"z": 2998.0,
+"yaw": -358.04,
+"scale": 0.969
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 51324.8,
+"y": -35604.2,
+"z": 2998.0,
+"yaw": -272.71,
+"scale": 1.101
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 75107.0,
+"y": -29101.0,
+"z": 2998.0,
+"yaw": -296.31,
+"scale": 1.175
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -21433.8,
+"y": -36140.1,
+"z": 2998.0,
+"yaw": -105.32,
+"scale": 1.016
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 27946.1,
+"y": -37298.7,
+"z": 2998.0,
+"yaw": -21.78,
+"scale": 0.864
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 90520.5,
+"y": -29220.9,
+"z": 2998.0,
+"yaw": -122.68,
+"scale": 1.063
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 69081.8,
+"y": -26769.6,
+"z": 2998.0,
+"yaw": -319.0,
+"scale": 1.165
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 67210.0,
+"y": -35195.0,
+"z": 2998.0,
+"yaw": -175.8,
+"scale": 1.044
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 77340.5,
+"y": -34284.6,
+"z": 2998.0,
+"yaw": -94.99,
+"scale": 0.847
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 55303.1,
+"y": -28291.1,
+"z": 2998.0,
+"yaw": -211.25,
+"scale": 0.896
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 42764.9,
+"y": -27233.8,
+"z": 2950.8,
+"yaw": -4.94,
+"scale": 0.984
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 34926.5,
+"y": -34517.8,
+"z": 2998.0,
+"yaw": -220.02,
+"scale": 0.964
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -62662.9,
+"y": -37471.9,
+"z": 2998.0,
+"yaw": -177.54,
+"scale": 0.908
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 83810.3,
+"y": -31142.2,
+"z": 2998.0,
+"yaw": -213.88,
+"scale": 1.169
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 14832.9,
+"y": -37201.9,
+"z": 2998.0,
+"yaw": -253.07,
+"scale": 1.054
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -73397.5,
+"y": -31860.0,
+"z": 2917.6,
+"yaw": -33.35,
+"scale": 0.842
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 31758.6,
+"y": -36539.0,
+"z": 2998.0,
+"yaw": -2.06,
+"scale": 0.897
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 60363.0,
+"y": -36799.1,
+"z": 2998.0,
+"yaw": -322.34,
+"scale": 0.93
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 98702.9,
+"y": -31175.3,
+"z": 2998.0,
+"yaw": -90.16,
+"scale": 1.081
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": -67940.5,
+"y": -35331.0,
+"z": 2998.0,
+"yaw": -45.57,
+"scale": 0.835
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 2158.2,
+"y": -27692.4,
+"z": 2980.8,
+"yaw": -16.65,
+"scale": 1.196
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 62199.2,
+"y": -29706.5,
+"z": 2998.0,
+"yaw": -19.55,
+"scale": 0.877
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -51312.4,
+"y": -35238.7,
+"z": 2998.0,
+"yaw": -119.13,
+"scale": 0.843
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 92765.3,
+"y": -27835.5,
+"z": 2998.0,
+"yaw": -205.64,
+"scale": 1.098
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -73524.5,
+"y": -26630.2,
+"z": 2998.0,
+"yaw": -11.95,
+"scale": 1.044
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -85912.2,
+"y": -26959.5,
+"z": 2998.0,
+"yaw": -305.88,
+"scale": 0.949
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -70195.1,
+"y": -37402.9,
+"z": 2998.0,
+"yaw": -289.04,
+"scale": 1.107
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 27893.9,
+"y": -28683.0,
+"z": 2998.0,
+"yaw": -307.57,
+"scale": 1.185
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 77940.7,
+"y": -29071.7,
+"z": 2998.0,
+"yaw": -326.55,
+"scale": 1.125
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 68350.3,
+"y": -34776.3,
+"z": 2998.0,
+"yaw": -110.23,
+"scale": 0.886
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -70792.0,
+"y": -27968.6,
+"z": 2998.0,
+"yaw": -197.34,
+"scale": 1.027
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 43806.8,
+"y": -28684.4,
+"z": 2998.0,
+"yaw": -235.03,
+"scale": 1.068
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 4297.3,
+"y": -36992.7,
+"z": 2998.0,
+"yaw": -137.77,
+"scale": 1.179
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -64727.6,
+"y": -33670.5,
+"z": 2977.1,
+"yaw": -126.6,
+"scale": 0.931
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 77229.8,
+"y": -31997.3,
+"z": 2998.0,
+"yaw": -77.12,
+"scale": 0.974
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 40955.6,
+"y": -29332.9,
+"z": 2932.1,
+"yaw": -174.63,
+"scale": 1.11
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 64032.8,
+"y": -34667.9,
+"z": 2998.0,
+"yaw": -27.34,
+"scale": 0.853
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 95200.1,
+"y": -35448.6,
+"z": 2998.0,
+"yaw": -294.81,
+"scale": 0.977
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 5863.1,
+"y": -28872.3,
+"z": 2961.8,
+"yaw": -347.79,
+"scale": 0.814
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": 64927.5,
+"y": -28178.4,
+"z": 2998.0,
+"yaw": -249.12,
+"scale": 0.965
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -47184.3,
+"y": -28736.9,
+"z": 2988.8,
+"yaw": -318.91,
+"scale": 0.93
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -52845.9,
+"y": -35073.2,
+"z": 2998.0,
+"yaw": -313.5,
+"scale": 1.128
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": -20770.5,
+"y": -33487.6,
+"z": 2998.0,
+"yaw": -66.12,
+"scale": 1.121
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 86901.3,
+"y": -30078.8,
+"z": 2998.0,
+"yaw": -45.79,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 33306.4,
+"y": -37450.0,
+"z": 2998.0,
+"yaw": -202.34,
+"scale": 1.124
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 42129.3,
+"y": -33896.8,
+"z": 2998.0,
+"yaw": -127.52,
+"scale": 1.108
+},
+{
+"kit": "life",
+"asset": "SM_Person_Casual",
+"x": -32009.1,
+"y": -30242.4,
+"z": 2998.0,
+"yaw": -34.55,
+"scale": 0.834
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -79416.4,
+"y": -33208.4,
+"z": 2998.0,
+"yaw": -137.16,
+"scale": 0.994
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 24913.9,
+"y": -30641.1,
+"z": 2993.8,
+"yaw": -14.25,
+"scale": 1.115
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 84449.0,
+"y": -35060.7,
+"z": 2998.0,
+"yaw": -98.46,
+"scale": 1.106
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -10046.7,
+"y": -27104.3,
+"z": 2998.0,
+"yaw": -84.8,
+"scale": 0.987
+},
+{
+"kit": "life",
+"asset": "SM_Person_Thobe",
+"x": 27934.1,
+"y": -35845.1,
+"z": 2998.0,
+"yaw": -354.46,
+"scale": 1.065
+},
+{
+"kit": "life",
+"asset": "SM_Person_Abaya",
+"x": 26285.9,
+"y": -30058.6,
+"z": 2997.4,
+"yaw": -359.66,
+"scale": 0.863
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": 43970.3,
+"y": -36436.1,
+"z": 2998.0,
+"yaw": -12.07,
+"scale": 0.838
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -57323.7,
+"y": -27760.8,
+"z": 2998.0,
+"yaw": -82.33,
+"scale": 0.801
+},
+{
+"kit": "life",
+"asset": "SM_Person_Kid",
+"x": -6721.8,
+"y": -30725.7,
+"z": 3002.3,
+"yaw": -182.8,
+"scale": 1.028
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -20253.0,
+"y": -35293.8,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.997
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -8191.1,
+"y": -29096.4,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.067
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -49025.4,
+"y": -37182.4,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.897
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 92358.7,
+"y": -27549.4,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.979
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 10562.9,
+"y": -36957.6,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.138
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -37994.8,
+"y": -33466.7,
+"z": 3090.8,
+"yaw": -0.0,
+"scale": 1.143
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -65007.3,
+"y": -35494.6,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.125
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 92860.8,
+"y": -28915.6,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.095
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -8485.9,
+"y": -37011.5,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.108
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -96505.0,
+"y": -36867.3,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.13
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -43236.0,
+"y": -37110.8,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.865
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 88090.7,
+"y": -33056.8,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.81
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 62188.5,
+"y": -29980.5,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.829
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -67007.6,
+"y": -27457.6,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.981
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -23204.8,
+"y": -27673.6,
+"z": 2947.4,
+"yaw": -0.0,
+"scale": 0.802
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 91582.2,
+"y": -34758.1,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.027
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 14499.4,
+"y": -29579.1,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.161
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -38057.7,
+"y": -28093.2,
+"z": 2976.9,
+"yaw": -0.0,
+"scale": 1.031
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 73053.8,
+"y": -37163.2,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.952
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -78514.2,
+"y": -33089.9,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.888
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -40613.3,
+"y": -35168.5,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.178
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 24071.9,
+"y": -29603.1,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.179
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -35455.5,
+"y": -28267.9,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.943
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -74500.1,
+"y": -34163.2,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.897
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 72903.9,
+"y": -33655.0,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.136
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 33865.2,
+"y": -27148.0,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.122
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -94480.9,
+"y": -31059.0,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.135
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 2079.0,
+"y": -35002.9,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.959
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -31658.8,
+"y": -33512.7,
+"z": 2959.7,
+"yaw": -0.0,
+"scale": 0.992
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -21206.2,
+"y": -36859.1,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.006
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -17193.1,
+"y": -36989.9,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.013
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 784.6,
+"y": -26899.3,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.894
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -41477.2,
+"y": -33242.6,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.983
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 57285.3,
+"y": -30426.9,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.875
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -59139.5,
+"y": -35176.2,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.927
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -32926.6,
+"y": -27978.2,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.816
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 91367.7,
+"y": -26815.1,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.9
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -53164.2,
+"y": -29449.6,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.144
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -88454.2,
+"y": -36996.5,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.992
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 76401.2,
+"y": -28304.7,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.991
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -62324.1,
+"y": -34201.4,
+"z": 2995.3,
+"yaw": -0.0,
+"scale": 0.89
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 73830.5,
+"y": -32740.0,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.195
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 83703.6,
+"y": -33725.4,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.807
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -25454.7,
+"y": -33901.3,
+"z": 3026.4,
+"yaw": -0.0,
+"scale": 1.015
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 20686.8,
+"y": -28093.9,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.845
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -3112.4,
+"y": -34219.3,
+"z": 2996.6,
+"yaw": -0.0,
+"scale": 0.81
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 30942.4,
+"y": -35682.4,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.93
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 85744.0,
+"y": -35410.5,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.135
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -96903.6,
+"y": -31841.0,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.2
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 94422.7,
+"y": -27067.0,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.191
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -65697.1,
+"y": -28793.2,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.047
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 67319.2,
+"y": -30499.8,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.1
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 2508.4,
+"y": -28448.5,
+"z": 2955.0,
+"yaw": -0.0,
+"scale": 0.841
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 62108.1,
+"y": -31502.7,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.185
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": -39402.2,
+"y": -27601.7,
+"z": 2959.6,
+"yaw": -0.0,
+"scale": 1.153
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 56049.7,
+"y": -37362.5,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.927
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 74178.3,
+"y": -28657.5,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.147
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 30322.9,
+"y": -29567.4,
+"z": 2996.2,
+"yaw": -0.0,
+"scale": 0.863
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 7146.7,
+"y": -33836.0,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Bench",
+"x": 82537.2,
+"y": -28741.3,
+"z": 2998.0,
+"yaw": -0.0,
+"scale": 0.951
+},
+{
+"kit": "life",
+"asset": "SM_FishingBoat",
+"x": -53346.5,
+"y": 86844.9,
+"z": 0.0,
+"yaw": -298.06,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Yacht",
+"x": -31620.2,
+"y": 92531.1,
+"z": 0.0,
+"yaw": -364.77,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Yacht",
+"x": -45907.6,
+"y": 96792.8,
+"z": 0.0,
+"yaw": -328.17,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_FishingBoat",
+"x": -8453.8,
+"y": 84179.9,
+"z": 0.0,
+"yaw": -431.57,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Yacht",
+"x": -40960.4,
+"y": 96558.6,
+"z": 0.0,
+"yaw": -338.83,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Yacht",
+"x": -29403.0,
+"y": 92424.3,
+"z": 0.0,
+"yaw": -372.35,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Yacht",
+"x": -26400.0,
+"y": 80000.0,
+"z": 0.0,
+"yaw": -90.0,
+"scale": 0.7
+},
+{
+"kit": "life",
+"asset": "SM_Yacht",
+"x": -26400.0,
+"y": 76200.0,
+"z": 0.0,
+"yaw": -90.0,
+"scale": 0.7
+},
+{
+"kit": "life",
+"asset": "SM_Yacht",
+"x": -26400.0,
+"y": 72400.0,
+"z": 0.0,
+"yaw": -90.0,
+"scale": 0.7
+},
+{
+"kit": "life",
+"asset": "SM_CargoShip",
+"x": -45000.0,
+"y": 102000.0,
+"z": 0.0,
+"yaw": -150.0,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_CargoShip",
+"x": -27000.0,
+"y": 108000.0,
+"z": 0.0,
+"yaw": -170.0,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_CargoShip",
+"x": -240000.0,
+"y": 230000.0,
+"z": 0.0,
+"yaw": -200.0,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_CargoShip",
+"x": 90000.0,
+"y": 260000.0,
+"z": 0.0,
+"yaw": -10.0,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Helicopter",
+"x": 61388.3,
+"y": 47619.0,
+"z": 18167.3,
+"yaw": -263.64,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Helicopter",
+"x": -67499.3,
+"y": -20492.8,
+"z": 9732.7,
+"yaw": -328.76,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Helicopter",
+"x": 33993.3,
+"y": -67000.7,
+"z": 8749.4,
+"yaw": -114.41,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Helicopter",
+"x": 21582.0,
+"y": -11231.0,
+"z": 10549.3,
+"yaw": -319.6,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Helicopter",
+"x": 62374.9,
+"y": 34787.6,
+"z": 10042.7,
+"yaw": -240.36,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Helicopter",
+"x": -16705.6,
+"y": -19501.0,
+"z": 14905.7,
+"yaw": -142.14,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Helicopter",
+"x": -86100.3,
+"y": 59757.6,
+"z": 14417.8,
+"yaw": -262.16,
+"scale": 1.0
+},
+{
+"kit": "life",
+"asset": "SM_Helicopter",
+"x": -13380.4,
+"y": -31666.2,
+"z": 15557.0,
+"yaw": -316.93,
+"scale": 1.0
 }
 ]
 }

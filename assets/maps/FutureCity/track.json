@@ -4507,7 +4507,7 @@
    "s": 1500.1,
    "x": 55212.6,
    "y": 6921.6,
-   "z": 3134.9,
+   "z": 3135.0,
    "yaw": 33.43,
    "width": 1500,
    "bank": -8.7,
@@ -4519,7 +4519,7 @@
    "s": 1504.1,
    "x": 55547.0,
    "y": 7141.1,
-   "z": 3150.0,
+   "z": 3150.2,
    "yaw": 33.1,
    "width": 1500,
    "bank": -9.0,
@@ -4531,7 +4531,7 @@
    "s": 1508.1,
    "x": 55882.7,
    "y": 7358.7,
-   "z": 3165.1,
+   "z": 3165.3,
    "yaw": 32.86,
    "width": 1500,
    "bank": -9.3,
@@ -4543,7 +4543,7 @@
    "s": 1512.1,
    "x": 56219.1,
    "y": 7575.2,
-   "z": 3180.1,
+   "z": 3180.3,
    "yaw": 32.68,
    "width": 1500,
    "bank": -9.6,
@@ -4555,7 +4555,7 @@
    "s": 1516.1,
    "x": 56556.0,
    "y": 7790.9,
-   "z": 3194.8,
+   "z": 3195.0,
    "yaw": 32.61,
    "width": 1500,
    "bank": -9.9,
@@ -4567,7 +4567,7 @@
    "s": 1520.1,
    "x": 56892.9,
    "y": 8006.5,
-   "z": 3209.0,
+   "z": 3209.3,
    "yaw": 32.62,
    "width": 1500,
    "bank": -10.18,
@@ -4579,7 +4579,7 @@
    "s": 1524.1,
    "x": 57229.7,
    "y": 8222.4,
-   "z": 3222.7,
+   "z": 3223.0,
    "yaw": 32.74,
    "width": 1500,
    "bank": -10.46,
@@ -4591,7 +4591,7 @@
    "s": 1528.1,
    "x": 57565.9,
    "y": 8439.1,
-   "z": 3235.7,
+   "z": 3236.0,
    "yaw": 32.91,
    "width": 1500,
    "bank": -10.72,
@@ -4603,7 +4603,7 @@
    "s": 1532.1,
    "x": 57901.2,
    "y": 8657.3,
-   "z": 3247.9,
+   "z": 3248.2,
    "yaw": 33.18,
    "width": 1500,
    "bank": -10.96,
@@ -4615,7 +4615,7 @@
    "s": 1536.1,
    "x": 58235.3,
    "y": 8877.3,
-   "z": 3259.1,
+   "z": 3259.3,
    "yaw": 33.57,
    "width": 1500,
    "bank": -11.18,
@@ -4627,7 +4627,7 @@
    "s": 1540.1,
    "x": 58567.9,
    "y": 9099.5,
-   "z": 3269.3,
+   "z": 3269.4,
    "yaw": 33.99,
    "width": 1500,
    "bank": -11.39,
@@ -4651,7 +4651,7 @@
    "s": 1548.1,
    "x": 59226.8,
    "y": 9553.2,
-   "z": 3285.6,
+   "z": 3285.5,
    "yaw": 35.17,
    "width": 1500,
    "bank": -11.72,
@@ -4663,7 +4663,7 @@
    "s": 1552.1,
    "x": 59552.7,
    "y": 9785.2,
-   "z": 3291.5,
+   "z": 3291.4,
    "yaw": 35.83,
    "width": 1500,
    "bank": -11.84,
@@ -4675,7 +4675,7 @@
    "s": 1556.1,
    "x": 59875.3,
    "y": 10021.7,
-   "z": 3295.8,
+   "z": 3295.7,
    "yaw": 36.58,
    "width": 1500,
    "bank": -11.93,
@@ -4753,7 +4753,7 @@
    "bank": -12.13,
    "air": false,
    "tunnel": false,
-   "bridge": true
+   "bridge": false
   },
   {
    "s": 1584.1,
@@ -4765,7 +4765,7 @@
    "bank": -12.19,
    "air": false,
    "tunnel": false,
-   "bridge": true
+   "bridge": false
   },
   {
    "s": 1588.1,
@@ -4777,7 +4777,7 @@
    "bank": -12.27,
    "air": false,
    "tunnel": false,
-   "bridge": true
+   "bridge": false
   },
   {
    "s": 1592.1,
@@ -4789,7 +4789,7 @@
    "bank": -12.35,
    "air": false,
    "tunnel": false,
-   "bridge": true
+   "bridge": false
   },
   {
    "s": 1596.1,
@@ -4801,7 +4801,7 @@
    "bank": -12.45,
    "air": false,
    "tunnel": false,
-   "bridge": true
+   "bridge": false
   },
   {
    "s": 1600.1,
@@ -4813,7 +4813,7 @@
    "bank": -12.55,
    "air": false,
    "tunnel": false,
-   "bridge": true
+   "bridge": false
   },
   {
    "s": 1604.1,
@@ -4837,7 +4837,7 @@
    "bank": -12.77,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1612.1,
@@ -4849,7 +4849,7 @@
    "bank": -12.89,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1616.1,
@@ -4861,7 +4861,7 @@
    "bank": -13.01,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1620.1,
@@ -4873,7 +4873,7 @@
    "bank": -13.14,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1624.1,
@@ -4885,7 +4885,7 @@
    "bank": -13.27,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1628.1,
@@ -4897,7 +4897,7 @@
    "bank": -13.4,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1632.1,
@@ -4909,7 +4909,7 @@
    "bank": -13.53,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1636.1,
@@ -4921,7 +4921,7 @@
    "bank": -13.67,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1640.1,
@@ -4933,7 +4933,7 @@
    "bank": -13.8,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1644.1,
@@ -4945,7 +4945,7 @@
    "bank": -13.93,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1648.1,
@@ -4957,7 +4957,7 @@
    "bank": -14.06,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1652.1,
@@ -4969,7 +4969,7 @@
    "bank": -14.18,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1656.1,
@@ -4981,7 +4981,7 @@
    "bank": -14.3,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1660.1,
@@ -4993,7 +4993,7 @@
    "bank": -14.41,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1664.1,
@@ -5005,7 +5005,7 @@
    "bank": -14.52,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1668.1,
@@ -5017,7 +5017,7 @@
    "bank": -14.62,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1672.1,
@@ -5029,7 +5029,7 @@
    "bank": -14.71,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1676.1,
@@ -5041,7 +5041,7 @@
    "bank": -14.8,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1680.1,
@@ -5053,7 +5053,7 @@
    "bank": -14.87,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1684.1,
@@ -5065,7 +5065,7 @@
    "bank": -14.92,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1688.1,
@@ -5077,7 +5077,7 @@
    "bank": -14.96,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1692.1,
@@ -5089,7 +5089,7 @@
    "bank": -14.99,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1696.1,
@@ -5101,7 +5101,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1700.1,
@@ -5113,7 +5113,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1704.1,
@@ -5125,7 +5125,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1708.1,
@@ -5137,7 +5137,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1712.1,
@@ -5149,7 +5149,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1716.1,
@@ -5161,7 +5161,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1720.1,
@@ -5173,7 +5173,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1724.1,
@@ -5185,7 +5185,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1728.1,
@@ -5197,7 +5197,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1732.1,
@@ -5209,7 +5209,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1736.1,
@@ -5221,7 +5221,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1740.1,
@@ -5233,7 +5233,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1744.1,
@@ -5245,7 +5245,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1748.1,
@@ -5257,7 +5257,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1752.1,
@@ -5269,7 +5269,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1756.1,
@@ -5281,7 +5281,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1760.1,
@@ -5293,7 +5293,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1764.1,
@@ -5305,7 +5305,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1768.1,
@@ -5317,7 +5317,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1772.1,
@@ -5329,7 +5329,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1776.1,
@@ -5341,7 +5341,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1780.1,
@@ -5353,7 +5353,7 @@
    "bank": -15.0,
    "air": false,
    "tunnel": false,
-   "bridge": false
+   "bridge": true
   },
   {
    "s": 1784.1,
@@ -14516,10 +14516,10 @@
      "s": 4.0,
      "x": -49598.3,
      "y": -31992.0,
-     "z": 2995.0,
+     "z": 2994.0,
      "yaw": 0.55,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.02,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -14528,10 +14528,10 @@
      "s": 8.0,
      "x": -49196.5,
      "y": -31991.8,
-     "z": 3002.3,
+     "z": 2993.8,
      "yaw": -0.4,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.08,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -14540,10 +14540,10 @@
      "s": 12.1,
      "x": -48794.8,
      "y": -31997.2,
-     "z": 3024.5,
+     "z": 2993.1,
      "yaw": -1.1,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.16,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -14552,10 +14552,10 @@
      "s": 16.1,
      "x": -48393.1,
      "y": -32006.8,
-     "z": 3068.1,
+     "z": 2991.8,
      "yaw": -1.62,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.28,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -14564,10 +14564,10 @@
      "s": 20.1,
      "x": -47991.6,
      "y": -32019.7,
-     "z": 3133.2,
+     "z": 2990.2,
      "yaw": -2.02,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.35,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -14576,10 +14576,10 @@
      "s": 24.1,
      "x": -47590.1,
      "y": -32035.0,
-     "z": 3212.6,
+     "z": 2987.1,
      "yaw": -2.32,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.51,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -14588,25 +14588,25 @@
      "s": 28.1,
      "x": -47188.7,
      "y": -32052.0,
-     "z": 3291.0,
+     "z": 3044.2,
      "yaw": -2.54,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.55,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 32.1,
      "x": -46787.3,
      "y": -32070.4,
-     "z": 3350.8,
+     "z": 3134.9,
      "yaw": -2.69,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.46,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 36.2,
@@ -14876,10 +14876,10 @@
      "s": 124.6,
      "x": -37556.0,
      "y": -32486.8,
-     "z": 4380.8,
+     "z": 3397.8,
      "yaw": -1.48,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.26,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -14888,82 +14888,82 @@
      "s": 128.6,
      "x": -37154.3,
      "y": -32496.6,
-     "z": 4390.0,
+     "z": 2991.8,
      "yaw": -1.3,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.17,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 132.6,
      "x": -36752.7,
      "y": -32504.9,
-     "z": 4393.4,
+     "z": 2994.1,
      "yaw": -1.14,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.01,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 136.6,
      "x": -36350.9,
      "y": -32512.4,
-     "z": 4394.4,
+     "z": 2995.1,
      "yaw": -0.98,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.39,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 140.6,
      "x": -35949.2,
      "y": -32519.0,
-     "z": 4395.0,
+     "z": 2992.7,
      "yaw": -0.87,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.58,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 144.6,
      "x": -35547.5,
      "y": -32524.8,
-     "z": 4395.6,
+     "z": 2987.2,
      "yaw": -0.77,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.95,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 148.7,
      "x": -35145.7,
      "y": -32529.8,
-     "z": 4396.5,
+     "z": 2980.3,
      "yaw": -0.69,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.14,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 152.7,
      "x": -34744.0,
      "y": -32534.2,
-     "z": 4397.5,
+     "z": 3320.9,
      "yaw": -0.59,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.14,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -14972,10 +14972,10 @@
      "s": 156.7,
      "x": -34342.2,
      "y": -32538.2,
-     "z": 4398.6,
+     "z": 3749.9,
      "yaw": -0.52,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.76,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -15128,10 +15128,10 @@
      "s": 208.9,
      "x": -29119.2,
      "y": -32557.7,
-     "z": 4420.2,
+     "z": 3439.3,
      "yaw": 0.01,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.11,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -15140,94 +15140,94 @@
      "s": 212.9,
      "x": -28717.4,
      "y": -32557.7,
-     "z": 4422.2,
+     "z": 3011.9,
      "yaw": 0.03,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.27,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 217.0,
      "x": -28315.6,
      "y": -32557.4,
-     "z": 4424.1,
+     "z": 2984.1,
      "yaw": 0.04,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.13,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 221.0,
      "x": -27913.8,
      "y": -32557.0,
-     "z": 4426.1,
+     "z": 2990.9,
      "yaw": 0.07,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.79,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 225.0,
      "x": -27512.0,
      "y": -32556.5,
-     "z": 4428.1,
+     "z": 2994.5,
      "yaw": 0.08,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.61,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 229.0,
      "x": -27110.3,
      "y": -32555.8,
-     "z": 4430.2,
+     "z": 2995.5,
      "yaw": 0.11,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.27,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 233.0,
      "x": -26708.5,
      "y": -32555.1,
-     "z": 4432.2,
+     "z": 2995.0,
      "yaw": 0.11,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.09,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 237.0,
      "x": -26306.7,
      "y": -32554.2,
-     "z": 4434.2,
+     "z": 3197.8,
      "yaw": 0.14,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.22,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 241.1,
      "x": -25904.9,
      "y": -32553.2,
-     "z": 4436.3,
+     "z": 3640.3,
      "yaw": 0.14,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.24,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -15488,10 +15488,10 @@
      "s": 329.5,
      "x": -17065.9,
      "y": -32518.9,
-     "z": 4477.8,
+     "z": 3523.3,
      "yaw": 0.24,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.22,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -15500,106 +15500,106 @@
      "s": 333.5,
      "x": -16664.1,
      "y": -32517.2,
-     "z": 4479.3,
+     "z": 3110.5,
      "yaw": 0.23,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.03,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 337.5,
      "x": -16262.3,
      "y": -32515.6,
-     "z": 4480.8,
+     "z": 2996.7,
      "yaw": 0.23,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.27,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 341.5,
      "x": -15860.5,
      "y": -32514.0,
-     "z": 4482.2,
+     "z": 2996.4,
      "yaw": 0.22,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.41,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 345.5,
      "x": -15458.8,
      "y": -32512.5,
-     "z": 4483.6,
+     "z": 2995.1,
      "yaw": 0.22,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.71,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 349.5,
      "x": -15057.0,
      "y": -32511.0,
-     "z": 4484.9,
+     "z": 2991.8,
      "yaw": 0.21,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.85,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 353.6,
      "x": -14655.2,
      "y": -32509.6,
-     "z": 4486.1,
+     "z": 2986.4,
      "yaw": 0.2,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.13,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 357.6,
      "x": -14253.4,
      "y": -32508.2,
-     "z": 4487.3,
+     "z": 2979.0,
      "yaw": 0.19,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.4,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 361.6,
      "x": -13851.7,
      "y": -32506.9,
-     "z": 4488.4,
+     "z": 3124.8,
      "yaw": 0.17,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.49,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 365.6,
      "x": -13449.9,
      "y": -32505.7,
-     "z": 4489.4,
+     "z": 3476.7,
      "yaw": 0.17,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.19,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -15776,10 +15776,10 @@
      "s": 425.9,
      "x": -7423.2,
      "y": -32497.9,
-     "z": 4490.3,
+     "z": 3702.8,
      "yaw": 0.08,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.9,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -15788,10 +15788,10 @@
      "s": 429.9,
      "x": -7021.4,
      "y": -32497.3,
-     "z": 4489.1,
+     "z": 3428.8,
      "yaw": 0.1,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.08,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -15800,130 +15800,130 @@
      "s": 433.9,
      "x": -6619.7,
      "y": -32496.6,
-     "z": 4487.8,
+     "z": 3146.6,
      "yaw": 0.1,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.19,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 437.9,
      "x": -6217.9,
      "y": -32495.8,
-     "z": 4486.4,
+     "z": 2980.7,
      "yaw": 0.11,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.13,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 442.0,
      "x": -5816.1,
      "y": -32495.0,
-     "z": 4484.9,
+     "z": 2986.1,
      "yaw": 0.12,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.91,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 446.0,
      "x": -5414.3,
      "y": -32494.1,
-     "z": 4483.2,
+     "z": 2990.2,
      "yaw": 0.13,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.69,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 450.0,
      "x": -5012.5,
      "y": -32493.2,
-     "z": 4481.4,
+     "z": 2992.9,
      "yaw": 0.13,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.47,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 454.0,
      "x": -4610.8,
      "y": -32492.2,
-     "z": 4479.5,
+     "z": 2994.3,
      "yaw": 0.14,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.36,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 458.0,
      "x": -4209.0,
      "y": -32491.3,
-     "z": 4477.5,
+     "z": 2994.6,
      "yaw": 0.14,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.14,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 462.0,
      "x": -3807.2,
      "y": -32490.2,
-     "z": 4475.4,
+     "z": 2993.4,
      "yaw": 0.15,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.08,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 466.1,
      "x": -3405.4,
      "y": -32489.2,
-     "z": 4473.2,
+     "z": 2990.7,
      "yaw": 0.15,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.31,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 470.1,
      "x": -3003.7,
      "y": -32488.2,
-     "z": 4471.0,
+     "z": 3075.1,
      "yaw": 0.15,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.39,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 474.1,
      "x": -2601.9,
      "y": -32487.1,
-     "z": 4468.6,
+     "z": 3371.6,
      "yaw": 0.15,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.47,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -15932,10 +15932,10 @@
      "s": 478.1,
      "x": -2200.1,
      "y": -32486.0,
-     "z": 4466.2,
+     "z": 3669.6,
      "yaw": 0.15,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.46,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -16256,10 +16256,10 @@
      "s": 586.6,
      "x": 8647.9,
      "y": -32482.3,
-     "z": 4398.9,
+     "z": 3608.3,
      "yaw": -0.28,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.23,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -16268,10 +16268,10 @@
      "s": 590.6,
      "x": 9049.7,
      "y": -32484.5,
-     "z": 4397.5,
+     "z": 3340.8,
      "yaw": -0.33,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.13,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -16280,154 +16280,154 @@
      "s": 594.6,
      "x": 9451.4,
      "y": -32487.0,
-     "z": 4396.3,
+     "z": 3072.5,
      "yaw": -0.38,
      "width": 1000,
-     "bank": -0.0,
+     "bank": 0.05,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 598.7,
      "x": 9853.2,
      "y": -32489.8,
-     "z": 4395.4,
+     "z": 2996.0,
      "yaw": -0.43,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.19,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 602.7,
      "x": 10255.0,
      "y": -32493.0,
-     "z": 4394.7,
+     "z": 2997.3,
      "yaw": -0.49,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.42,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 606.7,
      "x": 10656.7,
      "y": -32496.6,
-     "z": 4394.0,
+     "z": 2997.1,
      "yaw": -0.55,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.66,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 610.7,
      "x": 11058.5,
      "y": -32500.7,
-     "z": 4392.2,
+     "z": 2995.5,
      "yaw": -0.65,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -0.89,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 614.7,
      "x": 11460.2,
      "y": -32506.1,
-     "z": 4387.3,
+     "z": 2992.6,
      "yaw": -0.89,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.12,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 618.7,
      "x": 11862.0,
      "y": -32513.0,
-     "z": 4377.5,
+     "z": 2988.9,
      "yaw": -1.11,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.23,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 622.8,
      "x": 12263.6,
      "y": -32521.7,
-     "z": 4362.0,
+     "z": 2984.0,
      "yaw": -1.34,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.45,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 626.8,
      "x": 12665.3,
      "y": -32531.7,
-     "z": 4340.9,
+     "z": 2978.0,
      "yaw": -1.53,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.66,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 630.8,
      "x": 13066.9,
      "y": -32543.2,
-     "z": 4314.5,
+     "z": 2971.2,
      "yaw": -1.73,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.87,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 634.8,
      "x": 13468.5,
      "y": -32555.9,
-     "z": 4283.1,
+     "z": 3097.5,
      "yaw": -1.88,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.85,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 638.8,
      "x": 13870.0,
      "y": -32569.6,
-     "z": 4246.9,
+     "z": 3278.1,
      "yaw": -2.03,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.68,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 642.8,
      "x": 14271.5,
      "y": -32584.3,
-     "z": 4206.6,
+     "z": 3434.8,
      "yaw": -2.14,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.48,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -16436,10 +16436,10 @@
      "s": 646.9,
      "x": 14673.0,
      "y": -32599.5,
-     "z": 4162.5,
+     "z": 3566.0,
      "yaw": -2.21,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.25,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -16604,154 +16604,154 @@
      "s": 703.1,
      "x": 20295.8,
      "y": -32706.2,
-     "z": 3597.9,
+     "z": 3285.7,
      "yaw": 1.59,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.08,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 707.1,
      "x": 20697.3,
      "y": -32692.9,
-     "z": 3591.0,
+     "z": 3237.1,
      "yaw": 2.23,
      "width": 1000,
-     "bank": -0.0,
+     "bank": -1.17,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 711.1,
      "x": 21098.7,
      "y": -32675.0,
-     "z": 3582.2,
+     "z": 3188.6,
      "yaw": 2.83,
      "width": 1001,
-     "bank": -0.0,
+     "bank": -1.24,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 715.2,
      "x": 21499.9,
      "y": -32653.3,
-     "z": 3568.1,
+     "z": 3139.8,
      "yaw": 3.36,
      "width": 1004,
-     "bank": -0.0,
+     "bank": -1.29,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 719.2,
      "x": 21900.9,
      "y": -32628.0,
-     "z": 3548.4,
+     "z": 3091.8,
      "yaw": 3.83,
      "width": 1007,
-     "bank": -0.0,
+     "bank": -1.32,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 723.2,
      "x": 22301.6,
      "y": -32599.7,
-     "z": 3523.5,
+     "z": 3046.7,
      "yaw": 4.24,
      "width": 1011,
-     "bank": -0.0,
+     "bank": -1.33,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 727.2,
      "x": 22702.2,
      "y": -32568.7,
-     "z": 3494.3,
+     "z": 3005.5,
      "yaw": 4.61,
      "width": 1016,
-     "bank": -0.0,
+     "bank": -1.32,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 731.2,
      "x": 23102.6,
      "y": -32535.2,
-     "z": 3461.4,
+     "z": 2977.9,
      "yaw": 4.93,
      "width": 1022,
-     "bank": -0.0,
+     "bank": -1.26,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 735.3,
      "x": 23502.8,
      "y": -32499.7,
-     "z": 3425.5,
+     "z": 2981.1,
      "yaw": 5.22,
      "width": 1028,
-     "bank": -0.0,
+     "bank": -1.12,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 739.3,
      "x": 23902.8,
      "y": -32462.3,
-     "z": 3387.1,
+     "z": 2983.8,
      "yaw": 5.46,
      "width": 1034,
-     "bank": -0.0,
+     "bank": -0.98,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 743.3,
      "x": 24302.7,
      "y": -32423.3,
-     "z": 3346.7,
+     "z": 2986.2,
      "yaw": 5.66,
      "width": 1041,
-     "bank": -0.0,
+     "bank": -0.84,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 747.3,
      "x": 24702.5,
      "y": -32383.1,
-     "z": 3305.1,
+     "z": 2988.2,
      "yaw": 5.82,
      "width": 1048,
-     "bank": -0.0,
+     "bank": -0.71,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 751.3,
      "x": 25102.1,
      "y": -32341.9,
-     "z": 3262.7,
+     "z": 2989.9,
      "yaw": 5.95,
      "width": 1055,
-     "bank": -0.0,
+     "bank": -0.59,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -16760,10 +16760,10 @@
      "s": 755.3,
      "x": 25501.7,
      "y": -32299.9,
-     "z": 3220.2,
+     "z": 2991.2,
      "yaw": 6.04,
      "width": 1062,
-     "bank": -0.0,
+     "bank": -0.47,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -16772,10 +16772,10 @@
      "s": 759.4,
      "x": 25901.2,
      "y": -32257.4,
-     "z": 3169.4,
+     "z": 2992.2,
      "yaw": 6.08,
      "width": 1069,
-     "bank": -0.0,
+     "bank": -0.37,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -16784,10 +16784,10 @@
      "s": 763.4,
      "x": 26300.8,
      "y": -32214.8,
-     "z": 3112.7,
+     "z": 2993.0,
      "yaw": 6.08,
      "width": 1076,
-     "bank": -0.0,
+     "bank": -0.27,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -16796,10 +16796,10 @@
      "s": 767.4,
      "x": 26700.3,
      "y": -32172.4,
-     "z": 3062.7,
+     "z": 2993.5,
      "yaw": 6.02,
      "width": 1083,
-     "bank": -0.0,
+     "bank": -0.18,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -16808,10 +16808,10 @@
      "s": 771.4,
      "x": 27099.9,
      "y": -32130.7,
-     "z": 3026.2,
+     "z": 2993.8,
      "yaw": 5.88,
      "width": 1088,
-     "bank": -0.0,
+     "bank": -0.11,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -16820,10 +16820,10 @@
      "s": 775.4,
      "x": 27499.6,
      "y": -32090.2,
-     "z": 3005.0,
+     "z": 2993.9,
      "yaw": 5.66,
      "width": 1094,
-     "bank": -0.0,
+     "bank": -0.06,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -16832,10 +16832,10 @@
      "s": 779.5,
      "x": 27899.6,
      "y": -32051.7,
-     "z": 2996.1,
+     "z": 2994.0,
      "yaw": 5.3,
      "width": 1097,
-     "bank": -0.0,
+     "bank": -0.02,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -16844,7 +16844,7 @@
      "s": 783.5,
      "x": 28299.8,
      "y": -32016.2,
-     "z": 2994.1,
+     "z": 2994.0,
      "yaw": 4.78,
      "width": 1100,
      "bank": -0.0,
@@ -16872,7 +16872,7 @@
      "z": 294.2,
      "yaw": 167.8,
      "width": 1100,
-     "bank": -0.0,
+     "bank": 0.0,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -16881,10 +16881,10 @@
      "s": 4.1,
      "x": -21479.1,
      "y": 76071.0,
-     "z": 295.4,
+     "z": 294.0,
      "yaw": 173.95,
      "width": 1092,
-     "bank": -0.0,
+     "bank": -0.02,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -16893,10 +16893,10 @@
      "s": 8.1,
      "x": -21884.2,
      "y": 76089.1,
-     "z": 304.2,
+     "z": 293.0,
      "yaw": -179.77,
      "width": 1072,
-     "bank": -0.0,
+     "bank": -0.09,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -16905,10 +16905,10 @@
      "s": 12.2,
      "x": -22289.6,
      "y": 76073.0,
-     "z": 328.7,
+     "z": 307.0,
      "yaw": -176.4,
      "width": 1048,
-     "bank": -0.0,
+     "bank": -0.06,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -17541,10 +17541,10 @@
      "s": 227.2,
      "x": -43776.0,
      "y": 76343.6,
-     "z": 294.0,
+     "z": 295.6,
      "yaw": -177.09,
      "width": 1181,
-     "bank": -0.0,
+     "bank": -0.04,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -17553,10 +17553,10 @@
      "s": 231.3,
      "x": -44179.6,
      "y": 76303.9,
-     "z": 294.0,
+     "z": 293.1,
      "yaw": -170.68,
      "width": 1189,
-     "bank": -0.0,
+     "bank": -0.07,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -17565,10 +17565,10 @@
      "s": 235.3,
      "x": -44572.0,
      "y": 76203.8,
-     "z": 294.0,
+     "z": 293.9,
      "yaw": -158.95,
      "width": 1197,
-     "bank": -0.0,
+     "bank": -0.01,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -17602,10 +17602,10 @@
      "s": 0.0,
      "x": -64800.0,
      "y": 42000.0,
-     "z": 2884.1,
+     "z": 2884.0,
      "yaw": -105.64,
      "width": 800,
-     "bank": -0.0,
+     "bank": 5.0,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -17614,10 +17614,10 @@
      "s": 4.0,
      "x": -64907.7,
      "y": 41612.3,
-     "z": 2889.3,
+     "z": 2894.8,
      "yaw": -105.31,
      "width": 800,
-     "bank": -0.0,
+     "bank": 4.95,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -17626,10 +17626,10 @@
      "s": 8.0,
      "x": -65012.6,
      "y": 41223.7,
-     "z": 2904.3,
+     "z": 2900.0,
      "yaw": -104.92,
      "width": 800,
-     "bank": -0.0,
+     "bank": 4.82,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -17638,10 +17638,10 @@
      "s": 12.1,
      "x": -65115.0,
      "y": 40834.6,
-     "z": 2929.3,
+     "z": 2893.2,
      "yaw": -104.58,
      "width": 800,
-     "bank": -0.0,
+     "bank": 4.73,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -17650,10 +17650,10 @@
      "s": 16.1,
      "x": -65215.2,
      "y": 40444.8,
-     "z": 2963.3,
+     "z": 2892.2,
      "yaw": -104.27,
      "width": 800,
-     "bank": -0.0,
+     "bank": 4.52,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -17662,10 +17662,10 @@
      "s": 20.1,
      "x": -65313.4,
      "y": 40054.5,
-     "z": 3003.8,
+     "z": 2902.4,
      "yaw": -103.99,
      "width": 800,
-     "bank": -0.0,
+     "bank": 3.7,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -17674,10 +17674,10 @@
      "s": 24.1,
      "x": -65409.8,
      "y": 39663.8,
-     "z": 3045.6,
+     "z": 2956.9,
      "yaw": -103.73,
      "width": 800,
-     "bank": -0.0,
+     "bank": 2.26,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -18166,82 +18166,82 @@
      "s": 189.1,
      "x": -68047.5,
      "y": 23391.0,
-     "z": 3870.4,
+     "z": 3080.3,
      "yaw": -96.29,
      "width": 800,
-     "bank": -0.0,
+     "bank": 1.02,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 193.2,
      "x": -68091.5,
      "y": 22991.0,
-     "z": 3901.4,
+     "z": 2983.3,
      "yaw": -96.27,
      "width": 800,
-     "bank": -0.0,
+     "bank": 1.3,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 197.2,
      "x": -68135.4,
      "y": 22591.0,
-     "z": 3932.1,
+     "z": 2990.0,
      "yaw": -96.25,
      "width": 800,
-     "bank": -0.0,
+     "bank": 1.44,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 201.2,
      "x": -68179.1,
      "y": 22191.0,
-     "z": 3962.2,
+     "z": 2998.4,
      "yaw": -96.24,
      "width": 800,
-     "bank": -0.0,
+     "bank": 1.59,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 205.2,
      "x": -68222.9,
      "y": 21790.9,
-     "z": 3991.7,
+     "z": 3009.5,
      "yaw": -96.23,
      "width": 800,
-     "bank": -0.0,
+     "bank": 1.89,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 209.3,
      "x": -68266.6,
      "y": 21390.9,
-     "z": 4020.4,
+     "z": 3126.4,
      "yaw": -96.24,
      "width": 800,
-     "bank": -0.0,
+     "bank": 1.82,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 213.3,
      "x": -68310.3,
      "y": 20990.8,
-     "z": 4048.4,
+     "z": 3541.2,
      "yaw": -96.25,
      "width": 800,
-     "bank": -0.0,
+     "bank": 1.1,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -18514,82 +18514,82 @@
      "s": 305.8,
      "x": -69362.8,
      "y": 11795.1,
-     "z": 4294.0,
+     "z": 3285.4,
      "yaw": -95.93,
      "width": 800,
-     "bank": -0.0,
+     "bank": 0.69,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 309.9,
      "x": -69404.1,
      "y": 11394.8,
-     "z": 4294.0,
+     "z": 3000.7,
      "yaw": -95.85,
      "width": 800,
-     "bank": -0.0,
+     "bank": 0.69,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 313.9,
      "x": -69444.9,
      "y": 10994.5,
-     "z": 4294.0,
+     "z": 2996.1,
      "yaw": -95.78,
      "width": 800,
-     "bank": -0.0,
+     "bank": 0.5,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 317.9,
      "x": -69485.2,
      "y": 10594.1,
-     "z": 4294.0,
+     "z": 2993.9,
      "yaw": -95.73,
      "width": 800,
-     "bank": -0.0,
+     "bank": 0.12,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 321.9,
      "x": -69525.2,
      "y": 10193.6,
-     "z": 4294.0,
+     "z": 2994.5,
      "yaw": -95.69,
      "width": 800,
-     "bank": -0.0,
+     "bank": -0.07,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 326.0,
      "x": -69565.0,
      "y": 9793.2,
-     "z": 4294.0,
+     "z": 2997.2,
      "yaw": -95.67,
      "width": 800,
-     "bank": -0.0,
+     "bank": -0.26,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 330.0,
      "x": -69604.7,
      "y": 9392.7,
-     "z": 4294.0,
+     "z": 3504.6,
      "yaw": -95.66,
      "width": 800,
-     "bank": -0.0,
+     "bank": -0.4,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -18922,10 +18922,10 @@
      "s": 442.7,
      "x": -71143.2,
      "y": -1761.7,
-     "z": 4293.4,
+     "z": 3367.3,
      "yaw": -103.26,
      "width": 800,
-     "bank": -0.0,
+     "bank": -0.16,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -18934,94 +18934,94 @@
      "s": 446.7,
      "x": -71237.9,
      "y": -2152.8,
-     "z": 4290.8,
+     "z": 2994.7,
      "yaw": -103.94,
      "width": 800,
-     "bank": -0.0,
+     "bank": -0.06,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 450.7,
      "x": -71336.6,
      "y": -2543.0,
-     "z": 4283.6,
+     "z": 2992.1,
      "yaw": -104.46,
      "width": 800,
-     "bank": -0.0,
+     "bank": 0.26,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 454.7,
      "x": -71439.0,
      "y": -2932.1,
-     "z": 4270.3,
+     "z": 2992.7,
      "yaw": -105.01,
      "width": 800,
-     "bank": -0.0,
+     "bank": 0.42,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 458.8,
      "x": -71544.9,
      "y": -3320.4,
-     "z": 4250.4,
+     "z": 2995.0,
      "yaw": -105.52,
      "width": 800,
-     "bank": -0.0,
+     "bank": 0.74,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 462.8,
      "x": -71654.6,
      "y": -3707.6,
-     "z": 4224.2,
+     "z": 2999.8,
      "yaw": -106.09,
      "width": 800,
-     "bank": -0.0,
+     "bank": 1.05,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 466.8,
      "x": -71767.8,
      "y": -4093.7,
-     "z": 4192.2,
+     "z": 3005.7,
      "yaw": -106.6,
      "width": 800,
-     "bank": -0.0,
+     "bank": 1.21,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 470.8,
      "x": -71884.8,
      "y": -4478.8,
-     "z": 4154.8,
+     "z": 3143.9,
      "yaw": -107.2,
      "width": 800,
-     "bank": -0.0,
+     "bank": 1.35,
      "air": false,
      "tunnel": false,
-     "bridge": true
+     "bridge": false
     },
     {
      "s": 474.9,
      "x": -72005.6,
      "y": -4862.7,
-     "z": 4112.6,
+     "z": 3466.8,
      "yaw": -107.73,
      "width": 800,
-     "bank": -0.0,
+     "bank": 0.99,
      "air": false,
      "tunnel": false,
      "bridge": true
@@ -19366,10 +19366,10 @@
      "s": 591.6,
      "x": -77260.5,
      "y": -15209.4,
-     "z": 3122.9,
+     "z": 3070.9,
      "yaw": -124.68,
      "width": 866,
-     "bank": -0.0,
+     "bank": 0.47,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -19378,10 +19378,10 @@
      "s": 595.6,
      "x": -77487.0,
      "y": -15542.0,
-     "z": 3080.6,
+     "z": 3022.9,
      "yaw": -123.74,
      "width": 873,
-     "bank": -0.0,
+     "bank": 0.53,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -19390,10 +19390,10 @@
      "s": 599.6,
      "x": -77706.9,
      "y": -15879.0,
-     "z": 3042.1,
+     "z": 2995.3,
      "yaw": -122.4,
      "width": 880,
-     "bank": -0.0,
+     "bank": 0.47,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -19402,10 +19402,10 @@
      "s": 603.6,
      "x": -77917.4,
      "y": -16222.0,
-     "z": 3013.1,
+     "z": 2992.1,
      "yaw": -120.53,
      "width": 887,
-     "bank": -0.0,
+     "bank": 0.37,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -19414,10 +19414,10 @@
      "s": 607.7,
      "x": -78114.1,
      "y": -16573.0,
-     "z": 2995.3,
+     "z": 2988.8,
      "yaw": -117.81,
      "width": 892,
-     "bank": -0.0,
+     "bank": 0.2,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -19426,10 +19426,10 @@
      "s": 611.7,
      "x": -78291.5,
      "y": -16934.1,
-     "z": 2987.1,
+     "z": 2986.6,
      "yaw": -114.16,
      "width": 897,
-     "bank": -0.0,
+     "bank": 0.07,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -19438,10 +19438,10 @@
      "s": 615.7,
      "x": -78440.0,
      "y": -17308.0,
-     "z": 2984.7,
+     "z": 2985.1,
      "yaw": -108.82,
      "width": 900,
-     "bank": -0.0,
+     "bank": 0.01,
      "air": false,
      "tunnel": false,
      "bridge": false
@@ -19510,7 +19510,7 @@
    "width_cm": 1900,
    "x": 55212.6,
    "y": 6921.6,
-   "z": 3134.9,
+   "z": 3135.0,
    "yaw": 33.43
   },
   {
@@ -19719,7 +19719,7 @@
    "s": 1500,
    "x": 54964.7,
    "y": 7297.2,
-   "z": 3254.9,
+   "z": 3255.0,
    "yaw": 33.43
   },
   {
@@ -19727,7 +19727,7 @@
    "s": 1500,
    "x": 55212.6,
    "y": 6921.6,
-   "z": 3254.9,
+   "z": 3255.0,
    "yaw": 33.43
   },
   {
@@ -19735,7 +19735,7 @@
    "s": 1500,
    "x": 55460.5,
    "y": 6546.1,
-   "z": 3254.9,
+   "z": 3255.0,
    "yaw": 33.43
   },
   {
