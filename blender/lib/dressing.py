@@ -212,3 +212,127 @@ def people(m, cx, cy, count, radius, seed=1, clearance=3.0, kinds=("SM_Person_Th
                                                                     "SM_Person_Kid")):
     return cluster(m, L, list(kinds), cx, cy, count, radius, seed=seed, clearance=clearance, min_spacing=1.2,
                    scale=(0.95, 1.05))
+
+
+def city_grid(m, bounds, mask, block=120.0, street=16.0, angle=0.0, lamps=("riyadh", "SM_StreetLight_KFR"),
+              lamp_every=48.0, clear=7.0):
+    """Lay a street grid (asphalt with lane markings) inside the map wherever `mask(x, y)` allows and the race
+    track is clear, line it with street lights, and return the building lots [(x, y, yaw, size)].
+    Street meshes are merged into SM_<Map>_Far_Streets_<k> (sit 6 cm on the terrain, no collision needed)."""
+    t = m.terrain
+    a = math.radians(angle)
+    c, s_ = math.cos(a), math.sin(a)
+    x0, x1, y0, y1 = bounds
+    half = t.size / 2 - 6
+    span = max(x1 - x0, y1 - y0) * 1.5
+    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+    slope = t.slope()
+
+    def ok(x, y):
+        if not (x0 <= x <= x1 and y0 <= y <= y1) or abs(x) > half or abs(y) > half or not mask(x, y):
+            return False
+        j, i = int(y + t.size / 2), int(x + t.size / 2)
+        return slope[j, i] < 0.18 and m.clearance(x, y) > street / 2 + clear
+
+    def to_xy(u, v):
+        return cx + u * c - v * s_, cy + u * s_ + v * c
+    runs = []
+    lines = np.arange(-span / 2, span / 2 + 1, block)
+    for horiz in (True, False):
+        for g in lines:
+            cur = []
+            for w in np.arange(-span / 2, span / 2 + 1, 6.0):
+                u, v = (w, g) if horiz else (g, w)
+                x, y = to_xy(u, v)
+                if ok(x, y):
+                    cur.append((x, y))
+                else:
+                    if len(cur) > 3:
+                        runs.append((np.array(cur), horiz))
+                    cur = []
+            if len(cur) > 3:
+                runs.append((np.array(cur), horiz))
+    # lots: cell centres that are clear of the race track
+    lots = []
+    for gu in lines[:-1] + block / 2:
+        for gv in lines[:-1] + block / 2:
+            x, y = to_xy(gu, gv)
+            if ok(x, y) and m.clearance(x, y) > block / 2 and all(ok(*to_xy(gu + du, gv + dv)) for du, dv in
+                                                                    ((-block / 3, 0), (block / 3, 0), (0, -block / 3), (0, block / 3))):
+                lots.append((x, y, angle, block - street))
+    # street lights along the right-hand kerb of every street
+    if lamps:
+        for pts, horiz in runs:
+            d = np.r_[0, np.cumsum(np.linalg.norm(np.diff(pts, axis=0), axis=1))]
+            dirv = np.array([c, s_]) if horiz else np.array([-s_, c])
+            nrm = np.array([-dirv[1], dirv[0]])
+            for dd in np.arange(10, d[-1] - 5, lamp_every):
+                k = int(np.searchsorted(d, dd))
+                q = pts[min(k, len(pts) - 1)] - nrm * (street / 2 + 1.0)
+                if m.clearance(q[0], q[1]) > 4:
+                    m.place(lamps[0], lamps[1], q[0], q[1], yaw=math.degrees(math.atan2(nrm[1], nrm[0])))
+
+    def build(mm):
+        import sr
+        from backdrop import Merged
+        mat = sr.mat("CityStreet", (1, 1, 1), rough=0.8, tex="RoadLanes", tile=1.0)
+        side = sr.mat("Concrete", (1, 1, 1), tex="Concrete", tile=2.0)
+        mg = Merged(f"SM_{m.name}_Far_Streets")
+        for pts, horiz in runs:
+            dirv = np.array([c, s_]) if horiz else np.array([-s_, c])
+            nrm = np.array([-dirv[1], dirv[0]])                      # left of the travel direction
+            z = t.sample(pts[:, 0], pts[:, 1]) + 0.06
+            d = np.r_[0, np.cumsum(np.linalg.norm(np.diff(pts, axis=0), axis=1))]
+            grid, uvs, kerb_l, kerb_r = [], [], [], []
+            for p, zz, dd in zip(pts, z, d):
+                l = p + nrm * street / 2
+                r = p - nrm * street / 2
+                grid.append([(l[0], l[1], zz), (r[0], r[1], zz)])
+                uvs.append([(0.0, dd / 16.0), (1.0, dd / 16.0)])
+                for arr, sg in ((kerb_l, 1), (kerb_r, -1)):
+                    a_ = p + nrm * sg * (street / 2)
+                    b_ = p + nrm * sg * (street / 2 + 2.5)
+                    arr.append([(b_[0], b_[1], zz + 0.15), (a_[0], a_[1], zz + 0.15)] if sg > 0 else
+                               [(a_[0], a_[1], zz + 0.15), (b_[0], b_[1], zz + 0.15)])
+            mb = mg._mb(pts[:, 0].mean(), pts[:, 1].mean())
+            mb.strip(grid, uvs, mat, smooth=False, keep=True)
+            mb.strip(kerb_l, None, side, smooth=False, keep=True)
+            mb.strip(kerb_r, None, side, smooth=False, keep=True)
+        return mg.objects()
+    m.far_detail.append(build)
+    return lots
+
+
+def fill_lots(m, lots, plan, seed=3, occ=None):
+    """Put buildings on city lots. plan: list of (weight, fn(m, x, y, yaw, size, rnd))."""
+    rnd = random.Random(seed)
+    occ = occ or Occupancy(m)
+    weights = [w for w, _ in plan]
+    for (x, y, yaw, size) in lots:
+        if not occ.free(x, y, size * 0.35):
+            continue
+        fn = rnd.choices([f for _, f in plan], weights)[0]
+        fn(m, x, y, yaw, size, rnd)
+        occ.add(x, y, size * 0.45)
+
+
+def lot_quads(x, y, yaw, size, n=4):
+    """Sub-plot centres inside a lot (2x2), rotated with the grid."""
+    a = math.radians(yaw)
+    c, s_ = math.cos(a), math.sin(a)
+    o = size / 4
+    pts = [(-o, -o), (o, -o), (-o, o), (o, o)][:n]
+    return [(x + u * c - v * s_, y + u * s_ + v * c) for u, v in pts]
+
+
+def parking(m, x, y, yaw, size, rnd, cars=None):
+    cars = cars or ["SM_Car_Sedan_White", "SM_Car_Sedan_Silver", "SM_Car_Sedan_Red", "SM_Car_SUV_White",
+                    "SM_Car_SUV_Black", "SM_Car_Pickup_White"]
+    a = math.radians(yaw)
+    c, s_ = math.cos(a), math.sin(a)
+    for row in range(-2, 3):
+        for k in range(-5, 6):
+            if rnd.random() < 0.35:
+                continue
+            u, v = k * 3.0, row * 9.0
+            m.place(L, rnd.choice(cars), x + u * c - v * s_, y + u * s_ + v * c, yaw=yaw + 90 + rnd.uniform(-3, 3))

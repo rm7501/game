@@ -340,6 +340,17 @@ def terrain_material(name, layers, tiles, tints=None):
             it.image.colorspace_settings.name = "Non-Color"
         nt.links.new(vec, it.inputs[0])
         return it.outputs[0]
+    noise = nt.nodes.new("ShaderNodeTexNoise")
+    noise.inputs["Scale"].default_value = 1.0 / 170.0
+    noise.inputs["Detail"].default_value = 3.0
+    nt.links.new(geo.outputs["Position"], noise.inputs["Vector"])
+    rmp = nt.nodes.new("ShaderNodeMapRange")
+    rmp.inputs["From Min"].default_value = 0.3
+    rmp.inputs["From Max"].default_value = 0.7
+    rmp.inputs["To Min"].default_value = 0.8
+    rmp.inputs["To Max"].default_value = 1.12
+    nt.links.new(noise.outputs["Fac"], rmp.inputs["Value"])
+    macro_col = rmp.outputs["Result"]
     shaders = []
     for k, (tex, tile) in enumerate(zip(layers, tiles)):
         bs = nt.nodes.new("ShaderNodeBsdfPrincipled")
@@ -382,7 +393,13 @@ def terrain_material(name, layers, tiles, tints=None):
                 mix.inputs["Factor"].default_value = 1.0
                 nt.links.new(it.outputs[0], mix.inputs["A"])
                 mix.inputs["B"].default_value = tuple(tints[k]) + (1,)
-                nt.links.new(mix.outputs["Result"], bs.inputs["Base Color"])
+                macro = nt.nodes.new("ShaderNodeMix")             # large-scale colour variation (breaks tiling)
+                macro.data_type = "RGBA"
+                macro.blend_type = "MULTIPLY"
+                macro.inputs["Factor"].default_value = 1.0
+                nt.links.new(mix.outputs["Result"], macro.inputs["A"])
+                nt.links.new(macro_col, macro.inputs["B"])
+                nt.links.new(macro.outputs["Result"], bs.inputs["Base Color"])
             elif suf == "R":
                 nt.links.new(it.outputs[0], bs.inputs["Roughness"])
             else:

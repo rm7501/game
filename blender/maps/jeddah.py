@@ -360,12 +360,46 @@ def dress(m: MapBuild):
     m.place("jeddah", "SM_HijaziMinaret", 60, -250)
     # modern Jeddah to the east and north
     blocks = [f"SM_RiyadhBlock_{i:02d}" for i in range(1, 7)]
-    m.scatter("riyadh", blocks, 120, (450, 980, -950, 950), clearance=20, seed=5, max_slope=0.2, min_spacing=40, yaw=0)
+    modern_city(m)
     m.scatter("riyadh", blocks, 60, (-350, 450, 760, 980), clearance=20, seed=6, max_slope=0.2, min_spacing=40, yaw=0)
     m.scatter("jeddah", houses, 90, (-60, 460, -460, 520), clearance=14, seed=7, max_slope=0.2, min_spacing=14)
     m.scatter("common", ["SM_DatePalm_A", "SM_DatePalm_B"], 120, (-430, 450, -950, 950), clearance=8, seed=8,
               max_slope=0.2, min_spacing=10, mask=lambda x, y: x - coast_x(y) > 20)
     life(m)
+
+
+def modern_city(m: MapBuild):
+    """Modern Jeddah east of Al-Balad: a street grid (rotated like the far city) with blocks, villas,
+    Hijazi-style houses, shops, mosques and car parks."""
+    import dressing as D
+    blocks = [f"SM_RiyadhBlock_{i:02d}" for i in range(1, 7)]
+    houses = [f"SM_HijaziHouse_{i:02d}" for i in range(1, 7)]
+    lots = D.city_grid(m, (440, 1000, -1000, 1000), lambda x, y: True, block=110, street=15, angle=12,
+                       lamps=("riyadh", "SM_StreetLight_KFR"))
+
+    def towers(m, x, y, yaw, size, rnd):
+        for q in D.lot_quads(x, y, yaw, size, rnd.choice((2, 3, 4))):
+            m.place("riyadh", rnd.choice(blocks), q[0], q[1], yaw=yaw + rnd.choice((0, 90, 180, 270)), scale=rnd.uniform(0.8, 1.15))
+
+    def hijazi(m, x, y, yaw, size, rnd):
+        for q in D.lot_quads(x, y, yaw, size):
+            m.place("jeddah", rnd.choice(houses), q[0], q[1], yaw=yaw + rnd.choice((0, 90, 180, 270)), scale=rnd.uniform(1.1, 1.5))
+
+    def villas(m, x, y, yaw, size, rnd):
+        for q in D.lot_quads(x, y, yaw, size):
+            m.place("life", "SM_Villa", q[0], q[1], yaw=yaw + rnd.choice((0, 180)))
+
+    def shops(m, x, y, yaw, size, rnd):
+        a = math.radians(yaw)
+        for sg in (1, -1):
+            m.place("life", "SM_ShopRow", x - math.sin(a) * sg * size * 0.32, y + math.cos(a) * sg * size * 0.32,
+                    yaw=yaw + (0 if sg > 0 else 180))
+        D.parking(m, x, y, yaw, size * 0.5, rnd)
+
+    def mosque(m, x, y, yaw, size, rnd):
+        m.place("life", "SM_Mosque_Dome", x, y, yaw=yaw)
+    D.fill_lots(m, lots, [(0.4, towers), (0.2, hijazi), (0.15, villas), (0.12, shops), (0.08, D.parking), (0.05, mosque)],
+                seed=6)
 
 
 def life(m: MapBuild):
@@ -414,14 +448,11 @@ def life(m: MapBuild):
     m.along(T, "life", ["SM_Person_Thobe", "SM_Person_Abaya", "SM_Person_Casual", "SM_Person_Kid"], 13, 0.6, s0=s_old0 + 20,
             s1=s_old1, side=(1, -1), jitter=0.3, min_clear=0.4, seed=34)
     # modern city: mosques, traffic, a water tower
-    for x, y in ((620, 300), (720, -380), (300, 820)):
-        m.place("life", "SM_Mosque_Dome", x, y, yaw=rnd.uniform(0, 90))
+    m.place("life", "SM_Mosque_Dome", 300, 820, yaw=12)
     m.place("life", "SM_WaterTower", 860, -760)
     cars = ["SM_Car_Sedan_White", "SM_Car_Sedan_Silver", "SM_Car_Sedan_Red", "SM_Car_SUV_White", "SM_Car_SUV_Black",
             "SM_Car_Pickup_White", "SM_Bus_City"]
-    m.scatter("life", cars, 180, (450, 980, -950, 950), clearance=6, seed=35, max_slope=0.15, min_spacing=5)
-    m.scatter("life", ["SM_ShopRow", "SM_Villa"], 30, (420, 980, -950, 950), clearance=12, seed=36, max_slope=0.15,
-              min_spacing=45, yaw=0)
+    m.scatter("life", cars, 60, (450, 980, -950, 950), clearance=6, seed=35, max_slope=0.15, min_spacing=5)
     for k in range(8):
         m.place("life", "SM_Seagulls", float(coast_x(np.array(0.0))) - rnd.uniform(-20, 200), rnd.uniform(-900, 900),
                 z=rnd.uniform(15, 45), yaw=rnd.uniform(0, 360), scale=1.4)

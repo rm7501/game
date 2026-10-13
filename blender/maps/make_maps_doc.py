@@ -121,9 +121,30 @@ def jpg_previews():
 def main():
     jpg_previews()
     out = ["# The five race maps", "",
-           "Every map is a full **2 × 2 km** environment built in Blender: a sculpted terrain, a closed race lap with "
-           "bridges, tunnels, kerbs and barriers, **3–4 shortcuts per map (most of them hidden)**, the kit landmarks "
-           "placed in the landscape, and gameplay data (checkpoints, start grid, card pickups, boost pads, AI racing line).",
+           "Every map is a full **2 × 2 km** race environment built in Blender. Each one has:",
+           "",
+           "* a sculpted terrain",
+           "* a closed race lap with bridges, tunnels, kerbs and barriers",
+           "* **3–4 shortcuts (most of them hidden)**",
+           "* the kit landmarks placed in the landscape",
+           "* gameplay data: checkpoints, start grid, card pickups, boost pads and an AI racing line",
+           "",
+           "**No empty edges.** A backdrop continues every landscape from the map edge to the horizon (about 24 km). "
+           "Riyadh's lit city sprawls on with its tower corridor, AlUla's massifs roll on, the Red Sea and the Hijaz "
+           "mountains frame Jeddah, the Sarawat ranges surround Asir, and The Line runs off to both horizons.",
+           "",
+           "**Alive.** Every map has a race-day crowd. Spectators stand behind fences with flags, and the fan zones have "
+           "gazebos, food trucks and car parks. There are camera towers, marshal posts, sponsor boards and a TV "
+           "helicopter. Every tight corner has red-and-white chevrons, with tyre walls and braking boards.",
+           "",
+           "On top of that, each map has local life:",
+           "",
+           "* **Riyadh:** traffic and mosques, plus picnics in the wadi.",
+           "* **AlUla:** Bedouin camps and camel caravans.",
+           "* **Jeddah:** dhows, fishing boats and families on the beach.",
+           "* **Asir:** goat herds and shepherds, plus viewpoints.",
+           "* **Future City:** people in The Line's park, yachts and air taxis.",
+           "",
            "The maps use the concept of each place from the reference photos. They are not replicas.", "",
            "| Map | Lap | Climb | Shortcuts |", "|---|---|---|---|"]
     rows, body = [], []

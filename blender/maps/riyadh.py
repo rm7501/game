@@ -274,11 +274,8 @@ def dress(m: MapBuild):
                     x, y, yaw=(k * 37) % 90, scale=0.42 + 0.12 * ((k * 7 + (sx > 0) * 3) % 4))
     m.place("riyadh", "SM_Billboard_LED", 360, -40, yaw=-90)
     m.place("riyadh", "SM_Billboard_LED", 250, 520, yaw=180)
-    # city fabric on the plateau
-    blocks = [f"SM_RiyadhBlock_{i:02d}" for i in range(1, 7)]
-    m.scatter("riyadh", blocks, 260, (-300, 950, -950, 950), clearance=16, seed=4, max_slope=0.15,
-              mask=lambda x, y: not (480 < x < 640 and -260 < y < 320) and not (-150 < x < 280 and 330 < y < 760),
-              min_spacing=36, scale=(0.9, 1.35), yaw=0)
+    # city fabric on the plateau: a street grid with lit streets, blocks, villas, shops, mosques, car parks
+    city(m)
     # Wadi Hanifa: palm groves, acacias, boulders, the lake
     vmask = lambda x, y: abs(x - valley_center(y)) < 110  # noqa: E731
     m.scatter("common", ["SM_DatePalm_A", "SM_DatePalm_B", "SM_DatePalm_C"], 700, (-900, -300, -950, 950),
@@ -305,6 +302,45 @@ def dress(m: MapBuild):
     life(m)
 
 
+def city(m: MapBuild):
+    import dressing as D
+    blocks = [f"SM_RiyadhBlock_{i:02d}" for i in range(1, 7)]
+
+    def mask(x, y):
+        vc = float(valley_center(np.array(y)))
+        return (x - vc > 270 and not (470 < x < 650 and -270 < y < 330) and not (-160 < x < 290 and 320 < y < 770)
+                and not (200 < x < 445 and -620 < y < 290))
+    lots = D.city_grid(m, (-300, 1000, -1000, 1000), mask, block=118, street=16, angle=0,
+                       lamps=("riyadh", "SM_StreetLight_KFR"))
+
+    def towers(m, x, y, yaw, size, rnd):
+        for q in D.lot_quads(x, y, yaw, size, rnd.choice((2, 3, 4))):
+            m.place("riyadh", rnd.choice(blocks), q[0], q[1], yaw=yaw + rnd.choice((0, 90, 180, 270)),
+                    scale=rnd.uniform(0.85, 1.3))
+
+    def villas(m, x, y, yaw, size, rnd):
+        for q in D.lot_quads(x, y, yaw, size):
+            m.place("life", "SM_Villa", q[0], q[1], yaw=yaw + rnd.choice((0, 180)))
+
+    def shops(m, x, y, yaw, size, rnd):
+        a = math.radians(yaw)
+        for sg in (1, -1):
+            m.place("life", "SM_ShopRow", x - math.sin(a) * sg * size * 0.32, y + math.cos(a) * sg * size * 0.32,
+                    yaw=yaw + (0 if sg > 0 else 180))
+        D.parking(m, x, y, yaw, size * 0.5, rnd)
+
+    def mosque(m, x, y, yaw, size, rnd):
+        m.place("life", "SM_Mosque_Dome", x, y, yaw=yaw)
+
+    def park(m, x, y, yaw, size, rnd):
+        for k in range(8):
+            m.place("common", rnd.choice(["SM_DatePalm_A", "SM_DatePalm_B"]), x + rnd.uniform(-35, 35), y + rnd.uniform(-35, 35),
+                    yaw=rnd.uniform(0, 360))
+        D.people(m, x, y, 10, 30, seed=rnd.randint(0, 9999), clearance=6)
+    D.fill_lots(m, lots, [(0.52, towers), (0.16, villas), (0.12, shops), (0.1, D.parking), (0.04, mosque), (0.06, park)],
+                seed=5)
+
+
 def life(m: MapBuild):
     """Race night in Riyadh: crowds and floodlights, mosques, villas, shops and traffic in the city,
     families picnicking in Wadi Hanifa, visitors in Diriyah."""
@@ -314,18 +350,12 @@ def life(m: MapBuild):
     D.trackside(m, night=True, spots=[T.nearest_s((140, 430)), T.nearest_s((-470, 255))])
     plateau = lambda x, y: abs(x - float(valley_center(np.array(y)))) > 260 and x > -300  # noqa: E731
     # city fabric between the blocks
-    m.scatter("life", ["SM_Villa"], 45, (-280, 950, -950, 950), clearance=14, seed=31, max_slope=0.12, min_spacing=40,
-              mask=plateau, yaw=0)
-    m.scatter("life", "SM_ShopRow", 18, (-280, 950, -950, 950), clearance=10, seed=32, max_slope=0.12, min_spacing=60,
-              mask=plateau, yaw=None)
-    for x, y in ((700, 120), (-60, -260), (760, -420)):
-        m.place("life", "SM_Mosque_Dome", x, y, yaw=rnd.uniform(0, 90))
     m.place("life", "SM_GasStation", 395, -230, yaw=90)
     m.place("life", "SM_WaterTower", 860, 380)
     m.place("life", "SM_Mosque_Najdi", -330, -690, yaw=10)
     cars = ["SM_Car_Sedan_White", "SM_Car_Sedan_Silver", "SM_Car_Sedan_Red", "SM_Car_SUV_White", "SM_Car_SUV_Black",
             "SM_Car_Pickup_White"]
-    m.scatter("life", cars, 220, (-280, 950, -950, 950), clearance=6, seed=33, max_slope=0.1, min_spacing=4,
+    m.scatter("life", cars, 70, (-280, 950, -950, 950), clearance=6, seed=33, max_slope=0.1, min_spacing=4,
               mask=plateau, yaw=None)
     m.scatter("life", ["SM_Bus_City", "SM_Truck_Water"], 10, (-280, 950, -950, 950), clearance=8, seed=34,
               max_slope=0.1, min_spacing=30, mask=plateau)
