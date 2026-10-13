@@ -207,7 +207,6 @@ def make_terrain():
         mnt = np.maximum(mnt, H * (1 - np.clip(rr / R, 0, 1)) ** 1.6)
     mnt += 30 * (rk - 0.45) * smoothstep(135, 70, r0) + 10 * (nz.fbm(X, Y, 18, 3) - 0.5) * smoothstep(135, 90, r0)
     h = np.maximum(h, 30 + mnt * smoothstep(140, 115, r0) + 10 * (1 - np.clip(r0 / 150, 0, 1)))
-    h += 30 * smoothstep(170, 120, r) * smoothstep(60, 120, r) * 0.0
     # the gorge from the mountain down to the sea
     g = dist_to_polyline(WX, WY, [(420, -330), (395, -520), (430, -720), (390, -1000)])
     h -= 32 * np.exp(-(g / 26.0) ** 2) * smoothstep(-300, -380, Y)

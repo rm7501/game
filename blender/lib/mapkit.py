@@ -61,6 +61,16 @@ class MapBuild:
         for sc in self.shortcuts:
             sc.carve(t, falloff=falloff * 0.7, layer=carve_layer)
         self.main.carve(t, falloff=falloff, layer=carve_layer)
+        # second pass: re-seat each shortcut on the ground wherever it has left the main road's footprint
+        if cKDTree is not None:
+            tm = cKDTree(self.main.P)
+            for sc in self.shortcuts:
+                d, j = tm.query(sc.P)
+                sel = (d > self.main.W[j] / 2 + 1.0) & ~(sc.bridge | sc.tunnel | sc.gap)
+                if sel.any():
+                    hw = sc.W / 2 + 1.5
+                    drop = np.abs(np.sin(sc.bank)) * sc.W / 2
+                    t.carve(sc.P[sel], sc.Z[sel] - drop[sel], hw[sel], falloff=7.0)
         for tr in [self.main] + self.shortcuts:
             tr.cut_tunnel_holes(t)
         for sc in self.shortcuts:            # barrier openings where shortcuts leave / rejoin
