@@ -3639,9 +3639,9 @@
    0.95,
    1.0
   ],
-  "emit_str": 2.5,
+  "emit_str": 1.6,
   "transmission": 0.0,
-  "alpha": 0.55,
+  "alpha": 0.3,
   "coat": 0.0,
   "image": null,
   "image_emit": false
