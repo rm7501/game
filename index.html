@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>حزّورة</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="حزّورة: خمّن كلمة اليوم العربية المكوّنة من خمسة أحرف في ست محاولات.">
+<meta name="theme-color" content="#fbfcfa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121412" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&family=Reem+Kufi:wght@700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script>
+  // Apply saved theme before first paint to avoid a flash of the wrong colours.
+  try {
+    var s = JSON.parse(localStorage.getItem("hazzoora:settings") || "{}");
+    if (s.theme === "dark" || s.theme === "light") document.documentElement.setAttribute("data-theme", s.theme);
+    if (s.highContrast) document.documentElement.classList.add("high-contrast");
+  } catch (e) {}
+</script>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="topbar-start">
+      <button type="button" class="icon-btn" id="btn-help" aria-label="طريقة اللعب" aria-haspopup="dialog">
+        <span class="help-glyph" aria-hidden="true">؟</span>
+      </button>
+    </div>
+    <h1 class="brand">حزّورة</h1>
+    <div class="topbar-end">
+      <button type="button" class="icon-btn" id="btn-stats" aria-label="الإحصائيات" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="12" width="4" height="8" rx="1"/><rect x="10" y="5" width="4" height="15" rx="1"/><rect x="16" y="9" width="4" height="11" rx="1"/></svg>
+      </button>
+      <button type="button" class="icon-btn" id="btn-settings" aria-label="الإعدادات" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><path d="M3 6h18M3 12h18M3 18h18"/><circle class="knob" cx="15" cy="6" r="2.4"/><circle class="knob" cx="8" cy="12" r="2.4"/><circle class="knob" cx="17" cy="18" r="2.4"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="play">
+    <div id="board-wrap">
+      <div id="board" aria-label="لوحة التخمينات"></div>
+    </div>
+    <div id="keyboard" role="group" aria-label="لوحة المفاتيح"></div>
+  </main>
+</div>
+
+<div id="toasts" aria-live="polite" aria-atomic="false"></div>
+<div id="announcer" class="visually-hidden" aria-live="polite"></div>
+
+<!-- How to play -->
+<div class="overlay" id="modal-help" hidden>
+  <section class="sheet" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="help-title">
+    <button type="button" class="icon-btn close" data-close aria-label="إغلاق">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <h2 id="help-title" class="sheet-title">طريقة اللعب</h2>
+    <p class="lede">خمّن كلمة اليوم في ٦ محاولات.</p>
+    <ul class="rules">
+      <li>كل تخمين كلمة صحيحة من ٥ أحرف.</li>
+      <li>بعد كل تخمين يتغيّر لون المربعات ليُظهر مدى قربك من الكلمة.</li>
+    </ul>
+
+    <h3 class="sheet-subtitle">أمثلة</h3>
+    <div class="example">
+      <div class="mini-row" aria-hidden="true">
+        <span class="tile mini" data-state="correct">س</span><span class="tile mini" data-filled>ف</span><span class="tile mini" data-filled>ي</span><span class="tile mini" data-filled>ن</span><span class="tile mini" data-filled>ة</span>
+      </div>
+      <p>الحرف <b>س</b> موجود في الكلمة وفي مكانه الصحيح.</p>
+    </div>
+    <div class="example">
+      <div class="mini-row" aria-hidden="true">
+        <span class="tile mini" data-filled>ح</span><span class="tile mini" data-filled>د</span><span class="tile mini" data-state="present">ي</span><span class="tile mini" data-filled>ق</span><span class="tile mini" data-filled>ة</span>
+      </div>
+      <p>الحرف <b>ي</b> موجود في الكلمة لكن في مكان آخر.</p>
+    </div>
+    <div class="example">
+      <div class="mini-row" aria-hidden="true">
+        <span class="tile mini" data-filled>ث</span><span class="tile mini" data-filled>ل</span><span class="tile mini" data-filled>ا</span><span class="tile mini" data-state="absent">ج</span><span class="tile mini" data-filled>ة</span>
+      </div>
+      <p>الحرف <b>ج</b> غير موجود في الكلمة.</p>
+    </div>
+
+    <h3 class="sheet-subtitle">عن الحروف</h3>
+    <ul class="rules">
+      <li>الألف بأشكالها واحدة: <b>أ</b> و<b>إ</b> و<b>آ</b> تُكتب كلها <b>ا</b>.</li>
+      <li><b>ة</b> و<b>ى</b> و<b>ء</b> و<b>ؤ</b> و<b>ئ</b> حروف مستقلة، ولكل منها زر خاص.</li>
+      <li>تظهر الحروف منفصلة في المربعات، والكلمة تُقرأ من اليمين إلى اليسار.</li>
+      <li>تعمل لوحة المفاتيح العربية، وتعمل الإنجليزية أيضاً بمواقع الحروف العربية نفسها.</li>
+    </ul>
+    <p class="footnote">كلمة جديدة كل يوم عند منتصف الليل بتوقيتك المحلي.</p>
+  </section>
+</div>
+
+<!-- Statistics -->
+<div class="overlay" id="modal-stats" hidden>
+  <section class="sheet" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+    <button type="button" class="icon-btn close" data-close aria-label="إغلاق">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <h2 id="stats-title" class="sheet-title">الإحصائيات</h2>
+    <dl class="stat-grid">
+      <div class="stat"><dd id="stat-played">٠</dd><dt>مرات اللعب</dt></div>
+      <div class="stat"><dd id="stat-winpct">٠</dd><dt>نسبة الفوز ٪</dt></div>
+      <div class="stat"><dd id="stat-streak">٠</dd><dt>السلسلة الحالية</dt></div>
+      <div class="stat"><dd id="stat-max">٠</dd><dt>أطول سلسلة</dt></div>
+    </dl>
+
+    <h3 class="sheet-subtitle">توزيع التخمينات</h3>
+    <div id="distribution" class="distribution"></div>
+
+    <div id="round-end" class="round-end" hidden>
+      <p class="answer-line">كلمة اليوم <strong id="answer-word"></strong></p>
+      <div class="round-actions">
+        <div class="countdown">
+          <span class="countdown-label">الحزّورة التالية بعد</span>
+          <time id="countdown" dir="ltr">--:--:--</time>
+        </div>
+        <button type="button" class="share-btn" id="btn-share">
+          <span>مشاركة</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.4M8.3 13.2l7.4 4.4"/></svg>
+        </button>
+      </div>
+      <label class="share-fallback" id="share-fallback" hidden>
+        <span>انسخ النتيجة يدوياً:</span>
+        <textarea id="share-text" rows="8" readonly></textarea>
+      </label>
+    </div>
+    <p class="puzzle-meta" id="puzzle-meta"></p>
+  </section>
+</div>
+
+<!-- Settings -->
+<div class="overlay" id="modal-settings" hidden>
+  <section class="sheet" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+    <button type="button" class="icon-btn close" data-close aria-label="إغلاق">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <h2 id="settings-title" class="sheet-title">الإعدادات</h2>
+    <div class="setting">
+      <div class="setting-text">
+        <span class="setting-name" id="lbl-hard">الوضع الصعب</span>
+        <span class="setting-desc">يجب استخدام كل تلميح يظهر في التخمينات التالية</span>
+      </div>
+      <button type="button" class="switch" role="switch" id="set-hard" aria-checked="false" aria-labelledby="lbl-hard"></button>
+    </div>
+    <div class="setting">
+      <div class="setting-text">
+        <span class="setting-name" id="lbl-dark">المظهر الداكن</span>
+      </div>
+      <button type="button" class="switch" role="switch" id="set-dark" aria-checked="false" aria-labelledby="lbl-dark"></button>
+    </div>
+    <div class="setting">
+      <div class="setting-text">
+        <span class="setting-name" id="lbl-contrast">ألوان عالية التباين</span>
+        <span class="setting-desc">برتقالي وأزرق بدل الأخضر والأصفر، لتمييز أوضح</span>
+      </div>
+      <button type="button" class="switch" role="switch" id="set-contrast" aria-checked="false" aria-labelledby="lbl-contrast"></button>
+    </div>
+    <div class="setting">
+      <div class="setting-text">
+        <span class="setting-name" id="lbl-onscreen">لوحة المفاتيح على الشاشة فقط</span>
+        <span class="setting-desc">تجاهل الكتابة من لوحة المفاتيح الفعلية</span>
+      </div>
+      <button type="button" class="switch" role="switch" id="set-onscreen" aria-checked="false" aria-labelledby="lbl-onscreen"></button>
+    </div>
+    <p class="credits">
+      قائمة الكلمات المقبولة مشتقة من
+      <a href="https://github.com/hermitdave/FrequencyWords" target="_blank" rel="noopener">FrequencyWords</a>
+      (CC BY-SA 4.0).
+    </p>
+  </section>
+</div>
+
+<script src="js/words.js"></script>
+<script src="js/valid-words.js"></script>
+<script src="js/logic.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
