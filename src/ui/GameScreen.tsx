@@ -85,8 +85,26 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
     map.current?.update(s, myId);
   });
   useEffect(() => {
-    map.current?.select(sel);
+    const m = map.current;
+    if (!m) return;
+    m.select(sel);
+    // لو اخترت أرضك نوضح الدول اللي تقدر تهاجمها منها
+    const mine = ctl.myNation();
+    if (sel && mine?.alive && ctl.state.terr[sel]?.owner === mine.id) {
+      const v = new Engine(ctl.world, ctl.state);
+      const ids = ctl.world.get(sel).n.filter((x) => ctl.state.terr[x] && ctl.state.terr[x].owner !== mine.id && v.route(mine, x));
+      m.highlight(ids, 'cand');
+    } else m.highlight([], 'cand');
   }, [sel]);
+
+  // نصيحة بالبداية
+  useEffect(() => {
+    if (!ctl.myNation()?.alive || ctl.state.day > 60) return;
+    const t = setTimeout(() => {
+      toast({ icon: '💡', text: 'اضغط على دولتك عشان تشوف الدول اللي تقدر تهاجمها، وطوّر اقتصادك وجيشك من التبويبات', kind: 'info', ttl: 9000 });
+    }, 2200);
+    return () => clearTimeout(t);
+  }, []);
 
   // التنبيهات
   useEffect(() => {

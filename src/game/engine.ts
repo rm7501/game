@@ -90,6 +90,7 @@ export class Engine {
     while (this.s.wheels[nid] || this.s.nations[nid] || Object.values(this.s.players).some((p) => p.nation === nid)) nid = `P${num}${this.randInt(1, 999)}`;
     const p: Player = { id, name: name.slice(0, 20) || `لاعب ${num}`, nation: nid, online: true, joinedAt: Date.now(), lastSeen: Date.now() };
     this.s.players[id] = p;
+    // لو دخل وقت العجلات أو وسط اللعبة يلف عجلاته (ولو اللعبة منتهية يتفرج بس)
     if (this.s.phase === 'wheels' || this.s.phase === 'playing') {
       this.s.wheels[nid] = { res: {}, respins: 1, done: false };
       this.news('👋', `${p.name} انضم للعبة ويلف عجلاته الحين`, 'join');
