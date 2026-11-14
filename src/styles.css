@@ -142,6 +142,9 @@ input:focus, select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgb
 .lobby-grid { display: grid; grid-template-columns: minmax(280px, 400px) minmax(300px, 620px); gap: 16px; width: 100%; max-width: 1060px; }
 .room-code { display: flex; flex-direction: column; align-items: center; padding: 12px; margin-bottom: 12px; border-radius: 14px; border: 2px dashed rgba(245, 197, 66, 0.5); background: rgba(245, 197, 66, 0.06); cursor: pointer; }
 .room-code b { font-size: 40px; letter-spacing: 10px; color: var(--gold); direction: ltr; font-family: 'Courier New', monospace; }
+.conn { font-size: 12.5px; text-align: center; margin: -4px 0 10px; color: var(--muted); }
+.conn.ok { color: var(--good); }
+.conn.offline { color: var(--bad); }
 .plist { list-style: none; margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .plist li { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 10px; background: rgba(255, 255, 255, 0.03); }
 .plist.big li { padding: 9px 10px; }

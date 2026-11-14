@@ -254,6 +254,15 @@ export function Lobby({ ctl, onLeave }: { ctl: Controller; onLeave: () => void }
             <span class="muted small">كود الغرفة</span>
             <b>{ctl.roomCode}</b>
           </div>
+          <div class={`conn ${ctl.status}`}>
+            {!onlineReady()
+              ? '🧪 وضع تجربة محلي (بين تبويبات نفس المتصفح)'
+              : ctl.status === 'ok'
+                ? '🟢 متصل بالسيرفر'
+                : ctl.status === 'connecting'
+                  ? '🔄 يتصل بالسيرفر... (لو طوّل: ممكن مشروع Supabase متوقف، شغّله من لوحة Supabase)'
+                  : '📴 انقطع الاتصال بالسيرفر'}
+          </div>
           <div class="menu-row">
             <button class="btn btn-primary" onClick={share}>📤 شارك الرابط</button>
             <button class="btn" onClick={() => { navigator.clipboard?.writeText(ctl.roomCode ?? ''); toast({ icon: '📋', text: 'نسخت الكود', kind: 'good' }); }}>📋 نسخ الكود</button>

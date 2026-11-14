@@ -12,7 +12,7 @@ import { Connecting, getName, Lobby, Menu, SingleSetup } from './ui/screens';
 import { toast, Toasts } from './ui/toast';
 import { WheelsScreen } from './ui/WheelsScreen';
 
-type Screen = { t: 'loading' } | { t: 'error'; msg: string } | { t: 'menu' } | { t: 'setup' } | { t: 'ctl'; ctl: Controller };
+type Screen = { t: 'loading' } | { t: 'busy'; msg: string } | { t: 'error'; msg: string } | { t: 'menu' } | { t: 'setup' } | { t: 'ctl'; ctl: Controller };
 
 function clientId(): string {
   try {
@@ -79,6 +79,17 @@ export function App() {
     };
   }, [screen]);
 
+  if (screen.t === 'busy') {
+    return (
+      <div class="screen center">
+        <div class="card center">
+          <div class="spinner" />
+          <p>{screen.msg}</p>
+        </div>
+      </div>
+    );
+  }
+
   if (screen.t === 'loading' || !world) {
     return (
       <div class="screen center">
@@ -117,6 +128,7 @@ export function App() {
     if (!world) return;
     const me = clientId();
     const tr = local ? new LocalTransport() : new SupabaseTransport();
+    setScreen({ t: 'busy', msg: code ? `جاري الدخول للغرفة ${code.toUpperCase()}...` : 'جاري تجهيز الغرفة...' });
     try {
       let saved: Partial<Settings> = {};
       try {
@@ -132,6 +144,7 @@ export function App() {
     } catch (e) {
       console.error(e);
       toast({ icon: '⚠️', text: 'صار خطأ بالاتصال بالسيرفر', kind: 'bad' });
+      setScreen({ t: 'menu' });
     }
   }
 
