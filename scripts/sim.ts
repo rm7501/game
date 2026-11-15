@@ -16,13 +16,18 @@ e.finishWheels();
 const me = st.nations['P1'];
 me.kind = 'bot'; me.ai = { pers: 'balanced', next: 5 }; // نخلي اللاعب بوت للتجربة
 const t0 = Date.now();
+const leaders: string[] = [];
 const fmt = (x: number) => (x >= 1000 ? (x / 1000).toFixed(1) + 'T' : x.toFixed(0));
 for (let y = 0; y < years && st.phase === 'playing'; y++) {
   for (let d = 0; d < 360 && st.phase === 'playing'; d++) e.dayTick();
   {
     const alive0 = Object.values(st.nations).filter((n) => n.alive);
     const wars = Object.values(st.rel).filter((r) => r.war).length;
-    console.log(`سنة ${2027 + y}: محايدة ${Object.values(st.terr).filter((t) => t.owner === '').length} | دول ${alive0.length} | حروب ${wars} | تحالفات ${Object.values(st.rel).filter((r) => r.ally).length} | أكبر دولة ${Math.max(...alive0.map((n) => n.d.terrs))} أراضي | تك متوسط ${(alive0.reduce((a, n) => a + n.tech, 0) / alive0.length).toFixed(1)}`);
+    const sc = alive0.map((n) => n.d.score).sort((a, b) => b - a);
+    const lead = alive0.sort((a, b) => b.d.score - a.d.score)[0];
+    console.log(`سنة ${2027 + y}: محايدة ${Object.values(st.terr).filter((t) => t.owner === '').length} | دول ${alive0.length} | حروب ${wars} | معارك جارية ${st.battles.length} | أكبر دولة ${Math.max(...alive0.map((n) => n.d.terrs))} | المتصدر ${lead.name} ×${(sc[0] / Math.max(1, sc[1])).toFixed(2)} | حدث ${st.world?.ev ?? '-'} | تحالف ضد ${st.coalition ? st.nations[st.coalition].name : '-'} | مهمات ${Object.values(st.nations).filter((n) => n.mission.done).length}`);
+    leaders.push(lead.name);
+    if (y % 5 === 4) console.log(`   المتصدر: أراضي ${lead.d.terrs} استقرار ${lead.stability.toFixed(0)} دخل ${lead.d.income.toFixed(0)} صيانة ${lead.d.upkeep.toFixed(0)} قوة ${lead.d.power.toFixed(0)} | الثاني قوة ${alive0[1]?.d.power.toFixed(0)}`);
   }
   if (y % 8 === 7) {
     const alive = Object.values(st.nations).filter((n) => n.alive).sort((a, b) => b.d.score - a.d.score);
@@ -37,5 +42,6 @@ const bad = Object.values(st.nations).filter((n) => !Number.isFinite(n.treasury)
 console.log('\nأخطاء أرقام:', bad.map((n) => n.name));
 console.log('مرحلة:', st.phase, st.winner ? JSON.stringify(st.winner) : '');
 console.log("معارك:", Object.values(st.nations).reduce((a, n) => a + n.st.won + n.st.lost, 0), "حروب حالية:", Object.values(st.rel).filter((r) => r.war).length, "تحالفات:", Object.values(st.rel).filter((r) => r.ally).length, "تجارة:", Object.values(st.rel).filter((r) => r.trade).length, 'أخبار:', st.news.length, 'وقت:', Date.now() - t0, 'ms');
+console.log('المتصدرين عبر السنين:', [...new Set(leaders)].join(' ← '), '| تغير المتصدر', leaders.filter((l, i) => i && l !== leaders[i - 1]).length, 'مرات');
 console.log('حجم الحالة JSON:', Math.round(JSON.stringify(st).length / 1024), 'KB');
 console.log(st.news.slice(-12).map((n) => n.icon + ' ' + n.text).join('\n'));

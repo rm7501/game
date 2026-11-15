@@ -1,9 +1,10 @@
 // بطاقة الدولة المختارة على الخريطة
 import { AREA_NAMES, UNITS } from '../game/defs';
+import { defenseValue } from '../game/battle';
 import type { Engine } from '../game/engine';
 import type { Nation, TerrId } from '../game/types';
 import { REGION_NAMES } from '../game/world';
-import { Flag, NationTag, UnitIcon } from './bits';
+import { Bar, Flag, NationTag, UnitIcon } from './bits';
 import { dateStr, fmtArea, fmtMoney, fmtNum, fmtPop } from './format';
 
 interface Props {
@@ -23,7 +24,8 @@ export function TerritoryCard({ eng, me, id, onClose, onAttack, onStrike, onDipl
   if (!t) return null;
   const owner = t.owner ? s.nations[t.owner] : null;
   const mine = !!me && t.owner === me.id;
-  const def = !mine ? eng.defense(id, me?.id ?? null) : null;
+  const def = !mine ? { D: defenseValue(eng, id, me ?? null) } : null;
+  const battle = s.battles.find((b) => b.terr === id);
   const route = me && !mine ? eng.route(me, id) : null;
   const r = me && owner && !mine ? eng.peek(me.id, owner.id) : undefined;
   const why = me && owner && !mine ? eng.canHit(me, owner) : null;
@@ -65,6 +67,17 @@ export function TerritoryCard({ eng, me, id, onClose, onAttack, onStrike, onDipl
       {!owner && t.g && (
         <div class="tcard-garrison muted small">
           الحامية: <UnitIcon u="inf" size={13} /> {t.g.inf} {UNITS.inf.name} · <UnitIcon u="tank" size={13} /> {t.g.tank} {UNITS.tank.name}
+        </div>
+      )}
+      {battle && (
+        <div class="battle-box">
+          <div class="row-between small">
+            <b>⚔️ معركة جارية · اليوم {battle.days}</b>
+            <span class="muted">{s.nations[battle.att]?.name} ضد {battle.def ? s.nations[battle.def]?.name : 'الحامية'}</span>
+          </div>
+          <div class="bb-row"><span class="dot" style={{ background: s.nations[battle.att]?.color }} /><Bar value={battle.a} max={battle.a0} color="var(--bad)" /><span class="small">{Math.round((battle.a / battle.a0) * 100)}%</span></div>
+          <div class="bb-row"><span class="dot" style={{ background: battle.def ? s.nations[battle.def]?.color : '#777' }} /><Bar value={battle.d} max={battle.d0} color="var(--accent)" /><span class="small">{Math.round((battle.d / battle.d0) * 100)}%</span></div>
+          <div class="muted small">المهاجم ينسحب تحت {Math.round(battle.aBreak * 100)}%، والمدافع ينهار تحت {Math.round(battle.dBreak * 100)}%</div>
         </div>
       )}
       {incoming.length > 0 && <div class="warn small">⚠️ فيه {incoming.length} جيش متجه لهنا!</div>}

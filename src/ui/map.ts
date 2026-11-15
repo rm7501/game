@@ -67,6 +67,7 @@ export class MapRenderer {
   private tLabels = new Map<TerrId, SVGTextElement>();
   private nLabels = new Map<NationId, SVGTextElement>();
   private moveEls = new Map<number, { line: SVGPathElement; icon: SVGGElement; p0: [number, number]; c: [number, number]; p1: [number, number] }>();
+  private battleEls = new Map<number, { g: SVGGElement; x: number; y: number }>();
   private zoomer?: ZoomBehavior<SVGSVGElement, unknown>;
   private ro?: ResizeObserver;
   private ownersKey = '';
@@ -201,6 +202,8 @@ export class MapRenderer {
     this.fillKey = '';
     this.moveEls.forEach((m) => { m.line.remove(); m.icon.remove(); });
     this.moveEls.clear();
+    this.battleEls.forEach((b) => b.g.remove());
+    this.battleEls.clear();
     if (this.lastState) this.update(this.lastState, this.myId);
     if (this.selected) this.select(this.selected);
     this.scheduleLabels();
@@ -245,6 +248,7 @@ export class MapRenderer {
       t.setAttribute('dy', this.tiny.has(n.capital) ? String(-12 / k) : '0');
     }
     for (const [, m] of this.moveEls) m.icon.setAttribute('transform', m.icon.getAttribute('transform')!.replace(/scale\([^)]*\)/, `scale(${1 / Math.sqrt(k)})`));
+    for (const [, b] of this.battleEls) b.g.setAttribute('transform', `translate(${b.x},${b.y}) scale(${1 / Math.sqrt(k)})`);
   }
 
   /** تحديث الألوان والحدود حسب حالة اللعبة */
@@ -315,6 +319,32 @@ export class MapRenderer {
       this.scheduleLabels();
     }
     this.syncMoves(s);
+    this.syncBattles(s);
+  }
+
+  /** علامة ⚔️ نابضة فوق كل معركة شغالة */
+  private syncBattles(s: GameState) {
+    const seen = new Set<number>();
+    const sc = 1 / Math.sqrt(this.k);
+    for (const b of s.battles ?? []) {
+      seen.add(b.id);
+      if (this.battleEls.has(b.id)) continue;
+      const m = this.world.byId.get(b.terr);
+      if (!m) continue;
+      const [x, y] = this.pt(m.lp);
+      const g = el('g', { class: `battle-mark${b.att === this.myId || b.def === this.myId ? ' mine' : ''}`, transform: `translate(${x},${y}) scale(${sc})` }, this.gFx);
+      el('circle', { r: 15, class: 'bm-ring' }, g);
+      el('circle', { r: 10, class: 'bm-core' }, g);
+      const t = el('text', { class: 'bm-emoji', y: 4 }, g);
+      t.textContent = '⚔️';
+      this.battleEls.set(b.id, { g, x, y });
+    }
+    for (const [id, b] of this.battleEls) {
+      if (!seen.has(id)) {
+        b.g.remove();
+        this.battleEls.delete(id);
+      }
+    }
   }
 
   private syncMoves(s: GameState) {

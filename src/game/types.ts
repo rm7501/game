@@ -10,14 +10,24 @@ export const COMBAT_UNITS: UnitType[] = ['inf', 'tank', 'jet', 'ship'];
 export const BUILDING_TYPES = ['industry', 'infra', 'research', 'health', 'fort', 'airdef', 'milfac', 'mining'] as const;
 export type BuildingType = (typeof BUILDING_TYPES)[number];
 
-export type GovId = 'monarchy' | 'democracy' | 'republic' | 'junta' | 'planned' | 'technocracy';
-export type ResId = 'oil' | 'gas' | 'gold' | 'uranium' | 'farm' | 'rare' | 'ports' | 'none';
+export type GovId =
+  | 'monarchy' | 'democracy' | 'republic' | 'junta' | 'planned' | 'technocracy' | 'constitutional' | 'oligarchy' | 'transitional';
+export type ResId = 'oil' | 'gas' | 'gold' | 'uranium' | 'farm' | 'rare' | 'ports' | 'water' | 'fish' | 'timber' | 'none';
 export type LuckId =
-  | 'treasure' | 'nuke' | 'mercs' | 'genius' | 'fortress' | 'missiles' | 'aid' | 'respin'
-  | 'plague' | 'civilwar' | 'crisis';
+  | 'treasure' | 'nuke' | 'mercs' | 'genius' | 'fortress' | 'missiles' | 'aid' | 'respin' | 'satellite' | 'worldcup'
+  | 'braindrain' | 'oilfield' | 'plague' | 'civilwar' | 'crisis' | 'traitor' | 'volcano';
+export type LeaderId = 'warlord' | 'economist' | 'diplomat' | 'builder' | 'scientist' | 'guardian' | 'populist' | 'gambler';
+export type TerrainId = 'mountains' | 'desert' | 'forest' | 'plains' | 'coast' | 'tundra' | 'rivers';
+export type MissionId = 'conqueror' | 'empire' | 'tycoon' | 'scholar' | 'allies' | 'regional' | 'admiral' | 'giant' | 'fortress';
+export type FortuneId =
+  | 'cash' | 'troops' | 'tech' | 'build' | 'festival' | 'boom' | 'arms' | 'jackpot'
+  | 'crash' | 'riots' | 'outbreak' | 'mutiny' | 'nothing';
+export type WorldEventId =
+  | 'coalition' | 'crash' | 'pandemic' | 'revolts' | 'bailout' | 'peace' | 'energy' | 'meteor' | 'techrev'
+  | 'armsrace' | 'fortune' | 'goldage' | 'mercsrebel';
 
-export type WheelId = 'area' | 'country' | 'pop' | 'econ' | 'mil' | 'res' | 'gov' | 'tech' | 'luck';
-export const WHEEL_ORDER: WheelId[] = ['area', 'country', 'pop', 'econ', 'mil', 'res', 'gov', 'tech', 'luck'];
+export type WheelId = 'area' | 'country' | 'pop' | 'econ' | 'mil' | 'res' | 'gov' | 'tech' | 'leader' | 'terrain' | 'mission' | 'luck';
+export const WHEEL_ORDER: WheelId[] = ['area', 'country', 'pop', 'econ', 'mil', 'res', 'gov', 'tech', 'leader', 'terrain', 'mission', 'luck'];
 
 export type Difficulty = 'easy' | 'normal' | 'hard';
 export type WinMode = 'domination' | 'score' | 'percent';
@@ -38,6 +48,7 @@ export interface WheelState {
   res: Partial<Record<WheelId, number | string>>;
   respins: number;
   done: boolean;
+  ready?: boolean; // ضغط «جاهز» بعد ما شاف بطاقة دولته
   last?: { wheel: WheelId; nonce: number }; // آخر عجلة انلفّت (عشان الأنيميشن)
 }
 
@@ -118,15 +129,23 @@ export interface Nation {
   gov: GovId;
   res: ResId;
   luck: LuckId;
+  trait: LeaderId; // صفة القائد
+  terrain: TerrainId; // تضاريس الوطن
+  mission: { id: MissionId; target: number; done: boolean; region?: string };
+  fortuneNext: number; // يوم توفر عجلة الحظ
+  fortune?: { nonce: number; res: FortuneId; day: number; text: string };
+  bonus: number; // نقاط إضافية (من المهمات)
+  govUntil?: number; // نهاية الحكومة الانتقالية
   nukeProg: boolean;
   ai?: AIState;
   aiControl?: boolean;
-  st: { won: number; lost: number; conq: number; lostT: number };
+  st: { won: number; lost: number; conq: number; lostT: number; held: number };
   tiers: { area: number; pop: number; econ: number; mil: number };
   d: Derived;
   elimDay?: number;
   joinDay: number;
   lastProp?: number; // آخر يوم وصلها فيه اقتراح (عشان البوتات ما تزعج اللاعب)
+  underdog?: boolean; // من الدول الأضعف: تاخذ دعم
 }
 
 export type MoveKind = 'attack' | 'return' | 'missile' | 'nuke';
@@ -170,6 +189,29 @@ export interface News {
   n?: NationId[]; // الدول المعنية
 }
 
+/** معركة مستمرة لعدة أيام */
+export interface Battle {
+  id: number;
+  terr: TerrId;
+  att: NationId;
+  def: NationId; // '' = محايدة
+  from: TerrId;
+  naval: boolean;
+  start: number;
+  au: Units; // القوات المهاجمة (بالبداية)
+  du: Units; // قوات المدافع المشاركة (بالبداية)
+  allies: { id: NationId; u: Units }[];
+  a0: number; // قوة الهجوم بالبداية
+  d0: number; // قوة الدفاع بالبداية (بدون المقاومة الشعبية)
+  m: number; // المقاومة الشعبية (ما تموت)
+  a: number; // قوة الهجوم الحالية
+  d: number; // قوة الدفاع الحالية
+  aBreak: number; // ينهار المهاجم تحت هذي النسبة
+  dBreak: number;
+  days: number;
+  mods: string[]; // عوامل أثرت (تفوق جوي، أسلحة مشتركة...)
+}
+
 export interface Report {
   id: number;
   day: number;
@@ -190,6 +232,8 @@ export interface Report {
   allies: NationId[];
   hits?: number;
   intercepted?: number;
+  days?: number;
+  mods?: string[];
 }
 
 export interface Chat {
@@ -228,6 +272,12 @@ export interface GameState {
   winner?: { nations: NationId[]; reason: string; day: number };
   countdown?: number; // وقت بداية اللعبة بعد العجلات (ms)
   epoch?: number; // يزيد كل ما تغير صاحب الغرفة
+  battles: Battle[];
+  world?: { id: number; ev: WorldEventId; day: number; text: string; target?: NationId; terr?: TerrId };
+  nextWorld: number; // يوم عجلة الأحداث العالمية الجاية
+  mods: { arms?: number }; // تأثيرات عالمية مؤقتة (يوم نهايتها)
+  coalition?: NationId; // الدولة اللي العالم متحالف ضدها
+  holdUntil?: number; // صاحب الغرفة يوقف اللعبة شوي وقت الأحداث الكبيرة (ms)
 }
 
 // الأوامر اللي يرسلها اللاعب
@@ -235,6 +285,8 @@ export type Command =
   | { t: 'spin'; wheel: WheelId }
   | { t: 'respin'; wheel: WheelId }
   | { t: 'autospin' }
+  | { t: 'ready' }
+  | { t: 'fortune' }
   | { t: 'tax'; rate: number }
   | { t: 'build'; b: BuildingType }
   | { t: 'cancel'; q: 'q' | 'bq'; id: number }

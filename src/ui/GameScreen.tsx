@@ -9,6 +9,7 @@ import { Flag, Modal } from './bits';
 import { AidDialog, AttackDialog, ReportModal, StrikeDialog } from './dialogs';
 import { EndScreen } from './EndScreen';
 import { dateStr, fmtMoneyShort, fmtNum, fmtPop } from './format';
+import { FortuneModal, WorldEventModal } from './GameWheels';
 import { HowTo } from './HowTo';
 import { MapRenderer } from './map';
 import { ChatTab, DiplomacyTab, EconomyTab, MilitaryTab, NewsTab, OverviewTab, RankTab, type Tab } from './panels';
@@ -22,6 +23,8 @@ type Dialog =
   | { t: 'report'; id: number }
   | { t: 'dead' }
   | { t: 'howto' }
+  | { t: 'fortune' }
+  | { t: 'world' }
   | null;
 
 const maxId = (arr: { id: number }[]) => arr.reduce((m, x) => Math.max(m, x.id), 0);
@@ -54,7 +57,7 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
   const [unread, setUnread] = useState(0);
   const mapBox = useRef<HTMLDivElement>(null);
   const map = useRef<MapRenderer | null>(null);
-  const seen = useRef({ news: maxId(s.news), reps: maxId(s.reports), props: maxId(s.props), chat: maxId(s.chat), dead: !meAny || !meAny.alive, propToast: 0 });
+  const seen = useRef({ news: maxId(s.news), reps: maxId(s.reports), props: maxId(s.props), chat: maxId(s.chat), dead: !meAny || !meAny.alive, propToast: 0, world: s.world?.id ?? 0, fortune: false });
 
   useEffect(() => {
     const m = new MapRenderer(mapBox.current!, ctl.world, {
@@ -149,6 +152,15 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
     st.reps = maxId(s.reports);
     st.props = Math.max(st.props, maxId(s.props));
     st.chat = maxId(s.chat);
+    if (s.world && s.world.id > st.world) {
+      st.world = s.world.id;
+      setDialog({ t: 'world' });
+    }
+    const mineN = ctl.myNation();
+    if (mineN?.alive && s.day >= mineN.fortuneNext && !st.fortune) {
+      st.fortune = true;
+      toast({ icon: '🎰', text: 'عجلة الحظ صارت متاحة لك!', kind: 'good', actions: [{ label: 'لف', kind: 'primary', run: () => setDialog({ t: 'fortune' }) }] });
+    } else if (mineN && s.day < mineN.fortuneNext) st.fortune = false;
     if (!st.dead && meAny && !meAny.alive) {
       st.dead = true;
       sfx.bad();
@@ -165,6 +177,14 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
     if (n.kind === 'nuke' && n.icon === '☢️' && n.terr) {
       sfx.nuke();
       toast({ icon: '☢️', text: n.text, kind: 'bad', ttl: 7000 });
+      return;
+    }
+    if (n.kind === 'battle' && mineNews && (n.icon === '⚔️' || n.icon === '🛡️' || n.icon === '🏴')) {
+      // بداية معركة ضدك: تنبيه. الباقي يطلع مع تقرير المعركة
+      if (n.icon === '⚔️' && n.n?.[0] !== myNid) {
+        sfx.alert();
+        toast({ icon: '⚔️', text: n.text, kind: 'warn', ttl: 7000, actions: n.terr ? [{ label: 'شوف', run: () => focus(n.terr!) }] : undefined });
+      }
       return;
     }
     if (n.icon === '⚠️' && mineNews) {
@@ -242,6 +262,11 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
         </div>
         {me && (
           <div class="hud-stats">
+            {s.day >= me.fortuneNext ? (
+              <button class="chip-stat fortune-ready" title="عجلة الحظ متاحة!" onClick={() => setDialog({ t: 'fortune' })}>🎰 لف الحظ</button>
+            ) : (
+              <span class="chip-stat muted" title="عجلة الحظ">🎰 {Math.max(1, Math.ceil((me.fortuneNext - s.day) / 30))} شهر</span>
+            )}
             <span class="chip-stat" title="الخزينة (والدخل الصافي الشهري)">💰 {fmtMoneyShort(me.treasury)} <small class={net >= 0 ? 'good' : 'bad'}>{net >= 0 ? '+' : ''}{fmtMoneyShort(net)}</small></span>
             <span class="chip-stat" title="السكان">👥 {fmtPop(me.d.pop)}</span>
             <span class="chip-stat" title="القوة العسكرية">⚔️ {fmtNum(me.d.power)}</span>
@@ -351,6 +376,8 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
       {dialog?.t === 'aid' && me && <AidDialog ctl={ctl} eng={eng} me={me} to={dialog.to} onClose={() => setDialog(null)} />}
       {rep && <ReportModal eng={eng} rep={rep} myId={myId} onClose={() => setDialog(null)} />}
       {dialog?.t === 'howto' && <HowTo onClose={() => setDialog(null)} />}
+      {dialog?.t === 'fortune' && me && <FortuneModal ctl={ctl} eng={eng} me={me} onClose={() => setDialog(null)} />}
+      {dialog?.t === 'world' && s.world && <WorldEventModal key={s.world.id} ev={s.world.ev} text={s.world.text} onClose={() => setDialog(null)} />}
       {dialog?.t === 'dead' && (
         <Modal title="💀 دولتك سقطت" onClose={() => setDialog(null)}>
           <p>للأسف تم احتلال كل أراضيك. تقدر تكمل تتفرج على اللعبة وتشوف مين بيفوز.</p>

@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Controller } from '../client/controller';
 import { onlineReady } from '../config';
+import { MINUTES_PER_YEAR } from '../game/defs';
 import { DEFAULT_SETTINGS } from '../game/engine';
 import type { Difficulty, NeutralStrength, Settings, WinMode } from '../game/types';
 import type { World } from '../game/world';
@@ -164,9 +165,9 @@ export function SettingsForm({ value, onChange, readOnly, single }: { value: Set
         </div>
         {v.win === 'score' && (
           <div class="seg">
-            {[10, 15, 25, 40, 60].map((y) => (
+            {[10, 15, 20, 30, 45].map((y) => (
               <button key={y} class={`seg-btn ${v.years === y ? 'on' : ''}`} disabled={readOnly} onClick={() => onChange({ years: y })}>
-                {y} سنة <small class="muted">≈{Math.round((y * 72) / 60)}د</small>
+                {y} سنة <small class="muted">≈ {Math.round(y * MINUTES_PER_YEAR)} دقيقة</small>
               </button>
             ))}
           </div>

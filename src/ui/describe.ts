@@ -1,8 +1,9 @@
 // وصف نتائج العجلات بالعربي
 import {
-  AREA_SLICES, ECON_NAMES, ECON_VALUES, GOVS, LUCK, MIL_NAMES, MIL_TIERS, POP_VALUES, RESOURCES, TECH_NAMES, UNITS,
+  AREA_SLICES, ECON_NAMES, ECON_VALUES, GOVS, LEADERS, LUCK, MIL_NAMES, MIL_TIERS, MISSIONS, POP_VALUES, RESOURCES, TECH_NAMES,
+  TERRAINS, UNITS,
 } from '../game/defs';
-import type { GovId, LuckId, ResId, UnitType, WheelId } from '../game/types';
+import type { GovId, LeaderId, LuckId, MissionId, ResId, TerrainId, UnitType, WheelId } from '../game/types';
 import { REGION_NAMES, type World } from '../game/world';
 import { fmtArea, fmtMoney } from './format';
 
@@ -49,6 +50,18 @@ export function describe(w: WheelId, v: number | string, world: World): ResultIn
     }
     case 'tech':
       return { icon: '🧪', title: `تكنولوجيا ${TECH_NAMES[v as number]}`, desc: `مستوى ${v} من 6${(v as number) >= 2 ? ' · تقدر تصنع طائرات وصواريخ' : ' · الطائرات والصواريخ تحتاج مستوى 2'}`, tone: (v as number) >= 4 ? 'good' : (v as number) === 1 ? 'bad' : undefined };
+    case 'leader': {
+      const l = LEADERS[v as LeaderId];
+      return { icon: l.icon, title: l.name, desc: l.desc, tone: 'good' };
+    }
+    case 'terrain': {
+      const t = TERRAINS[v as TerrainId];
+      return { icon: t.icon, title: t.name, desc: t.desc };
+    }
+    case 'mission': {
+      const m = MISSIONS[v as MissionId];
+      return { icon: m.icon, title: `مهمة: ${m.name}`, desc: 'هدفك السري يطلع لك أول ما تبدأ اللعبة (محد يعرفه غيرك)' };
+    }
     case 'luck': {
       const l = LUCK[v as LuckId];
       return { icon: l.icon, title: l.name, desc: l.desc, tone: l.good ? 'good' : 'bad' };

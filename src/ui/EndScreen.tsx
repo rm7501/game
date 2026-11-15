@@ -2,6 +2,7 @@
 import { useEffect } from 'preact/hooks';
 import type { Controller } from '../client/controller';
 import type { Engine } from '../game/engine';
+import { missionText } from '../game/events';
 import { sfx } from './audio';
 import { Flag, NationTag } from './bits';
 import { dateStr, fmtNum } from './format';
@@ -47,6 +48,16 @@ export function EndScreen({ ctl, eng, onExit }: { ctl: Controller; eng: Engine; 
             ))}
           </tbody>
         </table>
+        <details class="missions-reveal">
+          <summary>🎯 كشف المهمات السرية</summary>
+          <ul>
+            {ranking.slice(0, 16).map((n) => (
+              <li key={n.id}>
+                <span>{n.mission.done ? '✅' : '❌'}</span> <b style={{ color: n.color }}>{n.name}</b> <span class="muted small">{missionText(n)}</span>
+              </li>
+            ))}
+          </ul>
+        </details>
         <div class="modal-foot">
           <button class="btn btn-gold btn-big" onClick={onExit}>🏠 القائمة الرئيسية</button>
         </div>

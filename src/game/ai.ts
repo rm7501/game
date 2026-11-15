@@ -1,6 +1,8 @@
 // ذكاء البوتات (وأيضاً يلعب عن اللاعب اللي فصل)
 import { BUILDINGS, NUKE_PROJECT, SHIP_CAPACITY, UNITS, emptyUnits, missileRange } from './defs';
+import { estimate } from './battle';
 import type { Engine } from './engine';
+import { spinFortune } from './events';
 import type { BuildingType, Nation, Personality, Proposal, TerrId, UnitType, Units } from './types';
 import { COMBAT_UNITS } from './types';
 
@@ -18,17 +20,18 @@ export function aiRespond(e: Engine, n: Nation, p: Proposal) {
   if (!from?.alive) return;
   const pers = n.ai?.pers ?? 'balanced';
   const grudge = n.ai?.grudge === from.id;
+  const charm = from.trait === 'diplomat' ? 0.25 : 0;
   let accept = false;
-  if (p.type === 'trade') accept = !grudge && e.rand() < 0.75;
+  if (p.type === 'trade') accept = !grudge && e.rand() < 0.75 + charm;
   else if (p.type === 'ally') {
     const base = pers === 'defensive' ? 0.45 : pers === 'aggressive' ? 0.15 : 0.3;
     const strong = from.d.power > n.d.power * 0.7 ? 0.15 : 0;
-    accept = !grudge && e.rand() < base + strong;
+    accept = !grudge && e.rand() < base + strong + charm;
   } else if (p.type === 'peace') {
     const r = e.peek(n.id, from.id);
     const enemyStronger = from.d.power > n.d.power * 1.1;
     const long = r?.war !== undefined && s.day - r.war > 240;
-    accept = !grudge && (enemyStronger || n.stability < 35 || (long && e.rand() < 0.5) || (pers !== 'aggressive' && e.rand() < 0.3));
+    accept = !grudge && (enemyStronger || n.stability < 35 || (long && e.rand() < 0.5) || (pers !== 'aggressive' && e.rand() < 0.3 + charm));
   }
   if (accept) {
     e.acceptProposal(p);
@@ -59,6 +62,9 @@ export function aiThink(e: Engine, n: Nation) {
 
   // الرد على الاقتراحات
   for (const p of s.props.filter((x) => x.to === n.id)) aiRespond(e, n, p);
+
+  // عجلة الحظ
+  if (s.day >= n.fortuneNext) spinFortune(e, n);
 
   // الضرائب
   let tax = { aggressive: 0.25, balanced: 0.22, economic: 0.2, defensive: 0.22 }[pers];
@@ -170,9 +176,10 @@ export function aiThink(e: Engine, n: Nation) {
 function planAttack(e: Engine, n: Nation, diff: string, pers: Personality) {
   const s = e.s;
   const commit = { aggressive: 0.7, balanced: 0.6, economic: 0.5, defensive: 0.45 }[pers];
-  let thr = { aggressive: 1.35, balanced: 1.6, economic: 1.9, defensive: 2.1 }[pers];
-  if (diff === 'easy') thr *= 1.25;
-  if (diff === 'hard') thr *= 0.9;
+  // أقل فرصة فوز يقبل فيها البوت يهاجم
+  let pThr = { aggressive: 0.62, balanced: 0.74, economic: 0.84, defensive: 0.87 }[pers];
+  if (diff === 'easy') pThr += 0.08;
+  if (diff === 'hard') pThr -= 0.07;
   const cands = new Set<TerrId>();
   for (const t of e.owned(n.id)) {
     const m = e.w.get(t.id);
@@ -180,10 +187,11 @@ function planAttack(e: Engine, n: Nation, diff: string, pers: Personality) {
     if (n.units.ship >= 2 && m.c) for (const x of Object.keys(m.s)) if (s.terr[x] && s.terr[x].owner !== n.id) cands.add(x);
   }
   let best: { to: TerrId; units: Units; score: number } | null = null;
-  const already = new Set(s.moves.filter((m) => m.owner === n.id).map((m) => m.to));
+  const already = new Set([...s.moves.filter((m) => m.owner === n.id).map((m) => m.to), ...s.battles.map((b) => b.terr)]);
   const noNeutrals = ![...cands].some((x) => s.terr[x].owner === '');
+  let checked = 0;
   for (const to of cands) {
-    if (already.has(to)) continue;
+    if (already.has(to) || checked > 14) continue;
     const T = s.terr[to];
     if (T.owner) {
       const D = s.nations[T.owner];
@@ -213,20 +221,21 @@ function planAttack(e: Engine, n: Nation, diff: string, pers: Personality) {
       }
     }
     if (units.inf + units.tank < 1) continue;
-    const D = e.defense(to, n.id).D;
-    const A = e.attackPower(n, units, to);
-    const ratio = A / Math.max(0.1, D);
-    if (ratio < thr) continue;
-    // نرسل اللي يكفي بس
-    if (ratio > thr * 2) {
-      const f = Math.max(0.35, (thr * 1.6) / ratio);
-      for (const k of COMBAT_UNITS) units[k] = Math.ceil(units[k] * f);
-      if (route.naval) units.ship = Math.max(units.ship, Math.ceil((units.inf + units.tank) / SHIP_CAPACITY));
+    checked++;
+    let est = estimate(e, n, units, to, 10);
+    if (est.p < pThr || est.aLoss > 0.55) continue;
+    // نرسل اللي يكفي بس لو الفوز مضمون
+    if (est.p >= 0.99 && est.aLoss < 0.2) {
+      const small = { ...units };
+      for (const k of COMBAT_UNITS) small[k] = Math.ceil(units[k] * 0.6);
+      if (route.naval) small.ship = Math.max(small.ship, Math.ceil((small.inf + small.tank) / SHIP_CAPACITY));
+      const est2 = estimate(e, n, small, to, 10);
+      if (est2.p >= Math.min(0.97, pThr + 0.15)) { Object.assign(units, small); est = est2; }
     }
     const mt = e.w.get(to);
     let value = T.gdp / 40 + T.pop / 4 + mt.area / 150000 + 2;
     if (T.owner) value *= n.ai?.grudge === T.owner ? 2.5 : 1.3;
-    const sc = value * Math.min(ratio, 3) / (route.naval ? 1.5 : 1);
+    const sc = (value * est.p * (1 - est.aLoss * 0.5)) / (route.naval ? 1.5 : 1);
     if (!best || sc > best.score) best = { to, units, score: sc };
   }
   if (best) e.command(n.id, { t: 'attack', to: best.to, units: best.units });

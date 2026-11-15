@@ -2,9 +2,11 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Controller } from '../client/controller';
 import {
-  AREA_NAMES, BUILDINGS, DAYS_PER_MONTH, GOVS, LUCK, MAX_BUILDING_LEVEL, MAX_TECH, NUKE_PROJECT, RESOURCES, TECH_COST, TECH_NAMES, UNITS,
+  AREA_NAMES, BUILDINGS, DAYS_PER_MONTH, GOVS, LEADERS, LUCK, MAX_BUILDING_LEVEL, MAX_TECH, NUKE_PROJECT, RESOURCES, TECH_COST, TECH_NAMES,
+  TERRAINS, UNITS,
 } from '../game/defs';
 import { Engine, PROP_NAMES } from '../game/engine';
+import { missionProgress, missionText } from '../game/events';
 import type { BuildingType, Nation, NationId, UnitType } from '../game/types';
 import { BUILDING_TYPES, UNIT_TYPES } from '../game/types';
 import { sfx } from './audio';
@@ -55,6 +57,25 @@ export function OverviewTab({ ctl, eng, me, onSelect }: PanelProps) {
           </div>
         </div>
         <div class="rank-badge" title="ترتيبك">#{rank}</div>
+      </div>
+      <div class="traits">
+        <span class="badge" title={LEADERS[me.trait].desc}>{LEADERS[me.trait].icon} {LEADERS[me.trait].name}</span>
+        <span class="badge" title={TERRAINS[me.terrain].desc}>{TERRAINS[me.terrain].icon} {TERRAINS[me.terrain].name}</span>
+        {me.underdog && <span class="badge good" title="من الدول الأضعف: الجيش أرخص 15%، والنمو أسرع، والدفاع أقوى 20%">🛡️ دعم المستضعفين</span>}
+        {me.gov === 'transitional' && me.govUntil && <span class="badge">🌀 الحكومة الانتقالية تنتهي بعد {Math.max(1, Math.ceil((me.govUntil - eng.s.day) / 30))} شهر</span>}
+      </div>
+      {eng.s.coalition === me.id && <div class="hint bad block">🌍 العالم متحالف ضدك بسبب هيمنتك! هجومهم عليك أقوى 20%، انتبه لحدودك.</div>}
+      {eng.s.coalition && eng.s.coalition !== me.id && eng.s.nations[eng.s.coalition] && (
+        <div class="hint block">🌍 فيه تحالف دولي ضد {eng.s.nations[eng.s.coalition].name}. لو هاجمتها يكون هجومك أقوى 20%.</div>
+      )}
+      <div class={`block mission ${me.mission.done ? 'done' : ''}`}>
+        <div class="row-between">
+          <span class="block-title">🎯 مهمتك السرية</span>
+          {me.mission.done ? <b class="good">✅ تحققت</b> : <span class="muted small">{Math.min(missionProgress(eng, me), me.mission.target)}/{me.mission.target}</span>}
+        </div>
+        <div>{missionText(me)}</div>
+        {!me.mission.done && <Bar value={missionProgress(eng, me)} max={me.mission.target} color="var(--gold)" />}
+        <div class="muted small">لو حققتها تاخذ نقاط إضافية كبيرة وفلوس ولفة حظ مجانية</div>
       </div>
       <div class="stat-grid">
         <Stat icon="💰" label="الخزينة" value={fmtMoney(me.treasury)} sub={<span class={net >= 0 ? 'good' : 'bad'}>{net >= 0 ? '+' : ''}{fmtMoney(net)} شهرياً</span>} tone={me.treasury < 0 ? 'bad' : undefined} />
@@ -199,8 +220,26 @@ export function MilitaryTab({ ctl, eng, me, onSelect }: PanelProps) {
   const moving = eng.movingUnits(me.id);
   const [qty, setQty] = useState<Record<string, number>>({ inf: 5, tank: 2, jet: 1, ship: 1, missile: 1, nuke: 1 });
   const myMoves = eng.s.moves.filter((m) => m.owner === me.id);
+  const myBattles = eng.s.battles.filter((b) => b.att === me.id || b.def === me.id || b.allies.some((a) => a.id === me.id));
   return (
     <div class="tab-body">
+      {myBattles.length > 0 && (
+        <div class="block special">
+          <div class="block-title">⚔️ معارك شغالة</div>
+          {myBattles.map((b) => {
+            const att = b.att === me.id;
+            return (
+              <div class="battle-row clickable" key={b.id} onClick={() => onSelect(b.terr)}>
+                <span class="br-title">{att ? '⚔️' : '🛡️'} {eng.w.name(b.terr)} <span class="muted small">· يوم {b.days}</span></span>
+                <span class="br-bars">
+                  <Bar value={b.a} max={b.a0} color="var(--bad)" />
+                  <Bar value={b.d} max={b.d0} color="var(--accent)" />
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      )}
       <div class="army-table">
         {UNIT_TYPES.map((u) => (
           <div class="army-row" key={u}>

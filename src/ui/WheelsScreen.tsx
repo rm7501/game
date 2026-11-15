@@ -106,6 +106,10 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
   };
 
   const shown: WheelId = active ?? reveal ?? next ?? 'luck';
+  const showSummary = !next && !active && !reveal;
+  const readyCount = Object.values(s.wheels).filter((w) => w.ready).length;
+  const totalCount = Object.keys(s.wheels).length;
+  const country = ws.res.country as string | undefined;
   const slices = frozen ?? (shown === 'country' ? [] : eng.slicesFor(nid, shown));
   const revealInfo = reveal && ws.res[reveal] !== undefined ? describe(reveal, ws.res[reveal]!, world) : null;
   const doneCount = WHEEL_ORDER.filter((w) => ws.res[w] !== undefined).length;
@@ -134,6 +138,42 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
 
       <div class="wheels-body">
         <section class="wheel-stage">
+          {showSummary ? (
+            <div class="summary">
+              <div class="summary-head">
+                {country && <Flag id={country} size={54} />}
+                <div>
+                  <div class="summary-title">{country ? world.name(country) : ''}</div>
+                  <div class="muted">هذي دولتك! راجعها وبعدين اضغط جاهز</div>
+                </div>
+              </div>
+              <div class="summary-grid">
+                {WHEEL_ORDER.filter((w) => w !== 'country' && ws.res[w] !== undefined).map((w) => {
+                  const info = describe(w, ws.res[w]!, world);
+                  return (
+                    <div class={`sum-item ${info.tone ?? ''}`} key={w}>
+                      <span class="sum-icon">{info.icon}</span>
+                      <span class="sum-body">
+                        <span class="sum-label">{WHEELS[w].title.replace('عجلة ', '')}</span>
+                        <b>{info.title}</b>
+                        <span class="sum-desc">{info.desc}</span>
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+              {!ws.ready ? (
+                <button class="btn btn-gold btn-big" onClick={() => { sfx.fanfare(); ctl.send({ t: 'ready' }); }}>
+                  ✅ جاهز{s.phase === 'playing' ? '، دخّلني اللعبة' : ''}
+                </button>
+              ) : (
+                <div class="ready-msg">
+                  ✅ جاهز! {s.phase === 'wheels' && `بانتظار باقي اللاعبين (${readyCount}/${totalCount} جاهزين)`}
+                </div>
+              )}
+            </div>
+          ) : (
+          <>
           <h2 class="wheel-name">
             {WHEELS[shown].icon} {WHEELS[shown].title}
           </h2>
@@ -169,8 +209,8 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
                     لف {WHEELS[next].title} {WHEELS[next].icon}
                   </button>
                 ) : (
-                  <button class="btn" onClick={() => setReveal(null)}>
-                    تمام 👌
+                  <button class="btn btn-gold" onClick={() => setReveal(null)}>
+                    📋 شوف بطاقة دولتك
                   </button>
                 )}
               </div>
@@ -182,7 +222,7 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
                 {spinning ? '... تدور' : `🎰 لف ${WHEELS[next].title}`}
               </button>
             )}
-            {next && doneCount < 8 && (
+            {next && doneCount < WHEEL_ORDER.length - 1 && (
               <button
                 class="btn btn-ghost btn-sm"
                 disabled={spinning}
@@ -194,8 +234,9 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
                 ⚡ لف الباقي تلقائياً
               </button>
             )}
-            {!next && <div class="ready-msg">✅ دولتك جاهزة! {s.phase === 'wheels' ? 'بانتظار باقي اللاعبين...' : ''}</div>}
           </div>
+          </>
+          )}
         </section>
 
         <aside class="wheel-side">
@@ -209,7 +250,7 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
                 const v = ws.res[w];
                 const info = v !== undefined ? describe(w, v, world) : null;
                 const hidden = (active === w && spinning) || (w === shown && spinning);
-                const canRespin = !!info && ws.respins > 0 && !spinning && !active && !(w === 'luck' && v === 'respin') && !(s.phase === 'playing' && ws.done);
+                const canRespin = !!info && ws.respins > 0 && !spinning && !active && !(w === 'luck' && v === 'respin') && !ws.ready;
                 return (
                   <li key={w} class={`res-row ${info?.tone ?? ''}`}>
                     <span class="res-icon">{WHEELS[w].icon}</span>
@@ -247,7 +288,7 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
                     <li key={id}>
                       {w.res.country ? <Flag id={w.res.country as string} size={14} /> : <span class="flag flag-neutral" />}
                       <span class="pname">{name}</span>
-                      <span class="pprog">{w.done ? '✅' : `${n}/9`}</span>
+                      <span class="pprog">{w.ready ? '✅ جاهز' : w.done ? '📋' : `${n}/${WHEEL_ORDER.length}`}</span>
                     </li>
                   );
                 })}

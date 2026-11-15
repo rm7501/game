@@ -2,21 +2,23 @@
 import {
   AREA_SLICES, BOT_NAMES, BUILDINGS, BUILD_GROWTH, MAX_BUILDING_LEVEL, DAYS_PER_MONTH, ECON_VALUES, GOVS, MAX_TECH,
   MIL_TIERS, NATION_COLORS, NUKE_PROJECT, POP_VALUES, RESOURCES, SHIP_CAPACITY, SLOTS_BY_CLASS, STATIC_SLICES,
-  TECH_COST, TECH_NAMES, UNITS, emptyUnits, missileRange, navalRange, techMult, type Slice,
+  TECH_COST, TECH_NAMES, TERRAINS, UNITS, emptyUnits, missileRange, navalRange, techMult, type Slice,
 } from './defs';
 import { aiThink } from './ai';
+import { endBattle, startBattle, tickBattles, unitsInBattles } from './battle';
+import { assignMission, checkCoalition, checkMissions, checkTransitional, fireWorldEvent, scheduleWorld, spinFortune } from './events';
 import type {
-  BuildingType, CmdResult, Command, Derived, GameState, LuckId, Movement, Nation, NationId, News, NewsKind,
-  Player, Proposal, ProposalType, Relation, Report, Settings, Territory, TerrId, UnitType, Units, WheelId,
+  BuildingType, CmdResult, Command, Derived, GameState, LeaderId, LuckId, MissionId, Movement, Nation, NationId, News, NewsKind,
+  Player, Proposal, ProposalType, Relation, Report, Settings, TerrainId, Territory, TerrId, UnitType, Units, WheelId,
   WheelState, GovId, ResId,
 } from './types';
 import { BUILDING_TYPES, COMBAT_UNITS, UNIT_TYPES, WHEEL_ORDER } from './types';
 import type { World } from './world';
 
-export const STATE_VERSION = 1;
+export const STATE_VERSION = 2;
 
 export const DEFAULT_SETTINGS: Settings = {
-  bots: 6, difficulty: 'normal', win: 'score', years: 25, percent: 40, neutral: 'normal', peaceMonths: 12, speed: 1,
+  bots: 6, difficulty: 'normal', win: 'score', years: 20, percent: 40, neutral: 'normal', peaceMonths: 12, speed: 1,
 };
 
 const emptyDerived = (): Derived => ({
@@ -32,6 +34,7 @@ export function newState(mode: 'single' | 'online', settings: Settings, hostId: 
     v: STATE_VERSION, mode, phase: 'lobby', settings: { ...settings }, day: 0, paused: false, speed: settings.speed,
     rng: (seed ?? Math.floor(Math.random() * 2 ** 31)) >>> 0, seq: 1, hostId,
     players: {}, nations: {}, terr: {}, wheels: {}, taken: {}, moves: [], rel: {}, props: [], news: [], reports: [], chat: [],
+    battles: [], nextWorld: 0, mods: {},
   };
 }
 
@@ -92,7 +95,7 @@ export class Engine {
     this.s.players[id] = p;
     // لو دخل وقت العجلات أو وسط اللعبة يلف عجلاته (ولو اللعبة منتهية يتفرج بس)
     if (this.s.phase === 'wheels' || this.s.phase === 'playing') {
-      this.s.wheels[nid] = { res: {}, respins: 1, done: false };
+      this.s.wheels[nid] = { res: {}, respins: 1, done: false, ready: false };
       this.news('👋', `${p.name} انضم للعبة ويلف عجلاته الحين`, 'join');
     }
     return p;
@@ -113,9 +116,10 @@ export class Engine {
     const n = this.s.nations[p.nation];
     if (n && n.alive) n.aiControl = !online;
     const ws = this.s.wheels[p.nation];
-    if (!online && ws && !ws.done && this.s.phase === 'playing') {
+    if (!online && ws && !ws.ready && (this.s.phase === 'playing' || this.s.phase === 'wheels')) {
       // لاعب طلع وهو يلف: نكمل عنه
       this.autospin(p.nation);
+      this.ready(p.nation);
     }
   }
 
@@ -124,10 +128,10 @@ export class Engine {
     const s = this.s;
     s.phase = 'wheels';
     this.generateNeutrals();
-    for (const p of Object.values(s.players)) s.wheels[p.nation] = { res: {}, respins: 1, done: false };
+    for (const p of Object.values(s.players)) s.wheels[p.nation] = { res: {}, respins: 1, done: false, ready: false };
     for (let i = 1; i <= s.settings.bots; i++) {
       const nid = `B${i}`;
-      s.wheels[nid] = { res: {}, respins: 0, done: false };
+      s.wheels[nid] = { res: {}, respins: 0, done: false, ready: true };
       this.autospin(nid);
     }
   }
@@ -192,7 +196,25 @@ export class Engine {
     if (wheel === 'luck' && v === 'respin') ws.respins += 2;
     ws.last = { wheel, nonce: (ws.last?.nonce ?? 0) + 1 };
     ws.done = this.nextWheel(nid) === null;
-    if (ws.done && this.s.phase === 'playing') this.spawnLate(nid);
+  }
+
+  /** اللاعب شاف بطاقة دولته وضغط «جاهز» */
+  ready(nid: NationId): CmdResult {
+    const ws = this.s.wheels[nid];
+    if (!ws) return { ok: false };
+    if (!ws.done) return { ok: false, msg: 'كمّل عجلاتك أول' };
+    if (ws.ready && this.s.phase !== 'playing') return { ok: true };
+    ws.ready = true;
+    if (this.s.phase === 'playing' && !this.s.nations[nid]) this.spawnLate(nid);
+    return { ok: true };
+  }
+
+  /** صاحب الغرفة يبدأ بدون انتظار: نكمل عجلات الكل */
+  readyAll() {
+    for (const nid of Object.keys(this.s.wheels)) {
+      this.autospin(nid);
+      this.s.wheels[nid].ready = true;
+    }
   }
 
   spin(nid: NationId, wheel: WheelId): CmdResult {
@@ -208,7 +230,7 @@ export class Engine {
     const ws = this.s.wheels[nid];
     if (!ws || ws.res[wheel] === undefined) return { ok: false, msg: 'لازم تلف العجلة أول' };
     if (ws.respins <= 0) return { ok: false, msg: 'خلصت إعادات اللف' };
-    if (this.s.phase === 'playing' && ws.done) return { ok: false, msg: 'اللعبة بدأت' };
+    if (ws.ready) return { ok: false, msg: 'أكدت جاهزيتك خلاص' };
     if (wheel === 'luck' && ws.res.luck === 'respin') return { ok: false, msg: 'ما تقدر تعيد عجلة "فرصة ثانية"' };
     ws.respins--;
     const old = ws.res[wheel];
@@ -234,7 +256,7 @@ export class Engine {
   }
 
   allWheelsDone(): boolean {
-    return Object.values(this.s.wheels).every((w) => w.done);
+    return Object.values(this.s.wheels).every((w) => w.done && w.ready);
   }
 
   /** بداية اللعبة بعد ما يخلص الكل من العجلات */
@@ -250,6 +272,8 @@ export class Engine {
     s.taken = {};
     s.phase = 'playing';
     s.day = 0;
+    s.battles = [];
+    scheduleWorld(this, true);
     this.news('🌍', 'بدأت اللعبة! ابنِ اقتصادك وجهّز جيشك', 'system');
     if (s.settings.peaceMonths > 0) this.news('🕊️', `فترة سلام ${s.settings.peaceMonths} شهر: ما أحد يقدر يهاجم دولة لاعب أو بوت، بس تقدر تحتل الدول المحايدة`, 'system');
     for (const n of Object.values(s.nations)) this.recompute(n);
@@ -288,13 +312,18 @@ export class Engine {
     const usedColors = new Set(Object.values(s.nations).map((n) => n.color));
     const color = NATION_COLORS.find((c) => !usedColors.has(c)) ?? NATION_COLORS[idx % NATION_COLORS.length];
     const leader = isBot ? BOT_NAMES[(parseInt(nid.slice(1)) - 1 + Math.floor(s.rng % 7)) % BOT_NAMES.length] : player?.name ?? 'لاعب';
+    const trait = r.leader as LeaderId;
+    const now = s.phase === 'playing' ? s.day : 0;
     const n: Nation = {
       id: nid, kind: isBot ? 'bot' : 'player', name: this.tname(country), leader, color, home: country, capital: country,
-      alive: true, treasury: Math.round(15 + 0.1 * t.gdp), tax: 0.22, stability: clamp(62 + GOVS[gov].stab + RESOURCES[res].stab, 5, 100),
+      alive: true, treasury: Math.round(15 + 0.1 * t.gdp), tax: 0.22,
+      stability: clamp(62 + GOVS[gov].stab + RESOURCES[res].stab + (trait === 'populist' ? 12 : 0), 5, 100),
       tech: r.tech as number, research: 0, units, q: [], bq: [],
       b: Object.fromEntries(BUILDING_TYPES.map((b) => [b, 0])) as Record<BuildingType, number>,
       gov, res, luck, nukeProg: res === 'uranium',
-      st: { won: 0, lost: 0, conq: 0, lostT: 0 },
+      trait, terrain: r.terrain as TerrainId, mission: { id: r.mission as MissionId, target: 0, done: false },
+      fortuneNext: now + 180, bonus: 0, govUntil: gov === 'transitional' ? now + 48 * DAYS_PER_MONTH : undefined,
+      st: { won: 0, lost: 0, conq: 0, lostT: 0, held: 0 },
       tiers: { area: cls, pop: popTier, econ: econTier, mil: milTier },
       d: emptyDerived(), joinDay: s.phase === 'playing' ? s.day : 0,
     };
@@ -317,7 +346,14 @@ export class Engine {
         n.stability = clamp(n.stability - 20, 5, 100);
         break;
       case 'crisis': t.gdp = Math.round(t.gdp * 0.75); n.treasury = Math.round(n.treasury * 0.5); break;
+      case 'satellite': n.research += (TECH_COST[n.tech + 1] ?? 0) * 0.5; n.units.missile += 3; break;
+      case 'worldcup': n.treasury += 60; n.stability = clamp(n.stability + 15, 0, 100); break;
+      case 'braindrain': n.research += 150; t.pop = round1(t.pop * 1.05); break;
+      case 'oilfield': if (n.res === 'none') n.res = 'oil'; else t.gdp = Math.round(t.gdp * 1.1); break;
+      case 'traitor': for (const u of COMBAT_UNITS) n.units[u] = Math.floor(n.units[u] * 0.75); break;
+      case 'volcano': t.gdp = Math.round(t.gdp * 0.85); t.pop = round1(t.pop * 0.95); break;
     }
+    assignMission(this, n, n.mission.id);
     s.nations[nid] = n;
     if (s.phase === 'playing') {
       this.news('🎉', `${leader} دخل اللعبة ويحكم ${n.name}`, 'join', { n: [nid], terr: country });
@@ -360,27 +396,30 @@ export class Engine {
     return `${months[m % 12]} ${2026 + Math.floor(m / 12)}`;
   }
 
-  declareWar(a: Nation, b: Nation) {
+  declareWar(a: Nation, b: Nation, quiet = false) {
     const r = this.rel(a.id, b.id);
     if (r.war) return;
     r.war = this.s.day;
     delete r.trade;
     delete r.ally;
     this.s.props = this.s.props.filter((p) => !((p.from === a.id && p.to === b.id) || (p.from === b.id && p.to === a.id)));
-    this.news('⚔️', `${a.name} أعلنت الحرب على ${b.name}!`, 'war', { n: [a.id, b.id] });
+    if (!quiet) this.news('⚔️', `${a.name} أعلنت الحرب على ${b.name}!`, 'war', { n: [a.id, b.id] });
   }
 
-  makePeace(a: Nation, b: Nation) {
+  makePeace(a: Nation, b: Nation, months = 24, quiet = false) {
     const r = this.rel(a.id, b.id);
     delete r.war;
-    r.truce = this.s.day + 24 * DAYS_PER_MONTH;
-    // نرجع الجيوش المتجهة لبعض
-    for (const m of this.s.moves) {
+    r.truce = this.s.day + months * DAYS_PER_MONTH;
+    // نرجع الجيوش المتجهة لبعض ونوقف المعارك بينهم
+    for (const m of [...this.s.moves]) {
       if (m.kind === 'attack' && ((m.owner === a.id && this.s.terr[m.to].owner === b.id) || (m.owner === b.id && this.s.terr[m.to].owner === a.id))) {
         this.startReturn(m);
       }
     }
-    this.news('🕊️', `سلام بين ${a.name} و ${b.name} (هدنة سنتين)`, 'diplo', { n: [a.id, b.id] });
+    for (const bt of [...this.s.battles]) {
+      if ((bt.att === a.id && bt.def === b.id) || (bt.att === b.id && bt.def === a.id)) endBattle(this, bt, 'cancel');
+    }
+    if (!quiet) this.news('🕊️', `سلام بين ${a.name} و ${b.name} (هدنة ${months === 24 ? 'سنتين' : months + ' شهر'})`, 'diplo', { n: [a.id, b.id] });
   }
 
   // ---------------- حسابات الدولة ----------------
@@ -396,6 +435,9 @@ export class Engine {
 
   unitCost(n: Nation, u: UnitType) {
     let c = UNITS[u].cost * GOVS[n.gov].unitCost * Math.max(0.5, 1 - 0.06 * n.b.milfac);
+    if (n.trait === 'warlord') c *= 0.9;
+    if (n.underdog) c *= 0.85;
+    if (this.s.mods.arms && this.s.day < this.s.mods.arms) c *= 0.65;
     if (u === 'ship' && n.res === 'ports') c *= 0.75;
     if (u === 'nuke' && n.res === 'uranium') c *= 0.6;
     return c;
@@ -404,12 +446,12 @@ export class Engine {
   buildCost(n: Nation, b: BuildingType) {
     const def = BUILDINGS[b];
     const lvl = n.b[b] + n.bq.filter((q) => q.type === b).length;
-    return Math.max(def.min, def.k * n.d.gdp) * BUILD_GROWTH ** lvl * GOVS[n.gov].buildCost;
+    return Math.max(def.min, def.k * n.d.gdp) * BUILD_GROWTH ** lvl * GOVS[n.gov].buildCost * RESOURCES[n.res].buildCost * (n.trait === 'builder' ? 0.8 : 1);
   }
 
   buildDays(n: Nation, b: BuildingType) {
     const lvl = n.b[b] + n.bq.filter((q) => q.type === b).length;
-    return Math.round((BUILDINGS[b].days * (1 + 0.25 * lvl)) / GOVS[n.gov].buildSpeed);
+    return Math.round((BUILDINGS[b].days * (1 + 0.25 * lvl)) / (GOVS[n.gov].buildSpeed * (n.trait === 'builder' ? 1.2 : 1)));
   }
 
   prodDays(n: Nation, u: UnitType, count: number) {
@@ -429,12 +471,13 @@ export class Engine {
     }
     const resB = RESOURCES[n.res].gdp * (1 + 0.3 * n.b.mining);
     const trades = Object.values(this.s.nations).filter((o) => o.alive && o.id !== n.id && this.trading(n.id, o.id)).length;
-    const tradeB = Math.min(0.2, trades * (n.res === 'ports' ? 0.05 : 0.03));
-    d.gdp = gdpBase * (1 + 0.08 * n.b.industry + 0.04 * (n.tech - 1) + resB + tradeB);
+    const tradeB = Math.min(0.3, trades * (n.res === 'ports' ? 0.05 : 0.03) * (n.trait === 'diplomat' ? 2 : 1));
+    d.gdp = gdpBase * Math.max(0.3, 1 + 0.08 * n.b.industry + 0.04 * (n.tech - 1) + resB + tradeB + TERRAINS[n.terrain].gdp);
     const eff = (0.55 + 0.45 * n.stability / 100) * Math.max(0.6, 1 - 0.012 * Math.max(0, terrs.length - 3));
-    d.income = (d.gdp * n.tax * eff * GOVS[n.gov].income) / 12 + (n.res === 'gold' ? gdpBase * 0.002 * (1 + 0.3 * n.b.mining) : 0);
+    d.income = (d.gdp * n.tax * eff * GOVS[n.gov].income * (n.trait === 'economist' ? 1.08 : 1)) / 12 + (n.res === 'gold' ? gdpBase * 0.002 * (1 + 0.3 * n.b.mining) : 0);
     const all = this.movingUnits(n.id);
-    for (const k of UNIT_TYPES) all[k] += n.units[k];
+    const inb = unitsInBattles(this, n.id);
+    for (const k of UNIT_TYPES) all[k] += n.units[k] + inb[k];
     for (const q of n.q) if (q.kind === 'unit') all[q.type as UnitType] += q.count;
     let up = 0, man = 0;
     for (const k of UNIT_TYPES) { up += all[k] * UNITS[k].upkeep; man += all[k] * UNITS[k].man; }
@@ -445,10 +488,10 @@ export class Engine {
     d.slots = slots + (n.luck === 'fortress' ? 3 : 0);
     d.used = BUILDING_TYPES.reduce((s, b) => s + n.b[b], 0) + n.bq.length;
     d.manpower = Math.round(pop * 40 - man);
-    d.research = (1.5 + 2.5 * n.b.research + Math.sqrt(Math.max(0, d.gdp)) / 6) * GOVS[n.gov].research * RESOURCES[n.res].research;
+    d.research = (1.5 + 2.5 * n.b.research + Math.sqrt(Math.max(0, d.gdp)) / 6) * GOVS[n.gov].research * RESOURCES[n.res].research * (n.trait === 'scientist' ? 1.3 : 1);
     d.power = unitPower(all, n.tech);
     d.atWar = this.enemies(n.id).length;
-    d.score = Math.round(area / 20000 + pop + d.gdp * 0.2 + d.power * 0.5 + n.tech * 40 + n.st.won * 3 + n.st.conq * 8);
+    d.score = Math.round(area / 20000 + pop + d.gdp * 0.2 + d.power * 0.5 + n.tech * 40 + n.st.won * 3 + n.st.conq * 8 + n.bonus);
   }
 
   // ---------------- الوقت ----------------
@@ -500,7 +543,7 @@ export class Engine {
         if (!n.ai) n.ai = { pers: 'balanced', next: s.day };
         aiThink(this, n);
         const diff = n.kind === 'bot' ? s.settings.difficulty : 'normal';
-        n.ai.next = s.day + (diff === 'easy' ? 22 : diff === 'hard' ? 10 : 15) + this.randInt(0, 5);
+        n.ai.next = s.day + (diff === 'easy' ? 30 : diff === 'hard' ? 16 : 22) + this.randInt(0, 6);
       }
     }
     // الحركات
@@ -509,11 +552,15 @@ export class Engine {
       s.moves = s.moves.filter((m) => m.arrive > s.day);
       for (const m of arrived) this.resolveMove(m);
     }
+    tickBattles(this);
     if (s.day % DAYS_PER_MONTH === 0) this.monthly();
   }
 
   monthly() {
     const s = this.s;
+    // الدول الأضعف (آخر 40% بالترتيب) تاخذ دعم: جيش أرخص ونمو أسرع
+    const ranked = Object.values(s.nations).filter((n) => n.alive).sort((a, b) => b.d.score - a.d.score);
+    ranked.forEach((n, i) => { n.underdog = ranked.length >= 3 && i >= Math.ceil(ranked.length * 0.6); });
     for (const n of Object.values(s.nations)) if (n.alive) this.monthlyNation(n);
     // المحايدة: نمو بطيء وتعويض الحامية
     const str = { weak: 0.6, normal: 1, strong: 1.6 }[s.settings.neutral];
@@ -521,6 +568,7 @@ export class Engine {
       t.unrest = Math.max(0, t.unrest - 1);
       t.nuked = Math.max(0, t.nuked - 1);
       if (t.owner !== '') continue;
+      if (s.battles.some((b) => b.terr === t.id)) continue;
       t.gdp *= 1 + 0.015 / 12;
       t.pop *= 1 + 0.01 / 12;
       if (t.g && t.gmax) {
@@ -536,8 +584,18 @@ export class Engine {
     // انتهاء الاقتراحات القديمة
     s.props = s.props.filter((p) => s.day - p.day < 60 && s.nations[p.from]?.alive && s.nations[p.to]?.alive);
     // الأحداث العشوائية
-    for (const n of Object.values(s.nations)) if (n.alive && this.rand() < 0.035) this.randomEvent(n);
+    for (const n of Object.values(s.nations)) if (n.alive && this.rand() < 0.025) this.randomEvent(n);
     for (const n of Object.values(s.nations)) if (n.alive) this.recompute(n);
+    checkMissions(this);
+    if (s.day % (6 * DAYS_PER_MONTH) === 0) checkCoalition(this);
+    if (s.mods.arms && s.day >= s.mods.arms) {
+      delete s.mods.arms;
+      this.news('⚔️', 'انتهى سباق التسلح، الأسلحة رجعت لأسعارها', 'system');
+    }
+    if (s.nextWorld > 0 && s.day >= s.nextWorld) {
+      fireWorldEvent(this);
+      scheduleWorld(this);
+    }
     this.checkWin();
   }
 
@@ -558,17 +616,19 @@ export class Engine {
     const pc = d.gdp / Math.max(0.1, d.pop);
     const catchup = pc < 5 ? 0.01 : pc < 15 ? 0.005 : 0;
     const war = d.atWar > 0 ? 0.005 : 0;
-    const g = clamp(0.02 + Math.min(0.02, 0.004 * n.b.infra) + GOVS[n.gov].growth + ((n.stability - 50) / 50) * 0.008 + catchup - war, -0.05, 0.06);
-    const pg = clamp(0.01 + 0.003 * n.b.health + RESOURCES[n.res].popGrowth - (war ? 0.002 : 0), -0.02, 0.04);
+    const bonusG = (n.trait === 'economist' ? 0.01 : 0) + TERRAINS[n.terrain].growth + (n.underdog ? 0.01 : 0);
+    const g = clamp(0.02 + Math.min(0.02, 0.004 * n.b.infra) + GOVS[n.gov].growth + ((n.stability - 50) / 50) * 0.008 + catchup - war + bonusG, -0.05, 0.07);
+    const pg = clamp(0.01 + 0.003 * n.b.health + RESOURCES[n.res].popGrowth + TERRAINS[n.terrain].popGrowth - (war ? 0.002 : 0), -0.02, 0.04);
     for (const t of terrs) {
       t.gdp *= 1 + g / 12;
       t.pop *= 1 + pg / 12;
     }
     // الاستقرار
     const occupied = terrs.filter((t) => t.unrest > 0).length;
+    const populist = n.trait === 'populist';
     const target =
-      55 + GOVS[n.gov].stab + RESOURCES[n.res].stab + 4 * n.b.health - (n.tax - 0.2) * 150 - d.atWar * 5 * GOVS[n.gov].weariness -
-      occupied * 2 - (n.treasury < 0 ? 15 : 0) - Math.max(0, terrs.length - 4) * 1;
+      55 + GOVS[n.gov].stab + RESOURCES[n.res].stab + 4 * n.b.health + (populist ? 12 : 0) - (n.tax - 0.2) * 150 * (populist ? 0.5 : 1) -
+      d.atWar * 5 * GOVS[n.gov].weariness - occupied * 2 - (n.treasury < 0 ? 15 : 0) - Math.max(0, terrs.length - 5) * 1.5;
     n.stability = clamp(n.stability + (target - n.stability) * 0.15, 0, 100);
     // البحث
     n.research += d.research;
@@ -578,21 +638,36 @@ export class Engine {
       this.news('🧪', `${n.name} وصلت لتكنولوجيا ${TECH_NAMES[n.tech]} (مستوى ${n.tech})`, 'econ', { n: [n.id] });
     }
     if (n.tech >= MAX_TECH) n.research = Math.min(n.research, 999);
-    // ثورة
-    if (n.stability < 20 && terrs.length > 1 && this.rand() < 0.12) {
+    // مقاومة شعبية: الأراضي المحتلة حديثاً تثور لو الاستقرار ضعيف
+    if (n.stability < 50) {
+      const p = ((50 - n.stability) / 50) * 0.06;
+      let max = 2;
+      for (const t of terrs) {
+        if (max <= 0) break;
+        if (t.unrest > 0 && t.id !== n.capital && this.rand() < p) { this.revolt(t, n); max--; }
+      }
+    }
+    // ثورة: الإمبراطوريات غير المستقرة تخسر أراضي
+    if (n.stability < 30 && terrs.length > 1 && this.rand() < 0.1) {
       const cands = terrs.filter((t) => t.id !== n.capital).sort((a, b) => b.unrest - a.unrest);
       const t = cands[0];
       if (t) {
-        t.owner = '';
-        t.unrest = 0;
-        const inf = Math.max(3, Math.round(Math.sqrt(t.pop) * 2));
-        t.g = { inf, tank: Math.round(inf / 4) };
-        t.gmax = t.g.inf * 2 + t.g.tank * 3.5;
-        t.nt = Math.max(1, n.tech - 1);
+        this.revolt(t, n);
         n.stability += 10;
-        this.news('✊', `ثورة في ${this.tname(t.id)}! أعلنت استقلالها عن ${n.name}`, 'event', { n: [n.id], terr: t.id });
       }
     }
+    checkTransitional(this, n);
+  }
+
+  /** أرض تعلن استقلالها وتصير محايدة */
+  revolt(t: Territory, n: Nation) {
+    t.owner = '';
+    t.unrest = 0;
+    const inf = Math.max(3, Math.round(Math.sqrt(t.pop) * 2));
+    t.g = { inf, tank: Math.round(inf / 4) };
+    t.gmax = t.g.inf * 2 + t.g.tank * 3.5;
+    t.nt = Math.max(1, n.tech - 1);
+    this.news('✊', `ثورة في ${this.tname(t.id)}! أعلنت استقلالها عن ${n.name}`, 'event', { n: [n.id], terr: t.id });
   }
 
   private randomEvent(n: Nation) {
@@ -646,68 +721,14 @@ export class Engine {
 
   travelDays(n: Nation, from: TerrId, to: TerrId, naval: boolean) {
     const speed = 1 + 0.12 * n.b.infra;
-    if (naval) return clamp(Math.round((this.w.dist(from, to) + 400) / (150 * speed)), 6, 60);
-    return clamp(Math.round(this.w.centerDist(from, to) / (60 * speed)), 4, 50);
+    if (naval) return clamp(Math.round((this.w.dist(from, to) + 400) / (110 * speed)), 8, 75);
+    return clamp(Math.round(this.w.centerDist(from, to) / (45 * speed)), 6, 60);
   }
 
   strikeRange(n: Nation, to: TerrId): number {
     let best = Infinity;
     for (const t of this.owned(n.id)) best = Math.min(best, this.w.dist(t.id, to));
     return best;
-  }
-
-  /** تقدير قوة الدفاع عن منطقة */
-  defense(to: TerrId, attacker: NationId | null, dryRun = true): { D: number; units: Partial<Units>; allies: { id: NationId; units: Partial<Units> }[]; share: number } {
-    const t = this.s.terr[to];
-    const m = this.w.get(to);
-    const coastal = !!m.c;
-    const terrain = 1 + 0.1 * m.cls;
-    const militia = 0.5 + t.pop * 0.02;
-    if (t.owner === '') {
-      const g = t.g ?? { inf: 0, tank: 0 };
-      const raw = g.inf * UNITS.inf.def + g.tank * UNITS.tank.def + militia;
-      return { D: raw * techMult(t.nt ?? 1) * terrain, units: { inf: g.inf, tank: g.tank }, allies: [], share: 1 };
-    }
-    const D = this.s.nations[t.owner];
-    const share = to === D.capital ? 1 : 1 / Math.sqrt(Math.max(1, D.d.terrs || this.owned(D.id).length));
-    const u: Partial<Units> = {};
-    for (const k of COMBAT_UNITS) u[k] = Math.floor(D.units[k] * share);
-    let raw = militia;
-    for (const k of COMBAT_UNITS) if (k !== 'ship' || coastal) raw += (u[k] ?? 0) * UNITS[k].def;
-    let pow = raw * techMult(D.tech) * (1 + 0.1 * D.b.fort) * terrain * (to === D.capital ? 1.15 : 1) * (0.8 + 0.2 * D.stability / 100);
-    const allies: { id: NationId; units: Partial<Units> }[] = [];
-    for (const aid of this.allies(D.id)) {
-      if (aid === attacker) continue;
-      const X = this.s.nations[aid];
-      const cu: Partial<Units> = {};
-      let r = 0;
-      for (const k of COMBAT_UNITS) {
-        cu[k] = Math.floor(X.units[k] * 0.15);
-        if (k !== 'ship' || coastal) r += (cu[k] ?? 0) * UNITS[k].def;
-      }
-      if (r > 0) { pow += r * techMult(X.tech); allies.push({ id: aid, units: cu }); }
-    }
-    void dryRun;
-    return { D: pow, units: u, allies, share };
-  }
-
-  attackPower(n: Nation, units: Partial<Units>, to: TerrId): number {
-    const coastal = !!this.w.get(to).c;
-    let raw = 0;
-    for (const k of COMBAT_UNITS) if (k !== 'ship' || coastal) raw += (units[k] ?? 0) * UNITS[k].atk;
-    return raw * techMult(n.tech) * GOVS[n.gov].atk * (0.8 + 0.2 * n.stability / 100);
-  }
-
-  /** احتمالية الفوز التقريبية (الحظ ±25% للطرفين) */
-  winChance(A: number, D: number): number {
-    if (D <= 0) return 1;
-    if (A <= 0) return 0;
-    let w = 0;
-    const N = 24;
-    for (let i = 0; i < N; i++) for (let j = 0; j < N; j++) {
-      if (A * (0.75 + (0.5 * (i + 0.5)) / N) > D * (0.75 + (0.5 * (j + 0.5)) / N)) w++;
-    }
-    return w / (N * N);
   }
 
   private applyLoss(units: Partial<Units>, frac: number, target: Units | Partial<Units>): Partial<Units> {
@@ -724,7 +745,7 @@ export class Engine {
     return loss;
   }
 
-  private startReturn(m: Movement) {
+  startReturn(m: Movement) {
     const total = UNIT_TYPES.reduce((s, k) => s + m.units[k], 0);
     if (!total) return;
     const dur = Math.max(3, Math.round((m.arrive - m.depart) * 0.8));
@@ -751,68 +772,16 @@ export class Engine {
       return;
     }
     if (D && !this.atWar(A.id, D.id)) this.declareWar(A, D);
-
-    const def = this.defense(T.id, A.id, false);
-    let Apow = this.attackPower(A, m.units, T.id);
-    let Dpow = def.D;
-    const aj = m.units.jet;
-    const dj = (def.units.jet ?? 0) + def.allies.reduce((x, a) => x + (a.units.jet ?? 0), 0);
-    if (aj >= 3 && aj > 2 * dj) Apow *= 1.15;
-    else if (dj >= 3 && dj > 2 * aj) Dpow *= 1.1;
-    const la = 0.75 + 0.5 * this.rand();
-    const ld = 0.75 + 0.5 * this.rand();
-    const Af = Apow * la;
-    const Df = Dpow * ld;
-    const win = Af > Df;
-    const r = Math.min(Af, Df) / Math.max(Af, Df, 0.001);
-    const wl = 0.06 + 0.45 * r ** 1.3;
-    const ll = Math.min(0.95, 0.45 + 0.45 * (1 - r));
-    const aUnits: Partial<Units> = {};
-    for (const k of COMBAT_UNITS) if (m.units[k]) aUnits[k] = m.units[k];
-    const aLoss = this.applyLoss(aUnits, win ? wl : ll, m.units);
-    let dLoss: Partial<Units> = {};
-    const dFrac = win ? ll : wl;
-    if (D) {
-      dLoss = this.applyLoss(def.units, dFrac, D.units);
-      for (const al of def.allies) {
-        const X = s.nations[al.id];
-        this.applyLoss(al.units, dFrac * 0.5, X.units);
-      }
-    } else if (T.g) {
-      const g = T.g as Partial<Units>;
-      dLoss = this.applyLoss(def.units, dFrac, g);
-    }
-    const rep: Report = {
-      id: this.id(), day: s.day, kind: 'battle', att: A.id, def: D?.id ?? '', terr: T.id, from: m.from,
-      A: Math.round(Apow), D: Math.round(Dpow), la: Math.round(la * 100), ld: Math.round(ld * 100), win,
-      aUnits, dUnits: def.units, aLoss, dLoss, allies: def.allies.map((a) => a.id),
-    };
-    s.reports.push(rep);
-    if (s.reports.length > 30) s.reports.splice(0, s.reports.length - 30);
-    if (win) {
-      A.st.won++;
-      A.st.conq++;
-      if (A.ai) A.ai.cool = s.day + this.randInt(A.ai.pers === 'aggressive' ? 30 : 45, A.ai.pers === 'aggressive' ? 70 : 110);
-      if (D) { D.st.lost++; D.st.lostT++; }
-      for (const k of UNIT_TYPES) A.units[k] += m.units[k];
-      this.conquer(T, A, D);
-    } else {
-      A.st.lost++;
-      if (D) D.st.won++;
-      this.news('🛡️', `${D ? D.name : this.tname(T.id)} صدّت هجوم ${A.name} على ${this.tname(T.id)}`, 'battle', { n: [A.id, D?.id ?? ''], terr: T.id });
-      this.startReturn(m);
-    }
-    this.recompute(A);
-    if (D && D.alive) this.recompute(D);
+    startBattle(this, m);
   }
 
-  private conquer(T: Territory, A: Nation, D: Nation | null) {
+  conquer(T: Territory, A: Nation, D: Nation | null, days = 0) {
     T.owner = A.id;
     T.unrest = D ? 12 : 8;
     T.pop *= 0.97;
     T.gdp *= 0.9;
     delete T.g; delete T.gmax; delete T.nt;
-    this.news('🏴', `${A.name} احتلت ${this.tname(T.id)}${D ? ` من ${D.name}` : ''}`, 'battle', { n: [A.id, D?.id ?? ''], terr: T.id });
+    this.news('🏴', `${A.name} احتلت ${this.tname(T.id)}${D ? ` من ${D.name}` : ''}${days ? ` بعد معركة ${days} يوم` : ''}`, 'battle', { n: [A.id, D?.id ?? ''], terr: T.id });
     if (D) {
       D.stability = clamp(D.stability - (T.id === D.capital ? 15 : 8), 0, 100);
       const rest = this.owned(D.id);
@@ -832,6 +801,7 @@ export class Engine {
     D.units = emptyUnits();
     D.q = []; D.bq = [];
     s.moves = s.moves.filter((m) => m.owner !== D.id);
+    s.battles = s.battles.filter((b) => b.att !== D.id);
     s.props = s.props.filter((p) => p.from !== D.id && p.to !== D.id);
     for (const k of Object.keys(s.rel)) if (k.split('|').includes(D.id)) delete s.rel[k];
     this.news('💀', `${D.name} (${D.leader}) سقطت${by ? ` على يد ${by.name}` : ''}!`, 'war', { n: [D.id] });
@@ -963,6 +933,7 @@ export class Engine {
     if (c.t === 'spin') return this.spin(nid, c.wheel);
     if (c.t === 'respin') return this.respin(nid, c.wheel);
     if (c.t === 'autospin') { this.autospin(nid); return { ok: true }; }
+    if (c.t === 'ready') return this.ready(nid);
     const n = s.nations[nid];
     if (c.t === 'chat') {
       const text = c.text.trim().slice(0, 300);
@@ -1044,6 +1015,7 @@ export class Engine {
         this.news('☢️', `${n.name} بدأت برنامج نووي!`, 'nuke', { n: [n.id] });
         return { ok: true };
       }
+      case 'fortune': return spinFortune(this, n);
       case 'attack': return this.cmdAttack(n, c.to, c.units);
       case 'strike': return this.cmdStrike(n, c.to, c.kind, c.n);
       case 'propose': return this.cmdPropose(n, c.to, c.type);

@@ -2,6 +2,7 @@
 import { useMemo, useState } from 'preact/hooks';
 import type { Controller } from '../client/controller';
 import { SHIP_CAPACITY, UNITS, missileRange } from '../game/defs';
+import { estimate } from '../game/battle';
 import type { Engine } from '../game/engine';
 import type { Nation, Report, TerrId, Units, UnitType } from '../game/types';
 import { COMBAT_UNITS } from '../game/types';
@@ -33,9 +34,8 @@ export function AttackDialog({ ctl, eng, me, to, onClose }: { ctl: Controller; e
     init.ship = route?.naval ? Math.min(me.units.ship, Math.max(Math.ceil(land / SHIP_CAPACITY), Math.ceil(me.units.ship * 0.6))) : coastal ? Math.floor(me.units.ship * 0.3) : 0;
     return init;
   });
-  const def = eng.defense(to, me.id);
-  const A = eng.attackPower(me, u, to);
-  const p = eng.winChance(A, def.D);
+  const est = useMemo(() => estimate(eng, me, u, to, 40), [to, u.inf, u.tank, u.jet, u.ship, me.tech, me.d.terrs]);
+  const p = est.p;
   const [label, tone] = chanceLabel(p);
   const land = (u.inf ?? 0) + (u.tank ?? 0);
   const needShips = route?.naval ? Math.ceil(land / SHIP_CAPACITY) : 0;
@@ -45,6 +45,7 @@ export function AttackDialog({ ctl, eng, me, to, onClose }: { ctl: Controller; e
   const types: UnitType[] = route?.naval || coastal ? COMBAT_UNITS : ['inf', 'tank', 'jet'];
 
   const go = async () => {
+    if (p < 0.15 && !confirm(`فرصة الفوز ${Math.round(p * 100)}% بس، وبتخسر أغلب جيشك. متأكد؟`)) return;
     const r = await ctl.send({ t: 'attack', to, units: u });
     if (r.ok) {
       sfx.alert();
@@ -82,19 +83,25 @@ export function AttackDialog({ ctl, eng, me, to, onClose }: { ctl: Controller; e
       <div class="vs">
         <div class="vs-side">
           <div class="muted small">قوة هجومك</div>
-          <div class="vs-n">{fmtNum(A)}</div>
+          <div class="vs-n">{fmtNum(est.A)}</div>
         </div>
         <div class="vs-mid">ضد</div>
         <div class="vs-side">
           <div class="muted small">دفاعهم (تقريباً)</div>
-          <div class="vs-n">{fmtNum(def.D)}</div>
-          {def.allies.length > 0 && <div class="muted small">+ دعم {def.allies.length} حليف</div>}
+          <div class="vs-n">{fmtNum(est.D)}</div>
         </div>
       </div>
+      {est.mods.length > 0 && (
+        <div class="mods">
+          {est.mods.map((m) => <span class="badge" key={m}>{m}</span>)}
+        </div>
+      )}
       <div class={`chance ${tone}`}>
         فرصة الفوز: <b>{Math.round(p * 100)}%</b> ({label})
         <div class="chance-bar"><div style={{ width: `${p * 100}%` }} /></div>
-        <div class="muted small">الحظ يأثر ±25% على الطرفين 🎲</div>
+        <div class="muted small">
+          المعركة تاخذ تقريباً {est.days} يوم، وخسائرك المتوقعة {Math.round(est.aLoss * 100)}% من القوات المرسلة. الأقوى يفوز غالباً، والحظ اليومي بسيط 🎲
+        </div>
       </div>
       <div class="modal-foot">
         <button class="btn" onClick={onClose}>إلغاء</button>
@@ -225,7 +232,7 @@ export function ReportModal({ eng, rep, myId, onClose }: { eng: Engine; rep: Rep
             {A && <NationTag name={A.name} color={A.color} flag={A.home} />}
             <div class="muted small">القوات</div>
             <UnitsLine u={rep.aUnits} />
-            <div class="rep-pow">القوة {fmtNum(rep.A)} × حظ {rep.la}% = <b>{fmtNum((rep.A * rep.la) / 100)}</b></div>
+            <div class="rep-pow">قوة البداية {fmtNum(rep.A)} · بقي <b>{rep.la}%</b></div>
             <div class="muted small">الخسائر</div>
             <UnitsLine u={rep.aLoss} />
           </div>
@@ -235,7 +242,7 @@ export function ReportModal({ eng, rep, myId, onClose }: { eng: Engine; rep: Rep
             {D ? <NationTag name={D.name} color={D.color} flag={D.home} /> : <span>{eng.w.name(rep.terr)} (محايدة)</span>}
             <div class="muted small">القوات</div>
             <UnitsLine u={rep.dUnits} />
-            <div class="rep-pow">القوة {fmtNum(rep.D)} × حظ {rep.ld}% = <b>{fmtNum((rep.D * rep.ld) / 100)}</b></div>
+            <div class="rep-pow">قوة البداية {fmtNum(rep.D)} · بقي <b>{rep.ld}%</b></div>
             <div class="muted small">الخسائر</div>
             <UnitsLine u={rep.dLoss} />
             {rep.allies.length > 0 && <div class="muted small">بمساعدة: {rep.allies.map((a) => s.nations[a]?.name).join('، ')}</div>}
@@ -255,7 +262,13 @@ export function ReportModal({ eng, rep, myId, onClose }: { eng: Engine; rep: Rep
           <UnitsLine u={rep.dLoss} />
         </div>
       )}
-      <div class="muted small center">{rep.win && rep.kind === 'battle' ? `${eng.w.name(rep.terr)} صارت تابعة لـ ${A?.name}` : ''}</div>
+      {rep.kind === 'battle' && (
+        <div class="rep-foot">
+          {rep.days ? <div>⏱️ المعركة استمرت {rep.days} يوم</div> : null}
+          {rep.mods && rep.mods.length > 0 && <div class="mods">{rep.mods.map((m) => <span class="badge" key={m}>{m}</span>)}</div>}
+          <div class="muted small">{rep.win ? `${eng.w.name(rep.terr)} صارت تابعة لـ ${A?.name}` : 'المهاجم انسحب بالقوات اللي بقت'}</div>
+        </div>
+      )}
     </Modal>
   );
 }

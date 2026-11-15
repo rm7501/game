@@ -442,7 +442,7 @@ details.block > summary::-webkit-details-marker { display: none; }
 .howto p { margin: 0; color: #cdd5ea; }
 
 /* التنبيهات */
-.toasts { position: fixed; top: calc(var(--hud-h) + 10px); left: 50%; transform: translateX(-50%); z-index: 60; display: flex; flex-direction: column; gap: 6px; width: min(520px, calc(100% - 20px)); pointer-events: none; }
+.toasts { position: fixed; top: calc(var(--hud-h) + 10px); left: 50%; transform: translateX(-50%); z-index: 38; display: flex; flex-direction: column; gap: 6px; width: min(520px, calc(100% - 20px)); pointer-events: none; }
 .toast {
   pointer-events: auto; display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 13px;
   background: rgba(14, 21, 44, 0.97); border: 1px solid var(--line2); box-shadow: var(--shadow); font-weight: 700; font-size: 14px; animation: drop 0.25s ease-out;
@@ -510,4 +510,55 @@ details.block > summary::-webkit-details-marker { display: none; }
   .report { grid-template-columns: 1fr; }
   .rep-vs { display: none; }
   .room-code b { font-size: 32px; letter-spacing: 6px; }
+}
+
+/* ============ الإصدار 2: بطاقة الدولة، المعارك، عجلات اللعبة ============ */
+.wheel-dots { flex-wrap: wrap; justify-content: flex-end; }
+.summary { width: min(760px, 100%); display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 8px 0 20px; animation: pop 0.35s ease-out; }
+.summary-head { display: flex; align-items: center; gap: 14px; text-align: start; }
+.summary-title { font-family: var(--display); font-size: 36px; color: var(--gold); line-height: 1.1; }
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; width: 100%; }
+.sum-item { display: flex; gap: 10px; align-items: flex-start; padding: 10px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); text-align: start; }
+.sum-item.good { border-color: rgba(52, 211, 153, 0.45); }
+.sum-item.bad { border-color: rgba(248, 113, 113, 0.5); }
+.sum-icon { font-size: 26px; line-height: 1.1; }
+.sum-body { display: flex; flex-direction: column; min-width: 0; line-height: 1.35; }
+.sum-label { font-size: 11.5px; color: var(--muted); }
+.sum-desc { font-size: 12px; color: var(--muted); }
+.reveal.static { position: static; margin: 10px auto 0; animation: pop 0.3s ease-out; }
+.game-wheel { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.fortune-ready { cursor: pointer; background: linear-gradient(180deg, #ffd86b, #e0a21f) !important; color: #2b1d00; border-color: #c98a12 !important; animation: glowpulse 1.4s ease-in-out infinite; }
+@keyframes glowpulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(245, 197, 66, 0.5); } 50% { box-shadow: 0 0 0 6px rgba(245, 197, 66, 0); } }
+button.chip-stat { font-family: inherit; }
+.traits { display: flex; flex-wrap: wrap; gap: 4px; }
+.block.mission { border-color: rgba(245, 197, 66, 0.35); background: rgba(245, 197, 66, 0.05); }
+.block.mission.done { border-color: rgba(52, 211, 153, 0.45); background: rgba(52, 211, 153, 0.06); }
+.battle-box { padding: 8px; border-radius: 10px; background: rgba(248, 113, 113, 0.08); border: 1px solid rgba(248, 113, 113, 0.35); display: flex; flex-direction: column; gap: 5px; }
+.bb-row { display: flex; align-items: center; gap: 8px; }
+.battle-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 4px 0; }
+.battle-row:hover .br-title { color: var(--gold); }
+.br-title { font-weight: 700; white-space: nowrap; }
+.br-bars { display: flex; flex-direction: column; gap: 3px; flex: 1; max-width: 160px; }
+.br-bars .bar { height: 6px; }
+.mods { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0; }
+.rep-foot { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 10px; text-align: center; }
+.missions-reveal { margin-top: 12px; text-align: start; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px; }
+.missions-reveal summary { cursor: pointer; font-weight: 800; }
+.missions-reveal ul { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; }
+.battle-mark { pointer-events: none; }
+.bm-ring { fill: none; stroke: #ff5d5d; stroke-width: 2.5; animation: bmpulse 1.1s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+.bm-core { fill: rgba(20, 8, 8, 0.85); stroke: #ff5d5d; stroke-width: 1.5; }
+.battle-mark.mine .bm-ring, .battle-mark.mine .bm-core { stroke: #ffd54a; }
+.bm-emoji { font-size: 11px; text-anchor: middle; }
+@keyframes bmpulse { from { transform: scale(0.7); opacity: 1; } to { transform: scale(1.9); opacity: 0; } }
+@media (max-width: 900px) {
+  .wdot { width: 26px; height: 26px; font-size: 12px; }
+  .summary-title { font-size: 28px; }
+  .summary-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 420px) {
+  .summary-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  .summary > .btn-gold { position: sticky; bottom: 14px; z-index: 2; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55); }
 }

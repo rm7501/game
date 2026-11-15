@@ -86,7 +86,7 @@ export function loadSave(): GameState | null {
     const raw = localStorage.getItem(SAVE_KEY);
     if (!raw) return null;
     const s = JSON.parse(raw) as GameState;
-    if (s.v !== 1 || s.mode !== 'single' || s.phase === 'ended') return null;
+    if (s.v !== 2 || s.mode !== 'single' || s.phase === 'ended') return null;
     return s;
   } catch {
     return null;
@@ -171,7 +171,7 @@ export class HostController extends Controller {
   forceStart() {
     const s = this.state;
     if (s.phase !== 'wheels') return;
-    for (const nid of Object.keys(s.wheels)) this.engine.autospin(nid);
+    this.engine.readyAll();
     if (!s.countdown) s.countdown = Date.now() + 3000;
     this.dirty = true;
     this.flush(true);
@@ -209,7 +209,13 @@ export class HostController extends Controller {
         this.dirty = true;
       }
     }
-    if (s.phase === 'playing' && !s.paused) {
+    // وقت الأحداث العالمية نوقف اللعبة ثواني عشان الكل يشوف العجلة
+    const hold = !!s.holdUntil && Date.now() < s.holdUntil;
+    if (s.holdUntil && !hold) {
+      s.holdUntil = undefined;
+      this.dirty = true;
+    }
+    if (s.phase === 'playing' && !s.paused && !hold) {
       const before = s.day;
       this.engine.advance((dt / MS_PER_DAY) * s.speed);
       if (s.day !== before) this.dirty = true;
