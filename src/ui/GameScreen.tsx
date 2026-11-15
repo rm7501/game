@@ -16,6 +16,8 @@ import { ChatTab, DiplomacyTab, EconomyTab, MilitaryTab, NewsTab, OverviewTab, R
 import { TerritoryCard } from './TerritoryCard';
 import { toast } from './toast';
 import { CardsModal, SpyDialog, UNModal } from './plans';
+import { DevBadge, DevPanel } from './dev/DevPanel';
+import { isController } from '../game/dev';
 import { UN_RES } from '../game/defs';
 
 type Dialog =
@@ -60,6 +62,9 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
   const [muted, setMutedS] = useState(isMuted());
   const [hover, setHover] = useState<{ id: string; x: number; y: number } | null>(null);
   const [unread, setUnread] = useState(0);
+  const [devOpen, setDevOpen] = useState(false);
+  const iControl = isController(s, ctl.me);
+  const canEnableDev = !s.dev && ctl.me === (s.owner ?? s.hostId) && s.phase === 'playing';
   const mapBox = useRef<HTMLDivElement>(null);
   const map = useRef<MapRenderer | null>(null);
   const seen = useRef({ news: maxId(s.news), reps: maxId(s.reports), props: maxId(s.props), chat: maxId(s.chat), dead: !meAny || !meAny.alive, propToast: 0, world: s.world?.id ?? 0, fortune: false, un: s.un?.id ?? 0, unLast: s.unLast?.id ?? 0 });
@@ -279,9 +284,9 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
     <div class={`game ${panelOpen ? 'panel-open' : ''}`}>
       <header class="hud">
         <div class="hud-nation" onClick={() => openTab('overview')}>
-          {meAny ? <Flag id={meAny.home} size={22} /> : <span>👁️</span>}
+          {meAny ? <Flag id={meAny.home} size={22} /> : <span>{s.players[ctl.me]?.gm ? '🛠️' : '👁️'}</span>}
           <div class="hud-nname">
-            <b style={{ color: meAny?.color }}>{meAny?.name ?? 'متفرج'}</b>
+            <b style={{ color: meAny?.color }}>{meAny?.name ?? (s.players[ctl.me]?.gm ? 'المتحكم' : 'متفرج')}</b>
             <span class="muted small">{dateStr(s.day)}</span>
           </div>
         </div>
@@ -308,6 +313,7 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
           <span class="chip-stat date-chip">{dateStr(s.day)}</span>
           {inPeace && <span class="chip-stat peace" title="فترة السلام: ما أحد يقدر يهاجم دولة لاعب أو بوت">🕊️ <span class="peace-long">سلام لين</span> {dateStr(peaceEnd)}</span>}
           {ctl.status !== 'ok' && <span class="chip-stat bad">{ctl.status === 'connecting' ? '🔄 يتصل...' : '📴 مفصول'}</span>}
+          {!iControl && <DevBadge ctl={ctl} />}
           {isHost ? (
             <span class="speed">
               <button class={`icon-btn ${s.paused ? 'on' : ''}`} title={s.paused ? 'كمل' : 'إيقاف مؤقت'} onClick={() => ctl.send({ t: 'pause', paused: !s.paused })}>
@@ -333,7 +339,9 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
           <button class="icon-btn" onClick={() => map.current?.zoomBy(1 / 1.6)} aria-label="تصغير">－</button>
           {me && <button class="icon-btn" title="دولتي" onClick={() => focus(me.capital)}>🎯</button>}
           <button class="icon-btn" title="العالم" onClick={() => map.current?.resetView()}>🌍</button>
+          {iControl && <button class={`icon-btn dev-btn ${devOpen ? 'on' : ''}`} title="لوحة المتحكم" onClick={() => setDevOpen(!devOpen)}>🛠️</button>}
         </div>
+        {iControl && devOpen && <DevPanel ctl={ctl} sel={sel} onClose={() => setDevOpen(false)} />}
         {hover && hoverT && wide && (
           <div class="map-tip" style={{ left: hover.x + 14, top: hover.y + 14 }}>
             <Flag id={hover.id} size={12} /> {ctl.world.name(hover.id)}
@@ -428,6 +436,16 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
           <div class="menu-list">
             <button class="btn" onClick={() => { setMuted(!muted); setMutedS(!muted); }}>{muted ? '🔇 الصوت مقفل' : '🔊 الصوت شغال'}</button>
             <button class="btn" onClick={() => { setMenu(false); setDialog({ t: 'howto' }); }}>📖 طريقة اللعب</button>
+            {iControl && <button class="btn" onClick={() => { setMenu(false); setDevOpen(true); }}>🛠️ لوحة المتحكم</button>}
+            {canEnableDev && (
+              <button class="btn" onClick={() => {
+                if (s.mode === 'online' && !confirm('تفعّل وضع المتحكم؟ تقدر تتحكم بكل شي، واللاعبين بيشوفون إن فيه متحكم.')) return;
+                ctl.send({ t: 'dev', d: { a: 'enable', on: true } }).then((r) => {
+                  if (r.ok) { setMenu(false); setDevOpen(true); sfx.good(); }
+                  else toast({ icon: '⚠️', text: r.msg ?? 'ما ينفع', kind: 'bad' });
+                });
+              }}>🛠️ فعّل وضع المتحكم</button>
+            )}
             {s.mode === 'online' && ctl.roomCode && (
               <button class="btn" onClick={() => { navigator.clipboard?.writeText(`${location.origin}${location.pathname}?room=${ctl.roomCode}`); toast({ icon: '🔗', text: 'نسخت رابط الغرفة', kind: 'good' }); }}>
                 🔗 نسخ رابط الغرفة ({ctl.roomCode})

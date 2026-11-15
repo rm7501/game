@@ -118,6 +118,11 @@ export function setupBattle(e: Engine, A: Nation | null, units: Partial<Units>, 
     else { a0 *= 0.85; mods.push('🚢 إنزال بحري -15%'); }
   }
 
+  // وضع المتحكم: مضاعف قوة المعارك
+  const gA = A ? s.dev?.god?.[A.id] : undefined;
+  const gD = D ? s.dev?.god?.[D.id] : undefined;
+  if (gA) { a0 *= gA; mods.push(`🛠️ قوة ×${gA}`); }
+  if (gD) { d0 *= gD; mods.push(`🛠️ دفاع ×${gD}`); }
   // بطاقات الخطط
   if (A && (A.fx.blitz ?? 0) > s.day) { a0 *= 1.25; mods.push('⚡ هجوم خاطف +25%'); }
   if (D && (D.fx.shield ?? 0) > s.day) { d0 *= 1.3; mods.push('🛡️ درع وطني +30%'); }
@@ -255,8 +260,9 @@ export function tickBattles(e: Engine): void {
     if (T.owner !== b.def) { endBattle(e, b, 'cancel'); continue; }
     if (D && (!D.alive || e.allied(A.id, D.id) || e.inTruce(A.id, D.id))) { endBattle(e, b, 'cancel'); continue; }
     b.days++;
-    const na = 1 + (e.rand() * 2 - 1) * BATTLE.noise;
-    const nd = 1 + (e.rand() * 2 - 1) * BATTLE.noise;
+    const noise = s.dev?.noise ?? BATTLE.noise;
+    const na = 1 + (e.rand() * 2 - 1) * noise;
+    const nd = 1 + (e.rand() * 2 - 1) * noise;
     const lossA = BATTLE.intensity * b.d * nd;
     const lossD = BATTLE.intensity * b.a * na;
     b.a = Math.max(0, b.a - lossA);

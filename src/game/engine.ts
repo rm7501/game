@@ -11,6 +11,7 @@ import { dealCards, drawCard, playCard } from './cards';
 import { addHistEvent, HIST_EVERY, recordHistory } from './history';
 import { recruitAgent, startOp, tickOps } from './spies';
 import { castVote, scheduleUN, tickUN } from './un';
+import { newDev, wheelIsOff, weightMult } from './dev';
 import type {
   BuildingType, CmdResult, Command, Derived, GameState, LeaderId, LuckId, MissionId, Movement, Nation, NationId, News, NewsKind,
   Player, Proposal, ProposalType, Relation, Report, Settings, TerrainId, Territory, TerrId, UnitType, Units, WheelId,
@@ -39,6 +40,7 @@ export function newState(mode: 'single' | 'online', settings: Settings, hostId: 
     rng: (seed ?? Math.floor(Math.random() * 2 ** 31)) >>> 0, seq: 1, hostId,
     players: {}, nations: {}, terr: {}, wheels: {}, taken: {}, moves: [], rel: {}, props: [], news: [], reports: [], chat: [],
     battles: [], nextWorld: 0, mods: {}, ops: [], nextUN: 0, nextCards: 0,
+    owner: hostId || undefined, dev: settings.dev && hostId ? newDev(hostId) : undefined,
   };
 }
 
@@ -140,11 +142,13 @@ export class Engine {
     const T = s.settings.teams;
     const size = new Array(T + 1).fill(0);
     for (const p of Object.values(s.players)) {
+      if (p.gm && s.dev?.by === p.id) continue; // المتحكم يدير بس بدون دولة
       if (T > 0) {
         if (!p.team || p.team > T) p.team = this.smallestTeam();
         size[p.team]++;
       } else delete p.team;
       s.wheels[p.nation] = { res: {}, respins: 1, done: false, ready: false, team: T > 0 ? p.team : undefined };
+      this.fillOff(p.nation);
     }
     for (let i = 1; i <= s.settings.bots; i++) {
       const nid = `B${i}`;
@@ -231,38 +235,73 @@ export class Engine {
     const ws = this.s.wheels[nid];
     const cls = ws?.res.area as number;
     const all = [...this.w.countries.values()];
-    const free = (c: number) => all.filter((m) => m.cls === c && this.countryFree(m)).map((m) => m.id);
+    // الدول اللي ثبّتها المتحكم لغيرك ما تطلع لك
+    const reserved = new Set<string>();
+    if (this.s.dev) for (const [oid, r] of Object.entries(this.s.dev.rig)) if (oid !== nid && r.country) reserved.add(String(r.country));
+    const free = (c: number) => all.filter((m) => m.cls === c && this.countryFree(m) && !reserved.has(m.id)).map((m) => m.id);
     let list = free(cls);
     // لو خلصت الدول بهذا الحجم نروح لأقرب حجم فيه دول
     for (let d = 1; !list.length && d < 6; d++) list = [...free(cls - d), ...free(cls + d)];
+    // دولة مثبتة من المتحكم
+    const rig = this.rigOf(nid, 'country') as string | undefined;
+    if (rig && !list.includes(rig) && this.w.countries.has(rig) && (this.countryFree(this.w.country(rig)) || this.s.taken[rig] === nid)) list.push(rig);
     return list;
+  }
+
+  /** نتيجة مثبتة من المتحكم (لو صالحة) */
+  rigOf(nid: NationId, wheel: WheelId): number | string | undefined {
+    return this.s.dev?.rig?.[nid]?.[wheel];
+  }
+
+  /** العجلات المقفلة تنلف تلقائياً بدون ما تطلع للاعب */
+  fillOff(nid: NationId) {
+    const ws = this.s.wheels[nid];
+    if (!ws) return;
+    let w: WheelId | null;
+    let guard = 0;
+    while ((w = this.nextWheel(nid)) && wheelIsOff(this.s, w) && guard++ < 20) this.doSpin(nid, w, undefined, true);
+    ws.done = this.nextWheel(nid) === null;
   }
 
   slicesFor(nid: NationId, wheel: WheelId): Slice[] {
     if (wheel === 'country') {
       return this.countryCandidates(nid).map((id) => ({ label: this.w.country(id).ar, icon: '', w: 1, v: id }));
     }
+    let out: Slice[];
     if (wheel === 'area') {
-      return AREA_SLICES.map((sl) => {
+      out = AREA_SLICES.map((sl) => {
         const avail = [...this.w.countries.values()].some((m) => m.cls === sl.v && this.countryFree(m));
         return { ...sl, w: avail ? sl.w : 0 };
       });
-    }
-    return STATIC_SLICES[wheel]!;
+    } else out = STATIC_SLICES[wheel]!;
+    if (!this.s.dev) return out;
+    // أوزان المتحكم (والنتيجة المثبتة لازم تكون ظاهرة على العجلة)
+    const rig = this.rigOf(nid, wheel) ?? (wheel === 'area' ? this.rigArea(nid) : undefined);
+    const mod = out.map((sl) => ({ ...sl, w: sl.w * weightMult(this.s, wheel, sl.v) }));
+    for (const sl of mod) if (rig !== undefined && sl.v === rig && sl.w <= 0) sl.w = 1;
+    return mod.some((x) => x.w > 0) ? mod : out;
   }
 
-  private doSpin(nid: NationId, wheel: WheelId, exclude?: number | string) {
+  /** لو المتحكم ثبّت دولة، عجلة المساحة تطلع على حجمها */
+  private rigArea(nid: NationId): number | undefined {
+    const c = this.rigOf(nid, 'country') as string | undefined;
+    return c && this.w.countries.has(c) ? this.w.country(c).cls : undefined;
+  }
+
+  private doSpin(nid: NationId, wheel: WheelId, exclude?: number | string, silent = false) {
     const ws = this.s.wheels[nid];
     let slices = this.slicesFor(nid, wheel);
     if (exclude !== undefined && slices.filter((x) => x.w > 0).length > 1) slices = slices.map((x) => (x.v === exclude ? { ...x, w: 0 } : x));
     if (!slices.length) return;
-    const i = this.weighted(slices.map((x) => x.w));
-    const v = slices[i].v;
+    let v = slices[this.weighted(slices.map((x) => x.w))].v;
+    const rig = this.rigOf(nid, wheel) ?? (wheel === 'area' ? this.rigArea(nid) : undefined);
+    if (rig !== undefined && slices.some((x) => x.v === rig)) v = rig;
     ws.res[wheel] = v;
     if (wheel === 'country') this.s.taken[v as string] = nid;
     if (wheel === 'luck' && v === 'respin') ws.respins += 2;
-    ws.last = { wheel, nonce: (ws.last?.nonce ?? 0) + 1 };
+    if (!silent) ws.last = { wheel, nonce: (ws.last?.nonce ?? 0) + 1 };
     ws.done = this.nextWheel(nid) === null;
+    if (!silent && this.s.dev) this.fillOff(nid);
   }
 
   /** اللاعب شاف بطاقة دولته وضغط «جاهز» */
@@ -297,6 +336,7 @@ export class Engine {
     const ws = this.s.wheels[nid];
     if (!ws || ws.res[wheel] === undefined) return { ok: false, msg: 'لازم تلف العجلة أول' };
     if (ws.respins <= 0) return { ok: false, msg: 'خلصت إعادات اللف' };
+    if (wheelIsOff(this.s, wheel)) return { ok: false, msg: 'هذي العجلة مقفلة' };
     if (ws.ready) return { ok: false, msg: 'أكدت جاهزيتك خلاص' };
     if (wheel === 'luck' && ws.res.luck === 'respin') return { ok: false, msg: 'ما تقدر تعيد عجلة "فرصة ثانية"' };
     ws.respins--;
@@ -891,7 +931,7 @@ export class Engine {
     }
   }
 
-  private eliminate(D: Nation, by: Nation | null) {
+  eliminate(D: Nation, by: Nation | null) {
     const s = this.s;
     if (!D.alive) return;
     D.alive = false;
@@ -996,13 +1036,7 @@ export class Engine {
     const alive = Object.values(s.nations).filter((n) => n.alive);
     const humans = alive.filter((n) => n.kind === 'player');
     const anyHumans = Object.values(s.nations).some((n) => n.kind === 'player');
-    const end = (winners: Nation[], reason: string) => {
-      s.phase = 'ended';
-      s.winner = { nations: winners.map((w) => w.id), reason, day: s.day };
-      this.news('🏆', `انتهت اللعبة! ${winners.map((w) => w.name).join(' و ')} ${winners.length > 1 ? 'فازوا' : 'فازت'} — ${reason}`, 'system');
-      recordHistory(this);
-      this.histEvent('🏆', `${winners.map((w) => w.name).join(' و ')} ${winners.length > 1 ? 'فازوا' : 'فازت'}`);
-    };
+    const end = (winners: Nation[], reason: string) => this.endGame(winners, reason);
     const top = () => [...alive].sort((a, b) => b.d.score - a.d.score)[0];
     if (s.settings.teams > 0) return this.checkTeamWin(alive, end);
     if (anyHumans && humans.length === 0 && alive.length) return end([top()], 'سقطت كل دول اللاعبين');
@@ -1024,6 +1058,60 @@ export class Engine {
     if (s.settings.win === 'score' && s.day >= s.settings.years * 12 * DAYS_PER_MONTH) {
       return end([top()], `أعلى نقاط بعد ${s.settings.years} سنة`);
     }
+  }
+
+  /** نهاية اللعبة وإعلان الفايزين */
+  endGame(winners: Nation[], reason: string) {
+    const s = this.s;
+    if (s.phase !== 'playing') return;
+    s.phase = 'ended';
+    s.winner = { nations: winners.map((w) => w.id), reason, day: s.day };
+    this.news('🏆', `انتهت اللعبة! ${winners.map((w) => w.name).join(' و ')} ${winners.length > 1 ? 'فازوا' : 'فازت'} — ${reason}`, 'system');
+    recordHistory(this);
+    this.histEvent('🏆', `${winners.map((w) => w.name).join(' و ')} ${winners.length > 1 ? 'فازوا' : 'فازت'}`);
+  }
+
+  /** نقل أرض لدولة ثانية (أو تخليها محايدة) بدون معركة */
+  transferTerr(T: Territory, to: NationId) {
+    const s = this.s;
+    const old = T.owner ? s.nations[T.owner] : null;
+    if (T.owner === to) return;
+    for (const b of [...s.battles]) if (b.terr === T.id) endBattle(this, b, 'cancel');
+    if (to) {
+      T.owner = to;
+      T.unrest = 0;
+      delete T.g; delete T.gmax; delete T.nt;
+    } else if (old) {
+      this.revolt(T, old);
+    }
+    if (old) {
+      const rest = this.owned(old.id);
+      if (!rest.length) this.eliminate(old, to ? s.nations[to] : null);
+      else if (old.capital === T.id) old.capital = rest.sort((a, b) => b.gdp - a.gdp)[0].id;
+      this.recompute(old);
+    }
+    if (to && s.nations[to]) {
+      const n = s.nations[to];
+      if (!n.alive) {
+        n.alive = true;
+        n.elimDay = undefined;
+        n.capital = T.id;
+      }
+      this.recompute(n);
+    }
+  }
+
+  /** بوت جديد وسط اللعبة (من المتحكم) */
+  spawnBot(): Nation | null {
+    const s = this.s;
+    let k = 1;
+    while (s.nations[`B${k}`] || s.wheels[`B${k}`]) k++;
+    const nid = `B${k}`;
+    s.wheels[nid] = { res: {}, respins: 0, done: false, ready: true, team: s.settings.teams > 0 ? this.smallestTeam() : undefined };
+    this.autospin(nid);
+    if (!s.wheels[nid].res.country) { delete s.wheels[nid]; return null; }
+    this.spawnLate(nid);
+    return s.nations[nid] ?? null;
   }
 
   /** نقاط ومساحة كل فريق */

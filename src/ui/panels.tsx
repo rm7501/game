@@ -15,6 +15,7 @@ import { dateStr, fmtArea, fmtMoney, fmtNum, fmtPop } from './format';
 import { toast } from './toast';
 import { IntelBlock, IntelReveal, TeamBadge, TeamStandings } from './plans';
 import { hasIntel } from '../game/spies';
+import { isController } from '../game/dev';
 import { CARDS } from '../game/defs';
 
 export interface PanelProps {
@@ -42,7 +43,7 @@ async function run(ctl: Controller, cmd: Parameters<Controller['send']>[0], okMs
 
 // ---------------- دولتي ----------------
 export function OverviewTab({ ctl, eng, me, onSelect, onCards }: PanelProps) {
-  if (!me) return <Spectator />;
+  if (!me) return <Spectator ctl={ctl} />;
   const d = me.d;
   const net = d.income - d.upkeep;
   const terrs = eng.owned(me.id).sort((a, b) => b.gdp - a.gdp);
@@ -151,18 +152,19 @@ export function OverviewTab({ ctl, eng, me, onSelect, onCards }: PanelProps) {
   );
 }
 
-function Spectator() {
+function Spectator({ ctl }: { ctl: Controller }) {
+  const gm = !!ctl.state.players[ctl.me]?.gm;
   return (
     <div class="tab-body center">
-      <div class="big-emoji">💀</div>
-      <p>دولتك سقطت.. تقدر تتفرج على باقي اللعبة.</p>
+      <div class="big-emoji">{gm ? '🛠️' : '💀'}</div>
+      <p>{gm ? 'أنت تدير اللعبة بدون دولة. تحكم بكل شي من زر 🛠️ «لوحة المتحكم» على الخريطة.' : 'دولتك سقطت.. تقدر تتفرج على باقي اللعبة.'}</p>
     </div>
   );
 }
 
 // ---------------- الاقتصاد ----------------
 export function EconomyTab({ ctl, eng, me }: PanelProps) {
-  if (!me) return <Spectator />;
+  if (!me) return <Spectator ctl={ctl} />;
   const d = me.d;
   const par = 2 + GOVS[me.gov].parallel;
   return (
@@ -230,7 +232,7 @@ export function EconomyTab({ ctl, eng, me }: PanelProps) {
 
 // ---------------- الجيش ----------------
 export function MilitaryTab({ ctl, eng, me, onSelect }: PanelProps) {
-  if (!me) return <Spectator />;
+  if (!me) return <Spectator ctl={ctl} />;
   const moving = eng.movingUnits(me.id);
   const [qty, setQty] = useState<Record<string, number>>({ inf: 5, tank: 2, jet: 1, ship: 1, missile: 1, nuke: 1 });
   const myMoves = eng.s.moves.filter((m) => m.owner === me.id);
@@ -352,7 +354,7 @@ export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect, onSpy
   const outgoing = me ? s.props.filter((p) => p.from === me.id) : [];
   const focusRef = useRef<HTMLDivElement>(null);
   useEffect(() => focusRef.current?.scrollIntoView({ block: 'center', behavior: 'smooth' }), [focusNation]);
-  if (!me) return <Spectator />;
+  if (!me) return <Spectator ctl={ctl} />;
   return (
     <div class="tab-body">
       <IntelBlock ctl={ctl} eng={eng} me={me} />
@@ -398,7 +400,7 @@ export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect, onSpy
               <span class="badge">{o.d.countries} دول</span>
               {(o.fx.sanct ?? 0) > s.day && <span class="badge bad">🚫 عليها عقوبات</span>}
             </div>
-            {hasIntel(eng, me, o.id) && <IntelReveal eng={eng} o={o} until={me.intel[o.id]} />}
+            {(hasIntel(eng, me, o.id) || isController(s, ctl.me)) && <IntelReveal eng={eng} o={o} until={hasIntel(eng, me, o.id) ? me.intel[o.id] : undefined} />}
             <div class="dip-actions">
               {r?.war ? (
                 <button class="btn btn-sm" disabled={pending('peace')} onClick={() => run(ctl, { t: 'propose', to: o.id, type: 'peace' }, undefined, sfx.click)}>🕊️ اطلب سلام</button>

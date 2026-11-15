@@ -80,7 +80,7 @@ export function fortuneWeights(e: Engine, n: Nation): Record<FortuneId, number> 
   const r = rankOf(e, n);
   const out = {} as Record<FortuneId, number>;
   for (const [id, f] of Object.entries(FORTUNES) as [FortuneId, (typeof FORTUNES)[FortuneId]][]) {
-    let w = f.w;
+    let w = f.w * (e.s.dev?.wm?.fortune?.[id] ?? 1);
     if (id === 'jackpot') w *= 0.3 + 2.2 * r;
     else if (f.good === 1) w *= 0.6 + 0.9 * r;
     else if (f.good === -1) w *= 1.5 - 0.9 * r;
@@ -94,7 +94,10 @@ export function spinFortune(e: Engine, n: Nation): CmdResult {
   if (s.day < n.fortuneNext) return { ok: false, msg: 'عجلة الحظ ما توفرت لك للحين' };
   const ws = fortuneWeights(e, n);
   const ids = Object.keys(ws) as FortuneId[];
-  const id = ids[e.weighted(ids.map((k) => ws[k]))];
+  let id = ids.some((k) => ws[k] > 0) ? ids[e.weighted(ids.map((k) => ws[k]))] : 'nothing';
+  // وضع المتحكم: نتيجة مثبتة
+  const rig = s.dev?.fortune?.[n.id];
+  if (rig && FORTUNES[rig]) { id = rig; delete s.dev!.fortune[n.id]; }
   const mag = n.trait === 'gambler' ? 1.5 : 1;
   const terrs = e.owned(n.id);
   let text = '';

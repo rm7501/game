@@ -10,6 +10,8 @@ import { CountryRoulette } from './CountryRoulette';
 import { describe } from './describe';
 import { toast } from './toast';
 import { WheelCanvas, visibleIndex } from './WheelCanvas';
+import { DevBadge, DevFab } from './dev/DevPanel';
+import { activeWheels, isController, wheelIsOff } from '../game/dev';
 
 function useNow(active: boolean) {
   const [, set] = useState(0);
@@ -58,12 +60,15 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
   });
 
   if (!ws) {
+    // المتحكم اللي يدير بدون دولة: يشوف تقدم الكل
+    if (s.players[ctl.me]?.gm && isController(s, ctl.me)) return <GMWheels ctl={ctl} />;
     return (
       <div class="screen center">
         <div class="card">⏳ جاري التحميل...</div>
       </div>
     );
   }
+  const wheelsOn = activeWheels(s);
 
   const eng = new Engine(world, s);
   const startSpin = (wheel: WheelId, respin = false) => {
@@ -123,8 +128,9 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
         <div class="wheels-title">
           <span class="logo-mini">🎡</span> عجلات الحظ <span class="muted">· جهّز دولتك</span>
         </div>
+        <DevBadge ctl={ctl} />
         <div class="wheel-dots">
-          {WHEEL_ORDER.map((w) => (
+          {wheelsOn.map((w) => (
             <span
               key={w}
               class={`wdot ${ws.res[w] !== undefined ? 'done' : ''} ${w === shown ? 'cur' : ''}`}
@@ -222,7 +228,7 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
                 {spinning ? '... تدور' : `🎰 لف ${WHEELS[next].title}`}
               </button>
             )}
-            {next && doneCount < WHEEL_ORDER.length - 1 && (
+            {next && doneCount < WHEEL_ORDER.length - 1 && wheelsOn.filter((w) => ws.res[w] === undefined).length > 1 && (
               <button
                 class="btn btn-ghost btn-sm"
                 disabled={spinning}
@@ -250,7 +256,7 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
                 const v = ws.res[w];
                 const info = v !== undefined ? describe(w, v, world) : null;
                 const hidden = (active === w && spinning) || (w === shown && spinning);
-                const canRespin = !!info && ws.respins > 0 && !spinning && !active && !(w === 'luck' && v === 'respin') && !ws.ready;
+                const canRespin = !!info && ws.respins > 0 && !spinning && !active && !(w === 'luck' && v === 'respin') && !ws.ready && !wheelIsOff(s, w);
                 return (
                   <li key={w} class={`res-row ${info?.tone ?? ''}`}>
                     <span class="res-icon">{WHEELS[w].icon}</span>
@@ -262,7 +268,7 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
                             {info.flag && <Flag id={info.flag} size={13} />} {info.title}
                           </>
                         ) : (
-                          <span class="muted">؟</span>
+                          <span class="muted">{wheelIsOff(s, w) ? '🔒 تلقائي' : '؟'}</span>
                         )}
                       </span>
                     </span>
@@ -309,6 +315,51 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
           <div class="countdown-n">{countdown}</div>
         </div>
       )}
+      <DevFab ctl={ctl} />
+    </div>
+  );
+}
+
+/** شاشة المتحكم اللي يدير بس: يشوف كل اللاعبين وعجلاتهم */
+function GMWheels({ ctl }: { ctl: Controller }) {
+  const s = ctl.state;
+  const world = ctl.world;
+  useNow(!!s.countdown);
+  const countdown = s.countdown ? Math.max(0, Math.ceil((s.countdown - Date.now()) / 1000)) : null;
+  const list = Object.entries(s.wheels);
+  const nameOf = (id: string) => Object.values(s.players).find((p) => p.nation === id)?.name ?? `🤖 بوت ${id.slice(1)}`;
+  return (
+    <div class="screen wheels-screen">
+      <header class="wheels-head">
+        <div class="wheels-title"><span class="logo-mini">🛠️</span> أنت تدير اللعبة <span class="muted">· اللاعبين يلفون عجلاتهم</span></div>
+      </header>
+      <div class="gm-grid">
+        {list.map(([id, w]) => {
+          const c = w.res.country as string | undefined;
+          return (
+            <div class="card gm-card" key={id}>
+              <div class="row-between">
+                <b>{nameOf(id)}</b>
+                <span class="small">{w.ready ? '✅ جاهز' : w.done ? '📋 يراجع' : `${WHEEL_ORDER.filter((x) => w.res[x] !== undefined).length}/${WHEEL_ORDER.length}`}</span>
+              </div>
+              <div class="small">{c ? <><Flag id={c} size={14} /> {world.country(c).ar}</> : <span class="muted">؟ ما انلفت الدولة</span>}</div>
+              <div class="gm-res">
+                {WHEEL_ORDER.filter((x) => x !== 'country' && w.res[x] !== undefined).map((x) => {
+                  const info = describe(x, w.res[x]!, world);
+                  return <span key={x} class={`badge ${info.tone ?? ''}`} title={WHEELS[x].title}>{info.icon} {info.title}</span>;
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      {countdown !== null && (
+        <div class="countdown">
+          <div>تبدأ اللعبة خلال</div>
+          <div class="countdown-n">{countdown}</div>
+        </div>
+      )}
+      <DevFab ctl={ctl} />
     </div>
   );
 }

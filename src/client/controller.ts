@@ -1,6 +1,7 @@
 // وحدة التحكم: تربط الواجهة بالمحرك (محلياً) أو بالسيرفر (أونلاين)
 import { MS_PER_DAY } from '../game/defs';
 import { Engine, STATE_VERSION } from '../game/engine';
+import { devCommand, newDev } from '../game/dev';
 import type { CmdResult, Command, GameState, Nation, NationId, News, Settings } from '../game/types';
 import type { World } from '../game/world';
 
@@ -145,7 +146,8 @@ export class HostController extends Controller {
   apply(clientId: string, cmd: Command): CmdResult {
     const p = this.state.players[clientId];
     if (!p) return { ok: false, msg: 'لاعب غير معروف' };
-    const r = this.engine.command(p.nation, cmd, clientId === this.state.hostId);
+    // أوامر المتحكم منفصلة عن أوامر اللعبة
+    const r = cmd.t === 'dev' ? devCommand(this.engine, clientId, cmd.d) : this.engine.command(p.nation, cmd, clientId === this.state.hostId);
     this.dirty = true;
     this.flush(true);
     return r;
@@ -156,6 +158,12 @@ export class HostController extends Controller {
     if (s.phase !== 'lobby') return;
     Object.assign(s.settings, p);
     s.speed = s.settings.speed;
+    // وضع المتحكم: صاحب الغرفة اللي فعّله هو المتحكم
+    if (s.settings.dev && !s.dev) s.dev = newDev(this.me);
+    else if (!s.settings.dev && s.dev && s.dev.by === this.me) {
+      for (const pl of Object.values(s.players)) delete pl.gm;
+      s.dev = undefined;
+    }
     // وضع الفرق: نوزع اللي ما عندهم فريق
     for (const pl of Object.values(s.players).sort((a, b) => a.joinedAt - b.joinedAt)) {
       if (s.settings.teams > 0) {

@@ -48,6 +48,7 @@ export interface Settings {
   peaceMonths: number; // فترة السلام في البداية (ما أحد يهاجم لاعب)
   speed: number;
   teams: number; // وضع الفرق: 0 = بدون، أو عدد الفرق (2-4)
+  dev?: boolean; // وضع المتحكم (لصاحب اللعبة)
 }
 
 export interface WheelState {
@@ -67,6 +68,7 @@ export interface Player {
   joinedAt: number;
   lastSeen: number;
   team?: number; // الفريق (في وضع الفرق)
+  gm?: boolean; // المتحكم يدير بس (بدون دولة)
 }
 
 export interface Territory {
@@ -338,9 +340,57 @@ export interface GameState {
   nextCards: number; // يوم توزيع البطاقات السنوي
   hist?: History;
   gameId?: string; // معرف اللعبة (لتسجيل النتايج)
+  owner?: string; // اللي سوى اللعبة (يقدر يفعّل وضع المتحكم)
+  dev?: DevState; // وضع المتحكم
   coalition?: NationId; // الدولة اللي العالم متحالف ضدها
   holdUntil?: number; // صاحب الغرفة يوقف اللعبة شوي وقت الأحداث الكبيرة (ms)
 }
+
+// ---------------- وضع المتحكم ----------------
+export interface DevState {
+  by: string; // معرف جهاز المتحكم
+  off: Partial<Record<WheelId, boolean>>; // عجلات مقفلة (تنلف تلقائياً بدون ما تطلع)
+  wm: Record<string, Record<string, number>>; // مضاعفات أوزان الشرائح (لكل عجلة، و'fortune' لعجلة الحظ)
+  rig: Record<NationId, Partial<Record<WheelId, number | string>>>; // نتايج مثبتة
+  fortune: Record<NationId, FortuneId>; // نتيجة عجلة الحظ الجاية
+  god: Record<NationId, number>; // مضاعف قوة المعارك
+  noise?: number; // حظ المعارك اليومي
+}
+
+export type NationField = 'treasury' | 'stability' | 'tech' | 'research' | 'agents' | 'bonus' | 'tax' | 'gov' | 'res' | 'trait' | 'terrain' | 'name';
+export type RelKind = 'war' | 'peace' | 'ally' | 'trade' | 'none';
+
+export type DevCmd =
+  | { a: 'enable'; on: boolean }
+  | { a: 'gm'; on: boolean }
+  | { a: 'wheelOff'; wheel: WheelId; off: boolean }
+  | { a: 'weight'; wheel: string; v: string; m: number }
+  | { a: 'weightsReset'; wheel?: string }
+  | { a: 'rig'; nid: NationId; wheel: WheelId; v: number | string | null }
+  | { a: 'respins'; nid?: NationId; n: number }
+  | { a: 'finishWheels' }
+  | { a: 'nation'; nid: NationId; f: NationField; v: number | string }
+  | { a: 'units'; nid: NationId; u: UnitType; d: number }
+  | { a: 'card'; nid: NationId; card: CardId; remove?: boolean }
+  | { a: 'terr'; terr: TerrId; owner: NationId; whole?: boolean }
+  | { a: 'world'; ev: WorldEventId }
+  | { a: 'un'; res: UNResId }
+  | { a: 'unClose' }
+  | { a: 'unVote'; nid: NationId; v: Vote }
+  | { a: 'fortune'; nid: NationId; res: FortuneId | null }
+  | { a: 'deal' }
+  | { a: 'rel'; x: NationId; y: NationId; r: RelKind }
+  | { a: 'peaceAll' }
+  | { a: 'speed'; x: number }
+  | { a: 'skip'; months: number }
+  | { a: 'end'; winner?: NationId }
+  | { a: 'years'; d: number }
+  | { a: 'god'; nid: NationId; m: number }
+  | { a: 'noise'; x: number }
+  | { a: 'addBot' }
+  | { a: 'kill'; nid: NationId }
+  | { a: 'pers'; nid: NationId; pers: Personality }
+  | { a: 'mission'; nid: NationId; id?: MissionId; done?: boolean };
 
 // الأوامر اللي يرسلها اللاعب
 export type Command =
@@ -369,6 +419,7 @@ export type Command =
   | { t: 'spy'; op: SpyOpId; target: NationId }
   | { t: 'vote'; v: Vote }
   | { t: 'card'; card: CardId; target?: NationId; terr?: TerrId }
+  | { t: 'dev'; d: DevCmd }
   | { t: 'speed'; speed: number }
   | { t: 'pause'; paused: boolean };
 

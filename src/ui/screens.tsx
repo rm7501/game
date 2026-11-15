@@ -7,11 +7,12 @@ import { DEFAULT_SETTINGS } from '../game/engine';
 import type { Difficulty, NeutralStrength, Settings, WinMode } from '../game/types';
 import type { World } from '../game/world';
 import { sfx } from './audio';
-import { Flag } from './bits';
+import { Flag, Modal } from './bits';
 import { HowTo } from './HowTo';
 import { MapRenderer } from './map';
 import { toast } from './toast';
 import { TeamBadge } from './plans';
+import { DevFab } from './dev/DevPanel';
 
 export function getName(): string {
   try {
@@ -52,13 +53,14 @@ function BgMap({ world }: { world: World }) {
 }
 
 export function Menu({
-  world, onSingle, onCreate, onJoin, onLocal, onContinue, hasSave,
+  world, onSingle, onCreate, onJoin, onLocal, onContinue, hasSave, onSingleDev,
 }: {
   world: World;
   onSingle: () => void;
-  onCreate: (name: string) => void;
+  onSingleDev?: () => void;
+  onCreate: (name: string, dev?: boolean) => void;
   onJoin: (name: string, code: string) => void;
-  onLocal: (name: string, code?: string) => void;
+  onLocal: (name: string, code?: string, dev?: boolean) => void;
   onContinue?: () => void;
   hasSave: boolean;
 }) {
@@ -66,6 +68,7 @@ export function Menu({
   const [code, setCode] = useState(new URLSearchParams(location.search).get('room') ?? '');
   const [howto, setHowto] = useState(false);
   const [joinOpen, setJoinOpen] = useState(!!code);
+  const [devIntro, setDevIntro] = useState(false);
   const ready = onlineReady();
   const needName = () => {
     if (!name.trim()) {
@@ -117,9 +120,34 @@ export function Menu({
             ⚙️ سيرفر الأونلاين ما تجهز بعد (شوف ملف README). الحين الغرف تشتغل بين تبويبات نفس المتصفح بس للتجربة.
           </div>
         )}
-        <button class="btn btn-ghost btn-sm" onClick={() => setHowto(true)}>📖 طريقة اللعب</button>
+        <div class="menu-row">
+          <button class="btn btn-ghost btn-sm" onClick={() => setHowto(true)}>📖 طريقة اللعب</button>
+          <button class="btn btn-ghost btn-sm" onClick={() => setDevIntro(true)}>🛠️ وضع المتحكم</button>
+        </div>
       </div>
       {howto && <HowTo onClose={() => setHowto(false)} />}
+      {devIntro && (
+        <Modal title="🛠️ وضع المتحكم" onClose={() => setDevIntro(false)}>
+          <div class="dev-intro">
+            <p>وضع خاص تتحكم فيه بكل شي في لعبتك. مو إجباري، تشغّله بس إذا تبي:</p>
+            <ul>
+              <li>🎡 تشغّل أو تقفل أي عجلة، وتغيّر احتمال كل نتيجة</li>
+              <li>🎯 تثبّت نتايج العجلات والدولة اللي ياخذها كل لاعب (أو بوت)</li>
+              <li>🏳️ تعدّل أي دولة: فلوس، جيش، تكنولوجيا، بطاقات، قوة المعارك</li>
+              <li>🗺️ تنقل أي أرض لأي دولة بضغطة</li>
+              <li>🌍 تطلق الأحداث العالمية وقرارات الأمم المتحدة وعجلة الحظ بالنتيجة اللي تبيها</li>
+              <li>🤝 تعلن حروب وسلام وتحالفات بين أي دول</li>
+              <li>⏱️ تسرّع الوقت لين ×32، وتقدّم شهور وسنين، وتنهي اللعبة متى ما تبي</li>
+              <li>👁️ تقدر تلعب بدولة وتتحكم، أو تدير بس وتتفرج</li>
+            </ul>
+            <p class="muted small">يشتغل في اللعب الفردي وفي الغرف الأونلاين اللي تسويها. في الأونلاين اللاعبين يشوفون شارة إن فيه متحكم. وتقدر تفعّله بعدين من قائمة ☰ داخل اللعبة.</p>
+            <div class="modal-foot">
+              <button class="btn btn-gold" onClick={() => { if (needName()) return; setDevIntro(false); onSingleDev?.(); }}>🎮 لعبة فردية بوضع المتحكم</button>
+              <button class="btn btn-primary" onClick={() => { if (needName()) return; setDevIntro(false); ready ? onCreate(name.trim(), true) : onLocal(name.trim(), undefined, true); }}>🌐 غرفة أونلاين بوضع المتحكم</button>
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }
@@ -192,6 +220,11 @@ export function SettingsForm({ value, onChange, readOnly, single }: { value: Set
         {opt<number>(v.teams ?? 0, [{ v: 0, label: 'كل واحد لحاله' }, { v: 2, label: 'فريقين' }, { v: 3, label: '3 فرق' }, { v: 4, label: '4 فرق' }], 'teams')}
       </div>
       <div class="set-row">
+        <span class="set-label">🛠️ وضع المتحكم</span>
+        {opt<boolean>(!!v.dev, [{ v: false, label: 'مقفل' }, { v: true, label: 'شغال' }], 'dev')}
+      </div>
+      {v.dev && <div class="hint small dev-hint">🛠️ تتحكم بالعجلات والحظ والدول اللي ياخذونها والأحداث والوقت وكل شي، من زر 🛠️.{single ? '' : ' اللاعبين يشوفون إن فيه متحكم.'}</div>}
+      <div class="set-row">
         <span class="set-label">🕊️ فترة السلام بالبداية</span>
         {opt<number>(v.peaceMonths, [{ v: 0, label: 'بدون' }, { v: 6, label: '6 شهور' }, { v: 12, label: 'سنة' }, { v: 24, label: 'سنتين' }], 'peaceMonths')}
       </div>
@@ -199,28 +232,38 @@ export function SettingsForm({ value, onChange, readOnly, single }: { value: Set
   );
 }
 
-export function SingleSetup({ onStart, onBack }: { onStart: (s: Settings) => void; onBack: () => void }) {
+export function SingleSetup({ onStart, onBack, dev }: { onStart: (s: Settings, gm: boolean) => void; onBack: () => void; dev?: boolean }) {
   const [st, setSt] = useState<Settings>(() => {
     try {
       const raw = localStorage.getItem('won-sp-settings');
-      if (raw) return { ...DEFAULT_SETTINGS, ...JSON.parse(raw) };
+      if (raw) return { ...DEFAULT_SETTINGS, ...JSON.parse(raw), ...(dev ? { dev: true } : {}) };
     } catch {
       /* ignore */
     }
-    return { ...DEFAULT_SETTINGS };
+    return { ...DEFAULT_SETTINGS, ...(dev ? { dev: true } : {}) };
   });
+  const [gm, setGm] = useState(false);
   return (
     <div class="screen center">
       <div class="card setup-card">
         <div class="card-title big">🎮 لعب فردي</div>
         <SettingsForm value={st} single onChange={(p) => setSt({ ...st, ...p })} />
+        {st.dev && (
+          <div class="set-row">
+            <span class="set-label">👁️ دورك</span>
+            <div class="seg">
+              <button class={`seg-btn ${!gm ? 'on' : ''}`} onClick={() => setGm(false)}>🎮 ألعب بدولة</button>
+              <button class={`seg-btn ${gm ? 'on' : ''}`} onClick={() => setGm(true)}>👁️ أدير بس وأتفرج على البوتات</button>
+            </div>
+          </div>
+        )}
         <div class="modal-foot">
           <button class="btn" onClick={onBack}>رجوع</button>
           <button class="btn btn-gold btn-big" onClick={() => {
-            try { localStorage.setItem('won-sp-settings', JSON.stringify(st)); } catch { /* ignore */ }
+            try { localStorage.setItem('won-sp-settings', JSON.stringify({ ...st, dev: false })); } catch { /* ignore */ }
             sfx.click();
-            onStart(st);
-          }}>🎡 ابدأ ولف العجلات</button>
+            onStart(st, !!st.dev && gm);
+          }}>{st.dev && gm ? '👁️ ابدأ اللعبة' : '🎡 ابدأ ولف العجلات'}</button>
         </div>
       </div>
     </div>
@@ -273,6 +316,7 @@ export function Lobby({ ctl, onLeave }: { ctl: Controller; onLeave: () => void }
             <button class="btn btn-primary" onClick={share}>📤 شارك الرابط</button>
             <button class="btn" onClick={() => { navigator.clipboard?.writeText(ctl.roomCode ?? ''); toast({ icon: '📋', text: 'نسخت الكود', kind: 'good' }); }}>📋 نسخ الكود</button>
           </div>
+          {s.dev && <div class="hint small dev-hint">🛠️ وضع المتحكم شغال: {s.players[s.dev.by]?.name ?? 'صاحب الغرفة'} يقدر يتحكم بالعجلات والحظ والدول وكل شي.</div>}
           <div class="card-title">اللاعبين ({players.length})</div>
           {s.settings.teams > 0 && <TeamPicker ctl={ctl} />}
           <ul class="plist big">
@@ -280,6 +324,8 @@ export function Lobby({ ctl, onLeave }: { ctl: Controller; onLeave: () => void }
               <li key={p.id}>
                 <span class={`online-dot ${p.online ? 'on' : ''}`} />
                 <span class="pname">{p.name}{p.id === ctl.me && ' (أنت)'}</span>
+                {s.dev?.by === p.id && <span title="المتحكم">🛠️</span>}
+                {p.gm && <span class="muted small" title="يدير بس بدون دولة">👁️</span>}
                 {s.settings.teams > 0 && <TeamBadge team={p.team} short />}
                 {p.id === s.hostId && <span title="صاحب الغرفة">👑</span>}
                 {host && p.id !== ctl.me && <button class="icon-btn" title="طرد" onClick={() => ctl.kick(p.id)}>✕</button>}
@@ -306,6 +352,7 @@ export function Lobby({ ctl, onLeave }: { ctl: Controller; onLeave: () => void }
         <div class="card">
           <div class="card-title big">⚙️ الإعدادات {!host && <span class="muted small">(صاحب الغرفة يحددها)</span>}</div>
           <SettingsForm value={s.settings} readOnly={!host} onChange={(p) => ctl.setSettings(p)} />
+          <DevFab ctl={ctl} />
           <div class="modal-foot">
             <button class="btn" onClick={onLeave}>🚪 خروج</button>
             {host ? (

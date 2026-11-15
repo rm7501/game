@@ -12,7 +12,7 @@ import { Connecting, getName, Lobby, Menu, SingleSetup } from './ui/screens';
 import { toast, Toasts } from './ui/toast';
 import { WheelsScreen } from './ui/WheelsScreen';
 
-type Screen = { t: 'loading' } | { t: 'busy'; msg: string } | { t: 'error'; msg: string } | { t: 'menu' } | { t: 'setup' } | { t: 'ctl'; ctl: Controller };
+type Screen = { t: 'loading' } | { t: 'busy'; msg: string } | { t: 'error'; msg: string } | { t: 'menu' } | { t: 'setup'; dev?: boolean } | { t: 'ctl'; ctl: Controller };
 
 function clientId(): string {
   try {
@@ -105,12 +105,13 @@ export function App() {
     setScreen({ t: 'menu' });
   };
 
-  const startSingle = (settings: Settings) => {
+  const startSingle = (settings: Settings, gm = false) => {
     clearSave();
     const me = clientId();
     const st = newState('single', settings, me);
     const ctl = new HostController(world, me, st);
     ctl.engine.addPlayer(me, getName() || 'أنت');
+    if (gm && st.dev) st.players[me].gm = true; // المتحكم يدير بس ويتفرج على البوتات
     ctl.startWheels();
     setScreen({ t: 'ctl', ctl });
   };
@@ -124,7 +125,7 @@ export function App() {
     setScreen({ t: 'ctl', ctl });
   };
 
-  async function goOnline(name: string, code: string | undefined, local: boolean) {
+  async function goOnline(name: string, code: string | undefined, local: boolean, dev = false) {
     if (!world) return;
     const me = clientId();
     const tr = local ? new LocalTransport() : new SupabaseTransport();
@@ -138,7 +139,7 @@ export function App() {
       }
       const ctl = code
         ? await OnlineController.join(world, me, name, code, tr)
-        : await OnlineController.create(world, me, name, { ...DEFAULT_SETTINGS, ...saved, bots: Math.min(saved.bots ?? 4, 8) }, tr);
+        : await OnlineController.create(world, me, name, { ...DEFAULT_SETTINGS, ...saved, bots: Math.min(saved.bots ?? 4, 8), dev }, tr);
       setRoomInUrl(ctl.roomCode);
       setScreen({ t: 'ctl', ctl });
     } catch (e) {
@@ -156,13 +157,14 @@ export function App() {
         hasSave={hasSave}
         onContinue={continueSingle}
         onSingle={() => setScreen({ t: 'setup' })}
-        onCreate={(name) => goOnline(name, undefined, false)}
+        onSingleDev={() => setScreen({ t: 'setup', dev: true })}
+        onCreate={(name, dev) => goOnline(name, undefined, false, dev)}
         onJoin={(name, code) => goOnline(name, code, false)}
-        onLocal={(name, code) => goOnline(name, code, true)}
+        onLocal={(name, code, dev) => goOnline(name, code, true, dev)}
       />
     );
   } else if (screen.t === 'setup') {
-    body = <SingleSetup onStart={startSingle} onBack={() => setScreen({ t: 'menu' })} />;
+    body = <SingleSetup dev={screen.dev} onStart={startSingle} onBack={() => setScreen({ t: 'menu' })} />;
   } else if (screen.t === 'ctl') {
     const ctl = screen.ctl;
     const s = ctl.state;

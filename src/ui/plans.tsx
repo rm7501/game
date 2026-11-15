@@ -263,10 +263,10 @@ export function SpyDialog({ ctl, eng, me, target, onClose }: { ctl: Controller; 
 }
 
 /** الأسرار المكشوفة عن دولة (لو عندك معلومات استخباراتية) */
-export function IntelReveal({ eng, o, until }: { eng: Engine; o: Nation; until: number }) {
+export function IntelReveal({ eng, o, until }: { eng: Engine; o: Nation; until?: number }) {
   return (
     <div class="intel-reveal">
-      <div class="small"><b>📂 أسرار مكشوفة</b> <span class="muted">لين {eng.dateStr(until)}</span></div>
+      <div class="small"><b>📂 أسرار مكشوفة</b> <span class="muted">{until !== undefined ? `لين ${eng.dateStr(until)}` : '(🛠️ المتحكم يشوف كل شي)'}</span></div>
       <div class="small">🎯 {missionText(o)} {o.mission.done ? '✅' : ''}</div>
       <div class="small">🃏 {o.cards.length ? o.cards.map((c) => `${CARDS[c].icon} ${CARDS[c].name}`).join('، ') : 'ما عندها بطاقات'}</div>
       <div class="small intel-army">
