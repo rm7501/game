@@ -7,6 +7,7 @@ import type { Engine } from './engine';
 import type { BuildingType, CmdResult, FortuneId, GovId, MissionId, Nation, WorldEventId } from './types';
 import { BUILDING_TYPES, COMBAT_UNITS } from './types';
 import { REGION_NAMES } from './world';
+import { drawCard } from './cards';
 
 const clamp = (x: number, a: number, b: number) => Math.max(a, Math.min(b, x));
 
@@ -61,6 +62,9 @@ export function checkMissions(e: Engine) {
     n.treasury += cash;
     n.fortuneNext = Math.min(n.fortuneNext, e.s.day);
     e.news('🎯', `${n.name} حققت مهمتها السرية «${MISSIONS[n.mission.id].name}» وأخذت +${bonus} نقطة و ${cash} مليار!`, 'event', { n: [n.id] });
+    e.histEvent('🎯', `${n.name} حققت مهمتها السرية «${MISSIONS[n.mission.id].name}»`);
+    drawCard(e, n, 'مكافأة المهمة');
+    drawCard(e, n, 'مكافأة المهمة');
   }
 }
 
@@ -134,6 +138,12 @@ export function spinFortune(e: Engine, n: Nation): CmdResult {
     case 'outbreak': for (const t of terrs) t.pop *= 1 - 0.04 * mag; text = `وباء محلي: السكان -${Math.round(4 * mag)}%`; break;
     case 'mutiny': for (const k of COMBAT_UNITS) n.units[k] = Math.floor(n.units[k] * (1 - 0.15 * mag)); text = `تمرد عسكري: خسرت ${Math.round(15 * mag)}% من جيشك`; break;
     case 'nothing': text = 'ولا شي.. حظك المرة الجاية'; break;
+    case 'card': {
+      const a = drawCard(e, n, 'عجلة الحظ');
+      const b = drawCard(e, n, 'عجلة الحظ');
+      text = a || b ? 'أخذت بطاقات خطط جديدة! شوفها من زر 🃏' : `يدك مليانة بطاقات، فأخذت كنز +${addCash(0.7)} مليار`;
+      break;
+    }
   }
   n.fortune = { nonce: (n.fortune?.nonce ?? 0) + 1, res: id, day: s.day, text };
   n.fortuneNext = s.day + (n.trait === 'gambler' ? FORTUNE_EVERY / 2 : FORTUNE_EVERY);
@@ -267,6 +277,7 @@ export function fireWorldEvent(e: Engine, forced?: WorldEventId) {
   }
   s.world = { id: e.id(), ev, day: s.day, text, target, terr };
   s.holdUntil = Date.now() + 7500;
+  e.histEvent(WORLD_EVENTS[ev].icon, `${WORLD_EVENTS[ev].name}: ${text}`);
   e.news(WORLD_EVENTS[ev].icon, `حدث عالمي: ${WORLD_EVENTS[ev].name}! ${text}`, 'system', { terr });
   for (const n of alive) e.recompute(n);
 }
@@ -298,6 +309,7 @@ export function startCoalition(e: Engine, top: Nation, announce: boolean) {
     if (t.gmax) t.gmax *= 1.6;
   }
   top.stability = clamp(top.stability - 10, 0, 100);
+  e.histEvent('🌍', `تحالف دولي ضد ${top.name}`);
   if (announce || members.length) {
     e.news('🌍', `${members.length ? members.length + ' دول' : 'العالم'} تتحالف ضد ${top.name} بسبب هيمنتها! (هجوم التحالف عليها أقوى 20%)`, 'system', { n: [top.id] });
   }

@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Controller } from '../client/controller';
 import { onlineReady } from '../config';
-import { MINUTES_PER_YEAR } from '../game/defs';
+import { MINUTES_PER_YEAR, TEAMS } from '../game/defs';
 import { DEFAULT_SETTINGS } from '../game/engine';
 import type { Difficulty, NeutralStrength, Settings, WinMode } from '../game/types';
 import type { World } from '../game/world';
@@ -11,6 +11,7 @@ import { Flag } from './bits';
 import { HowTo } from './HowTo';
 import { MapRenderer } from './map';
 import { toast } from './toast';
+import { TeamBadge } from './plans';
 
 export function getName(): string {
   try {
@@ -187,6 +188,10 @@ export function SettingsForm({ value, onChange, readOnly, single }: { value: Set
         {opt<NeutralStrength>(v.neutral, [{ v: 'weak', label: 'ضعيفة' }, { v: 'normal', label: 'عادية' }, { v: 'strong', label: 'قوية' }], 'neutral')}
       </div>
       <div class="set-row">
+        <span class="set-label">👥 وضع الفرق</span>
+        {opt<number>(v.teams ?? 0, [{ v: 0, label: 'كل واحد لحاله' }, { v: 2, label: 'فريقين' }, { v: 3, label: '3 فرق' }, { v: 4, label: '4 فرق' }], 'teams')}
+      </div>
+      <div class="set-row">
         <span class="set-label">🕊️ فترة السلام بالبداية</span>
         {opt<number>(v.peaceMonths, [{ v: 0, label: 'بدون' }, { v: 6, label: '6 شهور' }, { v: 12, label: 'سنة' }, { v: 24, label: 'سنتين' }], 'peaceMonths')}
       </div>
@@ -269,11 +274,13 @@ export function Lobby({ ctl, onLeave }: { ctl: Controller; onLeave: () => void }
             <button class="btn" onClick={() => { navigator.clipboard?.writeText(ctl.roomCode ?? ''); toast({ icon: '📋', text: 'نسخت الكود', kind: 'good' }); }}>📋 نسخ الكود</button>
           </div>
           <div class="card-title">اللاعبين ({players.length})</div>
+          {s.settings.teams > 0 && <TeamPicker ctl={ctl} />}
           <ul class="plist big">
             {players.map((p) => (
               <li key={p.id}>
                 <span class={`online-dot ${p.online ? 'on' : ''}`} />
                 <span class="pname">{p.name}{p.id === ctl.me && ' (أنت)'}</span>
+                {s.settings.teams > 0 && <TeamBadge team={p.team} short />}
                 {p.id === s.hostId && <span title="صاحب الغرفة">👑</span>}
                 {host && p.id !== ctl.me && <button class="icon-btn" title="طرد" onClick={() => ctl.kick(p.id)}>✕</button>}
               </li>
@@ -309,6 +316,28 @@ export function Lobby({ ctl, onLeave }: { ctl: Controller; onLeave: () => void }
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function TeamPicker({ ctl }: { ctl: Controller }) {
+  const s = ctl.state;
+  const me = s.players[ctl.me];
+  const players = Object.values(s.players);
+  return (
+    <div class="team-picker">
+      {TEAMS.slice(0, s.settings.teams).map((t, i) => {
+        const k = i + 1;
+        const members = players.filter((p) => p.team === k);
+        return (
+          <button key={k} class={`team-col ${me?.team === k ? 'on' : ''}`} style={{ borderColor: t.color }} onClick={() => { sfx.click(); ctl.send({ t: 'team', team: k }); }}>
+            <b style={{ color: t.color }}>{t.icon} {t.name}</b>
+            <span class="muted small">{members.length ? members.map((p) => p.name).join('، ') : 'فاضي'}</span>
+            {me?.team !== k && <span class="small">انضم ←</span>}
+          </button>
+        );
+      })}
+      <div class="muted small">البوتات تتوزع على الفرق تلقائياً عشان تكون متوازنة.</div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 // التحكم في اللعب الأونلاين: صاحب الغرفة يشغل المحرك ويبث الحالة، والباقين يرسلون أوامر
 // لو صاحب الغرفة طلع، أقدم لاعب متصل يصير هو صاحب الغرفة ويكمل اللعبة
 import { Controller, HostController } from '../client/controller';
-import { DEFAULT_SETTINGS, newState } from '../game/engine';
+import { DEFAULT_SETTINGS, STATE_VERSION, newState } from '../game/engine';
 import type { CmdResult, Command, GameState, Settings } from '../game/types';
 import type { World } from '../game/world';
 import { pack, unpack, type NetMsg } from './protocol';
@@ -221,6 +221,7 @@ export class OnlineController extends Controller {
         unpack<GameState>(m.z).then((st) => {
           if (myEp !== this.ep || mySn !== this.sn) return;
           if (this.role === 'host') this.demote();
+          if (!st.hist && this.remote?.hist && this.remote.gameId === st.gameId) st.hist = this.remote.hist;
           this.remote = st;
           if (!this.ready) {
             this.ready = true;
@@ -290,7 +291,10 @@ export class OnlineController extends Controller {
     this.packing = true;
     this.lastCast = now;
     const ep = this.ep;
-    pack(this.host.state)
+    const st = this.host.state;
+    // سجل اللعبة كبير: نرسله كل شوي بس (وكامل بالنهاية)
+    const withHist = st.phase === 'ended' || (this.sn + 1) % 25 === 0;
+    pack(withHist ? st : { ...st, hist: undefined })
       .then((z) => {
         this.t.send({ t: 'snap', from: this.me, ep, sn: ++this.sn, z });
       })
@@ -346,7 +350,7 @@ export class OnlineController extends Controller {
       const raw = localStorage.getItem(SAVE_PREFIX + this.roomCode);
       if (!raw) return null;
       const { at, state } = JSON.parse(raw) as { at: number; state: GameState };
-      if (Date.now() - at > 60 * 60 * 1000 || state.hostId !== this.me || state.phase === 'ended') return null;
+      if (Date.now() - at > 60 * 60 * 1000 || state.hostId !== this.me || state.phase === 'ended' || state.v !== STATE_VERSION) return null;
       return state;
     } catch {
       return null;

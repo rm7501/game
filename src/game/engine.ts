@@ -2,11 +2,15 @@
 import {
   AREA_SLICES, BOT_NAMES, BUILDINGS, BUILD_GROWTH, MAX_BUILDING_LEVEL, DAYS_PER_MONTH, ECON_VALUES, GOVS, MAX_TECH,
   MIL_TIERS, NATION_COLORS, NUKE_PROJECT, POP_VALUES, RESOURCES, SHIP_CAPACITY, SLOTS_BY_CLASS, STATIC_SLICES,
-  TECH_COST, TECH_NAMES, TERRAINS, UNITS, emptyUnits, missileRange, navalRange, techMult, type Slice,
+  TECH_COST, TECH_NAMES, TERRAINS, UNITS, CARD_EVERY, emptyUnits, missileRange, navalRange, techMult, type Slice,
 } from './defs';
 import { aiThink } from './ai';
 import { endBattle, startBattle, tickBattles, unitsInBattles } from './battle';
 import { assignMission, checkCoalition, checkMissions, checkTransitional, fireWorldEvent, scheduleWorld, spinFortune } from './events';
+import { dealCards, drawCard, playCard } from './cards';
+import { addHistEvent, HIST_EVERY, recordHistory } from './history';
+import { recruitAgent, startOp, tickOps } from './spies';
+import { castVote, scheduleUN, tickUN } from './un';
 import type {
   BuildingType, CmdResult, Command, Derived, GameState, LeaderId, LuckId, MissionId, Movement, Nation, NationId, News, NewsKind,
   Player, Proposal, ProposalType, Relation, Report, Settings, TerrainId, Territory, TerrId, UnitType, Units, WheelId,
@@ -15,10 +19,10 @@ import type {
 import { BUILDING_TYPES, COMBAT_UNITS, UNIT_TYPES, WHEEL_ORDER } from './types';
 import type { CountryMeta, World } from './world';
 
-export const STATE_VERSION = 2;
+export const STATE_VERSION = 3;
 
 export const DEFAULT_SETTINGS: Settings = {
-  bots: 6, difficulty: 'normal', win: 'score', years: 20, percent: 40, neutral: 'normal', peaceMonths: 12, speed: 1,
+  bots: 6, difficulty: 'normal', win: 'score', years: 20, percent: 40, neutral: 'normal', peaceMonths: 12, speed: 1, teams: 0,
 };
 
 const emptyDerived = (): Derived => ({
@@ -34,7 +38,7 @@ export function newState(mode: 'single' | 'online', settings: Settings, hostId: 
     v: STATE_VERSION, mode, phase: 'lobby', settings: { ...settings }, day: 0, paused: false, speed: settings.speed,
     rng: (seed ?? Math.floor(Math.random() * 2 ** 31)) >>> 0, seq: 1, hostId,
     players: {}, nations: {}, terr: {}, wheels: {}, taken: {}, moves: [], rel: {}, props: [], news: [], reports: [], chat: [],
-    battles: [], nextWorld: 0, mods: {},
+    battles: [], nextWorld: 0, mods: {}, ops: [], nextUN: 0, nextCards: 0,
   };
 }
 
@@ -81,6 +85,9 @@ export class Engine {
     return n;
   }
 
+  /** حدث مهم يتسجل في تاريخ اللعبة (للإعادة بالنهاية) */
+  histEvent(icon: string, text: string) { addHistEvent(this.s, icon, text); }
+
   tname(t: TerrId) { return this.w.name(t); }
   nname(id: NationId) { return id ? this.s.nations[id]?.name ?? '؟' : 'دولة محايدة'; }
 
@@ -92,10 +99,11 @@ export class Engine {
     let nid = `P${num}`;
     while (this.s.wheels[nid] || this.s.nations[nid] || Object.values(this.s.players).some((p) => p.nation === nid)) nid = `P${num}${this.randInt(1, 999)}`;
     const p: Player = { id, name: name.slice(0, 20) || `لاعب ${num}`, nation: nid, online: true, joinedAt: Date.now(), lastSeen: Date.now() };
+    if (this.s.settings.teams > 0) p.team = this.smallestTeam();
     this.s.players[id] = p;
     // لو دخل وقت العجلات أو وسط اللعبة يلف عجلاته (ولو اللعبة منتهية يتفرج بس)
     if (this.s.phase === 'wheels' || this.s.phase === 'playing') {
-      this.s.wheels[nid] = { res: {}, respins: 1, done: false, ready: false };
+      this.s.wheels[nid] = { res: {}, respins: 1, done: false, ready: false, team: p.team };
       this.news('👋', `${p.name} انضم للعبة ويلف عجلاته الحين`, 'join');
     }
     return p;
@@ -127,12 +135,54 @@ export class Engine {
   startWheels() {
     const s = this.s;
     s.phase = 'wheels';
+    s.gameId = Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
     this.generateNeutrals();
-    for (const p of Object.values(s.players)) s.wheels[p.nation] = { res: {}, respins: 1, done: false, ready: false };
+    const T = s.settings.teams;
+    const size = new Array(T + 1).fill(0);
+    for (const p of Object.values(s.players)) {
+      if (T > 0) {
+        if (!p.team || p.team > T) p.team = this.smallestTeam();
+        size[p.team]++;
+      } else delete p.team;
+      s.wheels[p.nation] = { res: {}, respins: 1, done: false, ready: false, team: T > 0 ? p.team : undefined };
+    }
     for (let i = 1; i <= s.settings.bots; i++) {
       const nid = `B${i}`;
-      s.wheels[nid] = { res: {}, respins: 0, done: false, ready: true };
+      let team: number | undefined;
+      if (T > 0) {
+        team = 1;
+        for (let k = 2; k <= T; k++) if (size[k] < size[team]) team = k;
+        size[team]++;
+      }
+      s.wheels[nid] = { res: {}, respins: 0, done: false, ready: true, team };
       this.autospin(nid);
+    }
+  }
+
+  /** الفريق اللي فيه أقل عدد (للاعبين الجدد) */
+  smallestTeam(): number {
+    const s = this.s;
+    const T = s.settings.teams;
+    if (T <= 0) return 0;
+    const size = new Array(T + 1).fill(0);
+    if (s.phase === 'playing') {
+      for (const n of Object.values(s.nations)) if (n.alive && n.team) size[n.team]++;
+      for (const w of Object.values(s.wheels)) if (w.team) size[w.team]++;
+    } else for (const p of Object.values(s.players)) if (p.team && p.team <= T) size[p.team]++;
+    let best = 1;
+    for (let k = 2; k <= T; k++) if (size[k] < size[best]) best = k;
+    return best;
+  }
+
+  /** تحالف دائم بين أعضاء الفريق */
+  private teamUp(n: Nation) {
+    if (!n.team) return;
+    for (const o of Object.values(this.s.nations)) {
+      if (o.id === n.id || !o.alive || o.team !== n.team) continue;
+      const r = this.rel(n.id, o.id);
+      delete r.war;
+      r.ally = Math.max(1, this.s.day);
+      r.team = true;
     }
   }
 
@@ -290,10 +340,19 @@ export class Engine {
     s.phase = 'playing';
     s.day = 0;
     s.battles = [];
+    s.ops = [];
+    for (const n of Object.values(s.nations)) this.teamUp(n);
     scheduleWorld(this, true);
+    scheduleUN(this, true);
+    s.nextCards = CARD_EVERY;
     this.news('🌍', 'بدأت اللعبة! ابنِ اقتصادك وجهّز جيشك', 'system');
     if (s.settings.peaceMonths > 0) this.news('🕊️', `فترة سلام ${s.settings.peaceMonths} شهر: ما أحد يقدر يهاجم دولة لاعب أو بوت، بس تقدر تحتل الدول المحايدة`, 'system');
-    for (const n of Object.values(s.nations)) this.recompute(n);
+    if (s.settings.teams > 0) this.news('👥', `وضع الفرق: ${s.settings.teams} فرق، وأعضاء كل فريق حلفاء للأبد`, 'system');
+    for (const n of Object.values(s.nations)) {
+      this.recompute(n);
+      drawCard(this, n, 'بطاقة البداية');
+    }
+    recordHistory(this);
   }
 
   private spawnLate(nid: NationId) {
@@ -303,7 +362,11 @@ export class Engine {
     delete this.s.wheels[nid];
     const c = ws.res.country as string;
     delete this.s.taken[c];
-    this.recompute(this.s.nations[nid]);
+    const n = this.s.nations[nid];
+    if (this.s.settings.teams > 0 && !n.team) n.team = this.smallestTeam();
+    this.teamUp(n);
+    this.recompute(n);
+    drawCard(this, n, 'بطاقة البداية');
   }
 
   private createNation(nid: NationId, ws: WheelState, idx: number) {
@@ -350,6 +413,7 @@ export class Engine {
       st: { won: 0, lost: 0, conq: 0, lostT: 0, held: 0 },
       tiers: { area: cls, pop: popTier, econ: econTier, mil: milTier },
       d: emptyDerived(), joinDay: s.phase === 'playing' ? s.day : 0,
+      team: s.settings.teams > 0 ? ws.team ?? player?.team : undefined, agents: 1, cards: [], fx: {}, intel: {},
     };
     if (isBot) {
       const pers = this.pick(['aggressive', 'balanced', 'balanced', 'economic', 'defensive'] as const);
@@ -502,6 +566,7 @@ export class Engine {
     d.gdp = gdpBase * Math.max(0.3, 1 + 0.08 * n.b.industry + 0.04 * (n.tech - 1) + resB + tradeB + TERRAINS[n.terrain].gdp);
     const eff = (0.55 + 0.45 * n.stability / 100) * Math.max(0.6, 1 - 0.012 * Math.max(0, parents.size - 3));
     d.income = (d.gdp * n.tax * eff * GOVS[n.gov].income * (n.trait === 'economist' ? 1.08 : 1)) / 12 + (n.res === 'gold' ? gdpBase * 0.002 * (1 + 0.3 * n.b.mining) : 0);
+    if ((n.fx.sanct ?? 0) > this.s.day) d.income *= 0.7;
     const all = this.movingUnits(n.id);
     const inb = unitsInBattles(this, n.id);
     for (const k of UNIT_TYPES) all[k] += n.units[k] + inb[k];
@@ -580,6 +645,8 @@ export class Engine {
       for (const m of arrived) this.resolveMove(m);
     }
     tickBattles(this);
+    tickOps(this);
+    tickUN(this);
     if (s.day % DAYS_PER_MONTH === 0) this.monthly();
   }
 
@@ -623,6 +690,8 @@ export class Engine {
       fireWorldEvent(this);
       scheduleWorld(this);
     }
+    if (s.nextCards > 0 && s.day >= s.nextCards) dealCards(this);
+    if (s.day % HIST_EVERY === 0) recordHistory(this);
     this.checkWin();
   }
 
@@ -747,7 +816,9 @@ export class Engine {
   }
 
   travelDays(n: Nation, from: TerrId, to: TerrId, naval: boolean) {
-    const speed = 1 + 0.12 * n.b.infra;
+    let speed = 1 + 0.12 * n.b.infra;
+    if ((n.fx.blitz ?? 0) > this.s.day) speed *= 2;
+    if ((n.fx.supply ?? 0) > this.s.day) speed /= 1.5;
     if (naval) return clamp(Math.round((this.w.dist(from, to) + 400) / (110 * speed)), 8, 75);
     return clamp(Math.round(this.w.centerDist(from, to) / (45 * speed)), 6, 60);
   }
@@ -831,7 +902,9 @@ export class Engine {
     s.battles = s.battles.filter((b) => b.att !== D.id);
     s.props = s.props.filter((p) => p.from !== D.id && p.to !== D.id);
     for (const k of Object.keys(s.rel)) if (k.split('|').includes(D.id)) delete s.rel[k];
+    s.ops = s.ops.filter((o) => o.owner !== D.id);
     this.news('💀', `${D.name} (${D.leader}) سقطت${by ? ` على يد ${by.name}` : ''}!`, 'war', { n: [D.id] });
+    this.histEvent('💀', `${D.name} سقطت${by ? ` على يد ${by.name}` : ''}`);
   }
 
   private resolveStrike(m: Movement, A: Nation) {
@@ -893,12 +966,18 @@ export class Engine {
           rep.dLoss = this.applyLoss({ ...T.g }, 0.8, T.g as Partial<Units>);
         }
         this.news('☢️', `${A.name} ضربت ${this.tname(T.id)} بقنبلة نووية! العالم في صدمة`, 'nuke', { n: [A.id, D?.id ?? ''], terr: T.id });
+        this.histEvent('☢️', `${A.name} ضربت ${this.tname(T.id)} بقنبلة نووية`);
+      }
+      if ((s.mods.nukeBan ?? 0) > s.day) {
+        A.fx.sanct = s.day + 24 * DAYS_PER_MONTH;
+        this.news('🚫', `${A.name} خالفت حظر الأسلحة النووية! عقوبات تلقائية: دخلها ينقص 30% لمدة سنتين`, 'system', { n: [A.id] });
       }
       // ردة فعل العالم
       A.stability = clamp(A.stability - 10, 0, 100);
       for (const o of Object.values(s.nations)) {
         if (o.id === A.id || !o.alive) continue;
         const r = this.peek(A.id, o.id);
+        if (r?.team) continue;
         if (r?.ally) { delete r.ally; this.news('💔', `${o.name} فسخت تحالفها مع ${A.name} بسبب الهجوم النووي`, 'diplo', { n: [o.id, A.id] }); }
         if (r?.trade) delete r.trade;
         if (o.ai) o.ai.grudge = A.id;
@@ -921,8 +1000,11 @@ export class Engine {
       s.phase = 'ended';
       s.winner = { nations: winners.map((w) => w.id), reason, day: s.day };
       this.news('🏆', `انتهت اللعبة! ${winners.map((w) => w.name).join(' و ')} ${winners.length > 1 ? 'فازوا' : 'فازت'} — ${reason}`, 'system');
+      recordHistory(this);
+      this.histEvent('🏆', `${winners.map((w) => w.name).join(' و ')} ${winners.length > 1 ? 'فازوا' : 'فازت'}`);
     };
     const top = () => [...alive].sort((a, b) => b.d.score - a.d.score)[0];
+    if (s.settings.teams > 0) return this.checkTeamWin(alive, end);
     if (anyHumans && humans.length === 0 && alive.length) return end([top()], 'سقطت كل دول اللاعبين');
     if (s.settings.win === 'domination' || alive.length <= 1) {
       if (alive.length === 1) return end(alive, 'سيطرت على العالم');
@@ -944,6 +1026,40 @@ export class Engine {
     }
   }
 
+  /** نقاط ومساحة كل فريق */
+  teamStats(): { team: number; score: number; area: number; alive: number; members: Nation[] }[] {
+    const out: { team: number; score: number; area: number; alive: number; members: Nation[] }[] = [];
+    for (let k = 1; k <= this.s.settings.teams; k++) {
+      const members = Object.values(this.s.nations).filter((n) => n.team === k);
+      const live = members.filter((n) => n.alive);
+      out.push({ team: k, score: live.reduce((a, n) => a + n.d.score, 0), area: live.reduce((a, n) => a + n.d.area, 0), alive: live.length, members });
+    }
+    return out;
+  }
+
+  private checkTeamWin(alive: Nation[], end: (w: Nation[], reason: string) => void) {
+    const s = this.s;
+    const st = this.teamStats().filter((t) => t.members.length);
+    const live = st.filter((t) => t.alive > 0);
+    const best = () => [...live].sort((a, b) => b.score - a.score)[0];
+    const anyHumans = Object.values(s.nations).some((n) => n.kind === 'player');
+    if (anyHumans && !alive.some((n) => n.kind === 'player') && live.length) return end(best().members, 'سقطت كل دول اللاعبين');
+    if (live.length <= 1) {
+      if (live.length === 1) return end(live[0].members, 'آخر فريق باقي');
+      return;
+    }
+    if (s.settings.win === 'percent') {
+      for (const t of live) {
+        if (t.area / this.w.totalArea >= s.settings.percent / 100) {
+          return end(t.members, `الفريق سيطر على ${Math.round((t.area / this.w.totalArea) * 100)}% من مساحة العالم`);
+        }
+      }
+    }
+    if (s.settings.win === 'score' && s.day >= s.settings.years * 12 * DAYS_PER_MONTH) {
+      return end(best().members, `أعلى نقاط للفريق بعد ${s.settings.years} سنة`);
+    }
+  }
+
   // ---------------- الأوامر ----------------
   command(nid: NationId, c: Command, isHost = false): CmdResult {
     const s = this.s;
@@ -962,11 +1078,20 @@ export class Engine {
     if (c.t === 'autospin') { this.autospin(nid); return { ok: true }; }
     if (c.t === 'ready') return this.ready(nid);
     const n = s.nations[nid];
+    if (c.t === 'team') {
+      const p = Object.values(s.players).find((x) => x.nation === nid);
+      if (!p || s.phase !== 'lobby') return { ok: false, msg: 'تقدر تختار فريقك قبل ما تبدأ اللعبة بس' };
+      if (s.settings.teams <= 0) return { ok: false, msg: 'وضع الفرق مقفل' };
+      p.team = clamp(Math.floor(c.team), 1, s.settings.teams);
+      return { ok: true };
+    }
     if (c.t === 'chat') {
       const text = c.text.trim().slice(0, 300);
       if (!text) return { ok: false };
       const player = Object.values(s.players).find((p) => p.nation === nid);
-      s.chat.push({ id: this.id(), day: s.day, from: nid, name: player?.name ?? n?.leader ?? '؟', to: c.to, text });
+      const team = c.team ? n?.team ?? player?.team : undefined;
+      if (c.team && !team) return { ok: false, msg: 'ما عندك فريق' };
+      s.chat.push({ id: this.id(), day: s.day, from: nid, name: player?.name ?? n?.leader ?? '؟', to: team ? undefined : c.to, team, text });
       if (s.chat.length > 80) s.chat.splice(0, s.chat.length - 80);
       return { ok: true };
     }
@@ -1013,6 +1138,7 @@ export class Engine {
         if (cnt < 1 || cnt > (u === 'inf' ? 200 : u === 'nuke' ? 3 : 80)) return { ok: false, msg: 'عدد غير مسموح' };
         if (n.tech < UNITS[u].tech && u !== 'nuke') return { ok: false, msg: `تحتاج تكنولوجيا مستوى ${UNITS[u].tech}` };
         if (u === 'nuke') {
+          if ((s.mods.nukeBan ?? 0) > s.day) return { ok: false, msg: `الأمم المتحدة حاظرة الأسلحة النووية لين ${this.dateStr(s.mods.nukeBan!)}` };
           if (!n.nukeProg) return { ok: false, msg: 'تحتاج برنامج نووي أول' };
           if (n.tech < 3) return { ok: false, msg: 'تحتاج تكنولوجيا مستوى 3 على الأقل' };
         }
@@ -1043,6 +1169,10 @@ export class Engine {
         return { ok: true };
       }
       case 'fortune': return spinFortune(this, n);
+      case 'agent': return recruitAgent(this, n);
+      case 'spy': return startOp(this, n, c.op, c.target);
+      case 'vote': return castVote(this, n, c.v);
+      case 'card': return playCard(this, n, c.card, c.target, c.terr);
       case 'attack': return this.cmdAttack(n, c.to, c.units);
       case 'strike': return this.cmdStrike(n, c.to, c.kind, c.n);
       case 'propose': return this.cmdPropose(n, c.to, c.type);
@@ -1059,6 +1189,7 @@ export class Engine {
       case 'breakAlly': {
         const r = this.peek(n.id, c.with);
         if (!r?.ally) return { ok: false };
+        if (r.team) return { ok: false, msg: 'تحالف الفريق ما ينفسخ' };
         delete r.ally;
         r.truce = s.day + 90;
         n.stability = clamp(n.stability - 10, 0, 100);

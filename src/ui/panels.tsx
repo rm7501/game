@@ -13,6 +13,9 @@ import { sfx } from './audio';
 import { Bar, Flag, NationTag, Stat, UnitIcon } from './bits';
 import { dateStr, fmtArea, fmtMoney, fmtNum, fmtPop } from './format';
 import { toast } from './toast';
+import { IntelBlock, IntelReveal, TeamBadge, TeamStandings } from './plans';
+import { hasIntel } from '../game/spies';
+import { CARDS } from '../game/defs';
 
 export interface PanelProps {
   ctl: Controller;
@@ -22,6 +25,8 @@ export interface PanelProps {
   onAid?: (to: NationId) => void;
   openTab?: (t: Tab) => void;
   focusNation?: NationId | null;
+  onSpy?: (to: NationId) => void;
+  onCards?: () => void;
 }
 
 export type Tab = 'overview' | 'economy' | 'military' | 'diplo' | 'chat' | 'rank' | 'news';
@@ -36,7 +41,7 @@ async function run(ctl: Controller, cmd: Parameters<Controller['send']>[0], okMs
 }
 
 // ---------------- دولتي ----------------
-export function OverviewTab({ ctl, eng, me, onSelect }: PanelProps) {
+export function OverviewTab({ ctl, eng, me, onSelect, onCards }: PanelProps) {
   if (!me) return <Spectator />;
   const d = me.d;
   const net = d.income - d.upkeep;
@@ -63,7 +68,16 @@ export function OverviewTab({ ctl, eng, me, onSelect }: PanelProps) {
         <span class="badge" title={TERRAINS[me.terrain].desc}>{TERRAINS[me.terrain].icon} {TERRAINS[me.terrain].name}</span>
         {me.underdog && <span class="badge good" title="من الدول الأضعف: الجيش أرخص 15%، والنمو أسرع، والدفاع أقوى 20%">🛡️ دعم المستضعفين</span>}
         {me.gov === 'transitional' && me.govUntil && <span class="badge">🌀 الحكومة الانتقالية تنتهي بعد {Math.max(1, Math.ceil((me.govUntil - eng.s.day) / 30))} شهر</span>}
+        <TeamBadge team={me.team} />
+        {(me.fx.blitz ?? 0) > eng.s.day && <span class="badge good">⚡ هجوم خاطف ({me.fx.blitz! - eng.s.day} يوم)</span>}
+        {(me.fx.shield ?? 0) > eng.s.day && <span class="badge good">🛡️ درع وطني ({me.fx.shield! - eng.s.day} يوم)</span>}
+        {(me.fx.sanct ?? 0) > eng.s.day && <span class="badge bad" title="دخلك ناقص 30%">🚫 عقوبات لين {dateStr(me.fx.sanct!)}</span>}
+        {(me.fx.supply ?? 0) > eng.s.day && <span class="badge bad">🚧 إمداداتك مقطوعة ({me.fx.supply! - eng.s.day} يوم)</span>}
       </div>
+      <button class="block cards-strip clickable" onClick={onCards}>
+        <span class="block-title">🃏 بطاقات الخطط ({me.cards.length})</span>
+        <span class="cards-mini">{me.cards.length ? me.cards.map((c, i) => <span key={i} title={CARDS[c].name}>{CARDS[c].icon}</span>) : <span class="muted small">ما عندك بطاقات (تاخذ وحدة كل سنة)</span>}</span>
+      </button>
       {eng.s.coalition === me.id && <div class="hint bad block">🌍 العالم متحالف ضدك بسبب هيمنتك! هجومهم عليك أقوى 20%، انتبه لحدودك.</div>}
       {eng.s.coalition && eng.s.coalition !== me.id && eng.s.nations[eng.s.coalition] && (
         <div class="hint block">🌍 فيه تحالف دولي ضد {eng.s.nations[eng.s.coalition].name}. لو هاجمتها يكون هجومك أقوى 20%.</div>
@@ -331,7 +345,7 @@ export function MilitaryTab({ ctl, eng, me, onSelect }: PanelProps) {
 }
 
 // ---------------- الدبلوماسية ----------------
-export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect }: PanelProps) {
+export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect, onSpy }: PanelProps) {
   const s = eng.s;
   const nations = Object.values(s.nations).filter((n) => n.alive && n.id !== me?.id).sort((a, b) => b.d.score - a.d.score);
   const incoming = me ? s.props.filter((p) => p.to === me.id) : [];
@@ -341,6 +355,7 @@ export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect }: Pan
   if (!me) return <Spectator />;
   return (
     <div class="tab-body">
+      <IntelBlock ctl={ctl} eng={eng} me={me} />
       {incoming.length > 0 && (
         <div class="block special">
           <div class="block-title">📨 طلبات وصلتك</div>
@@ -369,10 +384,11 @@ export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect }: Pan
               <span class="dot" style={{ background: o.color }} />
               <span class="dip-name">{o.name}</span>
               <span class="muted small">{o.kind === 'bot' ? '🤖' : '👤'} {o.leader}</span>
+              <TeamBadge team={o.team} short />
             </div>
             <div class="dip-badges">
               {r?.war && <span class="badge bad">⚔️ حرب</span>}
-              {r?.ally && <span class="badge good">🤝 حلفاء</span>}
+              {r?.ally && <span class="badge good">{r.team ? '👥 فريقك' : '🤝 حلفاء'}</span>}
               {r?.trade && <span class="badge">📦 تجارة</span>}
               {truce && <span class="badge">🕊️ هدنة لين {dateStr(r!.truce!)}</span>}
               {peace && !r?.war && <span class="badge">🕊️ فترة سلام</span>}
@@ -380,7 +396,9 @@ export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect }: Pan
                 قوتهم {ratio >= 10 ? '×' + Math.round(ratio) : ratio >= 1 ? '×' + ratio.toFixed(1) : Math.round(ratio * 100) + '%'}
               </span>
               <span class="badge">{o.d.countries} دول</span>
+              {(o.fx.sanct ?? 0) > s.day && <span class="badge bad">🚫 عليها عقوبات</span>}
             </div>
+            {hasIntel(eng, me, o.id) && <IntelReveal eng={eng} o={o} until={me.intel[o.id]} />}
             <div class="dip-actions">
               {r?.war ? (
                 <button class="btn btn-sm" disabled={pending('peace')} onClick={() => run(ctl, { t: 'propose', to: o.id, type: 'peace' }, undefined, sfx.click)}>🕊️ اطلب سلام</button>
@@ -388,12 +406,13 @@ export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect }: Pan
                 <>
                   {!r?.ally && <button class="btn btn-sm" disabled={pending('ally')} onClick={() => run(ctl, { t: 'propose', to: o.id, type: 'ally' }, undefined, sfx.click)}>🤝 تحالف</button>}
                   {!r?.trade && <button class="btn btn-sm" disabled={pending('trade')} onClick={() => run(ctl, { t: 'propose', to: o.id, type: 'trade' }, undefined, sfx.click)}>📦 تجارة</button>}
-                  {r?.ally && <button class="btn btn-sm btn-ghost" onClick={() => confirm('أكيد تبي تفسخ التحالف؟ (الاستقرار ينزل 10)') && run(ctl, { t: 'breakAlly', with: o.id }, undefined, sfx.bad)}>💔 فسخ التحالف</button>}
+                  {r?.ally && !r.team && <button class="btn btn-sm btn-ghost" onClick={() => confirm('أكيد تبي تفسخ التحالف؟ (الاستقرار ينزل 10)') && run(ctl, { t: 'breakAlly', with: o.id }, undefined, sfx.bad)}>💔 فسخ التحالف</button>}
                   {r?.trade && <button class="btn btn-sm btn-ghost" onClick={() => run(ctl, { t: 'cancelTrade', with: o.id }, undefined, sfx.click)}>إلغاء التجارة</button>}
                   {!r?.ally && !truce && !peace && <button class="btn btn-sm btn-danger" onClick={() => confirm(`تعلن الحرب على ${o.name}؟`) && run(ctl, { t: 'declare', on: o.id }, undefined, sfx.alert)}>⚔️ إعلان حرب</button>}
                   <button class="btn btn-sm" onClick={() => onAid?.(o.id)}>🎁 مساعدة</button>
                 </>
               )}
+              {!(me.team && o.team === me.team) && <button class="btn btn-sm btn-ghost" onClick={() => onSpy?.(o.id)}>🕵️ تجسس</button>}
             </div>
           </div>
         );
@@ -410,14 +429,15 @@ export function ChatTab({ ctl, eng, me }: PanelProps) {
   const [to, setTo] = useState<string>('');
   const [text, setText] = useState('');
   const box = useRef<HTMLDivElement>(null);
-  const msgs = s.chat.filter((c) => !c.to || c.to === myId || c.from === myId);
+  const myTeam = me?.team ?? (myId ? s.nations[myId]?.team : undefined);
+  const msgs = s.chat.filter((c) => (c.team ? c.team === myTeam : !c.to || c.to === myId || c.from === myId));
   useEffect(() => {
     box.current?.scrollTo({ top: box.current.scrollHeight });
   }, [msgs.length]);
   const others = Object.values(s.nations).filter((n) => n.id !== myId && n.kind === 'player');
   const send = () => {
     if (!text.trim()) return;
-    ctl.send({ t: 'chat', text, to: to || undefined });
+    ctl.send({ t: 'chat', text, to: to && to !== 'team' ? to : undefined, team: to === 'team' || undefined });
     setText('');
   };
   return (
@@ -427,10 +447,11 @@ export function ChatTab({ ctl, eng, me }: PanelProps) {
         {msgs.map((c) => {
           const n = s.nations[c.from];
           return (
-            <div class={`msg ${c.from === myId ? 'mine' : ''} ${c.to ? 'dm' : ''}`} key={c.id}>
+            <div class={`msg ${c.from === myId ? 'mine' : ''} ${c.to || c.team ? 'dm' : ''}`} key={c.id}>
               <span class="msg-from" style={{ color: n?.color }}>
                 {n && <Flag id={n.home} size={11} />} {c.name}
                 {c.to && <span class="muted"> ← {c.to === myId ? 'لك' : s.nations[c.to]?.name}</span>}
+                {c.team && <span class="muted"> ← 👥 الفريق</span>}
               </span>
               <span class="msg-text">{c.text}</span>
             </div>
@@ -440,6 +461,7 @@ export function ChatTab({ ctl, eng, me }: PanelProps) {
       <div class="chat-input">
         <select value={to} onChange={(e) => setTo((e.target as HTMLSelectElement).value)}>
           <option value="">📢 للكل</option>
+          {myTeam ? <option value="team">👥 لفريقي</option> : null}
           {others.map((o) => (
             <option value={o.id} key={o.id}>🔒 {o.name} ({o.leader})</option>
           ))}
@@ -465,6 +487,7 @@ export function RankTab({ eng, me, onSelect }: PanelProps) {
   return (
     <div class="tab-body">
       <GoalBox eng={eng} me={me} />
+      <TeamStandings eng={eng} me={me} />
       <table class="rank-table">
         <thead>
           <tr><th>#</th><th>الدولة</th><th>النقاط</th><th>الأراضي</th><th>القوة</th></tr>
@@ -475,7 +498,7 @@ export function RankTab({ eng, me, onSelect }: PanelProps) {
               <td>{n.alive ? i + 1 : '💀'}</td>
               <td>
                 <NationTag name={n.name} color={n.color} flag={n.home} />
-                <div class="muted small">{n.kind === 'bot' ? '🤖' : '👤'} {n.leader}</div>
+                <div class="muted small">{n.kind === 'bot' ? '🤖' : '👤'} {n.leader} <TeamBadge team={n.team} short /></div>
               </td>
               <td>{fmtNum(n.d.score)}</td>
               <td>{n.d.countries} <span class="muted small">({Math.round((n.d.area / total) * 100)}%)</span></td>
@@ -492,13 +515,14 @@ export function GoalBox({ eng, me }: { eng: Engine; me?: Nation }) {
   const s = eng.s;
   const st = s.settings;
   let text = '';
+  const teams = st.teams > 0;
   if (st.win === 'score') {
     const left = st.years * 12 * DAYS_PER_MONTH - s.day;
-    text = `🏆 أعلى نقاط بعد ${st.years} سنة · باقي ${Math.max(0, Math.ceil(left / 360))} سنة`;
+    text = `🏆 ${teams ? 'الفريق صاحب أعلى مجموع نقاط' : 'أعلى نقاط'} بعد ${st.years} سنة · باقي ${Math.max(0, Math.ceil(left / 360))} سنة`;
   } else if (st.win === 'percent') {
     const mine = me ? Math.round((me.d.area / eng.w.totalArea) * 100) : 0;
-    text = `🏆 أول من يسيطر على ${st.percent}% من مساحة العالم (مع حلفائه) · أنت ${mine}%`;
-  } else text = '🏆 السيطرة على العالم: آخر دولة (أو تحالف) يبقى يفوز';
+    text = `🏆 أول ${teams ? 'فريق' : 'من'} يسيطر على ${st.percent}% من مساحة العالم${teams ? '' : ' (مع حلفائه)'} · أنت ${mine}%`;
+  } else text = teams ? '🏆 السيطرة على العالم: آخر فريق يبقى يفوز' : '🏆 السيطرة على العالم: آخر دولة (أو تحالف) يبقى يفوز';
   return <div class="goal-box">{text}</div>;
 }
 

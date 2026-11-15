@@ -3,14 +3,17 @@ import { BUILDINGS, NUKE_PROJECT, SHIP_CAPACITY, UNITS, emptyUnits, missileRange
 import { estimate } from './battle';
 import type { Engine } from './engine';
 import { spinFortune } from './events';
+import { aiCards } from './cards';
+import { aiSpy } from './spies';
+import { aiVote } from './un';
 import type { BuildingType, Nation, Personality, Proposal, TerrId, UnitType, Units } from './types';
 import { COMBAT_UNITS } from './types';
 
 const PRIORITY: Record<Personality, Partial<Record<BuildingType, number>>> = {
-  economic: { industry: 6, research: 4, infra: 3, mining: 3, health: 2, fort: 1, airdef: 1, milfac: 1 },
-  aggressive: { milfac: 5, industry: 5, research: 3, infra: 2, fort: 1, mining: 2, health: 1, airdef: 1 },
-  defensive: { fort: 5, industry: 5, airdef: 3, research: 3, health: 2, mining: 2, infra: 1, milfac: 1 },
-  balanced: { industry: 6, research: 4, infra: 2, fort: 2, milfac: 2, mining: 2, health: 2, airdef: 1 },
+  economic: { industry: 6, research: 4, infra: 3, mining: 3, health: 2, fort: 1, airdef: 1, milfac: 1, intel: 0.5 },
+  aggressive: { milfac: 5, industry: 5, research: 3, infra: 2, fort: 1, mining: 2, health: 1, airdef: 1, intel: 1.5 },
+  defensive: { fort: 5, industry: 5, airdef: 3, research: 3, health: 2, mining: 2, infra: 1, milfac: 1, intel: 1.5 },
+  balanced: { industry: 6, research: 4, infra: 2, fort: 2, milfac: 2, mining: 2, health: 2, airdef: 1, intel: 1 },
 };
 
 export function aiRespond(e: Engine, n: Nation, p: Proposal) {
@@ -65,6 +68,9 @@ export function aiThink(e: Engine, n: Nation) {
 
   // عجلة الحظ
   if (s.day >= n.fortuneNext) spinFortune(e, n);
+
+  // التصويت في الأمم المتحدة
+  if (s.un && !s.un.votes[n.id]) s.un.votes[n.id] = aiVote(e, n, s.un);
 
   // الضرائب
   let tax = { aggressive: 0.25, balanced: 0.22, economic: 0.2, defensive: 0.22 }[pers];
@@ -139,13 +145,17 @@ export function aiThink(e: Engine, n: Nation) {
     if (island || myTerrs.some((t) => !e.w.get(t.id).n.length)) mix.push(['ship', 0.25]);
     else if (e.rand() < 0.2) mix.push(['ship', 0.1]);
     if (n.tech >= 2 && (atWar.length || pers === 'aggressive')) mix.push(['missile', 0.12]);
-    if (n.nukeProg && n.tech >= 3 && diff === 'hard' && n.units.nuke < 2 && n.treasury > 400 && e.rand() < 0.1) mix.push(['nuke', 0.3]);
+    if (n.nukeProg && n.tech >= 3 && diff === 'hard' && n.units.nuke < 2 && n.treasury > 400 && e.rand() < 0.1 && !((s.mods.nukeBan ?? 0) > s.day)) mix.push(['nuke', 0.3]);
     const tot = mix.reduce((a, b) => a + b[1], 0);
     for (const [u, w] of mix) {
       if (n.tech < UNITS[u].tech && u !== 'nuke') continue;
       mb -= recruit(e, n, u, (milBudget * w) / tot);
     }
   }
+
+  // البطاقات والجواسيس
+  aiCards(e, n, atWar, danger);
+  aiSpy(e, n, atWar);
 
   // الهجوم
   const myMoves = s.moves.filter((m) => m.owner === n.id && m.kind === 'attack').length;
@@ -162,7 +172,7 @@ export function aiThink(e: Engine, n: Nation) {
   }
 
   // النووي
-  if (n.units.nuke > 0 && atWar.length && diff !== 'easy') {
+  if (n.units.nuke > 0 && atWar.length && diff !== 'easy' && !((s.mods.nukeBan ?? 0) > s.day)) {
     const enemy = atWar.map((id) => s.nations[id]).sort((a, b) => b.d.power - a.d.power)[0];
     const desperate = enemy.d.power > n.d.power * 1.5 || ai.grudge === enemy.id;
     const p = diff === 'hard' ? 0.12 : 0.04;
@@ -275,7 +285,7 @@ function diplomacy(e: Engine, n: Nation, neighbors: Set<string>, atWar: string[]
   }
   // خيانة: فسخ التحالف مع حليف ضعيف مجاور
   if ((n.ai?.pers === 'aggressive' || n.ai?.pers === 'balanced') && e.rand() < 0.015) {
-    const weak = e.allies(n.id).map((id) => s.nations[id]).filter((o) => neighbors.has(o.id) && o.d.power < n.d.power * 0.5);
+    const weak = e.allies(n.id).map((id) => s.nations[id]).filter((o) => neighbors.has(o.id) && o.d.power < n.d.power * 0.5 && !e.peek(n.id, o.id)?.team);
     if (weak.length) e.command(n.id, { t: 'breakAlly', with: weak[0].id });
   }
 }

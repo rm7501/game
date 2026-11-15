@@ -1,6 +1,6 @@
 // وحدة التحكم: تربط الواجهة بالمحرك (محلياً) أو بالسيرفر (أونلاين)
 import { MS_PER_DAY } from '../game/defs';
-import { Engine } from '../game/engine';
+import { Engine, STATE_VERSION } from '../game/engine';
 import type { CmdResult, Command, GameState, Nation, NationId, News, Settings } from '../game/types';
 import type { World } from '../game/world';
 
@@ -86,7 +86,7 @@ export function loadSave(): GameState | null {
     const raw = localStorage.getItem(SAVE_KEY);
     if (!raw) return null;
     const s = JSON.parse(raw) as GameState;
-    if (s.v !== 2 || s.mode !== 'single' || s.phase === 'ended') return null;
+    if (s.v !== STATE_VERSION || s.mode !== 'single' || s.phase === 'ended') return null;
     return s;
   } catch {
     return null;
@@ -156,6 +156,12 @@ export class HostController extends Controller {
     if (s.phase !== 'lobby') return;
     Object.assign(s.settings, p);
     s.speed = s.settings.speed;
+    // وضع الفرق: نوزع اللي ما عندهم فريق
+    for (const pl of Object.values(s.players).sort((a, b) => a.joinedAt - b.joinedAt)) {
+      if (s.settings.teams > 0) {
+        if (!pl.team || pl.team > s.settings.teams) { pl.team = undefined; pl.team = this.engine.smallestTeam(); }
+      } else delete pl.team;
+    }
     this.dirty = true;
     this.flush(true);
   }

@@ -2,6 +2,7 @@
 // الطرف الأقوى (بعد حساب التكنولوجيا والتحصينات والتضاريس والتفوق الجوي) يفوز غالباً
 import { BATTLE, GOVS, TERRAINS, UNITS, emptyUnits, techMult } from './defs';
 import type { Engine } from './engine';
+import { drawCard } from './cards';
 import type { Battle, Movement, Nation, NationId, Report, TerrId, Units } from './types';
 import { COMBAT_UNITS, UNIT_TYPES } from './types';
 
@@ -117,6 +118,9 @@ export function setupBattle(e: Engine, A: Nation | null, units: Partial<Units>, 
     else { a0 *= 0.85; mods.push('🚢 إنزال بحري -15%'); }
   }
 
+  // بطاقات الخطط
+  if (A && (A.fx.blitz ?? 0) > s.day) { a0 *= 1.25; mods.push('⚡ هجوم خاطف +25%'); }
+  if (D && (D.fx.shield ?? 0) > s.day) { d0 *= 1.3; mods.push('🛡️ درع وطني +30%'); }
   // التحالف الدولي ضد المسيطر
   if (D && s.coalition === D.id) { a0 *= 1.2; mods.push('🌍 التحالف الدولي +20%'); }
   // الدول الأضعف تدافع عن وجودها
@@ -312,6 +316,7 @@ export function endBattle(e: Engine, b: Battle, outcome: 'att' | 'def' | 'cancel
     // المدافعين الناجين ينسحبون لدولتهم (المحايدة تنتهي)
     if (D) giveBackDef();
     e.conquer(T, A, D, b.days);
+    if (e.rand() < (D ? 0.2 : 0.08)) drawCard(e, A, 'غنيمة حرب');
   } else {
     A.st.lost++;
     if (D) { D.st.won++; D.st.held++; }

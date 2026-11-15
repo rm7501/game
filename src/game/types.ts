@@ -7,7 +7,7 @@ export type UnitType = (typeof UNIT_TYPES)[number];
 export type Units = Record<UnitType, number>;
 export const COMBAT_UNITS: UnitType[] = ['inf', 'tank', 'jet', 'ship'];
 
-export const BUILDING_TYPES = ['industry', 'infra', 'research', 'health', 'fort', 'airdef', 'milfac', 'mining'] as const;
+export const BUILDING_TYPES = ['industry', 'infra', 'research', 'health', 'fort', 'airdef', 'milfac', 'mining', 'intel'] as const;
 export type BuildingType = (typeof BUILDING_TYPES)[number];
 
 export type GovId =
@@ -21,10 +21,15 @@ export type TerrainId = 'mountains' | 'desert' | 'forest' | 'plains' | 'coast' |
 export type MissionId = 'conqueror' | 'empire' | 'tycoon' | 'scholar' | 'allies' | 'regional' | 'admiral' | 'giant' | 'fortress';
 export type FortuneId =
   | 'cash' | 'troops' | 'tech' | 'build' | 'festival' | 'boom' | 'arms' | 'jackpot'
-  | 'crash' | 'riots' | 'outbreak' | 'mutiny' | 'nothing';
+  | 'crash' | 'riots' | 'outbreak' | 'mutiny' | 'nothing' | 'card';
 export type WorldEventId =
   | 'coalition' | 'crash' | 'pandemic' | 'revolts' | 'bailout' | 'peace' | 'energy' | 'meteor' | 'techrev'
   | 'armsrace' | 'fortune' | 'goldage' | 'mercsrebel';
+
+export type CardId = 'blitz' | 'shield' | 'ceasefire' | 'coup' | 'boom' | 'mobilize' | 'double' | 'supply' | 'defect' | 'reluck';
+export type SpyOpId = 'tech' | 'sabotage' | 'revolt' | 'reveal' | 'money';
+export type UNResId = 'sanctions' | 'nukeban' | 'peacekeep' | 'devfund' | 'condemn' | 'science' | 'disarm';
+export type Vote = 'y' | 'n' | 'a';
 
 export type WheelId = 'area' | 'country' | 'pop' | 'econ' | 'mil' | 'res' | 'gov' | 'tech' | 'leader' | 'terrain' | 'mission' | 'luck';
 export const WHEEL_ORDER: WheelId[] = ['area', 'country', 'pop', 'econ', 'mil', 'res', 'gov', 'tech', 'leader', 'terrain', 'mission', 'luck'];
@@ -42,6 +47,7 @@ export interface Settings {
   neutral: NeutralStrength;
   peaceMonths: number; // فترة السلام في البداية (ما أحد يهاجم لاعب)
   speed: number;
+  teams: number; // وضع الفرق: 0 = بدون، أو عدد الفرق (2-4)
 }
 
 export interface WheelState {
@@ -49,6 +55,7 @@ export interface WheelState {
   respins: number;
   done: boolean;
   ready?: boolean; // ضغط «جاهز» بعد ما شاف بطاقة دولته
+  team?: number;
   last?: { wheel: WheelId; nonce: number }; // آخر عجلة انلفّت (عشان الأنيميشن)
 }
 
@@ -59,6 +66,7 @@ export interface Player {
   online: boolean;
   joinedAt: number;
   lastSeen: number;
+  team?: number; // الفريق (في وضع الفرق)
 }
 
 export interface Territory {
@@ -147,6 +155,11 @@ export interface Nation {
   joinDay: number;
   lastProp?: number; // آخر يوم وصلها فيه اقتراح (عشان البوتات ما تزعج اللاعب)
   underdog?: boolean; // من الدول الأضعف: تاخذ دعم
+  team?: number; // الفريق (في وضع الفرق)
+  agents: number; // جواسيس جاهزين
+  cards: CardId[]; // بطاقات الخطط اللي بيدك
+  fx: { blitz?: number; shield?: number; sanct?: number; supply?: number }; // تأثيرات مؤقتة (يوم نهايتها)
+  intel: Record<NationId, number>; // كشف أسرار دولة لين يوم معين
 }
 
 export type MoveKind = 'attack' | 'return' | 'missile' | 'nuke';
@@ -167,6 +180,7 @@ export interface Relation {
   ally?: number;
   trade?: number;
   truce?: number; // يوم نهاية الهدنة
+  team?: boolean; // تحالف فريق دائم (ما ينفسخ)
 }
 
 export type ProposalType = 'ally' | 'trade' | 'peace';
@@ -243,7 +257,47 @@ export interface Chat {
   from: NationId;
   name: string;
   to?: NationId;
+  team?: number; // رسالة للفريق
   text: string;
+}
+
+/** عملية تجسس شغالة */
+export interface SpyOp {
+  id: number;
+  owner: NationId;
+  target: NationId;
+  op: SpyOpId;
+  start: number;
+  done: number; // يوم النتيجة
+}
+
+/** قرار في الأمم المتحدة قيد التصويت */
+export interface UNVote {
+  id: number;
+  res: UNResId;
+  target?: NationId;
+  start: number;
+  end: number;
+  votes: Record<NationId, Vote>;
+}
+
+export interface UNResult {
+  id: number;
+  res: UNResId;
+  target?: NationId;
+  yes: number;
+  no: number;
+  abst: number;
+  passed: boolean;
+  day: number;
+  text: string;
+}
+
+/** سجل اللعبة (للإعادة والإحصائيات بالنهاية) */
+export interface History {
+  n: NationId[]; // ترتيب الدول (رقم الدولة في الإطارات = مكانها هنا + 1)
+  f: { d: number; o: string; v: number[][] }[]; // إطار: اليوم، أصحاب الأراضي، [نقاط، قوة، ناتج، أراضي] لكل دولة
+  ev: { d: number; icon: string; text: string }[]; // أحداث مهمة
 }
 
 export type Phase = 'lobby' | 'wheels' | 'playing' | 'ended';
@@ -276,7 +330,14 @@ export interface GameState {
   battles: Battle[];
   world?: { id: number; ev: WorldEventId; day: number; text: string; target?: NationId; terr?: TerrId };
   nextWorld: number; // يوم عجلة الأحداث العالمية الجاية
-  mods: { arms?: number }; // تأثيرات عالمية مؤقتة (يوم نهايتها)
+  mods: { arms?: number; nukeBan?: number }; // تأثيرات عالمية مؤقتة (يوم نهايتها)
+  ops: SpyOp[];
+  un?: UNVote;
+  unLast?: UNResult;
+  nextUN: number;
+  nextCards: number; // يوم توزيع البطاقات السنوي
+  hist?: History;
+  gameId?: string; // معرف اللعبة (لتسجيل النتايج)
   coalition?: NationId; // الدولة اللي العالم متحالف ضدها
   holdUntil?: number; // صاحب الغرفة يوقف اللعبة شوي وقت الأحداث الكبيرة (ms)
 }
@@ -302,7 +363,12 @@ export type Command =
   | { t: 'cancelTrade'; with: NationId }
   | { t: 'declare'; on: NationId }
   | { t: 'aid'; to: NationId; money?: number; units?: Partial<Units> }
-  | { t: 'chat'; text: string; to?: NationId }
+  | { t: 'chat'; text: string; to?: NationId; team?: boolean }
+  | { t: 'team'; team: number }
+  | { t: 'agent' }
+  | { t: 'spy'; op: SpyOpId; target: NationId }
+  | { t: 'vote'; v: Vote }
+  | { t: 'card'; card: CardId; target?: NationId; terr?: TerrId }
   | { t: 'speed'; speed: number }
   | { t: 'pause'; paused: boolean };
 

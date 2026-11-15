@@ -1,5 +1,6 @@
 // التعريفات والأرقام (التوازن) للعبة
 import type {
+  CardId, SpyOpId, UNResId,
   BuildingType, FortuneId, GovId, LeaderId, LuckId, MissionId, ResId, TerrainId, UnitType, Units, WheelId, WorldEventId,
 } from './types';
 
@@ -54,6 +55,7 @@ export const BUILDINGS: Record<BuildingType, BuildingDef> = {
   airdef: { name: 'الدفاع الجوي', icon: '📡', desc: 'يعترض 12% من الصواريخ لكل مستوى', k: 0.026, min: 2.5, days: 110 },
   milfac: { name: 'المصانع الحربية', icon: '⚙️', desc: '-6% تكلفة الوحدات و +15% سرعة الإنتاج', k: 0.03, min: 2.5, days: 140 },
   mining: { name: 'استخراج الموارد', icon: '⛏️', desc: '+30% من عائد مواردك الطبيعية', k: 0.025, min: 2, days: 120 },
+  intel: { name: 'جهاز الاستخبارات', icon: '🕵️', desc: '+1 جاسوس، ونجاح عملياتك أعلى، وجواسيس العدو ينكشفون أسهل', k: 0.022, min: 2, days: 110 },
 };
 export const BUILD_GROWTH = 1.55;
 export const MAX_BUILDING_LEVEL = 10;
@@ -321,6 +323,7 @@ export const FORTUNES: Record<FortuneId, FortuneDef> = {
   boom: { name: 'طفرة اقتصادية', icon: '📈', w: 8, good: 1 },
   arms: { name: 'صفقة سلاح', icon: '🚀', w: 7, good: 1 },
   jackpot: { name: 'الجائزة الكبرى', icon: '🎰', w: 3, good: 1 },
+  card: { name: 'بطاقتين خطط', icon: '🃏', w: 8, good: 1 },
   crash: { name: 'انهيار البورصة', icon: '📉', w: 7, good: -1 },
   riots: { name: 'أعمال شغب', icon: '🔥', w: 7, good: -1 },
   outbreak: { name: 'وباء محلي', icon: '🦠', w: 5, good: -1 },
@@ -391,4 +394,72 @@ export const BOT_NAMES = [
   'الأميرال موج', 'الحكيم سهيل', 'الداهية مهند', 'الفارس نايف', 'الثعلب الماكر', 'الملك الأسود',
   'الجنرال عاصفة', 'القيصر حديد', 'الشيخ زاهر', 'الدكتاتور بركان', 'المستشار ذهب', 'الأمير ليث',
   'البارون جليد', 'القائدة لمى', 'الجنرالة ريم', 'الملكة شهد', 'الكابتن ماجد', 'الوزير حاتم',
+];
+
+// ---------------- الاستخبارات ----------------
+export interface SpyOpDef {
+  name: string;
+  icon: string;
+  desc: string;
+  base: number; // احتمال النجاح الأساسي
+  cost: number; // مليار
+  days: number; // مدة العملية
+}
+export const SPY_OPS: Record<SpyOpId, SpyOpDef> = {
+  reveal: { name: 'كشف الأسرار', icon: '📂', desc: 'تشوف مهمتهم السرية وبطاقاتهم وجيشهم بالضبط لمدة سنة', base: 0.75, cost: 8, days: 12 },
+  tech: { name: 'سرقة تكنولوجيا', icon: '🔬', desc: 'تاخذ نقاط بحث كثيرة (أكثر لو تكنولوجيتهم أعلى منك)', base: 0.55, cost: 20, days: 20 },
+  money: { name: 'سرقة أموال', icon: '💰', desc: 'تسرق 10% من خزينتهم', base: 0.55, cost: 12, days: 18 },
+  sabotage: { name: 'تخريب', icon: '💣', desc: 'تدمر مستوى من مصانعهم أو أبحاثهم أو تحصيناتهم', base: 0.5, cost: 18, days: 20 },
+  revolt: { name: 'إشعال الفتنة', icon: '✊', desc: 'استقرارهم ينزل 18، ولو ضعيف ممكن أرض محتلة تثور عليهم', base: 0.5, cost: 25, days: 25 },
+};
+export const MAX_AGENTS_BASE = 1; // بدون جهاز استخبارات
+export const agentCost = (gdp: number) => Math.round(Math.max(15, gdp * 0.008));
+
+// ---------------- بطاقات الخطط ----------------
+export interface CardDef {
+  name: string;
+  icon: string;
+  desc: string;
+  w: number;
+  target?: 'enemy' | 'any' | 'terr'; // تحتاج هدف
+}
+export const CARDS: Record<CardId, CardDef> = {
+  boom: { name: 'طفرة', icon: '📈', desc: 'الناتج المحلي +10% في كل أراضيك', w: 10 },
+  mobilize: { name: 'تعبئة عامة', icon: '🪖', desc: 'جيش احتياط فوري: +20% مشاة و +10% دبابات (الاستقرار -5)', w: 10 },
+  shield: { name: 'درع وطني', icon: '🛡️', desc: 'دفاعك أقوى 30% في كل أراضيك لمدة شهرين', w: 9 },
+  blitz: { name: 'هجوم خاطف', icon: '⚡', desc: 'لمدة شهر: هجومك أقوى 25% وجيوشك أسرع مرتين', w: 9 },
+  reluck: { name: 'حظ جديد', icon: '🎲', desc: 'تقدر تلف عجلة الحظ الحين', w: 8 },
+  supply: { name: 'قطع الإمداد', icon: '🚧', desc: 'جيوش العدو بالطريق تتأخر 15 يوم، ومعاركه تضعف 20%، وتحركاته أبطأ لشهرين', w: 7, target: 'enemy' },
+  ceasefire: { name: 'وقف إطلاق نار', icon: '🕊️', desc: 'سلام فوري مع دولة أنت في حرب معها (هدنة سنة) بدون موافقتها', w: 6, target: 'enemy' },
+  double: { name: 'عميل مزدوج', icon: '🎭', desc: 'تكشف أسرار دولة لمدة سنة وتسرق بطاقة من يدها', w: 6, target: 'any' },
+  defect: { name: 'انشقاق', icon: '🏳️', desc: 'أرض مجاورة لك (محايدة أو لدولة غير مستقرة) تنضم لك بدون حرب', w: 5, target: 'terr' },
+  coup: { name: 'انقلاب', icon: '🗡️', desc: 'نظام الحكم عندهم يتغير، واستقرارهم -25، ويخسرون 10% من جيشهم', w: 4, target: 'any' },
+};
+export const HAND_MAX = 5;
+export const CARD_EVERY = 12 * DAYS_PER_MONTH; // كل دولة تاخذ بطاقة كل سنة
+
+// ---------------- الأمم المتحدة ----------------
+export interface UNResDef {
+  name: string;
+  icon: string;
+  desc: (target?: string) => string;
+}
+export const UN_RES: Record<UNResId, UNResDef> = {
+  sanctions: { name: 'عقوبات اقتصادية', icon: '🚫', desc: (t) => `عقوبات على ${t}: دخلها ينقص 30% لمدة سنتين` },
+  condemn: { name: 'إدانة المعتدي', icon: '📢', desc: (t) => `إدانة ${t} على حروبها: استقرارها -15 وحلفاؤها ممكن يتخلون عنها` },
+  nukeban: { name: 'حظر الأسلحة النووية', icon: '☢️', desc: () => 'كل القنابل النووية تتفكك (ترجع نص قيمتها)، وممنوع تصنيعها 5 سنوات، واللي يستخدمها تنفرض عليه عقوبات' },
+  peacekeep: { name: 'قوات حفظ السلام', icon: '🪖', desc: () => 'كل الحروب توقف بهدنة سنة' },
+  devfund: { name: 'صندوق التنمية', icon: '💸', desc: () => 'الدول الغنية تدفع 8% من خزينتها وتتوزع على الدول الأضعف' },
+  science: { name: 'تبادل علمي', icon: '🔬', desc: () => 'كل الدول تاخذ دفعة أبحاث كبيرة، إلا الأكثر تقدماً' },
+  disarm: { name: 'نزع السلاح', icon: '🕊️', desc: () => 'كل الجيوش تنقص 10%، وأقوى جيش ينقص 25%' },
+};
+export const UN_EVERY = [30, 40]; // كل سنتين ونص لثلاث سنوات تقريباً (بالأشهر)
+export const UN_VOTE_DAYS = 120;
+
+// ---------------- الفرق ----------------
+export const TEAMS = [
+  { name: 'الفريق الأحمر', icon: '🔴', color: '#ef4444' },
+  { name: 'الفريق الأزرق', icon: '🔵', color: '#3b82f6' },
+  { name: 'الفريق الأخضر', icon: '🟢', color: '#22c55e' },
+  { name: 'الفريق الأصفر', icon: '🟡', color: '#eab308' },
 ];

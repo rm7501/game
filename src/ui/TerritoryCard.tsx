@@ -1,6 +1,7 @@
 // بطاقة الدولة المختارة على الخريطة
 import { AREA_NAMES, UNITS } from '../game/defs';
 import { defenseValue } from '../game/battle';
+import { cardTargets } from '../game/cards';
 import type { Engine } from '../game/engine';
 import type { Nation, TerrId } from '../game/types';
 import { REGION_NAMES } from '../game/world';
@@ -15,9 +16,10 @@ interface Props {
   onAttack: () => void;
   onStrike: (k: 'missile' | 'nuke') => void;
   onDiplo: (nid: string) => void;
+  onDefect?: () => void;
 }
 
-export function TerritoryCard({ eng, me, id, onClose, onAttack, onStrike, onDiplo }: Props) {
+export function TerritoryCard({ eng, me, id, onClose, onAttack, onStrike, onDiplo, onDefect }: Props) {
   const s = eng.s;
   const t = s.terr[id];
   const m = eng.w.get(id);
@@ -30,6 +32,7 @@ export function TerritoryCard({ eng, me, id, onClose, onAttack, onStrike, onDipl
   const r = me && owner && !mine ? eng.peek(me.id, owner.id) : undefined;
   const why = me && owner && !mine ? eng.canHit(me, owner) : null;
   const incoming = s.moves.filter((x) => x.to === id && x.kind === 'attack');
+  const canDefect = !!me && me.cards.includes('defect') && cardTargets(eng, me, 'defect').terrs.includes(id);
   return (
     <div class="tcard">
       <div class="tcard-head">
@@ -92,6 +95,7 @@ export function TerritoryCard({ eng, me, id, onClose, onAttack, onStrike, onDipl
             <button class="btn btn-danger" disabled={!route || !!why} onClick={onAttack}>⚔️ هجوم</button>
             {me.units.missile > 0 && <button class="btn" disabled={!!why} onClick={() => onStrike('missile')}>🚀 قصف ({me.units.missile})</button>}
             {me.units.nuke > 0 && <button class="btn btn-danger" disabled={!!why} onClick={() => onStrike('nuke')}>☢️ نووي ({me.units.nuke})</button>}
+            {canDefect && <button class="btn btn-gold" title="بطاقة الانشقاق: تنضم لك بدون حرب" onClick={onDefect}>🏳️ انشقاق</button>}
             {owner && <button class="btn" onClick={() => onDiplo(owner.id)}>🤝 دبلوماسية</button>}
           </div>
         </>
