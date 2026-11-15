@@ -42,7 +42,7 @@ export function EndScreen({ ctl, eng, onExit }: { ctl: Controller; eng: Engine; 
                 <td>{n.alive ? i + 1 : '💀'}</td>
                 <td><NationTag name={n.name} color={n.color} flag={n.home} /> <span class="muted small">{n.leader}</span></td>
                 <td>{fmtNum(n.d.score)}</td>
-                <td>{n.d.terrs}</td>
+                <td>{n.d.countries}</td>
                 <td>{n.st.won}✓ {n.st.lost}✗</td>
               </tr>
             ))}

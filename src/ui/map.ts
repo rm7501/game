@@ -52,6 +52,7 @@ export class MapRenderer {
   private gMoves: SVGGElement;
   private gFx: SVGGElement;
   private borders: SVGPathElement;
+  private pborders: SVGPathElement;
   private nborders: SVGPathElement;
   private coast: SVGPathElement;
   private mine: SVGPathElement;
@@ -96,6 +97,7 @@ export class MapRenderer {
     this.root = el('g', { class: 'map-root' }, this.svg);
     this.gLand = el('g', { class: 'land' }, this.root);
     this.coast = el('path', { class: 'coast' }, this.root);
+    this.pborders = el('path', { class: 'pborders' }, this.root);
     this.borders = el('path', { class: 'borders' }, this.root);
     this.nborders = el('path', { class: 'nborders' }, this.root);
     this.mine = el('path', { class: 'mine-outline' }, this.root);
@@ -174,7 +176,9 @@ export class MapRenderer {
       if (w * h < 30 || w < 4) this.tiny.add(id);
     }
     this.coast.setAttribute('d', this.pathGen(mesh(topo, obj, (a, b) => a === b) as GeoPermissibleObjects) ?? '');
-    this.borders.setAttribute('d', this.pathGen(mesh(topo, obj, (a, b) => a !== b) as GeoPermissibleObjects) ?? '');
+    const par = (g: { id?: string | number }) => this.world.parentOf(String(g.id));
+    this.borders.setAttribute('d', this.pathGen(mesh(topo, obj, (a, b) => a !== b && par(a) !== par(b)) as GeoPermissibleObjects) ?? '');
+    this.pborders.setAttribute('d', this.pathGen(mesh(topo, obj, (a, b) => a !== b && par(a) === par(b)) as GeoPermissibleObjects) ?? '');
     // علامات الدول الصغيرة جداً
     this.gMarkers.textContent = '';
     this.markers.clear();
@@ -402,10 +406,15 @@ export class MapRenderer {
     this.selPath.setAttribute('d', this.paths.get(id)!.getAttribute('d') ?? '');
   }
 
+  /** الدولة الكبيرة = كل مناطقها */
+  private expand(ids: string[]): TerrId[] {
+    return ids.flatMap((id) => (this.feats.has(id) ? [id] : this.world.countries.get(id)?.provs ?? []));
+  }
+
   /** تمييز مجموعة دول (أهداف ممكنة / خيارات العجلة) */
   highlight(ids: TerrId[], cls = 'hl') {
     this.gHl.textContent = '';
-    for (const id of ids) {
+    for (const id of this.expand(ids)) {
       const p = this.paths.get(id);
       if (!p) continue;
       el('path', { d: p.getAttribute('d') ?? '', class: cls }, this.gHl);
@@ -417,14 +426,17 @@ export class MapRenderer {
   }
 
   flash(id: TerrId, cls: string) {
-    const p = this.paths.get(id);
-    if (!p) return;
-    const e = el('path', { d: p.getAttribute('d') ?? '', class: cls }, this.gHl);
-    if (this.tiny.has(id)) {
-      const [x, y] = this.pt(this.world.get(id).lp);
-      el('circle', { cx: x, cy: y, r: 6, class: cls + '-dot' }, this.gHl);
+    const g = el('g', {}, this.gHl);
+    for (const t of this.expand([id])) {
+      const p = this.paths.get(t);
+      if (!p) continue;
+      el('path', { d: p.getAttribute('d') ?? '', class: cls }, g);
+      if (this.tiny.has(t)) {
+        const [x, y] = this.pt(this.world.get(t).lp);
+        el('circle', { cx: x, cy: y, r: 6, class: cls + '-dot' }, g);
+      }
     }
-    return e;
+    return g;
   }
 
   explode(id: TerrId, kind: 'battle' | 'missile' | 'nuke' = 'battle') {
@@ -440,13 +452,19 @@ export class MapRenderer {
   }
 
   flyTo(id: TerrId, scale?: number, ms = 900, yBias = 0) {
-    const f = this.feats.get(id);
-    if (!f || !this.zoomer) return;
-    const b = this.pathGen.bounds(f as GeoPermissibleObjects);
-    let [[x0, y0], [x1, y1]] = b;
+    const ids = this.expand([id]);
+    if (!ids.length || !this.zoomer) return;
+    let [[x0, y0], [x1, y1]] = [[Infinity, Infinity], [-Infinity, -Infinity]];
+    for (const t of ids) {
+      const f = this.feats.get(t);
+      if (!f) continue;
+      const b = this.pathGen.bounds(f as GeoPermissibleObjects);
+      x0 = Math.min(x0, b[0][0]); y0 = Math.min(y0, b[0][1]); x1 = Math.max(x1, b[1][0]); y1 = Math.max(y1, b[1][1]);
+    }
     // الدول اللي عابرة خط التاريخ أو فيها جزر بعيدة: نركز على نقطة الاسم
     if (x1 - x0 > this.W * 0.4) {
-      const [cx, cy] = this.pt(this.world.get(id).lp);
+      const capId = this.world.countries.get(id)?.cap ?? id;
+      const [cx, cy] = this.pt(this.world.get(capId).lp);
       x0 = cx - this.W * 0.1; x1 = cx + this.W * 0.1; y0 = cy - this.H * 0.1; y1 = cy + this.H * 0.1;
     }
     const w = Math.max(x1 - x0, 6);

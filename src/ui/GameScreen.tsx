@@ -272,7 +272,7 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
             <span class="chip-stat" title="القوة العسكرية">⚔️ {fmtNum(me.d.power)}</span>
             <span class="chip-stat" title="التكنولوجيا">🧪 {me.tech} <small>{TECH_NAMES[me.tech]}</small></span>
             <span class={`chip-stat ${me.stability < 30 ? 'bad' : ''}`} title="الاستقرار">⚖️ {Math.round(me.stability)}%</span>
-            <span class="chip-stat" title="الأراضي">🗺️ {me.d.terrs}</span>
+            <span class="chip-stat" title="الدول (والمناطق)">🗺️ {me.d.countries}{me.d.terrs > me.d.countries ? <small> ({me.d.terrs})</small> : null}</span>
           </div>
         )}
         <div class="hud-time">

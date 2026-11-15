@@ -143,7 +143,7 @@ export function WheelsScreen({ ctl }: { ctl: Controller }) {
               <div class="summary-head">
                 {country && <Flag id={country} size={54} />}
                 <div>
-                  <div class="summary-title">{country ? world.name(country) : ''}</div>
+                  <div class="summary-title">{country ? world.country(country).ar : ''}</div>
                   <div class="muted">هذي دولتك! راجعها وبعدين اضغط جاهز</div>
                 </div>
               </div>

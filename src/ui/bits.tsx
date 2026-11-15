@@ -5,7 +5,8 @@ import { UNITS } from '../game/defs';
 
 export function Flag({ id, size = 20, class: cls = '' }: { id: string; size?: number; class?: string }) {
   if (!id) return <span class={`flag flag-neutral ${cls}`} style={{ width: size * 1.33, height: size }} />;
-  return <img class={`flag ${cls}`} src={`./flags/${id}.svg`} width={Math.round(size * 1.33)} height={size} alt="" loading="lazy" draggable={false} />;
+  const fid = id.includes('-') ? id.split('-')[0] : id; // المناطق تاخذ علم دولتها
+  return <img class={`flag ${cls}`} src={`./flags/${fid}.svg`} width={Math.round(size * 1.33)} height={size} alt="" loading="lazy" draggable={false} />;
 }
 
 export function TankIcon({ size = 18 }: { size?: number }) {

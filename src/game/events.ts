@@ -1,6 +1,6 @@
 // عنصر المفاجأة: المهمات السرية، عجلة الحظ، عجلة الأحداث العالمية، والتحالف ضد المسيطر
 import {
-  BUILDINGS, DAYS_PER_MONTH, FORTUNES, FORTUNE_EVERY, GOVS, GOV_SLICES, MAX_BUILDING_LEVEL, MAX_TECH, MISSIONS,
+  BUILDINGS, DAYS_PER_MONTH, ECON_VALUES, FORTUNES, POP_VALUES, FORTUNE_EVERY, GOVS, GOV_SLICES, MAX_BUILDING_LEVEL, MAX_TECH, MISSIONS,
   TECH_COST, WORLD_EVENTS, WORLD_EVERY,
 } from './defs';
 import type { Engine } from './engine';
@@ -12,9 +12,9 @@ const clamp = (x: number, a: number, b: number) => Math.max(a, Math.min(b, x));
 
 // ---------------- المهمات السرية ----------------
 export function assignMission(e: Engine, n: Nation, id: MissionId) {
-  const reg = e.w.get(n.home).reg;
-  const gdp = e.s.terr[n.home]?.gdp ?? 100;
-  const pop = e.s.terr[n.home]?.pop ?? 10;
+  const reg = e.w.country(n.home).reg;
+  const gdp = ECON_VALUES[n.tiers.econ] ?? 100;
+  const pop = POP_VALUES[n.tiers.pop] ?? 10;
   const target: Record<MissionId, number> = {
     conqueror: 8,
     empire: 10,
@@ -33,11 +33,11 @@ export function missionProgress(e: Engine, n: Nation): number {
   const m = n.mission;
   switch (m.id) {
     case 'conqueror': return n.st.won;
-    case 'empire': return n.d.terrs;
+    case 'empire': return n.d.countries;
     case 'tycoon': return Math.round(n.d.gdp);
     case 'scholar': return n.tech;
     case 'allies': return e.allies(n.id).length;
-    case 'regional': return e.owned(n.id).filter((t) => e.w.get(t.id).reg === m.region).length;
+    case 'regional': return new Set(e.owned(n.id).filter((t) => e.w.get(t.id).reg === m.region).map((t) => e.w.parentOf(t.id))).size;
     case 'admiral': return n.units.ship;
     case 'giant': return Math.round(n.d.pop);
     case 'fortress': return n.st.held;
@@ -191,7 +191,7 @@ export function fireWorldEvent(e: Engine, forced?: WorldEventId) {
     case 'revolts': {
       let count = 0;
       for (const n of alive) {
-        const terrs = e.owned(n.id).filter((t) => t.id !== n.capital && t.id !== n.home);
+        const terrs = e.owned(n.id).filter((t) => t.id !== n.capital && e.w.parentOf(t.id) !== n.home);
         if (terrs.length < 3) continue;
         let max = Math.floor(terrs.length / 3);
         for (const t of terrs) {

@@ -1,4 +1,5 @@
 // بيانات خريطة العالم الثابتة + حساب المسافات والجيران
+// الأرض (Territory) = دولة عادية أو منطقة من دولة كبيرة (روسيا، أمريكا، الصين...)
 import type { Topology } from 'topojson-specification';
 import type { TerrId } from './types';
 
@@ -7,7 +8,7 @@ export interface TerrMeta {
   ar: string;
   en: string;
   reg: string;
-  p: 0 | 1; // قابلة للاختيار في عجلة المكان
+  p: 0 | 1; // دولة عادية تقدر تطلع بعجلة المكان
   area: number;
   cls: number;
   lp: [number, number]; // نقطة الاسم (lon, lat)
@@ -16,11 +17,27 @@ export interface TerrMeta {
   n: TerrId[]; // جيران بريين (مع المضائق)
   s: Record<TerrId, number>; // جيران بحريين قريبين
   a: [number, number][]; // نقاط تمثيلية للمسافات
+  par?: string; // الدولة الأم لو كانت منطقة
+  sl: number; // مساحة البناء
+}
+
+/** الدولة (ممكن تكون أرض وحدة أو مجموعة مناطق) */
+export interface CountryMeta {
+  id: string;
+  ar: string;
+  en: string;
+  reg: string;
+  area: number;
+  cls: number;
+  provs: TerrId[];
+  cap: TerrId;
+  p: 0 | 1;
 }
 
 export interface WorldData {
   topo: Topology;
   meta: TerrMeta[];
+  countries?: CountryMeta[];
 }
 
 const R = 6371;
@@ -40,6 +57,8 @@ export class World {
   readonly data: WorldData;
   readonly list: TerrMeta[];
   readonly byId: Map<TerrId, TerrMeta>;
+  /** كل الدول: الكبيرة (بمناطقها) والعادية (أرض وحدة) */
+  readonly countries: Map<string, CountryMeta>;
   readonly totalArea: number;
   private distCache = new Map<string, number>();
 
@@ -48,6 +67,12 @@ export class World {
     this.list = data.meta;
     this.byId = new Map(data.meta.map((m) => [m.id, m]));
     this.totalArea = data.meta.reduce((s, m) => s + m.area, 0);
+    this.countries = new Map();
+    for (const c of data.countries ?? []) this.countries.set(c.id, c);
+    for (const m of data.meta) {
+      if (m.par) continue;
+      this.countries.set(m.id, { id: m.id, ar: m.ar, en: m.en, reg: m.reg, area: m.area, cls: m.cls, provs: [m.id], cap: m.id, p: m.p });
+    }
   }
 
   get(id: TerrId): TerrMeta {
@@ -56,18 +81,36 @@ export class World {
     return m;
   }
 
+  /** اسم الأرض (المنطقة أو الدولة) */
   name(id: TerrId): string {
-    return this.byId.get(id)?.ar ?? id;
+    const m = this.byId.get(id);
+    if (m) return m.par ? `${m.ar} (${this.countries.get(m.par)?.ar ?? ''})` : m.ar;
+    return this.countries.get(id)?.ar ?? id;
+  }
+
+  /** اسم قصير بدون اسم الدولة الأم */
+  short(id: TerrId): string {
+    return this.byId.get(id)?.ar ?? this.countries.get(id)?.ar ?? id;
+  }
+
+  parentOf(id: TerrId): string {
+    return this.byId.get(id)?.par ?? id;
+  }
+
+  country(id: string): CountryMeta {
+    const c = this.countries.get(id) ?? this.countries.get(this.parentOf(id));
+    if (!c) throw new Error('Unknown country ' + id);
+    return c;
   }
 
   isLandNeighbor(a: TerrId, b: TerrId): boolean {
     return this.get(a).n.includes(b);
   }
 
-  /** أقل مسافة تقريبية (كم) بين دولتين */
+  /** أقل مسافة تقريبية (كم) بين أرضين */
   dist(a: TerrId, b: TerrId): number {
     if (a === b) return 0;
-    const k = a < b ? a + b : b + a;
+    const k = a < b ? a + '|' + b : b + '|' + a;
     const c = this.distCache.get(k);
     if (c !== undefined) return c;
     const ma = this.get(a);
@@ -86,7 +129,7 @@ export class World {
     return d;
   }
 
-  /** المسافة بين مركزي الدولتين (لحساب وقت التحرك) */
+  /** المسافة بين مركزي الأرضين (لحساب وقت التحرك) */
   centerDist(a: TerrId, b: TerrId): number {
     return haversine(this.get(a).lp, this.get(b).lp);
   }

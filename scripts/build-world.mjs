@@ -7,6 +7,7 @@ import * as topojson from 'topojson-client';
 import { topology } from 'topojson-server';
 import { presimplify, simplify, quantile, sphericalTriangleArea } from 'topojson-simplify';
 import { geoArea, geoCentroid, geoBounds } from 'd3-geo';
+import pc from 'polygon-clipping';
 
 const require = createRequire(import.meta.url);
 const src = require('world-atlas/countries-50m.json');
@@ -148,11 +149,220 @@ for (const [name, geoms] of groups) {
   features.push({ type: 'Feature', id: iso, properties: {}, geometry: { type: 'MultiPolygon', coordinates: kept } });
 }
 
+// ---------- 1.5) تقسيم الدول الكبيرة لمناطق حقيقية (من Natural Earth admin-1) ----------
+const ADMIN1 = JSON.parse(readFileSync('scripts/data/admin1.json', 'utf8'));
+const norm = (x) => (x ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const has = (list) => (p) => list.includes(p.name);
+const re = (r) => (p) => r.test(norm(p.name));
+const reg = (r) => (p) => p.region === r;
+// [المفتاح، الاسم بالعربي، شرط الانتماء] — أول شرط ينطبق هو المعتمد
+const PROVINCES = {
+  'Russia': { cap: 'c', regions: [
+    ['c', 'روسيا الوسطى', reg('Central')],
+    ['nw', 'شمال غرب روسيا', reg('Northwestern')],
+    ['s', 'جنوب روسيا والقوقاز', re(/adyg|karachay|ingush|kabardin|ossetia|stavropol|rostov|volgograd|krasnodar|dagestan|chech|kalmyk|astrakhan|crimea|sevastopol/)],
+    ['v', 'منطقة الفولغا', reg('Volga')],
+    ['u', 'الأورال', reg('Urals')],
+    ['sb', 'سيبيريا', reg('Siberian')],
+    ['fe', 'الشرق الأقصى الروسي', reg('Far Eastern')],
+  ] },
+  'United States of America': { cap: 'se', regions: [
+    ['ak', 'ألاسكا', has(['Alaska'])],
+    ['pac', 'الساحل الغربي الأمريكي', has(['California', 'Oregon', 'Washington', 'Hawaii'])],
+    ['mt', 'الجبال الصخرية', reg('West')],
+    ['tx', 'تكساس والجنوب الأوسط', has(['Texas', 'Oklahoma', 'Arkansas', 'Louisiana'])],
+    ['se', 'الجنوب الشرقي الأمريكي', reg('South')],
+    ['mw', 'الغرب الأوسط الأمريكي', reg('Midwest')],
+    ['ne', 'شمال شرق أمريكا', reg('Northeast')],
+  ] },
+  'Canada': { cap: 'on', regions: [
+    ['bc', 'كولومبيا البريطانية', re(/british columbia/)],
+    ['pr', 'البراري الكندية', re(/alberta|saskatchewan|manitoba/)],
+    ['on', 'أونتاريو', re(/ontario/)],
+    ['qc', 'كيبك', re(/quebec/)],
+    ['at', 'الأطلسي الكندي', re(/brunswick|newfoundland|nova scotia|prince edward/)],
+    ['n', 'شمال كندا', re(/northwest|nunavut|yukon/)],
+  ] },
+  'China': { cap: 'n', regions: [
+    ['xj', 'شينجيانغ', re(/xinjiang/)],
+    ['tb', 'التبت', re(/xizang/)],
+    ['n', 'شمال الصين', reg('North China')],
+    ['ne', 'شمال شرق الصين', reg('Northeast China')],
+    ['e', 'شرق الصين', (p) => p.region === 'East China' || /fujian/.test(norm(p.name))],
+    ['sc', 'جنوب الصين', reg('South Central China')],
+    ['sw', 'جنوب غرب الصين', reg('Southwest China')],
+    ['nw', 'شمال غرب الصين', reg('Northwest China')],
+  ] },
+  'India': { cap: 'c', regions: [
+    ['n', 'شمال الهند', (p) => p.region === 'North' || /ladakh/.test(norm(p.name))],
+    ['c', 'وسط الهند', reg('Central')],
+    ['w', 'غرب الهند', reg('West')],
+    ['s', 'جنوب الهند', reg('South')],
+    ['e', 'شرق الهند', (p) => p.region === 'East' || /andaman/.test(norm(p.name))],
+    ['ne', 'شمال شرق الهند', reg('Northeast')],
+  ] },
+  'Brazil': { cap: 'cw', regions: [
+    ['n', 'الأمازون (شمال البرازيل)', has(['Acre', 'Amapá', 'Amazonas', 'Pará', 'Rondônia', 'Roraima', 'Tocantins'])],
+    ['ne', 'شمال شرق البرازيل', has(['Alagoas', 'Bahia', 'Ceará', 'Maranhão', 'Paraíba', 'Pernambuco', 'Piauí', 'Rio Grande do Norte', 'Sergipe'])],
+    ['cw', 'وسط غرب البرازيل', has(['Distrito Federal', 'Goiás', 'Mato Grosso', 'Mato Grosso do Sul'])],
+    ['se', 'جنوب شرق البرازيل', has(['Espírito Santo', 'Minas Gerais', 'Rio de Janeiro', 'São Paulo'])],
+    ['s', 'جنوب البرازيل', has(['Paraná', 'Rio Grande do Sul', 'Santa Catarina'])],
+  ] },
+  'Australia': { cap: 'se', regions: [
+    ['wa', 'غرب أستراليا', re(/western australia/)],
+    ['nt', 'الإقليم الشمالي', re(/northern territory/)],
+    ['sa', 'جنوب أستراليا', re(/^south australia/)],
+    ['qld', 'كوينزلاند', re(/queensland/)],
+    ['se', 'جنوب شرق أستراليا', () => true],
+  ] },
+  'Indonesia': { cap: 'jv', regions: [
+    ['su', 'سومطرة', re(/sumat|aceh|riau|jambi|bengkulu|lampung|bangka/)],
+    ['jv', 'جاوة وبالي', re(/jawa|jakarta|banten|yogya|bali/)],
+    ['ka', 'كاليمانتان', re(/kalimantan/)],
+    ['sl', 'سولاويزي', re(/sulawesi|gorontalo/)],
+    ['ea', 'شرق إندونيسيا', () => true],
+  ] },
+  'South Africa': { cap: 'n', regions: [
+    ['w', 'الكيب الغربي والشمالي', re(/western cape|northern cape/)],
+    ['n', 'شمال جنوب أفريقيا', re(/gauteng|north west|limpopo|mpumalanga/)],
+    ['e', 'شرق جنوب أفريقيا', () => true],
+  ] },
+  'Saudi Arabia': { cap: 'c', regions: [
+    ['c', 'المنطقة الوسطى', re(/riyad|qu?assim/)],
+    ['w', 'المنطقة الغربية', re(/makkah|madinah/)],
+    ['e', 'المنطقة الشرقية', re(/sharqiyah/)],
+    ['n', 'المنطقة الشمالية', re(/tabuk|ha'?il|jawf|hudud/)],
+    ['s', 'المنطقة الجنوبية', re(/asir|jizan|najran|bahah/)],
+  ] },
+  'Argentina': { cap: 'p', regions: [
+    ['nw', 'شمال غرب الأرجنتين', re(/salta|jujuy|tucuman|catamarca|santiago del estero|la rioja/)],
+    ['ne', 'شمال شرق الأرجنتين', re(/formosa|chaco|corrientes|misiones/)],
+    ['cu', 'كويو', re(/mendoza|san juan|san luis/)],
+    ['pt', 'باتاغونيا', re(/neuquen|rio negro|chubut|santa cruz|tierra del fuego/)],
+    ['p', 'البامبا وبوينس آيرس', () => true],
+  ] },
+  'Kazakhstan': { cap: 'n', regions: [
+    ['n', 'شمال كازاخستان', re(/north kazakhstan|qostanay|pavlodar|aqmola|astana/)],
+    ['e', 'شرق كازاخستان', re(/east kazakhstan|almaty|zhambyl/)],
+    ['s', 'جنوب كازاخستان', re(/south kazakhstan|qyzylorda/)],
+    ['w', 'غرب كازاخستان', re(/west kazakhstan|atyrau|mangghystau|aqtobe/)],
+    ['c', 'وسط كازاخستان', () => true],
+  ] },
+  'Mexico': { cap: 'c', regions: [
+    ['nw', 'شمال غرب المكسيك', re(/baja california|sonora|sinaloa|chihuahua|durango/)],
+    ['ne', 'شمال شرق المكسيك', re(/coahuila|nuevo leon|tamaulipas|san luis potosi|zacatecas/)],
+    ['w', 'غرب المكسيك', re(/jalisco|colima|nayarit|michoacan/)],
+    ['s', 'جنوب المكسيك', re(/guerrero|oaxaca|chiapas|veracruz|tabasco|campeche|yucatan|quintana/)],
+    ['c', 'وسط المكسيك', () => true],
+  ] },
+};
+
+const toPC = (g) => (g.type === 'Polygon' ? [g.coordinates] : g.coordinates);
+// الدول اللي تعبر خط 180 (روسيا وأمريكا): نحرك خطوط الطول عشان القص المسطح يشتغل صح ثم نرجعها
+const SHIFT = {
+  'Russia': [(x) => (x < 0 ? x + 360 : x), (x) => (x > 180 ? x - 360 : x)],
+  'United States of America': [(x) => (x > 0 ? x - 360 : x), (x) => (x < -180 ? x + 360 : x)],
+};
+const mapCoords = (mp, f) => mp.map((poly) => poly.map((ring) => ring.map(([x, y]) => [f(x), y])));
+const sphArea = (poly) => geoArea({ type: 'Polygon', coordinates: poly });
+// polygon-clipping يعطي اتجاه الحلقات عكس اللي تحتاجه d3-geo: نعكسها لو المساحة طلعت أكبر من نص الكرة
+const fixWinding = (poly) => (sphArea(poly) > 2 * Math.PI ? poly.map((r) => [...r].reverse()) : poly);
+const countries = [];
+for (const [name, cfg] of Object.entries(PROVINCES)) {
+  const iso = PLAYABLE[name][0];
+  const idx = features.findIndex((f) => f.id === iso);
+  const [fwd, back] = SHIFT[name] ?? [(x) => x, (x) => x];
+  const country = mapCoords(features[idx].geometry.coordinates, fwd);
+  const buckets = new Map(cfg.regions.map(([k]) => [k, []]));
+  for (const f of ADMIN1.features) {
+    if (f.properties.admin !== name || !f.geometry) continue;
+    const r = cfg.regions.find((x) => x[2](f.properties));
+    if (r) buckets.get(r[0]).push(mapCoords(toPC(f.geometry), fwd));
+    else console.warn('غير مصنف:', name, f.properties.name);
+  }
+  const regionGeoms = new Map();
+  for (const [k, list] of buckets) if (list.length) regionGeoms.set(k, pc.union(...list));
+  const provGeoms = new Map();
+  for (const [k, g] of regionGeoms) {
+    const inter = pc.intersection(country, g);
+    if (inter.length) provGeoms.set(k, inter);
+  }
+  // الأجزاء اللي ما غطتها المناطق (جزر وحواف) تروح لأقرب منطقة
+  // نقطعها لمربعات 1.5 درجة أول عشان الحواف الطويلة ما تروح كلها لمنطقة بعيدة
+  const left = pc.difference(country, pc.union(...regionGeoms.values()));
+  const verts = [...provGeoms].map(([k, g]) => [k, g.flatMap((pp) => pp[0])]);
+  const nearest = (c) => {
+    let best = null, bd = Infinity;
+    for (const [k, pts] of verts) for (let i = 0; i < pts.length; i += 2) {
+      const d = (pts[i][0] - c[0]) ** 2 + (pts[i][1] - c[1]) ** 2;
+      if (d < bd) { bd = d; best = k; }
+    }
+    return best;
+  };
+  const CELL_DEG = 1.5;
+  for (const poly of left) {
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (const pt of poly[0]) { x0 = Math.min(x0, pt[0]); y0 = Math.min(y0, pt[1]); x1 = Math.max(x1, pt[0]); y1 = Math.max(y1, pt[1]); }
+    const pieces = [];
+    if (x1 - x0 <= CELL_DEG && y1 - y0 <= CELL_DEG) pieces.push(poly);
+    else {
+      for (let gx = Math.floor(x0 / CELL_DEG) * CELL_DEG; gx < x1; gx += CELL_DEG) {
+        for (let gy = Math.floor(y0 / CELL_DEG) * CELL_DEG; gy < y1; gy += CELL_DEG) {
+          const cell = [[[gx, gy], [gx + CELL_DEG, gy], [gx + CELL_DEG, gy + CELL_DEG], [gx, gy + CELL_DEG], [gx, gy]]];
+          for (const piece of pc.intersection([poly], cell)) pieces.push(piece);
+        }
+      }
+    }
+    for (const piece of pieces) {
+      const ring = piece[0];
+      const c = ring.reduce((a, p) => [a[0] + p[0] / ring.length, a[1] + p[1] / ring.length], [0, 0]);
+      const k = nearest(c);
+      if (k) provGeoms.get(k).push(piece);
+    }
+  }
+  // نجمع قطع كل منطقة مع بعض عشان الحدود الداخلية تختفي
+  for (const [k, g] of provGeoms) provGeoms.set(k, pc.union(g));
+  const pinfo = info.get(iso);
+  const provIds = [];
+  for (const [k, polysRaw] of provGeoms) {
+    const pid = `${iso}-${k}`;
+    const polys = mapCoords(polysRaw, back).map(fixWinding);
+    const withArea = polys.map((p) => ({ p, a: polyAreaKm2(p) })).sort((x, y) => y.a - x.a);
+    const kept = withArea.filter((x, i) => i === 0 || x.a >= 25).map((x) => x.p);
+    const areaFull = withArea.reduce((sum, x) => sum + x.a, 0);
+    info.set(pid, {
+      en: `${name} / ${k}`, ar: cfg.regions.find((r) => r[0] === k)[1], region: pinfo.region, playable: false,
+      area: Math.round(areaFull), label: geoCentroid({ type: 'Polygon', coordinates: withArea[0].p }), par: iso,
+    });
+    features.push({ type: 'Feature', id: pid, properties: {}, geometry: { type: 'MultiPolygon', coordinates: kept } });
+    provIds.push(pid);
+  }
+  features.splice(idx, 1);
+  info.delete(iso);
+  const cap = `${iso}-${cfg.cap}`;
+  if (!provIds.includes(cap)) throw new Error('العاصمة مو موجودة: ' + cap);
+  countries.push({ id: iso, ar: pinfo.ar, en: name, reg: pinfo.region, area: pinfo.area, provs: provIds, cap, p: 1 });
+  console.log(`${pinfo.ar}: ${provIds.length} مناطق`, provIds.map((id) => `${info.get(id).ar} (${Math.round(info.get(id).area / 1000)} ألف كم²)`).join('، '));
+}
+
+// ---------- 1.9) الساحل: من خط الساحل الأصلي (المناطق حدودها الداخلية ما تطابق الأقواس) ----------
+const coastMesh = topojson.mesh(src, src.objects.countries, (a, b) => a === b);
+const coastCells = new Set();
+for (const line of coastMesh.coordinates) for (const pt of line) coastCells.add(`${Math.round(pt[0] * 200)},${Math.round(pt[1] * 200)}`);
+const coastalById = new Map();
+for (const f of features) {
+  let c = false;
+  outer: for (const poly of f.geometry.coordinates) for (const ring of poly) for (const pt of ring) {
+    if (coastCells.has(`${Math.round(pt[0] * 200)},${Math.round(pt[1] * 200)}`)) { c = true; break outer; }
+  }
+  coastalById.set(f.id, c);
+}
+
 // ---------- 2) طوبولوجيا جديدة + تبسيط ----------
 let topo = topology({ t: { type: 'FeatureCollection', features } }, 1e5);
 const before = topo.arcs.reduce((s, a) => s + a.length, 0);
 topo = presimplify(topo, sphericalTriangleArea);
-topo = simplify(topo, quantile(topo, 0.30));
+topo = simplify(topo, quantile(topo, 0.22));
 topo = topojson.quantize(topo, 3e4);
 const after = topo.arcs.reduce((s, a) => s + a.length, 0);
 
@@ -171,7 +381,7 @@ const walk = (arcs) => {
   }
 };
 geoms.forEach((g) => walk(g.arcs));
-const coastal = geoms.map((g) => {
+const coastalArcs = geoms.map((g) => {
   let c = false;
   const w = (arcs) => {
     for (const a of arcs) {
@@ -182,6 +392,8 @@ const coastal = geoms.map((g) => {
   w(g.arcs);
   return c;
 });
+// الدول العادية: الأقواس دقيقة. المناطق: نعتمد على خط الساحل الأصلي
+const coastal = geoms.map((g, i) => (info.get(g.id)?.par ? coastalById.get(g.id) ?? coastalArcs[i] : coastalArcs[i]));
 
 // ---------- 3) نقاط كل دولة (للمسافات البحرية والجوية) ----------
 const fc = topojson.feature(topo, topo.objects.t);
@@ -231,7 +443,7 @@ pointsOf.forEach((pts, i) => {
 
 const STRAIT_KM = 60; // مضيق ضيق/جسر: يعتبر حدود برية
 const SEA_KM = 450;
-const landN = nb.map((arr) => new Set(arr));
+const landN = nb.map((arr, i) => new Set(arr.filter((j) => j !== i)));
 const seaN = ids.map(() => new Map());
 for (const [k, d] of minDist) {
   const [i, j] = k.split(',').map(Number);
@@ -275,21 +487,31 @@ const meta = ids.map((id, i) => {
     n: [...landN[i]].map((j) => ids[j]).sort(),
     s: Object.fromEntries([...seaN[i]].map(([j, d]) => [ids[j], d])),
     a: anchorsFor(i),
+    ...(inf.par ? { par: inf.par } : {}),
   };
 });
 
+// مساحة البناء لكل أرض: الدول العادية حسب حجمها، والمناطق نصيبها من حجم دولتها
+const SLOTS_BY_CLASS = [4, 6, 8, 10, 12, 14];
+for (const c of countries) c.cls = sizeClass(c.area);
+for (const m of meta) {
+  const c = m.par ? countries.find((x) => x.id === m.par) : null;
+  m.sl = c ? Math.max(2, Math.round((SLOTS_BY_CLASS[c.cls] * 1.5) / c.provs.length)) : SLOTS_BY_CLASS[m.cls];
+}
+
 mkdirSync('public/data', { recursive: true });
-writeFileSync('public/data/world.json', JSON.stringify({ topo, meta }));
+writeFileSync('public/data/world.json', JSON.stringify({ topo, meta, countries }));
 
 // تقرير
 const counts = [0, 0, 0, 0, 0, 0];
 meta.filter((m) => m.p).forEach((m) => counts[m.cls]++);
+countries.forEach((c) => counts[c.cls]++);
 console.log('دول:', meta.length, 'قابلة للعب:', meta.filter((m) => m.p).length);
 console.log('نقاط قبل/بعد التبسيط:', before, after);
 console.log('عدد الدول في كل فئة مساحة:', counts.join(' / '));
 for (let c = 5; c >= 0; c--) console.log(c, meta.filter((m) => m.p && m.cls === c).map((m) => m.ar).join('، '));
 const iso = (x) => meta.find((m) => m.id === x);
-for (const x of ['sa', 'bh', 'gb', 'eg', 'jp', 'us', 'fr', 'au', 'va', 'sg', 'ye', 'is']) {
+for (const x of ['sa-e', 'sa-c', 'cn-xj', 'cn-tb', 'kz-c', 'ru-fe', 'us-ak', 'us-mt', 'in-c', 'br-cw', 'va', 'ye']) {
   const m = iso(x);
   console.log(m.ar, '| بري:', m.n.map((y) => iso(y).ar).join('،'), '| بحري:', Object.keys(m.s).map((y) => iso(y).ar).join('،'), '| ساحلية:', m.c);
 }
@@ -300,7 +522,7 @@ console.log('حجم الملف:', Math.round(size / 1024), 'KB');
 import { copyFileSync, existsSync, statSync } from 'node:fs';
 mkdirSync('public/flags', { recursive: true });
 let flagBytes = 0;
-for (const m of meta) {
+for (const m of [...meta.filter((x) => !x.par), ...countries]) {
   const src = `node_modules/flag-icons/flags/4x3/${m.id}.svg`;
   if (!existsSync(src)) { console.warn('علم ناقص:', m.id); continue; }
   copyFileSync(src, `public/flags/${m.id}.svg`);

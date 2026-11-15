@@ -100,7 +100,8 @@ export interface Derived {
   power: number;
   score: number;
   area: number;
-  terrs: number;
+  terrs: number; // عدد الأراضي (دول ومناطق)
+  countries: number; // عدد الدول (المناطق من نفس الدولة تنحسب وحدة)
   research: number; // نقاط بحث شهرياً
   slots: number;
   used: number;

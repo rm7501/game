@@ -214,6 +214,7 @@ input:focus, select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgb
 .land path.nuked { filter: sepia(0.6) hue-rotate(40deg) saturate(2) brightness(0.8); }
 .coast { fill: none; stroke: rgba(130, 175, 255, 0.4); stroke-width: 0.7; vector-effect: non-scaling-stroke; pointer-events: none; }
 .borders { fill: none; stroke: rgba(6, 10, 22, 0.55); stroke-width: 0.5; vector-effect: non-scaling-stroke; pointer-events: none; }
+.pborders { fill: none; stroke: rgba(6, 10, 22, 0.45); stroke-width: 0.45; stroke-dasharray: 2 2; vector-effect: non-scaling-stroke; pointer-events: none; }
 .nborders { fill: none; stroke: rgba(4, 6, 14, 0.92); stroke-width: 1.2; vector-effect: non-scaling-stroke; pointer-events: none; }
 .mine-outline { fill: none; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke; pointer-events: none; filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8)); }
 .sel-outline { fill: rgba(255, 255, 255, 0.14); stroke: #ffd54a; stroke-width: 2.6; vector-effect: non-scaling-stroke; pointer-events: none; }

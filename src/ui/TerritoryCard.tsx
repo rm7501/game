@@ -38,6 +38,7 @@ export function TerritoryCard({ eng, me, id, onClose, onAttack, onStrike, onDipl
           <div class="tcard-name">
             {m.ar} {owner?.capital === id && <span title="عاصمة">★</span>}
           </div>
+          {m.par && <div class="small">منطقة من {eng.w.country(m.par).ar} ({eng.w.country(m.par).provs.length} مناطق)</div>}
           <div class="muted small">
             {REGION_NAMES[m.reg]} · {AREA_NAMES[m.cls]} ({fmtArea(m.area)}){!m.c && ' · بدون بحر'}
           </div>

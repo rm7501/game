@@ -13,7 +13,7 @@ import type {
   WheelState, GovId, ResId,
 } from './types';
 import { BUILDING_TYPES, COMBAT_UNITS, UNIT_TYPES, WHEEL_ORDER } from './types';
-import type { World } from './world';
+import type { CountryMeta, World } from './world';
 
 export const STATE_VERSION = 2;
 
@@ -22,7 +22,7 @@ export const DEFAULT_SETTINGS: Settings = {
 };
 
 const emptyDerived = (): Derived => ({
-  gdp: 0, income: 0, upkeep: 0, pop: 0, power: 0, score: 0, area: 0, terrs: 0, research: 0, slots: 0, used: 0, manpower: 0, atWar: 0,
+  gdp: 0, income: 0, upkeep: 0, pop: 0, power: 0, score: 0, area: 0, terrs: 0, countries: 0, research: 0, slots: 0, used: 0, manpower: 0, atWar: 0,
 });
 
 export const pairKey = (a: NationId, b: NationId) => (a < b ? `${a}|${b}` : `${b}|${a}`);
@@ -136,19 +136,32 @@ export class Engine {
     }
   }
 
+  /** توزيع سكان واقتصاد الدولة على مناطقها (العاصمة تاخذ أكثر) */
+  provWeights(cm: CountryMeta): number[] {
+    const raw = cm.provs.map((id) => Math.sqrt(this.w.get(id).area) * (id === cm.cap ? 1.8 : 1));
+    const tot = raw.reduce((a, b) => a + b, 0) || 1;
+    return raw.map((x) => x / tot);
+  }
+
   generateNeutrals() {
     const POP_RANGE = [[0.2, 3], [2, 15], [6, 45], [15, 90], [20, 160], [60, 600]];
     const str = { weak: 0.6, normal: 1, strong: 1.6 }[this.s.settings.neutral];
-    for (const m of this.w.list) {
-      const [lo, hi] = POP_RANGE[m.cls];
-      const pop = round1(Math.exp(Math.log(lo) + this.rand() * (Math.log(hi) - Math.log(lo))));
+    for (const cm of this.w.countries.values()) {
+      const [lo, hi] = POP_RANGE[cm.cls];
+      const popTot = Math.exp(Math.log(lo) + this.rand() * (Math.log(hi) - Math.log(lo)));
       const pc = 2 + this.rand() ** 2 * 30;
-      const gdp = Math.max(1, Math.round(pop * pc));
-      const inf = Math.max(2, Math.round((4 + m.cls * 6 + Math.sqrt(pop) * 1.5) * (0.8 + this.rand() * 0.5) * str));
-      const tank = Math.round((m.cls * 4 + this.rand() * m.cls * 3) * str);
-      const t: Territory = { id: m.id, owner: '', pop, gdp, unrest: 0, nuked: 0, g: { inf, tank }, nt: this.rand() < 0.35 ? 2 : 1 };
-      t.gmax = inf * 2 + tank * 3.5;
-      this.s.terr[m.id] = t;
+      const ws = this.provWeights(cm);
+      const nt = this.rand() < 0.35 ? 2 : 1;
+      cm.provs.forEach((id, i) => {
+        const m = this.w.get(id);
+        const pop = round1(popTot * ws[i]);
+        const gdp = Math.max(1, Math.round(popTot * pc * ws[i]));
+        const inf = Math.max(2, Math.round((4 + m.cls * 6 + Math.sqrt(pop) * 1.5) * (0.8 + this.rand() * 0.5) * str * (cm.provs.length > 1 ? 0.8 : 1)));
+        const tank = Math.round((m.cls * 4 + this.rand() * m.cls * 3) * str * (cm.provs.length > 1 ? 0.8 : 1));
+        const t: Territory = { id, owner: '', pop, gdp, unrest: 0, nuked: 0, g: { inf, tank }, nt };
+        t.gmax = inf * 2 + tank * 3.5;
+        this.s.terr[id] = t;
+      });
     }
   }
 
@@ -159,12 +172,16 @@ export class Engine {
     return null;
   }
 
-  /** الخيارات المتاحة لعجلة المكان */
-  countryCandidates(nid: NationId): TerrId[] {
+  countryFree(cm: CountryMeta): boolean {
+    return !!cm.p && !this.s.taken[cm.id] && cm.provs.every((p) => this.s.terr[p]?.owner === '');
+  }
+
+  /** الخيارات المتاحة لعجلة المكان (دول كاملة) */
+  countryCandidates(nid: NationId): string[] {
     const ws = this.s.wheels[nid];
     const cls = ws?.res.area as number;
-    const free = (c: number) =>
-      this.w.list.filter((m) => m.p && m.cls === c && this.s.terr[m.id]?.owner === '' && !this.s.taken[m.id]).map((m) => m.id);
+    const all = [...this.w.countries.values()];
+    const free = (c: number) => all.filter((m) => m.cls === c && this.countryFree(m)).map((m) => m.id);
     let list = free(cls);
     // لو خلصت الدول بهذا الحجم نروح لأقرب حجم فيه دول
     for (let d = 1; !list.length && d < 6; d++) list = [...free(cls - d), ...free(cls + d)];
@@ -173,11 +190,11 @@ export class Engine {
 
   slicesFor(nid: NationId, wheel: WheelId): Slice[] {
     if (wheel === 'country') {
-      return this.countryCandidates(nid).map((id) => ({ label: this.tname(id), icon: '', w: 1, v: id }));
+      return this.countryCandidates(nid).map((id) => ({ label: this.w.country(id).ar, icon: '', w: 1, v: id }));
     }
     if (wheel === 'area') {
       return AREA_SLICES.map((sl) => {
-        const avail = this.w.list.some((m) => m.p && m.cls === sl.v && this.s.terr[m.id]?.owner === '' && !this.s.taken[m.id]);
+        const avail = [...this.w.countries.values()].some((m) => m.cls === sl.v && this.countryFree(m));
         return { ...sl, w: avail ? sl.w : 0 };
       });
     }
@@ -294,17 +311,24 @@ export class Engine {
     const r = ws.res;
     const isBot = nid.startsWith('B');
     const player = Object.values(s.players).find((p) => p.nation === nid);
-    const country = r.country as TerrId;
-    const t = s.terr[country];
-    const cls = this.w.get(country).cls;
+    const country = r.country as string;
+    const cm = this.w.country(country);
+    const cls = cm.cls;
     const popTier = r.pop as number;
     const econTier = r.econ as number;
     const milTier = r.mil as number;
-    t.owner = nid;
-    t.pop = POP_VALUES[popTier];
-    t.gdp = ECON_VALUES[econTier];
-    t.unrest = 0;
-    delete t.g; delete t.gmax; delete t.nt;
+    // الدولة كاملة (بكل مناطقها) تصير لك، والسكان والاقتصاد يتوزعون عليها
+    const weights = this.provWeights(cm);
+    const terrs = cm.provs.map((id) => s.terr[id]);
+    terrs.forEach((x, i) => {
+      x.owner = nid;
+      x.pop = round1(POP_VALUES[popTier] * weights[i]);
+      x.gdp = Math.round(ECON_VALUES[econTier] * weights[i] * 10) / 10;
+      x.unrest = 0;
+      delete x.g; delete x.gmax; delete x.nt;
+    });
+    const gdpTot = ECON_VALUES[econTier];
+    const scale = (f: 'pop' | 'gdp', k: number) => terrs.forEach((x) => (x[f] = f === 'pop' ? round1(x.pop * k) : Math.round(x.gdp * k * 10) / 10));
     const gov = r.gov as GovId;
     const res = r.res as ResId;
     const luck = r.luck as LuckId;
@@ -315,8 +339,8 @@ export class Engine {
     const trait = r.leader as LeaderId;
     const now = s.phase === 'playing' ? s.day : 0;
     const n: Nation = {
-      id: nid, kind: isBot ? 'bot' : 'player', name: this.tname(country), leader, color, home: country, capital: country,
-      alive: true, treasury: Math.round(15 + 0.1 * t.gdp), tax: 0.22,
+      id: nid, kind: isBot ? 'bot' : 'player', name: cm.ar, leader, color, home: country, capital: cm.cap,
+      alive: true, treasury: Math.round(15 + 0.1 * gdpTot), tax: 0.22,
       stability: clamp(62 + GOVS[gov].stab + RESOURCES[res].stab + (trait === 'populist' ? 12 : 0), 5, 100),
       tech: r.tech as number, research: 0, units, q: [], bq: [],
       b: Object.fromEntries(BUILDING_TYPES.map((b) => [b, 0])) as Record<BuildingType, number>,
@@ -333,30 +357,30 @@ export class Engine {
     }
     // تأثير عجلة المفاجأة
     switch (luck) {
-      case 'treasure': n.treasury += Math.round(0.25 * t.gdp + 30); break;
+      case 'treasure': n.treasury += Math.round(0.25 * gdpTot + 30); break;
       case 'nuke': n.units.nuke += 1; break;
       case 'mercs': n.units.inf += 20; n.units.tank += 8; break;
       case 'genius': n.tech = Math.min(MAX_TECH, n.tech + 1); break;
       case 'fortress': n.b.fort += 3; break;
       case 'missiles': n.units.missile += 8; break;
       case 'aid': n.treasury += 80; n.stability = clamp(n.stability + 10, 0, 100); break;
-      case 'plague': t.pop = round1(t.pop * 0.75); break;
+      case 'plague': scale('pop', 0.75); break;
       case 'civilwar':
         for (const u of UNIT_TYPES) n.units[u] = Math.floor(n.units[u] * 0.6);
         n.stability = clamp(n.stability - 20, 5, 100);
         break;
-      case 'crisis': t.gdp = Math.round(t.gdp * 0.75); n.treasury = Math.round(n.treasury * 0.5); break;
+      case 'crisis': scale('gdp', 0.75); n.treasury = Math.round(n.treasury * 0.5); break;
       case 'satellite': n.research += (TECH_COST[n.tech + 1] ?? 0) * 0.5; n.units.missile += 3; break;
       case 'worldcup': n.treasury += 60; n.stability = clamp(n.stability + 15, 0, 100); break;
-      case 'braindrain': n.research += 150; t.pop = round1(t.pop * 1.05); break;
-      case 'oilfield': if (n.res === 'none') n.res = 'oil'; else t.gdp = Math.round(t.gdp * 1.1); break;
+      case 'braindrain': n.research += 150; scale('pop', 1.05); break;
+      case 'oilfield': if (n.res === 'none') n.res = 'oil'; else scale('gdp', 1.1); break;
       case 'traitor': for (const u of COMBAT_UNITS) n.units[u] = Math.floor(n.units[u] * 0.75); break;
-      case 'volcano': t.gdp = Math.round(t.gdp * 0.85); t.pop = round1(t.pop * 0.95); break;
+      case 'volcano': scale('gdp', 0.85); scale('pop', 0.95); break;
     }
     assignMission(this, n, n.mission.id);
     s.nations[nid] = n;
     if (s.phase === 'playing') {
-      this.news('🎉', `${leader} دخل اللعبة ويحكم ${n.name}`, 'join', { n: [nid], terr: country });
+      this.news('🎉', `${leader} دخل اللعبة ويحكم ${n.name}`, 'join', { n: [nid], terr: cm.cap });
     }
   }
 
@@ -462,18 +486,21 @@ export class Engine {
     const d = n.d;
     const terrs = this.owned(n.id);
     let gdpBase = 0, pop = 0, area = 0, slots = 0;
+    const parents = new Set<string>();
     for (const t of terrs) {
       gdpBase += t.gdp * (t.unrest > 0 ? 0.6 : 1) * (t.nuked > 0 ? 0.5 : 1);
       pop += t.pop;
       const m = this.w.get(t.id);
       area += m.area;
-      slots += SLOTS_BY_CLASS[m.cls];
+      slots += m.sl ?? SLOTS_BY_CLASS[m.cls];
+      parents.add(m.par ?? m.id);
     }
+    d.countries = parents.size;
     const resB = RESOURCES[n.res].gdp * (1 + 0.3 * n.b.mining);
     const trades = Object.values(this.s.nations).filter((o) => o.alive && o.id !== n.id && this.trading(n.id, o.id)).length;
     const tradeB = Math.min(0.3, trades * (n.res === 'ports' ? 0.05 : 0.03) * (n.trait === 'diplomat' ? 2 : 1));
     d.gdp = gdpBase * Math.max(0.3, 1 + 0.08 * n.b.industry + 0.04 * (n.tech - 1) + resB + tradeB + TERRAINS[n.terrain].gdp);
-    const eff = (0.55 + 0.45 * n.stability / 100) * Math.max(0.6, 1 - 0.012 * Math.max(0, terrs.length - 3));
+    const eff = (0.55 + 0.45 * n.stability / 100) * Math.max(0.6, 1 - 0.012 * Math.max(0, parents.size - 3));
     d.income = (d.gdp * n.tax * eff * GOVS[n.gov].income * (n.trait === 'economist' ? 1.08 : 1)) / 12 + (n.res === 'gold' ? gdpBase * 0.002 * (1 + 0.3 * n.b.mining) : 0);
     const all = this.movingUnits(n.id);
     const inb = unitsInBattles(this, n.id);
@@ -628,7 +655,7 @@ export class Engine {
     const populist = n.trait === 'populist';
     const target =
       55 + GOVS[n.gov].stab + RESOURCES[n.res].stab + 4 * n.b.health + (populist ? 12 : 0) - (n.tax - 0.2) * 150 * (populist ? 0.5 : 1) -
-      d.atWar * 5 * GOVS[n.gov].weariness - occupied * 2 - (n.treasury < 0 ? 15 : 0) - Math.max(0, terrs.length - 5) * 1.5;
+      d.atWar * 5 * GOVS[n.gov].weariness - occupied * 2 - (n.treasury < 0 ? 15 : 0) - Math.max(0, d.countries - 5) * 1.5;
     n.stability = clamp(n.stability + (target - n.stability) * 0.15, 0, 100);
     // البحث
     n.research += d.research;

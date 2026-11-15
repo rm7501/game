@@ -30,6 +30,7 @@
     "@types/node": "22.15.30",
     "@types/topojson-client": "3.1.5",
     "@types/topojson-specification": "1.0.5",
+    "polygon-clipping": "^0.15.7",
     "topojson-server": "3.0.1",
     "topojson-simplify": "3.0.3",
     "tsx": "4.20.3",

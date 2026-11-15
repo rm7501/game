@@ -83,7 +83,7 @@ export function OverviewTab({ ctl, eng, me, onSelect }: PanelProps) {
         <Stat icon="🏦" label="الدخل" value={fmtMoney(d.income)} sub={`صيانة الجيش ${fmtMoney(d.upkeep)}`} />
         <Stat icon="👥" label="السكان" value={fmtPop(d.pop)} sub={`قوى بشرية ${fmtNum(Math.max(0, d.manpower))} ألف`} />
         <Stat icon="⚔️" label="القوة العسكرية" value={fmtNum(d.power)} sub={d.atWar ? `في حرب مع ${d.atWar}` : 'ما فيه حروب'} tone={d.atWar ? 'bad' : undefined} />
-        <Stat icon="🗺️" label="الأراضي" value={`${d.terrs} دولة`} sub={fmtArea(d.area)} />
+        <Stat icon="🗺️" label="الأراضي" value={`${d.countries} ${d.countries === 1 ? 'دولة' : 'دول'}`} sub={`${d.terrs > d.countries ? d.terrs + ' مناطق · ' : ''}${fmtArea(d.area)}`} />
         <Stat icon="🏆" label="النقاط" value={fmtNum(d.score)} sub={`المركز ${rank} من ${ranking.length}`} />
         <Stat icon="🎁" label="المفاجأة" value={`${LUCK[me.luck].icon} ${LUCK[me.luck].name}`} />
       </div>
@@ -379,7 +379,7 @@ export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect }: Pan
               <span class={`badge ${ratio > 1.3 ? 'bad' : ratio < 0.7 ? 'good' : ''}`} title="قوتهم مقارنة بقوتك">
                 قوتهم {ratio >= 10 ? '×' + Math.round(ratio) : ratio >= 1 ? '×' + ratio.toFixed(1) : Math.round(ratio * 100) + '%'}
               </span>
-              <span class="badge">{o.d.terrs} أراضي</span>
+              <span class="badge">{o.d.countries} دول</span>
             </div>
             <div class="dip-actions">
               {r?.war ? (
@@ -478,7 +478,7 @@ export function RankTab({ eng, me, onSelect }: PanelProps) {
                 <div class="muted small">{n.kind === 'bot' ? '🤖' : '👤'} {n.leader}</div>
               </td>
               <td>{fmtNum(n.d.score)}</td>
-              <td>{n.d.terrs} <span class="muted small">({Math.round((n.d.area / total) * 100)}%)</span></td>
+              <td>{n.d.countries} <span class="muted small">({Math.round((n.d.area / total) * 100)}%)</span></td>
               <td>{fmtNum(n.d.power)}</td>
             </tr>
           ))}

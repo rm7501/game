@@ -31,8 +31,9 @@ export function describe(w: WheelId, v: number | string, world: World): ResultIn
       return { icon: s.icon, title: `دولة ${s.label}`, desc: s.sub ?? '', tone: (v as number) >= 4 ? 'good' : (v as number) === 0 ? 'bad' : undefined };
     }
     case 'country': {
-      const m = world.get(v as string);
-      return { icon: '📍', title: m.ar, desc: `${REGION_NAMES[m.reg] ?? ''} · ${fmtArea(m.area)}`, flag: m.id };
+      const m = world.country(v as string);
+      const regions = m.provs.length > 1 ? ` · ${m.provs.length} مناطق` : '';
+      return { icon: '📍', title: m.ar, desc: `${REGION_NAMES[m.reg] ?? ''} · ${fmtArea(m.area)}${regions}`, flag: m.id };
     }
     case 'pop':
       return { icon: '👥', title: `${POP_VALUES[v as number]} مليون نسمة`, desc: 'عدد الشعب يحدد التجنيد والنمو', tone: TIER_TONE(v as number) };

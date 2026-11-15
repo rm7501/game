@@ -76,7 +76,7 @@ export function setupBattle(e: Engine, A: Nation | null, units: Partial<Units>, 
     const militia = 0.5 + T.pop * 0.02;
     let raw = militia;
     for (const k of COMBAT_UNITS) raw += du[k] * UNITS[k].def * (k === 'ship' ? shipBonus(D) : 1);
-    const home = to === D.home ? 1 + TERRAINS[D.terrain].def : 1;
+    const home = e.w.parentOf(to) === D.home ? 1 + TERRAINS[D.terrain].def : 1;
     if (home > 1) mods.push(`${TERRAINS[D.terrain].icon} تضاريس صعبة +${Math.round((home - 1) * 100)}%`);
     if (home < 1) mods.push(`${TERRAINS[D.terrain].icon} أرض مكشوفة ${Math.round((home - 1) * 100)}%`);
     if (D.b.fort) mods.push(`🏰 تحصينات +${D.b.fort * 10}%`);
