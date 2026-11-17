@@ -90,6 +90,9 @@ export function TerritoryCard({ eng, me, id, onClose, onAttack, onStrike, onDipl
         </div>
       )}
       {incoming.length > 0 && <div class="warn small">⚠️ فيه {incoming.length} جيش متجه لهنا!</div>}
+      {(s.bases ?? []).filter((b) => b.terr === id).map((b) => (
+        <div class="small" key={b.id}>🏰 فيها قاعدة عسكرية لـ {s.nations[b.owner]?.name}{me && b.owner === me.id && me.place[id] ? <> · <StackLine st={me.place[id]} /></> : null}</div>
+      ))}
       {mine && me && (
         <div class="tcard-army">
           <div class="row-between small">

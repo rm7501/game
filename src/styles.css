@@ -727,3 +727,34 @@ body:has(.modal-back) .toasts, body:has(.end-back) .toasts { top: auto; bottom: 
 .move-units { display: flex; flex-direction: column; gap: 6px; margin: 8px 0; }
 .mu-row { display: grid; grid-template-columns: 110px 1fr 60px; gap: 8px; align-items: center; font-size: 13px; }
 .deploy-at select { margin-inline-start: 6px; padding: 3px 6px; border-radius: 8px; background: #0d1430; color: var(--text); border: 1px solid var(--line2); max-width: 140px; }
+
+/* ============ الصفقات والسوق والقرارات ============ */
+.deal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.deal-side { display: flex; flex-direction: column; gap: 6px; padding: 9px; border-radius: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line); }
+.deal-row { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; flex-wrap: wrap; }
+.deal-row input, .deal-unit input { width: 80px; padding: 4px 6px; border-radius: 8px; border: 1px solid var(--line2); background: #0d1430; color: var(--text); }
+.deal-row select, .deal-base select { padding: 4px 6px; border-radius: 8px; border: 1px solid var(--line2); background: #0d1430; color: var(--text); max-width: 220px; }
+.deal-units { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; }
+.deal-unit { display: flex; align-items: center; gap: 4px; }
+.deal-unit input { width: 58px; }
+.deal-terrs { max-height: 160px; overflow-y: auto; }
+.deal-cards { display: flex; flex-wrap: wrap; gap: 4px; }
+.deal-terms { display: flex; flex-direction: column; gap: 7px; margin-top: 10px; }
+.deal-base { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.deal-guess { margin-top: 8px; padding: 7px 10px; border-radius: 10px; font-weight: 800; text-align: center; background: rgba(255, 255, 255, 0.05); }
+.deal-guess.good { color: var(--good); background: rgba(52, 211, 153, 0.1); }
+.deal-guess.bad { color: var(--bad); background: rgba(248, 113, 113, 0.1); }
+.deal-card { padding: 9px; border-radius: 12px; background: var(--card); border: 1px solid rgba(56, 189, 248, 0.35); display: flex; flex-direction: column; gap: 4px; }
+.deal-card.ult { border-color: rgba(248, 113, 113, 0.6); background: rgba(248, 113, 113, 0.06); }
+.market { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; margin-bottom: 10px; }
+.offer { padding: 9px; border-radius: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+.market-btn { width: 100%; justify-content: flex-start; border-color: rgba(245, 197, 66, 0.4); background: rgba(245, 197, 66, 0.08); }
+.space-steps { display: flex; gap: 6px; flex-wrap: wrap; }
+.space-step { font-size: 12px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line2); opacity: 0.6; }
+.space-step.done { opacity: 1; border-color: var(--good); color: var(--good); background: rgba(52, 211, 153, 0.1); }
+.decision { display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center; }
+.decision-icon { font-size: 54px; animation: pop 0.35s ease; }
+.decision-opts { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.decision-opt { display: flex; flex-direction: column; gap: 2px; padding: 11px; border-radius: 12px; border: 1px solid var(--line2); background: rgba(255, 255, 255, 0.04); color: inherit; cursor: pointer; text-align: start; }
+.decision-opt:hover { border-color: var(--gold); background: rgba(245, 197, 66, 0.08); }
+@media (max-width: 700px) { .deal-grid { grid-template-columns: 1fr; } }

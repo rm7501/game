@@ -16,6 +16,7 @@ export function spyChance(A: Nation, T: Nation, op: SpyOpId): number {
   let p = SPY_OPS[op].base + 0.05 * (A.b.intel ?? 0) - 0.06 * (T.b.intel ?? 0) + 0.03 * (A.tech - T.tech);
   if (A.trait === 'diplomat') p += 0.05;
   if (T.trait === 'guardian') p -= 0.05;
+  if ((A.space ?? 0) >= 1) p += 0.08;
   return clamp(p, 0.1, 0.92);
 }
 

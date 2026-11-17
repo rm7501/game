@@ -7,6 +7,8 @@ import { spinFortune } from './events';
 import { aiCards } from './cards';
 import { aiSpy } from './spies';
 import { aiVote } from './un';
+import { aiDeals } from './deals';
+import { aiSpace } from './decisions';
 import type { Branch, BuildingType, Nation, Personality, Proposal, TerrId, UnitType, Units } from './types';
 import { COMBAT_UNITS } from './types';
 
@@ -159,6 +161,8 @@ export function aiThink(e: Engine, n: Nation) {
   aiSpy(e, n, atWar);
   aiArmy(e, n, diff);
   aiDeploy(e, n);
+  aiDeals(e, n);
+  aiSpace(e, n);
 
   // الهجوم
   const myMoves = s.moves.filter((m) => m.owner === n.id && m.kind === 'attack').length;

@@ -154,6 +154,21 @@ export function setupBattle(e: Engine, A: Nation | null, units: Partial<Units>, 
         allies.push({ id: aid, u });
       }
     }
+    // جيوش القواعد العسكرية في الأرض تدافع معها
+    for (const bs of s.bases ?? []) {
+      if (bs.terr !== to || bs.owner === A?.id || bs.host !== D.id) continue;
+      const X = s.nations[bs.owner];
+      const st = X?.place?.[to];
+      if (!X?.alive || !st) continue;
+      const u = emptyUnits();
+      let r = 0;
+      for (const k of COMBAT_UNITS) {
+        if (k === 'ship' && !coastal) continue;
+        u[k] = st.u[k];
+        r += u[k] * UNITS[k].def * unitMult(X, k);
+      }
+      if (r > 0) { d0 += r; allies.push({ id: X.id, u }); mods.push(`🏰 قاعدة ${X.name}`); }
+    }
     if (allies.length) mods.push(`🤝 دعم ${allies.length} حليف`);
   }
 
@@ -180,6 +195,9 @@ export function setupBattle(e: Engine, A: Nation | null, units: Partial<Units>, 
   // بطاقات الخطط
   if (A && (A.fx.blitz ?? 0) > s.day) { a0 *= 1.25; mods.push('⚡ هجوم خاطف +25%'); }
   if (D && (D.fx.shield ?? 0) > s.day) { d0 *= 1.3; mods.push('🛡️ درع وطني +30%'); }
+  // ذريعة حرب بعد رفض إنذار نهائي
+  const cb = A && D ? e.peek(A.id, D.id)?.cb : undefined;
+  if (cb && cb.by === A!.id && cb.until > s.day) { a0 *= 1.15; mods.push('📜 ذريعة حرب +15%'); }
   // التحالف الدولي ضد المسيطر
   if (D && s.coalition === D.id) { a0 *= 1.2; mods.push('🌍 التحالف الدولي +20%'); }
   // الدول الأضعف تدافع عن وجودها
@@ -197,8 +215,12 @@ export function setupBattle(e: Engine, A: Nation | null, units: Partial<Units>, 
     } else if (T.g) { T.g.inf -= du.inf; T.g.tank -= du.tank; }
     for (const al of allies) {
       const X = s.nations[al.id];
-      for (const k of COMBAT_UNITS) X.units[k] -= al.u[k];
-      syncPlaces(e, X);
+      // جيش القاعدة ينسحب من مكانه، والحلفاء من مجموع جيشهم
+      if (X.place?.[to] && (s.bases ?? []).some((bs) => bs.terr === to && bs.owner === X.id)) takeAt(X, to, al.u);
+      else {
+        for (const k of COMBAT_UNITS) X.units[k] -= al.u[k];
+        syncPlaces(e, X);
+      }
     }
   }
   return { a0: Math.max(0.01, a0), d0: Math.max(0.01, d0), aBreak, dBreak, mods, du, allies, sup, dxp, dgen: dgen?.id };

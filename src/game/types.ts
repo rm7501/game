@@ -190,6 +190,10 @@ export interface Nation {
   spec: Branch[]; // التخصصات العسكرية
   place: Record<TerrId, Stack>; // الجيوش المتمركزة (مشاة، دبابات، طائرات، سفن)
   generals: General[];
+  lord?: NationId; // الدولة المتبوعة (لو هذي دولة تابعة)
+  exp: { open: boolean; markup: number }; // تصدير السلاح
+  decision?: { id: number; ev: DecisionId; until: number };
+  space: number; // مرحلة سباق الفضاء (0-3)
 }
 
 export type MoveKind = 'attack' | 'return' | 'missile' | 'nuke' | 'deploy' | 'deliver';
@@ -213,6 +217,8 @@ export interface Relation {
   trade?: number;
   truce?: number; // يوم نهاية الهدنة
   team?: boolean; // تحالف فريق دائم (ما ينفسخ)
+  nap?: number; // معاهدة عدم اعتداء لين يوم
+  cb?: { by: NationId; until: number }; // ذريعة حرب (بعد رفض إنذار)
 }
 
 export type ProposalType = 'ally' | 'trade' | 'peace';
@@ -297,6 +303,41 @@ export interface Chat {
   team?: number; // رسالة للفريق
   text: string;
 }
+
+// ---------------- الصفقات والمعاهدات ----------------
+export interface DealSide {
+  money?: number; // دفعة وحدة
+  pay?: { amt: number; months: number }; // دفعات شهرية
+  units?: Partial<Units>;
+  terrs?: TerrId[];
+  cards?: CardId[];
+  research?: number; // نقاط بحث (مشاركة تكنولوجيا)
+}
+export type DealTerm = 'peace' | 'ally' | 'trade' | 'nap';
+export interface Deal {
+  id: number;
+  from: NationId;
+  to: NationId;
+  day: number;
+  give: DealSide; // اللي يعطيه صاحب العرض
+  get: DealSide; // اللي يطلبه
+  terms: DealTerm[];
+  vassal?: 'from' | 'to'; // مين يصير تابع
+  base?: { host: 'from' | 'to'; terr: TerrId }; // قاعدة عسكرية
+  ult?: boolean; // إنذار نهائي: الرفض = حرب
+  counter?: number;
+}
+/** دفعات شهرية (قروض، صفقات، جزية) */
+export interface Pay {
+  id: number;
+  from: NationId;
+  to: NationId | ''; // '' = البنك الدولي
+  amt: number;
+  left: number;
+  why: string;
+}
+export type DecisionId =
+  | 'quake' | 'refugees' | 'strike' | 'scientists' | 'smuggling' | 'treasure' | 'coupplot' | 'investor' | 'protest' | 'border';
 
 /** قاعدة عسكرية لدولة في أرض دولة ثانية */
 export interface Base {
@@ -384,6 +425,8 @@ export interface GameState {
   nextCards: number; // يوم توزيع البطاقات السنوي
   hist?: History;
   bases?: Base[];
+  deals: Deal[];
+  pays: Pay[];
   gameId?: string; // معرف اللعبة (لتسجيل النتايج)
   owner?: string; // اللي سوى اللعبة (يقدر يفعّل وضع المتحكم)
   dev?: DevState; // وضع المتحكم
@@ -471,6 +514,16 @@ export type Command =
   | { t: 'vote'; v: Vote }
   | { t: 'card'; card: CardId; target?: NationId; terr?: TerrId }
   | { t: 'dev'; d: DevCmd }
+  | { t: 'deal'; to: NationId; give: DealSide; get: DealSide; terms: DealTerm[]; vassal?: 'from' | 'to'; base?: { host: 'from' | 'to'; terr: TerrId }; ult?: boolean; counter?: number }
+  | { t: 'dealRespond'; id: number; accept: boolean }
+  | { t: 'buy'; seller: NationId; u: UnitType; n: number }
+  | { t: 'exports'; open: boolean; markup: number }
+  | { t: 'loan'; amount: number }
+  | { t: 'closeBase'; id: number }
+  | { t: 'breakNap'; with: NationId }
+  | { t: 'independence' }
+  | { t: 'decide'; i: number }
+  | { t: 'space' }
   | { t: 'speed'; speed: number }
   | { t: 'pause'; paused: boolean };
 

@@ -17,6 +17,8 @@ import { TerritoryCard } from './TerritoryCard';
 import { toast } from './toast';
 import { CardsModal, SpyDialog, UNModal } from './plans';
 import { MoveDialog } from './army';
+import { DealDialog, DecisionModal, MarketModal } from './deals';
+import type { Deal } from '../game/types';
 import { DevBadge, DevPanel } from './dev/DevPanel';
 import { isController } from '../game/dev';
 import { UN_RES } from '../game/defs';
@@ -34,6 +36,9 @@ type Dialog =
   | { t: 'un' }
   | { t: 'spy'; to: string }
   | { t: 'move'; from: string }
+  | { t: 'deal'; to: string; base?: Deal }
+  | { t: 'market' }
+  | { t: 'decision' }
   | null;
 
 const maxId = (arr: { id: number }[]) => arr.reduce((m, x) => Math.max(m, x.id), 0);
@@ -69,7 +74,7 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
   const canEnableDev = !s.dev && ctl.me === (s.owner ?? s.hostId) && s.phase === 'playing';
   const mapBox = useRef<HTMLDivElement>(null);
   const map = useRef<MapRenderer | null>(null);
-  const seen = useRef({ news: maxId(s.news), reps: maxId(s.reports), props: maxId(s.props), chat: maxId(s.chat), dead: !meAny || !meAny.alive, propToast: 0, world: s.world?.id ?? 0, fortune: false, un: s.un?.id ?? 0, unLast: s.unLast?.id ?? 0 });
+  const seen = useRef({ news: maxId(s.news), reps: maxId(s.reports), props: maxId(s.props), chat: maxId(s.chat), dead: !meAny || !meAny.alive, propToast: 0, world: s.world?.id ?? 0, fortune: false, un: s.un?.id ?? 0, unLast: s.unLast?.id ?? 0, deals: maxId(s.deals ?? []), decision: 0 });
 
   useEffect(() => {
     const m = new MapRenderer(mapBox.current!, ctl.world, {
@@ -174,6 +179,20 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
       if (!dialog && ctl.myNation()?.alive) setDialog({ t: 'un' });
       else toast({ icon: '🏛️', text: `تصويت في الأمم المتحدة: ${UN_RES[s.un.res].name}`, kind: 'info', ttl: 9000, actions: [{ label: 'صوّت', kind: 'primary', run: () => setDialog({ t: 'un' }) }] });
     }
+    for (const d of s.deals ?? []) {
+      if (d.id <= st.deals || d.to !== myNid) continue;
+      const A = s.nations[d.from];
+      sfx.notify();
+      toast({ icon: d.ult ? '📜' : '🤝', text: `${A?.name} ${d.ult ? 'ترسل لك إنذار نهائي!' : 'ترسل لك عرض صفقة'}`, kind: d.ult ? 'warn' : 'info', ttl: 12000, actions: [{ label: 'شوف', kind: 'primary', run: () => { setTab('diplo'); setPanelOpen(true); } }] });
+    }
+    st.deals = Math.max(st.deals, maxId(s.deals ?? []));
+    const dec = ctl.myNation()?.decision;
+    if (dec && dec.id > st.decision) {
+      st.decision = dec.id;
+      sfx.notify();
+      if (!dialog) setDialog({ t: 'decision' });
+      else toast({ icon: '❗', text: 'حدث يحتاج قرارك!', kind: 'warn', actions: [{ label: 'قرر', kind: 'primary', run: () => setDialog({ t: 'decision' }) }] });
+    }
     if (s.unLast && s.unLast.id > st.unLast) {
       st.unLast = s.unLast.id;
       const r = s.unLast;
@@ -222,6 +241,7 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
       return;
     }
     if (n.kind === 'diplo' && n.text.includes('ترسل لك')) return; // يطلع مع الاقتراح
+    if (n.icon === '🤝' && n.text.includes('ترسل لك')) return;
     if (n.icon === '🃏' && n.n?.[0] === myNid) return; // بطاقتك: يطلع لك تأكيد اللعب
     if (mineNews) {
       if (n.kind === 'battle' && n.icon === '🏴') return; // يطلع مع تقرير المعركة
@@ -270,6 +290,8 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
     onSpy: (to: string) => setDialog({ t: 'spy', to }),
     onCards: () => setDialog({ t: 'cards' }),
     onMove: (from: string) => setDialog({ t: 'move', from }),
+    onDeal: (to: string, base?: Deal) => setDialog({ t: 'deal', to, base }),
+    onMarket: () => setDialog({ t: 'market' }),
     openTab, focusNation,
   };
 
@@ -303,6 +325,7 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
             {s.un && (
               <button class={`chip-stat un-chip ${s.un.votes[me.id] ? '' : 'pulse'}`} title="تصويت في الأمم المتحدة" onClick={() => setDialog({ t: 'un' })}>🏛️ <span class="un-long">تصويت</span></button>
             )}
+            {me.decision && <button class="chip-stat un-chip pulse" title="حدث يحتاج قرارك" onClick={() => setDialog({ t: 'decision' })}>❗ <span class="un-long">قرار</span></button>}
             <button class={`chip-stat cards-chip ${me.cards.length ? '' : 'muted'}`} title="بطاقات الخطط" onClick={() => setDialog({ t: 'cards' })}>🃏 {me.cards.length}</button>
             <span class="chip-stat" title="الخزينة (والدخل الصافي الشهري)">💰 {fmtMoneyShort(me.treasury)} <small class={net >= 0 ? 'good' : 'bad'}>{net >= 0 ? '+' : ''}{fmtMoneyShort(net)}</small></span>
             <span class="chip-stat" title="السكان">👥 {fmtPop(me.d.pop)}</span>
@@ -388,7 +411,7 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
             <button key={t.id} class={`tab ${tab === t.id && panelOpen ? 'on' : ''}`} onClick={() => openTab(t.id)}>
               <span class="tab-icon">{t.icon}</span>
               <span class="tab-label">{t.label}</span>
-              {t.id === 'diplo' && me && s.props.some((p) => p.to === me.id) && <span class="tab-dot" />}
+              {t.id === 'diplo' && me && (s.props.some((p) => p.to === me.id) || (s.deals ?? []).some((d) => d.to === me.id)) && <span class="tab-dot" />}
               {t.id === 'chat' && unread > 0 && <span class="tab-dot">{unread}</span>}
             </button>
           ))}
@@ -427,6 +450,9 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
       {dialog?.t === 'un' && <UNModal ctl={ctl} eng={eng} me={me} onClose={() => setDialog(null)} />}
       {dialog?.t === 'spy' && me && <SpyDialog ctl={ctl} eng={eng} me={me} target={dialog.to} onClose={() => setDialog(null)} />}
       {dialog?.t === 'move' && me && me.place[dialog.from] && <MoveDialog ctl={ctl} eng={eng} me={me} from={dialog.from} onClose={() => setDialog(null)} />}
+      {dialog?.t === 'deal' && me && <DealDialog ctl={ctl} eng={eng} me={me} to={dialog.to} base={dialog.base} onClose={() => setDialog(null)} />}
+      {dialog?.t === 'market' && me && <MarketModal ctl={ctl} eng={eng} me={me} onClose={() => setDialog(null)} />}
+      {dialog?.t === 'decision' && me?.decision && <DecisionModal ctl={ctl} eng={eng} me={me} onClose={() => setDialog(null)} />}
       {dialog?.t === 'dead' && (
         <Modal title="💀 دولتك سقطت" onClose={() => setDialog(null)}>
           <p>للأسف تم احتلال كل أراضيك. تقدر تكمل تتفرج على اللعبة وتشوف مين بيفوز.</p>

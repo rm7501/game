@@ -20,6 +20,15 @@ e.onNews = (n) => {
   if (n.text.includes('الأمم المتحدة رفضت')) bump('قرارات أممية ❌');
   if (n.text.includes('انشقت')) bump('انشقاق');
   if (n.text.includes('انقلاب في')) bump('انقلاب');
+  if (n.text.startsWith('صفقة بين')) bump('صفقات');
+  if (n.text.includes('رضخت لإنذار')) bump('إنذار مقبول');
+  if (n.text.includes('رفضت إنذار')) bump('إنذار مرفوض');
+  if (n.icon === '🛒') bump('شراء سلاح');
+  if (n.text.includes('صارت دولة تابعة')) bump('تبعية');
+  if (n.text.includes('عدم اعتداء')) bump('عدم اعتداء');
+  if (n.text.includes('🚀 ') && n.text.includes('نجحت في')) bump('فضاء');
+  if (n.icon === '🪦') bump('جنرال سقط');
+  if (n.icon === '🎖️') bump('ترقية جنرال');
 };
 e.addPlayer('me', 'تجربة');
 e.startWheels();

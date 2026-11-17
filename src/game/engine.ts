@@ -12,6 +12,8 @@ import { addHistEvent, HIST_EVERY, recordHistory } from './history';
 import { recruitAgent, startOp, tickOps } from './spies';
 import { castVote, scheduleUN, tickUN } from './un';
 import { newDev, wheelIsOff, weightMult } from './dev';
+import { breakNap, buyArms, closeBase, cmdCloseBase, independence, monthlyPays, onWar, proposeDeal, respondDeal, takeLoan } from './deals';
+import { cmdSpace, decide, finishSpace, monthlyDecisions } from './decisions';
 import {
   STATIONED, addAt, cmdGeneral, cmdMove, cmdSpecialize, cmdUpgrade, finishProject, generalAt, initialPlaces, newGeneral, stackPower,
   stationable, syncPlaces, takeAt,
@@ -44,7 +46,7 @@ export function newState(mode: 'single' | 'online', settings: Settings, hostId: 
     v: STATE_VERSION, mode, phase: 'lobby', settings: { ...settings }, day: 0, paused: false, speed: settings.speed,
     rng: (seed ?? Math.floor(Math.random() * 2 ** 31)) >>> 0, seq: 1, hostId,
     players: {}, nations: {}, terr: {}, wheels: {}, taken: {}, moves: [], rel: {}, props: [], news: [], reports: [], chat: [],
-    battles: [], nextWorld: 0, mods: {}, ops: [], nextUN: 0, nextCards: 0,
+    battles: [], nextWorld: 0, mods: {}, ops: [], nextUN: 0, nextCards: 0, deals: [], pays: [], bases: [],
     owner: hostId || undefined, dev: settings.dev && hostId ? newDev(hostId) : undefined,
   };
 }
@@ -460,6 +462,7 @@ export class Engine {
       d: emptyDerived(), joinDay: s.phase === 'playing' ? s.day : 0,
       team: s.settings.teams > 0 ? ws.team ?? player?.team : undefined, agents: 1, cards: [], fx: {}, intel: {},
       gen: { land: 1, air: 1, sea: 1, rocket: 1 }, spec: [], place: {}, generals: [],
+      exp: { open: true, markup: 1.3 }, space: 0,
     };
     // الأجيال تبدأ حسب التكنولوجيا، والتخصص يعطي جيل زيادة
     const baseGen = clamp(n.tech, 1, MAX_GEN);
@@ -530,6 +533,9 @@ export class Engine {
     if (!b.alive) return 'الدولة سقطت';
     if (this.allied(a.id, b.id)) return 'هذي دولة حليفة، لازم تفسخ التحالف أول';
     if (this.inTruce(a.id, b.id)) return 'بينكم هدنة لين ' + this.dateStr(this.peek(a.id, b.id)!.truce!);
+    const nap = this.peek(a.id, b.id)?.nap;
+    if (nap && nap > this.s.day) return 'بينكم معاهدة عدم اعتداء لين ' + this.dateStr(nap) + ' (تقدر تنقضها من العلاقات)';
+    if (a.lord === b.id || b.lord === a.id) return 'هذي دولة تابعة/متبوعة لك';
     if (this.s.day < this.peaceEnd(a, b)) return 'فترة السلام ما خلصت (لين ' + this.dateStr(this.peaceEnd(a, b)) + ')';
     return null;
   }
@@ -546,6 +552,9 @@ export class Engine {
     r.war = this.s.day;
     delete r.trade;
     delete r.ally;
+    delete r.nap;
+    onWar(this, a.id, b.id);
+    this.s.deals = this.s.deals.filter((d) => !((d.from === a.id && d.to === b.id) || (d.from === b.id && d.to === a.id)) || d.terms.includes('peace'));
     this.s.props = this.s.props.filter((p) => !((p.from === a.id && p.to === b.id) || (p.from === b.id && p.to === a.id)));
     if (!quiet) this.news('⚔️', `${a.name} أعلنت الحرب على ${b.name}!`, 'war', { n: [a.id, b.id] });
   }
@@ -676,7 +685,8 @@ export class Engine {
           } else if (q.kind === 'project' && q.type === 'nuke') {
             n.nukeProg = true;
             this.news('☢️', `${n.name} نجحت في برنامجها النووي!`, 'nuke', { n: [n.id] });
-          } else if (q.kind === 'project') finishProject(this, n, q.type);
+          } else if (q.kind === 'project' && q.type.startsWith('space:')) finishSpace(this, n, Number(q.type.split(':')[1]));
+          else if (q.kind === 'project') finishProject(this, n, q.type);
         }
         syncPlaces(this, n);
       }
@@ -753,6 +763,8 @@ export class Engine {
       scheduleWorld(this);
     }
     if (s.nextCards > 0 && s.day >= s.nextCards) dealCards(this);
+    monthlyPays(this);
+    monthlyDecisions(this);
     if (s.day % HIST_EVERY === 0) recordHistory(this);
     this.checkWin();
   }
@@ -1003,6 +1015,10 @@ export class Engine {
     s.props = s.props.filter((p) => p.from !== D.id && p.to !== D.id);
     for (const k of Object.keys(s.rel)) if (k.split('|').includes(D.id)) delete s.rel[k];
     s.ops = s.ops.filter((o) => o.owner !== D.id);
+    s.deals = s.deals.filter((d) => d.from !== D.id && d.to !== D.id);
+    s.pays = s.pays.filter((p) => p.from !== D.id && p.to !== D.id);
+    for (const b of [...(s.bases ?? [])]) if (b.owner === D.id || b.host === D.id) closeBase(this, b.id, true);
+    for (const o of Object.values(s.nations)) if (o.lord === D.id) delete o.lord;
     this.news('💀', `${D.name} (${D.leader}) سقطت${by ? ` على يد ${by.name}` : ''}!`, 'war', { n: [D.id] });
     this.histEvent('💀', `${D.name} سقطت${by ? ` على يد ${by.name}` : ''}`);
   }
@@ -1335,6 +1351,16 @@ export class Engine {
       case 'upgrade': return cmdUpgrade(this, n, c.b);
       case 'specialize': return cmdSpecialize(this, n, c.b);
       case 'general': return cmdGeneral(this, n, c.act, c.id, c.at);
+      case 'deal': return proposeDeal(this, n, { to: c.to, give: c.give, get: c.get, terms: c.terms ?? [], vassal: c.vassal, base: c.base, ult: c.ult, counter: c.counter });
+      case 'dealRespond': return respondDeal(this, n, c.id, c.accept);
+      case 'buy': return buyArms(this, n, c.seller, c.u, c.n);
+      case 'exports': n.exp = { open: !!c.open, markup: clamp(c.markup, 0.8, 3) }; return { ok: true };
+      case 'loan': return takeLoan(this, n, c.amount);
+      case 'closeBase': return cmdCloseBase(this, n, c.id);
+      case 'breakNap': return breakNap(this, n, c.with);
+      case 'independence': return independence(this, n);
+      case 'decide': return decide(this, n, c.i);
+      case 'space': return cmdSpace(this, n);
       case 'strike': return this.cmdStrike(n, c.to, c.kind, c.n);
       case 'propose': return this.cmdPropose(n, c.to, c.type);
       case 'respond': {

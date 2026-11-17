@@ -19,7 +19,8 @@ import { isController } from '../game/dev';
 import { BRANCH_DEFS, CARDS } from '../game/defs';
 import { ArmiesBlock, BranchesBlock, GeneralsBlock } from './army';
 import { stationable } from '../game/army';
-import type { Branch } from '../game/types';
+import type { Branch, Deal } from '../game/types';
+import { DealCard, FinanceBlock, SpaceBlock } from './deals';
 
 export interface PanelProps {
   ctl: Controller;
@@ -32,6 +33,8 @@ export interface PanelProps {
   onSpy?: (to: NationId) => void;
   onCards?: () => void;
   onMove?: (from: string) => void;
+  onDeal?: (to: NationId, base?: Deal) => void;
+  onMarket?: () => void;
 }
 
 export type Tab = 'overview' | 'economy' | 'military' | 'diplo' | 'chat' | 'rank' | 'news';
@@ -83,6 +86,12 @@ export function OverviewTab({ ctl, eng, me, onSelect, onCards }: PanelProps) {
         <span class="block-title">🃏 بطاقات الخطط ({me.cards.length})</span>
         <span class="cards-mini">{me.cards.length ? me.cards.map((c, i) => <span key={i} title={CARDS[c].name}>{CARDS[c].icon}</span>) : <span class="muted small">ما عندك بطاقات (تاخذ وحدة كل سنة)</span>}</span>
       </button>
+      {me.lord && (
+        <div class="hint block">
+          🙇 دولتك تابعة لـ {eng.nname(me.lord)} وتدفع لها جزية.{' '}
+          <button class="btn btn-sm btn-danger" onClick={() => confirm('تعلن الاستقلال؟ بتبدأ حرب مع الدولة المتبوعة') && run(ctl, { t: 'independence' }, undefined, sfx.alert)}>✊ أعلن الاستقلال</button>
+        </div>
+      )}
       {eng.s.coalition === me.id && <div class="hint bad block">🌍 العالم متحالف ضدك بسبب هيمنتك! هجومهم عليك أقوى 20%، انتبه لحدودك.</div>}
       {eng.s.coalition && eng.s.coalition !== me.id && eng.s.nations[eng.s.coalition] && (
         <div class="hint block">🌍 فيه تحالف دولي ضد {eng.s.nations[eng.s.coalition].name}. لو هاجمتها يكون هجومك أقوى 20%.</div>
@@ -219,6 +228,8 @@ export function EconomyTab({ ctl, eng, me }: PanelProps) {
           );
         })}
       </div>
+      <FinanceBlock ctl={ctl} eng={eng} me={me} />
+      <SpaceBlock ctl={ctl} me={me} />
       {!me.nukeProg && (
         <div class="block special">
           <div class="block-title">☢️ البرنامج النووي</div>
@@ -235,7 +246,7 @@ export function EconomyTab({ ctl, eng, me }: PanelProps) {
 }
 
 // ---------------- الجيش ----------------
-export function MilitaryTab({ ctl, eng, me, onSelect, onMove }: PanelProps) {
+export function MilitaryTab({ ctl, eng, me, onSelect, onMove, onMarket }: PanelProps) {
   if (!me) return <Spectator ctl={ctl} />;
   const moving = eng.movingUnits(me.id);
   const [qty, setQty] = useState<Record<string, number>>({ inf: 5, tank: 2, jet: 1, ship: 1, missile: 1, nuke: 1 });
@@ -275,6 +286,7 @@ export function MilitaryTab({ ctl, eng, me, onSelect, onMove }: PanelProps) {
         <div class="muted small">القوة الكلية {fmtNum(me.d.power)} · القوى البشرية {fmtNum(Math.max(0, me.d.manpower))} ألف</div>
       </div>
       <ArmiesBlock eng={eng} me={me} onSelect={onSelect} onMove={(t) => onMove?.(t)} />
+      <button class="btn market-btn" onClick={onMarket}>🛒 سوق السلاح: اشترِ أسلحة متطورة من الدول المتخصصة</button>
       <BranchesBlock ctl={ctl} eng={eng} me={me} />
       <GeneralsBlock ctl={ctl} eng={eng} me={me} onSelect={onSelect} />
       {me.q.length > 0 && (
@@ -364,7 +376,7 @@ export function MilitaryTab({ ctl, eng, me, onSelect, onMove }: PanelProps) {
 }
 
 // ---------------- الدبلوماسية ----------------
-export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect, onSpy }: PanelProps) {
+export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect, onSpy, onDeal }: PanelProps) {
   const s = eng.s;
   const nations = Object.values(s.nations).filter((n) => n.alive && n.id !== me?.id).sort((a, b) => b.d.score - a.d.score);
   const incoming = me ? s.props.filter((p) => p.to === me.id) : [];
@@ -374,6 +386,15 @@ export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect, onSpy
   if (!me) return <Spectator ctl={ctl} />;
   return (
     <div class="tab-body">
+      {s.deals.filter((d) => d.to === me.id).length > 0 && (
+        <div class="block special">
+          <div class="block-title">📨 عروض صفقات وصلتك</div>
+          {s.deals.filter((d) => d.to === me.id).map((d) => <DealCard key={d.id} ctl={ctl} eng={eng} me={me} d={d} onCounter={(x) => onDeal?.(x.from, x)} />)}
+        </div>
+      )}
+      {s.deals.some((d) => d.from === me.id) && (
+        <div class="muted small">⏳ عروضك المعلقة: {s.deals.filter((d) => d.from === me.id).map((d) => s.nations[d.to]?.name).join('، ')}</div>
+      )}
       <IntelBlock ctl={ctl} eng={eng} me={me} />
       {incoming.length > 0 && (
         <div class="block special">
@@ -416,6 +437,12 @@ export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect, onSpy
               </span>
               <span class="badge">{o.d.countries} دول</span>
               {(o.fx.sanct ?? 0) > s.day && <span class="badge bad">🚫 عليها عقوبات</span>}
+              {r?.nap && r.nap > s.day && <span class="badge good">🛡️ عدم اعتداء لين {dateStr(r.nap)}</span>}
+              {o.lord === me.id && <span class="badge good">👑 تابعة لك</span>}
+              {me.lord === o.id && <span class="badge bad">🙇 أنت تابع لها</span>}
+              {(s.bases ?? []).filter((b) => (b.owner === me.id && b.host === o.id) || (b.owner === o.id && b.host === me.id)).map((b) => (
+                <span key={b.id} class="badge" title="اضغط عشان تقفلها" onClick={() => confirm('تقفل القاعدة؟') && run(ctl, { t: 'closeBase', id: b.id }, undefined, sfx.click)}>🏰 {b.owner === me.id ? 'قاعدتك' : 'قاعدتهم'} في {eng.w.short(b.terr)} ✕</span>
+              ))}
             </div>
             {(hasIntel(eng, me, o.id) || isController(s, ctl.me)) && <IntelReveal eng={eng} o={o} until={hasIntel(eng, me, o.id) ? me.intel[o.id] : undefined} />}
             <div class="dip-actions">
@@ -431,6 +458,8 @@ export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect, onSpy
                   <button class="btn btn-sm" onClick={() => onAid?.(o.id)}>🎁 مساعدة</button>
                 </>
               )}
+              <button class="btn btn-sm btn-primary" onClick={() => onDeal?.(o.id)}>📜 صفقة</button>
+              {r?.nap && r.nap > s.day && <button class="btn btn-sm btn-ghost" onClick={() => confirm('تنقض معاهدة عدم الاعتداء؟ (الاستقرار -15)') && run(ctl, { t: 'breakNap', with: o.id }, undefined, sfx.bad)}>🔓 نقض المعاهدة</button>}
               {!(me.team && o.team === me.team) && <button class="btn btn-sm btn-ghost" onClick={() => onSpy?.(o.id)}>🕵️ تجسس</button>}
             </div>
           </div>
