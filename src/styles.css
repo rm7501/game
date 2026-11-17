@@ -758,3 +758,45 @@ body:has(.modal-back) .toasts, body:has(.end-back) .toasts { top: auto; bottom: 
 .decision-opt { display: flex; flex-direction: column; gap: 2px; padding: 11px; border-radius: 12px; border: 1px solid var(--line2); background: rgba(255, 255, 255, 0.04); color: inherit; cursor: pointer; text-align: start; }
 .decision-opt:hover { border-color: var(--gold); background: rgba(245, 197, 66, 0.08); }
 @media (max-width: 700px) { .deal-grid { grid-template-columns: 1fr; } }
+
+/* ============ أشكال الخريطة ============ */
+.theme-satellite .coast { stroke: rgba(180, 230, 255, 0.55); }
+.theme-satellite .nborders { stroke: rgba(10, 14, 8, 0.85); }
+.theme-satellite .land path.owned { fill-opacity: 0.82; }
+.theme-parchment .map-svg { filter: sepia(0.35) saturate(0.95); }
+.theme-parchment .coast { stroke: rgba(92, 64, 30, 0.75); stroke-width: 1; }
+.theme-parchment .borders, .theme-parchment .pborders { stroke: rgba(92, 64, 30, 0.55); }
+.theme-parchment .nborders { stroke: rgba(70, 45, 18, 0.95); }
+.theme-parchment .land path.owned { fill-opacity: 0.72; }
+.theme-parchment .tlabel { fill: rgba(70, 45, 18, 0.85); stroke: rgba(245, 230, 200, 0.75); }
+.theme-parchment .nlabel { fill: #3b2208; stroke: rgba(250, 238, 210, 0.9); }
+.theme-parchment .nlabel.me { fill: #8a1c00; }
+.theme-night .coast { stroke: rgba(90, 120, 200, 0.35); }
+.theme-night .nborders { stroke: rgba(0, 0, 0, 0.95); }
+.theme-night .land path.owned { fill-opacity: 0.5; filter: drop-shadow(0 0 2px rgba(255, 220, 120, 0.25)); }
+.theme-night .nlabel { fill: #ffe9a8; text-shadow: 0 0 6px rgba(255, 210, 90, 0.8); }
+.theme-night .tlabel { fill: rgba(200, 210, 240, 0.55); }
+.theme-picker { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+
+/* ============ الأخبار العاجلة والصور ============ */
+.ticker.tk { display: flex; align-items: stretch; padding: 0; overflow: hidden; gap: 0; max-width: min(720px, 72%); }
+.tk-label { flex: none; background: #c81e1e; color: #fff; font-weight: 900; padding: 5px 10px; display: flex; align-items: center; font-size: 13px; }
+.tk-track { flex: 1; overflow: hidden; position: relative; direction: ltr; }
+.tk-inner { display: flex; width: max-content; animation: tick linear infinite; }
+.tk-row { display: flex; gap: 34px; padding: 5px 17px; direction: rtl; white-space: nowrap; font-size: 13px; font-weight: 700; }
+.tk-item::after { content: '◆'; margin-inline-start: 34px; color: #c81e1e; font-size: 9px; vertical-align: middle; }
+@keyframes tick { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.ticker.tk:hover .tk-inner { animation-play-state: paused; }
+.breaking {
+  position: absolute; bottom: 58px; left: 50%; transform: translateX(-50%); z-index: 5; display: flex; align-items: stretch; max-width: min(760px, 92%);
+  border-radius: 12px; overflow: hidden; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6); animation: brIn 0.45s cubic-bezier(.2, 1.4, .4, 1); cursor: pointer;
+}
+.br-tag { background: #d61f1f; color: #fff; font-weight: 900; padding: 9px 14px; font-size: 16px; animation: brPulse 1s ease-in-out infinite; white-space: nowrap; display: flex; align-items: center; }
+.br-text { background: rgba(10, 14, 30, 0.96); padding: 9px 14px; font-weight: 800; font-size: 15px; border: 1px solid rgba(214, 31, 31, 0.6); border-inline-start: none; }
+@keyframes brIn { from { transform: translate(-50%, 30px) scale(0.9); opacity: 0; } to { transform: translate(-50%, 0) scale(1); opacity: 1; } }
+@keyframes brPulse { 50% { background: #8f1111; } }
+.avatar { position: relative; display: inline-grid; place-items: center; border-radius: 50%; flex: none; border: 2px solid rgba(255, 255, 255, 0.55); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45); line-height: 1; }
+.av-face { filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4)); }
+.av-flag { position: absolute; bottom: -3px; inset-inline-start: -4px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5); }
+.rank-nation { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+@media (max-width: 600px) { .ticker.tk { max-width: calc(100% - 20px); } .br-text { font-size: 13px; } .br-tag { font-size: 13px; padding: 7px 9px; } }

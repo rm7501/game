@@ -1,7 +1,8 @@
 // مكونات صغيرة مشتركة
 import type { ComponentChildren } from 'preact';
 import type { UnitType } from '../game/types';
-import { UNITS } from '../game/defs';
+import { LEADERS, UNITS } from '../game/defs';
+import type { LeaderId, Nation } from '../game/types';
 
 export function Flag({ id, size = 20, class: cls = '' }: { id: string; size?: number; class?: string }) {
   if (!id) return <span class={`flag flag-neutral ${cls}`} style={{ width: size * 1.33, height: size }} />;
@@ -24,6 +25,18 @@ export function TankIcon({ size = 18 }: { size?: number }) {
 export function UnitIcon({ u, size = 18 }: { u: UnitType; size?: number }) {
   if (u === 'tank') return <TankIcon size={size} />;
   return <span class="emoji" style={{ fontSize: size * 0.9 }}>{UNITS[u].icon}</span>;
+}
+
+const FACES: Record<LeaderId, string> = { warlord: '🧔', economist: '🤵', diplomat: '🧑‍💼', builder: '👷', scientist: '🧑‍🔬', guardian: '💂', populist: '🗣️', gambler: '😎' };
+
+/** صورة القائد: وجه حسب شخصيته بلون دولته وعلمها */
+export function Avatar({ n, size = 30 }: { n: Nation; size?: number }) {
+  return (
+    <span class="avatar" style={{ width: size, height: size, background: `radial-gradient(circle at 35% 30%, #fff3, transparent 60%), ${n.color}`, fontSize: size * 0.58 }} title={`${n.leader} · ${LEADERS[n.trait]?.name ?? ''}`}>
+      <span class="av-face">{FACES[n.trait] ?? '🙂'}</span>
+      <Flag id={n.home} size={Math.max(8, Math.round(size * 0.3))} class="av-flag" />
+    </span>
+  );
 }
 
 export function Bar({ value, max = 1, color }: { value: number; max?: number; color?: string }) {

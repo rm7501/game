@@ -10,7 +10,7 @@ import { missionProgress, missionText } from '../game/events';
 import type { BuildingType, Nation, NationId, UnitType } from '../game/types';
 import { BUILDING_TYPES, UNIT_TYPES } from '../game/types';
 import { sfx } from './audio';
-import { Bar, Flag, NationTag, Stat, UnitIcon } from './bits';
+import { Avatar, Bar, Flag, NationTag, Stat, UnitIcon } from './bits';
 import { dateStr, fmtArea, fmtMoney, fmtNum, fmtPop } from './format';
 import { toast } from './toast';
 import { IntelBlock, IntelReveal, TeamBadge, TeamStandings } from './plans';
@@ -420,7 +420,7 @@ export function DiplomacyTab({ ctl, eng, me, onAid, focusNation, onSelect, onSpy
         return (
           <div class={`dip-card ${focusNation === o.id ? 'focus' : ''}`} key={o.id} ref={focusNation === o.id ? focusRef : undefined}>
             <div class="dip-head" onClick={() => onSelect(o.capital)}>
-              <Flag id={o.home} size={18} />
+              <Avatar n={o} size={30} />
               <span class="dot" style={{ background: o.color }} />
               <span class="dip-name">{o.name}</span>
               <span class="muted small">{o.kind === 'bot' ? '🤖' : '👤'} {o.leader}</span>
@@ -544,7 +544,8 @@ export function RankTab({ eng, me, onSelect }: PanelProps) {
           {all.map((n, i) => (
             <tr key={n.id} class={`${n.id === me?.id ? 'me' : ''} ${n.alive ? '' : 'dead'}`} onClick={() => n.alive && onSelect(n.capital)}>
               <td>{n.alive ? i + 1 : '💀'}</td>
-              <td>
+              <td class="rank-nation">
+                <Avatar n={n} size={26} />
                 <NationTag name={n.name} color={n.color} flag={n.home} />
                 <div class="muted small">{n.kind === 'bot' ? '🤖' : '👤'} {n.leader} <TeamBadge team={n.team} short /></div>
               </td>

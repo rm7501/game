@@ -11,7 +11,8 @@ import { EndScreen } from './EndScreen';
 import { dateStr, fmtMoneyShort, fmtNum, fmtPop } from './format';
 import { FortuneModal, WorldEventModal } from './GameWheels';
 import { HowTo } from './HowTo';
-import { MapRenderer } from './map';
+import { MAP_THEMES, MapRenderer, getMapTheme } from './map';
+import { Avatar } from './bits';
 import { ChatTab, DiplomacyTab, EconomyTab, MilitaryTab, NewsTab, OverviewTab, RankTab, type Tab } from './panels';
 import { TerritoryCard } from './TerritoryCard';
 import { toast } from './toast';
@@ -53,6 +54,23 @@ const TABS: { id: Tab; icon: string; label: string; online?: boolean }[] = [
   { id: 'news', icon: '📰', label: 'الأخبار' },
 ];
 
+/** شريط الأخبار العاجلة المتحرك */
+function BreakingTicker({ items, onClick }: { items: News[]; onClick: () => void }) {
+  const row = items.map((n) => <span class="tk-item" key={n.id}>{n.icon} {n.text}</span>);
+  const len = items.reduce((a, n) => a + n.text.length, 0);
+  return (
+    <div class="ticker tk" onClick={onClick}>
+      <span class="tk-label">🔴 أخبار</span>
+      <div class="tk-track">
+        <div class="tk-inner" style={{ animationDuration: `${Math.max(25, len * 0.22)}s` }}>
+          <div class="tk-row">{row}</div>
+          <div class="tk-row" aria-hidden="true">{row}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => void }) {
   const s = ctl.state;
   const eng = new Engine(ctl.world, s);
@@ -70,6 +88,8 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
   const [hover, setHover] = useState<{ id: string; x: number; y: number } | null>(null);
   const [unread, setUnread] = useState(0);
   const [devOpen, setDevOpen] = useState(false);
+  const [breaking, setBreaking] = useState<{ id: number; icon: string; text: string } | null>(null);
+  const [mapTheme, setMapThemeS] = useState(getMapTheme());
   const iControl = isController(s, ctl.me);
   const canEnableDev = !s.dev && ctl.me === (s.owner ?? s.hostId) && s.phase === 'playing';
   const mapBox = useRef<HTMLDivElement>(null);
@@ -221,6 +241,13 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
   }, [tab, panelOpen]);
 
   function notifyNews(n: News, myNid?: string) {
+    // الأخبار الكبيرة تطلع كشريط «عاجل»
+    if (!n.to && (n.icon === '💀' || n.kind === 'nuke' && n.icon === '☢️' || n.text.includes('نقلت عاصمتها') || n.icon === '🚀' || (n.kind === 'war' && n.icon === '⚔️') || n.text.includes('تتحالف ضد') || n.text.includes('صارت دولة تابعة'))) {
+      setBreaking({ id: n.id, icon: n.icon, text: n.text });
+      setTimeout(() => setBreaking((b) => (b?.id === n.id ? null : b)), 5500);
+      if (n.kind === 'nuke') sfx.nuke();
+      if (!(n.n?.includes(myNid ?? '-'))) return;
+    }
     const mineNews = !!myNid && ((n.to?.includes(myNid) ?? false) || (n.n?.includes(myNid) ?? false));
     if (n.kind === 'nuke' && n.icon === '☢️' && n.terr) {
       sfx.nuke();
@@ -309,7 +336,7 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
     <div class={`game ${panelOpen ? 'panel-open' : ''}`}>
       <header class="hud">
         <div class="hud-nation" onClick={() => openTab('overview')}>
-          {meAny ? <Flag id={meAny.home} size={22} /> : <span>{s.players[ctl.me]?.gm ? '🛠️' : '👁️'}</span>}
+          {meAny ? <Avatar n={meAny} size={34} /> : <span>{s.players[ctl.me]?.gm ? '🛠️' : '👁️'}</span>}
           <div class="hud-nname">
             <b style={{ color: meAny?.color }}>{meAny?.name ?? (s.players[ctl.me]?.gm ? 'المتحكم' : 'متفرج')}</b>
             <span class="muted small">{dateStr(s.day)}</span>
@@ -374,9 +401,11 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
             <span class="muted"> · {hoverOwner ? hoverOwner.name : 'محايدة'}</span>
           </div>
         )}
-        {lastNews && (
-          <div class="ticker" onClick={() => openTab('news')}>
-            <span>{lastNews.icon}</span> {lastNews.text}
+        {lastNews && <BreakingTicker items={s.news.filter((n) => !n.to).slice(-7).reverse()} onClick={() => openTab('news')} />}
+        {breaking && (
+          <div class="breaking" key={breaking.id} onClick={() => setBreaking(null)}>
+            <span class="br-tag">🔴 عاجل</span>
+            <span class="br-text">{breaking.icon} {breaking.text}</span>
           </div>
         )}
         {s.paused && s.phase === 'playing' && (
@@ -467,6 +496,12 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
           <div class="menu-list">
             <button class="btn" onClick={() => { setMuted(!muted); setMutedS(!muted); }}>{muted ? '🔇 الصوت مقفل' : '🔊 الصوت شغال'}</button>
             <button class="btn" onClick={() => { setMenu(false); setDialog({ t: 'howto' }); }}>📖 طريقة اللعب</button>
+            <div class="block-title small">🗺️ شكل الخريطة</div>
+            <div class="theme-picker">
+              {MAP_THEMES.map((t) => (
+                <button key={t.id} class={`btn btn-sm ${mapTheme === t.id ? 'btn-gold' : ''}`} onClick={() => { map.current?.setTheme(t.id); setMapThemeS(t.id); }}>{t.icon} {t.name}</button>
+              ))}
+            </div>
             {iControl && <button class="btn" onClick={() => { setMenu(false); setDevOpen(true); }}>🛠️ لوحة المتحكم</button>}
             {canEnableDev && (
               <button class="btn" onClick={() => {

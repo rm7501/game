@@ -21,8 +21,35 @@ function hash(s: string) {
   return Math.abs(h);
 }
 
+// ---------------- أشكال الخريطة ----------------
+export type MapTheme = 'classic' | 'satellite' | 'parchment' | 'night';
+export const MAP_THEMES: { id: MapTheme; name: string; icon: string }[] = [
+  { id: 'classic', name: 'كلاسيكية', icon: '🗺️' },
+  { id: 'satellite', name: 'قمر صناعي', icon: '🛰️' },
+  { id: 'parchment', name: 'خريطة قديمة', icon: '📜' },
+  { id: 'night', name: 'ليلية', icon: '🌃' },
+];
+const OCEAN: Record<MapTheme, [string, string]> = {
+  classic: ['#12305a', '#08142b'],
+  satellite: ['#0f4a7a', '#051c36'],
+  parchment: ['#d9c49a', '#b59d70'],
+  night: ['#060b1c', '#010208'],
+};
+let theme: MapTheme = (() => {
+  try {
+    const t = localStorage.getItem('won-map-theme') as MapTheme | null;
+    return t && OCEAN[t] ? t : 'classic';
+  } catch {
+    return 'classic';
+  }
+})();
+export const getMapTheme = () => theme;
+
 export function neutralFill(id: string) {
   const h = hash(id);
+  if (theme === 'satellite') return `hsl(${70 + (h % 55)}, ${22 + (h % 18)}%, ${24 + (h % 12)}%)`;
+  if (theme === 'parchment') return `hsl(${34 + (h % 12)}, ${38 + (h % 12)}%, ${72 + (h % 8)}%)`;
+  if (theme === 'night') return `hsl(${220 + (h % 15)}, 18%, ${8 + (h % 5)}%)`;
   return `hsl(${205 + (h % 30)}, ${8 + (h % 7)}%, ${25 + (h % 9)}%)`;
 }
 
@@ -71,6 +98,20 @@ export class MapRenderer {
   private battleEls = new Map<number, { g: SVGGElement; x: number; y: number }>();
   private armyEls = new Map<string, { g: SVGGElement; x: number; y: number; t: SVGTextElement; key: string }>();
   private gArmy!: SVGGElement;
+  private oceanStops: SVGStopElement[] = [];
+
+  /** يغير شكل الخريطة */
+  setTheme(t: MapTheme) {
+    theme = t;
+    try { localStorage.setItem('won-map-theme', t); } catch { /* ignore */ }
+    this.oceanStops[0]?.setAttribute('stop-color', OCEAN[t][0]);
+    this.oceanStops[1]?.setAttribute('stop-color', OCEAN[t][1]);
+    for (const x of MAP_THEMES) this.container.classList.remove('theme-' + x.id);
+    this.container.classList.add('theme-' + t);
+    this.fillKey = '';
+    if (this.lastState) this.update(this.lastState, this.myId);
+    else for (const [id, p] of this.paths) p.setAttribute('fill', neutralFill(id));
+  }
   private zoomer?: ZoomBehavior<SVGSVGElement, unknown>;
   private ro?: ResizeObserver;
   private ownersKey = '';
@@ -93,8 +134,8 @@ export class MapRenderer {
     container.appendChild(this.svg);
     const defs = el('defs', {}, this.svg);
     const grad = el('radialGradient', { id: 'oceanGrad', cx: '50%', cy: '45%', r: '75%' }, defs);
-    el('stop', { offset: '0%', 'stop-color': '#12305a' }, grad);
-    el('stop', { offset: '100%', 'stop-color': '#08142b' }, grad);
+    this.oceanStops = [el('stop', { offset: '0%', 'stop-color': OCEAN[theme][0] }, grad), el('stop', { offset: '100%', 'stop-color': OCEAN[theme][1] }, grad)];
+    container.classList.add('theme-' + theme);
     el('rect', { class: 'ocean', width: '100%', height: '100%', fill: 'url(#oceanGrad)' }, this.svg);
     this.root = el('g', { class: 'map-root' }, this.svg);
     this.gLand = el('g', { class: 'land' }, this.root);
