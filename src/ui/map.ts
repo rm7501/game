@@ -69,6 +69,8 @@ export class MapRenderer {
   private nLabels = new Map<NationId, SVGTextElement>();
   private moveEls = new Map<number, { line: SVGPathElement; icon: SVGGElement; p0: [number, number]; c: [number, number]; p1: [number, number] }>();
   private battleEls = new Map<number, { g: SVGGElement; x: number; y: number }>();
+  private armyEls = new Map<string, { g: SVGGElement; x: number; y: number; t: SVGTextElement; key: string }>();
+  private gArmy!: SVGGElement;
   private zoomer?: ZoomBehavior<SVGSVGElement, unknown>;
   private ro?: ResizeObserver;
   private ownersKey = '';
@@ -106,6 +108,7 @@ export class MapRenderer {
     this.gMarkers = el('g', { class: 'markers' }, this.root);
     this.gMoves = el('g', { class: 'moves' }, this.root);
     this.gLabels = el('g', { class: 'labels' }, this.root);
+    this.gArmy = el('g', { class: 'armies' }, this.root) as SVGGElement;
     this.gFx = el('g', { class: 'fx' }, this.root);
 
     for (const f of this.fc.features) {
@@ -207,6 +210,8 @@ export class MapRenderer {
     this.moveEls.forEach((m) => { m.line.remove(); m.icon.remove(); });
     this.moveEls.clear();
     this.battleEls.forEach((b) => b.g.remove());
+    this.armyEls.forEach((a) => a.g.remove());
+    this.armyEls.clear();
     this.battleEls.clear();
     if (this.lastState) this.update(this.lastState, this.myId);
     if (this.selected) this.select(this.selected);
@@ -253,6 +258,7 @@ export class MapRenderer {
     }
     for (const [, m] of this.moveEls) m.icon.setAttribute('transform', m.icon.getAttribute('transform')!.replace(/scale\([^)]*\)/, `scale(${1 / Math.sqrt(k)})`));
     for (const [, b] of this.battleEls) b.g.setAttribute('transform', `translate(${b.x},${b.y}) scale(${1 / Math.sqrt(k)})`);
+    for (const [, a] of this.armyEls) a.g.setAttribute('transform', `translate(${a.x},${a.y + 9 / k}) scale(${0.85 / Math.sqrt(k)})`);
   }
 
   /** تحديث الألوان والحدود حسب حالة اللعبة */
@@ -324,6 +330,45 @@ export class MapRenderer {
     }
     this.syncMoves(s);
     this.syncBattles(s);
+    this.syncArmies(s, myId);
+  }
+
+  /** شارة حجم جيشك المتمركز في كل أرض من أراضيك */
+  private syncArmies(s: GameState, myId?: NationId) {
+    if (this.opts.minimal) return;
+    const me = myId ? s.nations[myId] : undefined;
+    const seen = new Set<string>();
+    if (me?.alive && me.place) {
+      for (const [t, st] of Object.entries(me.place)) {
+        const cnt = st.u.inf + st.u.tank + st.u.jet + st.u.ship;
+        const gen = me.generals?.some((g) => g.at === t);
+        if (cnt <= 0 && !gen) continue;
+        const m = this.world.byId.get(t);
+        if (!m) continue;
+        seen.add(t);
+        const st5 = Math.min(5, Math.floor((st.xp ?? 0) / 20));
+        const label = `${gen ? '🎖️' : '🪖'}${cnt >= 1000 ? (cnt / 1000).toFixed(1) + 'k' : cnt}${st5 ? '⭐' + (st5 > 1 ? st5 : '') : ''}`;
+        let a = this.armyEls.get(t);
+        if (!a) {
+          const [x, y] = this.pt(m.lp);
+          const g = el('g', { class: 'army-badge', 'data-id': t }, this.gArmy) as SVGGElement;
+          el('rect', { x: -16, y: -8, width: 32, height: 15, rx: 7 }, g);
+          const tx = el('text', { y: 3.5 }, g) as SVGTextElement;
+          a = { g, x, y, t: tx, key: '' };
+          this.armyEls.set(t, a);
+          g.setAttribute('transform', `translate(${x},${y + 9 / this.k}) scale(${0.85 / Math.sqrt(this.k)})`);
+        }
+        if (a.key !== label) {
+          a.key = label;
+          a.t.textContent = label;
+          const w = Math.max(28, label.length * 6.2 + 6);
+          const r = a.g.querySelector('rect');
+          r?.setAttribute('x', String(-w / 2));
+          r?.setAttribute('width', String(w));
+        }
+      }
+    }
+    for (const [t, a] of this.armyEls) if (!seen.has(t)) { a.g.remove(); this.armyEls.delete(t); }
   }
 
   /** علامة ⚔️ نابضة فوق كل معركة شغالة */

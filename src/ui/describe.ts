@@ -1,9 +1,9 @@
 // وصف نتائج العجلات بالعربي
 import {
   AREA_SLICES, ECON_NAMES, ECON_VALUES, GOVS, LEADERS, LUCK, MIL_NAMES, MIL_TIERS, MISSIONS, POP_VALUES, RESOURCES, TECH_NAMES,
-  TERRAINS, UNITS,
+  TERRAINS, UNITS, SPECS,
 } from '../game/defs';
-import type { GovId, LeaderId, LuckId, MissionId, ResId, TerrainId, UnitType, WheelId } from '../game/types';
+import type { GovId, LeaderId, LuckId, MissionId, ResId, SpecId, TerrainId, UnitType, WheelId } from '../game/types';
 import { REGION_NAMES, type World } from '../game/world';
 import { fmtArea, fmtMoney } from './format';
 
@@ -41,6 +41,10 @@ export function describe(w: WheelId, v: number | string, world: World): ResultIn
       return { icon: '📈', title: `اقتصاد ${ECON_NAMES[v as number]}`, desc: `الناتج المحلي ${fmtMoney(ECON_VALUES[v as number])} سنوياً`, tone: TIER_TONE(v as number) };
     case 'mil':
       return { icon: '⚔️', title: `جيش ${MIL_NAMES[v as number]}`, desc: unitsSummary(MIL_TIERS[v as number]), tone: TIER_TONE(v as number) };
+    case 'spec': {
+      const sp = SPECS[v as SpecId];
+      return { icon: sp.icon, title: sp.name, desc: sp.desc, tone: v === 'balanced' ? undefined : 'good' };
+    }
     case 'res': {
       const r = RESOURCES[v as ResId];
       return { icon: r.icon, title: r.name, desc: r.desc, tone: v === 'none' ? 'bad' : v === 'oil' || v === 'uranium' ? 'good' : undefined };

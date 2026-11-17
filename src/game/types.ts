@@ -7,6 +7,28 @@ export type UnitType = (typeof UNIT_TYPES)[number];
 export type Units = Record<UnitType, number>;
 export const COMBAT_UNITS: UnitType[] = ['inf', 'tank', 'jet', 'ship'];
 
+/** أفرع الجيش: كل فرع له جيل (1-5) يتطور */
+export type Branch = 'land' | 'air' | 'sea' | 'rocket';
+export const BRANCHES: Branch[] = ['land', 'air', 'sea', 'rocket'];
+export const BRANCH_OF: Record<UnitType, Branch> = { inf: 'land', tank: 'land', jet: 'air', ship: 'sea', missile: 'rocket', nuke: 'rocket' };
+export type SpecId = Branch | 'balanced';
+export type GeneralKind = 'attack' | 'defense' | 'armor' | 'air' | 'navy' | 'speed' | 'morale';
+
+/** جيش متمركز في أرض */
+export interface Stack {
+  u: Units;
+  xp: number; // الخبرة 0-100 (كل 20 = نجمة)
+}
+
+export interface General {
+  id: number;
+  name: string;
+  kind: GeneralKind;
+  lvl: number; // 1-5
+  wins: number;
+  at: TerrId; // الأرض اللي متمركز فيها ('' = مع جيش بالطريق)
+}
+
 export const BUILDING_TYPES = ['industry', 'infra', 'research', 'health', 'fort', 'airdef', 'milfac', 'mining', 'intel'] as const;
 export type BuildingType = (typeof BUILDING_TYPES)[number];
 
@@ -31,8 +53,8 @@ export type SpyOpId = 'tech' | 'sabotage' | 'revolt' | 'reveal' | 'money';
 export type UNResId = 'sanctions' | 'nukeban' | 'peacekeep' | 'devfund' | 'condemn' | 'science' | 'disarm';
 export type Vote = 'y' | 'n' | 'a';
 
-export type WheelId = 'area' | 'country' | 'pop' | 'econ' | 'mil' | 'res' | 'gov' | 'tech' | 'leader' | 'terrain' | 'mission' | 'luck';
-export const WHEEL_ORDER: WheelId[] = ['area', 'country', 'pop', 'econ', 'mil', 'res', 'gov', 'tech', 'leader', 'terrain', 'mission', 'luck'];
+export type WheelId = 'area' | 'country' | 'pop' | 'econ' | 'mil' | 'spec' | 'res' | 'gov' | 'tech' | 'leader' | 'terrain' | 'mission' | 'luck';
+export const WHEEL_ORDER: WheelId[] = ['area', 'country', 'pop', 'econ', 'mil', 'spec', 'res', 'gov', 'tech', 'leader', 'terrain', 'mission', 'luck'];
 
 export type Difficulty = 'easy' | 'normal' | 'hard';
 export type WinMode = 'domination' | 'score' | 'percent';
@@ -91,6 +113,7 @@ export interface QItem {
   left: number; // أيام متبقية
   total: number;
   cost?: number;
+  at?: TerrId; // وين تنتشر الوحدات لما تجهز
 }
 
 export type Personality = 'aggressive' | 'balanced' | 'economic' | 'defensive';
@@ -100,6 +123,7 @@ export interface AIState {
   grudge?: NationId;
   cool?: number; // ما يهاجم قبل هذا اليوم (يرتب أوضاعه بعد الاحتلال)
   asked?: Record<NationId, number>; // آخر مرة طلب تجارة من دولة
+  stage?: TerrId; // الأرض اللي يجمع فيها جيشه للهجوم الجاي
 }
 
 export interface Derived {
@@ -162,9 +186,13 @@ export interface Nation {
   cards: CardId[]; // بطاقات الخطط اللي بيدك
   fx: { blitz?: number; shield?: number; sanct?: number; supply?: number }; // تأثيرات مؤقتة (يوم نهايتها)
   intel: Record<NationId, number>; // كشف أسرار دولة لين يوم معين
+  gen: Record<Branch, number>; // جيل كل فرع (1-5)
+  spec: Branch[]; // التخصصات العسكرية
+  place: Record<TerrId, Stack>; // الجيوش المتمركزة (مشاة، دبابات، طائرات، سفن)
+  generals: General[];
 }
 
-export type MoveKind = 'attack' | 'return' | 'missile' | 'nuke';
+export type MoveKind = 'attack' | 'return' | 'missile' | 'nuke' | 'deploy' | 'deliver';
 export interface Movement {
   id: number;
   owner: NationId;
@@ -175,6 +203,8 @@ export interface Movement {
   arrive: number;
   kind: MoveKind;
   naval?: boolean;
+  xp?: number; // خبرة الجيش المتحرك
+  gen?: number; // الجنرال المرافق
 }
 
 export interface Relation {
@@ -227,6 +257,11 @@ export interface Battle {
   dBreak: number;
   days: number;
   mods: string[]; // عوامل أثرت (تفوق جوي، أسلحة مشتركة...)
+  sup?: { terr: TerrId; u: Units }[]; // دعم من أراضي المدافع المجاورة
+  axp?: number;
+  dxp?: number;
+  agen?: number; // جنرال المهاجم
+  dgen?: number; // جنرال المدافع
 }
 
 export interface Report {
@@ -261,6 +296,15 @@ export interface Chat {
   to?: NationId;
   team?: number; // رسالة للفريق
   text: string;
+}
+
+/** قاعدة عسكرية لدولة في أرض دولة ثانية */
+export interface Base {
+  id: number;
+  owner: NationId; // صاحب القاعدة (يحط فيها جيشه)
+  host: NationId; // الدولة المستضيفة
+  terr: TerrId;
+  until?: number;
 }
 
 /** عملية تجسس شغالة */
@@ -339,6 +383,7 @@ export interface GameState {
   nextUN: number;
   nextCards: number; // يوم توزيع البطاقات السنوي
   hist?: History;
+  bases?: Base[];
   gameId?: string; // معرف اللعبة (لتسجيل النتايج)
   owner?: string; // اللي سوى اللعبة (يقدر يفعّل وضع المتحكم)
   dev?: DevState; // وضع المتحكم
@@ -390,7 +435,9 @@ export type DevCmd =
   | { a: 'addBot' }
   | { a: 'kill'; nid: NationId }
   | { a: 'pers'; nid: NationId; pers: Personality }
-  | { a: 'mission'; nid: NationId; id?: MissionId; done?: boolean };
+  | { a: 'mission'; nid: NationId; id?: MissionId; done?: boolean }
+  | { a: 'gen'; nid: NationId; b: Branch; v: number }
+  | { a: 'addGeneral'; nid: NationId };
 
 // الأوامر اللي يرسلها اللاعب
 export type Command =
@@ -402,10 +449,14 @@ export type Command =
   | { t: 'tax'; rate: number }
   | { t: 'build'; b: BuildingType }
   | { t: 'cancel'; q: 'q' | 'bq'; id: number }
-  | { t: 'recruit'; u: UnitType; n: number }
+  | { t: 'recruit'; u: UnitType; n: number; at?: TerrId }
   | { t: 'disband'; u: UnitType; n: number }
   | { t: 'project'; p: 'nuke' }
-  | { t: 'attack'; to: TerrId; units: Partial<Units> }
+  | { t: 'attack'; to: TerrId; units: Partial<Units>; from?: TerrId; gen?: boolean }
+  | { t: 'move'; from: TerrId; to: TerrId; units: Partial<Units>; gen?: boolean }
+  | { t: 'upgrade'; b: Branch }
+  | { t: 'specialize'; b: Branch }
+  | { t: 'general'; act: 'hire' | 'fire' | 'station'; id?: number; at?: TerrId }
   | { t: 'strike'; to: TerrId; kind: 'missile' | 'nuke'; n: number }
   | { t: 'propose'; to: NationId; type: ProposalType }
   | { t: 'respond'; id: number; accept: boolean }

@@ -701,3 +701,29 @@ body:has(.modal-back) .toasts, body:has(.end-back) .toasts { top: auto; bottom: 
   .dev-panel.with-fab { height: calc(72vh - 76px); bottom: 76px; }
   .dev-badge-long { display: none; }
 }
+
+/* ============ الجيوش المتمركزة والأجيال والجنرالات ============ */
+.armies { pointer-events: none; }
+.army-badge rect { fill: rgba(8, 12, 26, 0.82); stroke: rgba(245, 197, 66, 0.75); stroke-width: 1; }
+.army-badge text { fill: #ffe7a3; font-size: 10px; font-weight: 800; text-anchor: middle; font-family: var(--font); }
+.stack-line { display: inline-flex; gap: 8px; flex-wrap: wrap; align-items: center; font-weight: 700; font-size: 13px; }
+.xp-stars { font-size: 11px; letter-spacing: -2px; }
+.tcard-army { padding: 7px 9px; border-radius: 10px; background: rgba(245, 197, 66, 0.07); border: 1px solid rgba(245, 197, 66, 0.3); display: flex; flex-direction: column; gap: 5px; }
+.branches .branch { padding: 8px; border-radius: 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 5px; }
+.branches .branch.spec { border-color: rgba(52, 211, 153, 0.45); background: rgba(52, 211, 153, 0.05); }
+.gen-pill { font-size: 12px; font-weight: 800; color: #bfe3ff; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+.gen-dots { display: flex; gap: 4px; }
+.gen-dots span { flex: 1; height: 5px; border-radius: 3px; background: rgba(255, 255, 255, 0.1); }
+.gen-dots span.on { background: linear-gradient(90deg, #38bdf8, #34d399); }
+.spec-pick { display: flex; flex-wrap: wrap; gap: 6px; }
+.general { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 10px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line); }
+.general select { max-width: 130px; padding: 4px 6px; border-radius: 8px; background: #0d1430; color: var(--text); border: 1px solid var(--line2); }
+.gen-icon { font-size: 22px; }
+.gen-body { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.army-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; max-height: 260px; overflow-y: auto; }
+.army-list li { display: grid; grid-template-columns: 1fr auto auto; grid-template-areas: 'n p b' 's s s'; gap: 2px 8px; align-items: center; padding: 6px 8px; border-radius: 9px; background: rgba(255, 255, 255, 0.03); }
+.army-list .al-name { grid-area: n; font-weight: 700; }
+.army-list .stack-line { grid-area: s; }
+.move-units { display: flex; flex-direction: column; gap: 6px; margin: 8px 0; }
+.mu-row { display: grid; grid-template-columns: 110px 1fr 60px; gap: 8px; align-items: center; font-size: 13px; }
+.deploy-at select { margin-inline-start: 6px; padding: 3px 6px; border-radius: 8px; background: #0d1430; color: var(--text); border: 1px solid var(--line2); max-width: 140px; }

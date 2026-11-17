@@ -6,6 +6,7 @@ import {
 import type { Engine } from './engine';
 import { assignMission, fireWorldEvent, scheduleWorld } from './events';
 import { dealCards } from './cards';
+import { newGeneral } from './army';
 import { closeUN, openUN } from './un';
 import { UN_RES } from './defs';
 import type {
@@ -221,6 +222,20 @@ export function devCommand(e: Engine, clientId: string, d: DevCmd): CmdResult {
       if (!n?.ai) return { ok: false, msg: 'هذي مو دولة بوت' };
       n.ai.pers = d.pers;
       return done();
+    }
+    case 'gen': {
+      const n = N(d.nid);
+      if (!n || !n.gen?.[d.b]) return { ok: false };
+      n.gen[d.b] = clamp(Math.round(d.v), 1, 5);
+      e.recompute(n);
+      return done();
+    }
+    case 'addGeneral': {
+      const n = N(d.nid);
+      if (!n) return { ok: false };
+      const g = newGeneral(e, n);
+      n.generals.push(g);
+      return done(`🎖️ ${g.name} انضم لـ ${n.name}`);
     }
     case 'god':
       if (d.m === 1) delete dev.god[d.nid]; else dev.god[d.nid] = clamp(d.m, 0.1, 20);

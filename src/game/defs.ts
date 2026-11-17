@@ -1,6 +1,6 @@
 // التعريفات والأرقام (التوازن) للعبة
 import type {
-  CardId, SpyOpId, UNResId,
+  CardId, SpyOpId, UNResId, Branch, GeneralKind, SpecId,
   BuildingType, FortuneId, GovId, LeaderId, LuckId, MissionId, ResId, TerrainId, UnitType, Units, WheelId, WorldEventId,
 } from './types';
 
@@ -225,6 +225,7 @@ export const WHEELS: Record<WheelId, WheelDef> = {
   pop: { id: 'pop', title: 'عجلة السكان', icon: '👥', hint: 'عدد شعبك يحدد قوة التجنيد ونمو الاقتصاد' },
   econ: { id: 'econ', title: 'عجلة الاقتصاد', icon: '📈', hint: 'الناتج المحلي = دخلك اللي تبني فيه وتشتري أسلحة' },
   mil: { id: 'mil', title: 'عجلة العسكر', icon: '⚔️', hint: 'الجيش اللي تبدأ فيه' },
+  spec: { id: 'spec', title: 'عجلة التخصص العسكري', icon: '🏭', hint: 'وش تتميز فيه صناعتك العسكرية؟ أسلحته أقوى وأرخص وتقدر تبيعها' },
   res: { id: 'res', title: 'عجلة الموارد', icon: '⛏️', hint: 'وش تحت أرضك؟' },
   gov: { id: 'gov', title: 'عجلة نظام الحكم', icon: '🏛️', hint: 'كل نظام له مميزات وعيوب' },
   tech: { id: 'tech', title: 'عجلة التكنولوجيا', icon: '🧪', hint: 'كل مستوى يقوي أسلحتك ويفتح أسلحة جديدة' },
@@ -302,8 +303,61 @@ export const LUCK_SLICES: Slice[] = ([
   ['plague', 6], ['civilwar', 5], ['crisis', 6], ['traitor', 5], ['volcano', 5],
 ] as [LuckId, number][]).map(([id, w]) => ({ label: LUCK[id].name, icon: LUCK[id].icon, w, v: id }));
 
+// ---------------- التخصص العسكري والأجيال ----------------
+export interface BranchDef {
+  name: string;
+  icon: string;
+  units: string;
+  gens: string[]; // اسم كل جيل (1-5)
+}
+export const BRANCH_DEFS: Record<Branch, BranchDef> = {
+  land: { name: 'القوات البرية', icon: '🛡️', units: 'مشاة ودبابات', gens: ['', 'كلاسيكية', 'مدرعة', 'حديثة', 'متطورة', 'ذكية روبوتية'] },
+  air: { name: 'سلاح الجو', icon: '✈️', units: 'طائرات مقاتلة', gens: ['', 'مروحية قديمة', 'نفاثة', 'متعددة المهام', 'متطورة', 'شبحية'] },
+  sea: { name: 'البحرية', icon: '⚓', units: 'سفن حربية', gens: ['', 'زوارق', 'فرقاطات', 'مدمرات', 'حاملات طائرات', 'أساطيل ذكية'] },
+  rocket: { name: 'الصواريخ', icon: '🚀', units: 'صواريخ ونووي', gens: ['', 'قصيرة المدى', 'متوسطة المدى', 'بعيدة المدى', 'ذكية موجهة', 'فرط صوتية'] },
+};
+export const MAX_GEN = 5;
+export const genMult = (g: number) => 1 + 0.18 * (g - 1);
+/** تكلفة ومدة التطوير للجيل الجاي */
+export const GEN_COST = [0, 0, 50, 130, 280, 520];
+export const GEN_DAYS = [0, 0, 150, 220, 300, 380];
+export interface SpecDef { name: string; icon: string; desc: string }
+export const SPECS: Record<SpecId, SpecDef> = {
+  land: { name: 'مدرعات وقوات برية', icon: '🛡️', desc: 'مشاتك ودباباتك أقوى وأرخص، وتبدأ بجيل أعلى' },
+  air: { name: 'صناعة الطيران', icon: '✈️', desc: 'طائراتك أقوى وأرخص، وتبدأ بجيل أعلى' },
+  sea: { name: 'صناعة السفن', icon: '⚓', desc: 'أسطولك أقوى وأرخص، وتبدأ بجيل أعلى' },
+  rocket: { name: 'الصواريخ', icon: '🚀', desc: 'صواريخك أدق وأرخص، وتبدأ بجيل أعلى' },
+  balanced: { name: 'صناعة متوازنة', icon: '⚖️', desc: 'ما عندك تخصص، بس تطوير كل الأفرع أرخص 15%' },
+};
+export const SPEC_SLICES: Slice[] = ([['land', 12], ['air', 10], ['sea', 9], ['rocket', 8], ['balanced', 11]] as [SpecId, number][]).map(([id, w]) => ({
+  label: SPECS[id].name, icon: SPECS[id].icon, w, v: id,
+}));
+export const SPEC_PROJECT = { cost: 160, days: 360 }; // مجمع صناعات لتخصص ثاني
+export const MAX_SPECS = 2;
+
+// ---------------- الجنرالات ----------------
+export interface GeneralDef { name: string; icon: string; desc: string }
+export const GENERALS: Record<GeneralKind, GeneralDef> = {
+  attack: { name: 'هجومي', icon: '⚔️', desc: 'هجوم جيشه أقوى' },
+  defense: { name: 'دفاعي', icon: '🛡️', desc: 'الأرض اللي فيها يصعب احتلالها' },
+  armor: { name: 'خبير مدرعات', icon: '🪖', desc: 'الدبابات معه أقوى بكثير' },
+  air: { name: 'خبير طيران', icon: '✈️', desc: 'الطائرات معه أقوى بكثير' },
+  navy: { name: 'أميرال', icon: '⚓', desc: 'السفن معه أقوى، والإنزال البحري بدون عقوبة' },
+  speed: { name: 'خاطف', icon: '⚡', desc: 'جيشه يتحرك أسرع' },
+  morale: { name: 'ملهم', icon: '🎖️', desc: 'جيشه ما ينهار بسرعة ويكسب خبرة ضعف' },
+};
+export const GENERAL_NAMES = [
+  'اللواء فهد', 'الفريق سلطان', 'العميد نواف', 'المشير خالد', 'اللواء ريم', 'الفريق ماجد', 'العقيد سعود', 'اللواء هيا',
+  'الفريق تركي', 'العميد بندر', 'اللواء نورة', 'المشير عمر', 'الفريق زياد', 'العقيد لمى', 'اللواء يوسف', 'الفريق جواهر',
+  'العميد راكان', 'اللواء مشاعل', 'الفريق حمد', 'المشير طلال', 'العقيد دانة', 'اللواء صقر', 'الفريق وليد', 'العميد سارا',
+];
+export const MAX_GENERALS = 5;
+export const generalCost = (count: number, gdp: number) => Math.round(Math.max(25, gdp * 0.01) * (1 + 0.6 * count));
+export const stars = (xp: number) => Math.min(5, Math.floor((xp ?? 0) / 20));
+export const xpMult = (xp: number) => 1 + 0.05 * stars(xp);
+
 export const STATIC_SLICES: Partial<Record<WheelId, Slice[]>> = {
-  area: AREA_SLICES, pop: POP_SLICES, econ: ECON_SLICES, mil: MIL_SLICES, res: RES_SLICES,
+  area: AREA_SLICES, pop: POP_SLICES, econ: ECON_SLICES, mil: MIL_SLICES, res: RES_SLICES, spec: SPEC_SLICES,
   gov: GOV_SLICES, tech: TECH_SLICES, leader: LEADER_SLICES, terrain: TERRAIN_SLICES, mission: MISSION_SLICES, luck: LUCK_SLICES,
 };
 

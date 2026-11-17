@@ -1,7 +1,9 @@
 // نوافذ: الهجوم، القصف، المساعدات، تقرير المعركة
 import { useMemo, useState } from 'preact/hooks';
 import type { Controller } from '../client/controller';
-import { SHIP_CAPACITY, UNITS, missileRange } from '../game/defs';
+import { GENERALS, SHIP_CAPACITY, UNITS, emptyUnits, missileRange } from '../game/defs';
+import { generalAt } from '../game/army';
+import { Stars } from './army';
 import { estimate } from '../game/battle';
 import type { Engine } from '../game/engine';
 import type { Nation, Report, TerrId, Units, UnitType } from '../game/types';
@@ -23,30 +25,39 @@ export function AttackDialog({ ctl, eng, me, to, onClose }: { ctl: Controller; e
   const s = eng.s;
   const T = s.terr[to];
   const owner = T.owner ? s.nations[T.owner] : null;
-  const route = useMemo(() => eng.route(me, to), [to, me.d.terrs]);
+  const srcs = useMemo(() => eng.sources(me, to), [to, me.d.terrs]);
+  const [from, setFrom] = useState<string>(srcs[0]?.from ?? '');
+  const route = useMemo(() => (from ? eng.route(me, to, from) : eng.route(me, to)), [to, from, me.d.terrs]);
   const coastal = !!eng.w.get(to).c;
-  const [u, setU] = useState<Partial<Units>>(() => {
+  const pool = me.place[from]?.u ?? emptyUnits();
+  const gen = from ? generalAt(me, from) : undefined;
+  const [withGen, setWithGen] = useState(true);
+  const initFor = (src: string): Partial<Units> => {
+    const st = me.place[src]?.u ?? emptyUnits();
+    const r = eng.route(me, to, src);
     const init: Partial<Units> = {};
-    init.inf = Math.ceil(me.units.inf * 0.6);
-    init.tank = Math.ceil(me.units.tank * 0.6);
-    init.jet = Math.ceil(me.units.jet * 0.5);
+    init.inf = Math.ceil(st.inf * 0.7);
+    init.tank = Math.ceil(st.tank * 0.7);
+    init.jet = Math.ceil(st.jet * 0.6);
     const land = (init.inf ?? 0) + (init.tank ?? 0);
-    init.ship = route?.naval ? Math.min(me.units.ship, Math.max(Math.ceil(land / SHIP_CAPACITY), Math.ceil(me.units.ship * 0.6))) : coastal ? Math.floor(me.units.ship * 0.3) : 0;
+    init.ship = r?.naval ? Math.min(st.ship, Math.max(Math.ceil(land / SHIP_CAPACITY), Math.ceil(st.ship * 0.6))) : coastal ? Math.floor(st.ship * 0.3) : 0;
     return init;
-  });
-  const est = useMemo(() => estimate(eng, me, u, to, 40), [to, u.inf, u.tank, u.jet, u.ship, me.tech, me.d.terrs]);
+  };
+  const [u, setU] = useState<Partial<Units>>(() => initFor(from));
+  const useGen = !!gen && withGen;
+  const est = useMemo(() => estimate(eng, me, u, to, 40, from || undefined, useGen), [to, from, useGen, u.inf, u.tank, u.jet, u.ship, me.tech, me.d.terrs]);
   const p = est.p;
   const [label, tone] = chanceLabel(p);
   const land = (u.inf ?? 0) + (u.tank ?? 0);
   const needShips = route?.naval ? Math.ceil(land / SHIP_CAPACITY) : 0;
-  const days = route ? eng.travelDays(me, route.from, to, route.naval) : 0;
+  const days = route ? eng.travelDays(me, route.from, to, route.naval, useGen ? gen : undefined) : 0;
   const why = owner ? eng.canHit(me, owner) : null;
   const newWar = owner && !eng.atWar(me.id, owner.id);
   const types: UnitType[] = route?.naval || coastal ? COMBAT_UNITS : ['inf', 'tank', 'jet'];
 
   const go = async () => {
     if (p < 0.15 && !confirm(`فرصة الفوز ${Math.round(p * 100)}% بس، وبتخسر أغلب جيشك. متأكد؟`)) return;
-    const r = await ctl.send({ t: 'attack', to, units: u });
+    const r = await ctl.send({ t: 'attack', to, units: u, from, gen: useGen });
     if (r.ok) {
       sfx.alert();
       toast({ icon: '⚔️', text: r.msg ?? 'الجيش تحرك', kind: 'good' });
@@ -58,23 +69,34 @@ export function AttackDialog({ ctl, eng, me, to, onClose }: { ctl: Controller; e
     <Modal title={<>⚔️ هجوم على <Flag id={to} size={16} /> {eng.w.name(to)}</>} onClose={onClose}>
       <div class="atk-top">
         <div>المدافع: {owner ? <NationTag name={owner.name} color={owner.color} flag={owner.home} leader={owner.leader} /> : 'دولة محايدة'}</div>
-        {route ? (
+        {srcs.length > 0 && (
+          <label class="dev-field">
+            <span>🪖 الجيش المهاجم</span>
+            <select value={from} onChange={(e) => { const v = (e.target as HTMLSelectElement).value; setFrom(v); setU(initFor(v)); }}>
+              {srcs.map((x) => <option key={x.from} value={x.from}>{x.naval ? '🚢' : '🛤️'} من {eng.w.name(x.from)} · ⚔️ {fmtNum(x.power)}</option>)}
+            </select>
+          </label>
+        )}
+        {route && srcs.length > 0 ? (
           <div class="muted small">
-            {route.naval ? '🚢 غزو بحري' : '🛤️ هجوم بري'} من {eng.w.name(route.from)} · يوصلون بعد {days} يوم
+            {route.naval ? '🚢 غزو بحري' : '🛤️ هجوم بري'} من {eng.w.name(route.from)} · يوصلون بعد {days} يوم {me.place[from] && <Stars xp={me.place[from].xp} />}
           </div>
+        ) : route ? (
+          <div class="bad small">ما عندك جيش في الأراضي اللي جنبها. انقل قوات لـ {eng.w.name(route.from)} أول 🚚</div>
         ) : (
           <div class="bad small">ما تقدر توصل لهنا: مو مجاورة لأراضيك وبعيدة عن مدى أسطولك.</div>
         )}
         {why && <div class="bad small">⛔ {why}</div>}
         {newWar && !why && <div class="warn small">⚠️ الهجوم بيعلن الحرب على {owner!.name}!</div>}
+        {gen && <label class="dev-check"><input type="checkbox" checked={withGen} onChange={(e) => setWithGen((e.target as HTMLInputElement).checked)} /> {GENERALS[gen.kind].icon} {gen.name} يقود الهجوم ({GENERALS[gen.kind].desc})</label>}
       </div>
       <div class="sliders">
         {types.map((k) => (
           <label class="slider-row" key={k}>
             <UnitIcon u={k} />
             <span class="sl-name">{UNITS[k].name}</span>
-            <input type="range" min={0} max={me.units[k]} value={u[k] ?? 0} onInput={(e) => setU({ ...u, [k]: Number((e.target as HTMLInputElement).value) })} disabled={!me.units[k]} />
-            <b class="sl-val">{u[k] ?? 0}<span class="muted">/{me.units[k]}</span></b>
+            <input type="range" min={0} max={pool[k]} value={u[k] ?? 0} onInput={(e) => setU({ ...u, [k]: Number((e.target as HTMLInputElement).value) })} disabled={!pool[k]} />
+            <b class="sl-val">{u[k] ?? 0}<span class="muted">/{pool[k]}</span></b>
           </label>
         ))}
         {route?.naval && <div class={`small ${(u.ship ?? 0) < needShips ? 'bad' : 'muted'}`}>🚢 تحتاج {needShips} سفن لنقل {land} وحدة برية (كل سفينة تنقل {SHIP_CAPACITY})</div>}
@@ -105,7 +127,7 @@ export function AttackDialog({ ctl, eng, me, to, onClose }: { ctl: Controller; e
       </div>
       <div class="modal-foot">
         <button class="btn" onClick={onClose}>إلغاء</button>
-        <button class="btn btn-danger btn-big" disabled={!route || !!why || land < 1 || (route.naval && (u.ship ?? 0) < needShips)} onClick={go}>
+        <button class="btn btn-danger btn-big" disabled={!route || !srcs.length || !!why || land < 1 || (route.naval && (u.ship ?? 0) < needShips)} onClick={go}>
           ⚔️ هجوم!
         </button>
       </div>

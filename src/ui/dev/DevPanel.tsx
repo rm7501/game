@@ -2,7 +2,7 @@
 import { useMemo, useState } from 'preact/hooks';
 import type { Controller } from '../../client/controller';
 import {
-  AREA_SLICES, CARDS, FORTUNE_SLICES, FORTUNES, GOVS, LEADERS, MISSIONS, RESOURCES, STATIC_SLICES, TECH_NAMES, TERRAINS, UN_RES,
+  AREA_SLICES, BRANCH_DEFS, CARDS, FORTUNE_SLICES, FORTUNES, GOVS, LEADERS, MISSIONS, RESOURCES, STATIC_SLICES, TECH_NAMES, TERRAINS, UN_RES,
   UNITS, WHEELS, WORLD_EVENTS, type Slice,
 } from '../../game/defs';
 import { activeWheels, isController } from '../../game/dev';
@@ -12,7 +12,7 @@ import type {
   CardId, DevCmd, FortuneId, GovId, LeaderId, MissionId, Nation, NationField, Personality, RelKind, ResId, TerrainId, UNResId, UnitType,
   Vote, WheelId, WorldEventId,
 } from '../../game/types';
-import { UNIT_TYPES, WHEEL_ORDER } from '../../game/types';
+import { BRANCHES, UNIT_TYPES, WHEEL_ORDER } from '../../game/types';
 import { sfx } from '../audio';
 import { Flag, UnitIcon } from '../bits';
 import { describe } from '../describe';
@@ -371,6 +371,16 @@ function NationsTab({ ctl }: { ctl: Controller }) {
         <div class="dev-row-actions wrap">
           {[1, 2, 3, 4, 5, 6].map((t) => <button key={t} class={`btn btn-xs ${n.tech === t ? 'btn-gold' : ''}`} title={TECH_NAMES[t]} onClick={() => set('tech', t)}>{t}</button>)}
         </div>
+        <div class="block-title">🔧 أجيال الأسلحة</div>
+        {BRANCHES.map((b) => (
+          <div class="dev-unit" key={b}>
+            <span>{BRANCH_DEFS[b].icon} {BRANCH_DEFS[b].name}</span>
+            <span class="dev-row-actions">
+              {[1, 2, 3, 4, 5].map((g) => <button key={g} class={`btn btn-xs ${n.gen[b] === g ? 'btn-gold' : ''}`} onClick={() => dev({ a: 'gen', nid, b, v: g }, true)}>{g}</button>)}
+            </span>
+          </div>
+        ))}
+        <div class="row-between small"><span>🎖️ الجنرالات: <b>{n.generals.length}</b></span><button class="btn btn-xs" onClick={() => dev({ a: 'addGeneral', nid })}>＋ جنرال</button></div>
         <div class="block-title">💪 قوة المعارك</div>
         <div class="dev-row-actions wrap">
           {[0.25, 0.5, 1, 2, 5, 10].map((m) => <button key={m} class={`btn btn-xs ${god === m ? 'btn-gold' : ''}`} onClick={() => dev({ a: 'god', nid, m }, true)}>×{m}</button>)}

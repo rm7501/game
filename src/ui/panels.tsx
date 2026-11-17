@@ -16,7 +16,10 @@ import { toast } from './toast';
 import { IntelBlock, IntelReveal, TeamBadge, TeamStandings } from './plans';
 import { hasIntel } from '../game/spies';
 import { isController } from '../game/dev';
-import { CARDS } from '../game/defs';
+import { BRANCH_DEFS, CARDS } from '../game/defs';
+import { ArmiesBlock, BranchesBlock, GeneralsBlock } from './army';
+import { stationable } from '../game/army';
+import type { Branch } from '../game/types';
 
 export interface PanelProps {
   ctl: Controller;
@@ -28,6 +31,7 @@ export interface PanelProps {
   focusNation?: NationId | null;
   onSpy?: (to: NationId) => void;
   onCards?: () => void;
+  onMove?: (from: string) => void;
 }
 
 export type Tab = 'overview' | 'economy' | 'military' | 'diplo' | 'chat' | 'rank' | 'news';
@@ -231,10 +235,13 @@ export function EconomyTab({ ctl, eng, me }: PanelProps) {
 }
 
 // ---------------- الجيش ----------------
-export function MilitaryTab({ ctl, eng, me, onSelect }: PanelProps) {
+export function MilitaryTab({ ctl, eng, me, onSelect, onMove }: PanelProps) {
   if (!me) return <Spectator ctl={ctl} />;
   const moving = eng.movingUnits(me.id);
   const [qty, setQty] = useState<Record<string, number>>({ inf: 5, tank: 2, jet: 1, ship: 1, missile: 1, nuke: 1 });
+  const [at, setAt] = useState<string>('');
+  const spots = [...stationable(eng, me)];
+  const deployAt = at && spots.includes(at) ? at : me.capital;
   const myMoves = eng.s.moves.filter((m) => m.owner === me.id);
   const myBattles = eng.s.battles.filter((b) => b.att === me.id || b.def === me.id || b.allies.some((a) => a.id === me.id));
   return (
@@ -267,13 +274,16 @@ export function MilitaryTab({ ctl, eng, me, onSelect }: PanelProps) {
         ))}
         <div class="muted small">القوة الكلية {fmtNum(me.d.power)} · القوى البشرية {fmtNum(Math.max(0, me.d.manpower))} ألف</div>
       </div>
+      <ArmiesBlock eng={eng} me={me} onSelect={onSelect} onMove={(t) => onMove?.(t)} />
+      <BranchesBlock ctl={ctl} eng={eng} me={me} />
+      <GeneralsBlock ctl={ctl} eng={eng} me={me} onSelect={onSelect} />
       {me.q.length > 0 && (
         <div class="block">
           <div class="block-title">قيد الإنتاج</div>
           {me.q.map((q) => (
             <div class="qrow" key={q.id}>
-              {q.kind === 'unit' ? <UnitIcon u={q.type as UnitType} size={16} /> : <span>☢️</span>}
-              <span class="q-name">{q.kind === 'unit' ? `${q.count} ${UNITS[q.type as UnitType].name}` : 'البرنامج النووي'}</span>
+              {q.kind === 'unit' ? <UnitIcon u={q.type as UnitType} size={16} /> : <span>{q.type === 'nuke' ? '☢️' : q.type.startsWith('spec:') ? '🏭' : '🔧'}</span>}
+              <span class="q-name">{q.kind === 'unit' ? `${q.count} ${UNITS[q.type as UnitType].name}${q.at && q.at !== me.capital ? ` ← ${eng.w.name(q.at)}` : ''}` : q.type === 'nuke' ? 'البرنامج النووي' : q.type.startsWith('spec:') ? `مجمع ${BRANCH_DEFS[q.type.split(':')[1] as Branch].name}` : `تطوير ${BRANCH_DEFS[q.type.split(':')[1] as Branch].name}`}</span>
               <Bar value={q.total - q.left} max={q.total} color="var(--accent)" />
               <span class="muted small">{Math.ceil(q.left)} يوم</span>
               <button class="icon-btn" title="إلغاء (يرجع نص المبلغ)" onClick={() => run(ctl, { t: 'cancel', q: 'q', id: q.id }, undefined, sfx.click)}>✕</button>
@@ -281,7 +291,14 @@ export function MilitaryTab({ ctl, eng, me, onSelect }: PanelProps) {
           ))}
         </div>
       )}
-      <div class="block-title">تجنيد وشراء أسلحة</div>
+      <div class="row-between">
+        <span class="block-title">تجنيد وشراء أسلحة</span>
+        <label class="small deploy-at">ينضمون في
+          <select value={deployAt} onChange={(e) => setAt((e.target as HTMLSelectElement).value)}>
+            {spots.map((t) => <option key={t} value={t}>{eng.w.name(t)}{t === me.capital ? ' ★' : ''}</option>)}
+          </select>
+        </label>
+      </div>
       <div class="recruit-list">
         {UNIT_TYPES.map((u) => {
           const def = UNITS[u];
@@ -309,7 +326,7 @@ export function MilitaryTab({ ctl, eng, me, onSelect }: PanelProps) {
                       <button key={x} class={`chip ${n === x ? 'on' : ''}`} onClick={() => setQty({ ...qty, [u]: x })}>{x}</button>
                     ))}
                   </div>
-                  <button class="btn btn-sm btn-primary" disabled={me.treasury < cost} onClick={() => run(ctl, { t: 'recruit', u, n }, `بدأ إنتاج ${n} ${def.name}`)}>
+                  <button class="btn btn-sm btn-primary" disabled={me.treasury < cost} onClick={() => run(ctl, { t: 'recruit', u, n, at: deployAt }, `بدأ إنتاج ${n} ${def.name}`)}>
                     {fmtMoney(cost)} · {days} يوم
                   </button>
                 </div>

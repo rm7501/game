@@ -16,6 +16,7 @@ import { ChatTab, DiplomacyTab, EconomyTab, MilitaryTab, NewsTab, OverviewTab, R
 import { TerritoryCard } from './TerritoryCard';
 import { toast } from './toast';
 import { CardsModal, SpyDialog, UNModal } from './plans';
+import { MoveDialog } from './army';
 import { DevBadge, DevPanel } from './dev/DevPanel';
 import { isController } from '../game/dev';
 import { UN_RES } from '../game/defs';
@@ -32,6 +33,7 @@ type Dialog =
   | { t: 'cards' }
   | { t: 'un' }
   | { t: 'spy'; to: string }
+  | { t: 'move'; from: string }
   | null;
 
 const maxId = (arr: { id: number }[]) => arr.reduce((m, x) => Math.max(m, x.id), 0);
@@ -267,6 +269,7 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
     onAid: (to: string) => setDialog({ t: 'aid', to }),
     onSpy: (to: string) => setDialog({ t: 'spy', to }),
     onCards: () => setDialog({ t: 'cards' }),
+    onMove: (from: string) => setDialog({ t: 'move', from }),
     openTab, focusNation,
   };
 
@@ -370,6 +373,7 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
               setTab('diplo');
               setPanelOpen(true);
             }}
+            onMove={() => setDialog({ t: 'move', from: sel })}
             onDefect={() => ctl.send({ t: 'card', card: 'defect', terr: sel }).then((r) => {
               if (r.ok) { sfx.fanfare(); toast({ icon: '🏳️', text: r.msg ?? 'انضمت لك!', kind: 'good' }); }
               else toast({ icon: '⚠️', text: r.msg ?? 'ما ينفع', kind: 'bad' });
@@ -422,6 +426,7 @@ export function GameScreen({ ctl, onExit }: { ctl: Controller; onExit: () => voi
       {dialog?.t === 'cards' && me && <CardsModal ctl={ctl} eng={eng} me={me} onClose={() => setDialog(null)} onSelect={focus} />}
       {dialog?.t === 'un' && <UNModal ctl={ctl} eng={eng} me={me} onClose={() => setDialog(null)} />}
       {dialog?.t === 'spy' && me && <SpyDialog ctl={ctl} eng={eng} me={me} target={dialog.to} onClose={() => setDialog(null)} />}
+      {dialog?.t === 'move' && me && me.place[dialog.from] && <MoveDialog ctl={ctl} eng={eng} me={me} from={dialog.from} onClose={() => setDialog(null)} />}
       {dialog?.t === 'dead' && (
         <Modal title="💀 دولتك سقطت" onClose={() => setDialog(null)}>
           <p>للأسف تم احتلال كل أراضيك. تقدر تكمل تتفرج على اللعبة وتشوف مين بيفوز.</p>

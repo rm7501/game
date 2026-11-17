@@ -59,5 +59,6 @@ console.log('حجم الحالة JSON:', Math.round(JSON.stringify(st).length / 
 console.log('إحصائيات:', JSON.stringify(counts));
 if (teams) console.log('الفرق:', JSON.stringify(e.teamStats().map((t) => ({ t: t.team, score: t.score, alive: t.alive, n: t.members.map((m) => m.name) }))));
 console.log('آخر قرار أممي:', JSON.stringify(st.unLast));
+console.log('الجيوش:', Object.values(st.nations).filter((n) => n.alive).map((n) => `${n.name}: أجيال ${n.gen.land}/${n.gen.air}/${n.gen.sea}/${n.gen.rocket} تخصص ${n.spec.join('+') || '-'} جنرالات ${n.generals.length} مواقع ${Object.keys(n.place).length}/${n.d.terrs} نجوم ${Math.max(0, ...Object.values(n.place).map((x) => Math.floor(x.xp / 20)))}`).join('\n  '));
 console.log('بطاقات بالأيدي:', Object.values(st.nations).filter((n) => n.alive).map((n) => n.cards.length).join(','), '| جواسيس:', Object.values(st.nations).filter((n) => n.alive).map((n) => n.agents + '/' + (1 + n.b.intel)).join(','));
 console.log(st.news.slice(-12).map((n) => n.icon + ' ' + n.text).join('\n'));

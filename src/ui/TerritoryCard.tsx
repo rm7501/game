@@ -2,6 +2,9 @@
 import { AREA_NAMES, UNITS } from '../game/defs';
 import { defenseValue } from '../game/battle';
 import { cardTargets } from '../game/cards';
+import { generalAt } from '../game/army';
+import { GENERALS } from '../game/defs';
+import { StackLine } from './army';
 import type { Engine } from '../game/engine';
 import type { Nation, TerrId } from '../game/types';
 import { REGION_NAMES } from '../game/world';
@@ -17,9 +20,10 @@ interface Props {
   onStrike: (k: 'missile' | 'nuke') => void;
   onDiplo: (nid: string) => void;
   onDefect?: () => void;
+  onMove?: () => void;
 }
 
-export function TerritoryCard({ eng, me, id, onClose, onAttack, onStrike, onDiplo, onDefect }: Props) {
+export function TerritoryCard({ eng, me, id, onClose, onAttack, onStrike, onDiplo, onDefect, onMove }: Props) {
   const s = eng.s;
   const t = s.terr[id];
   const m = eng.w.get(id);
@@ -32,6 +36,7 @@ export function TerritoryCard({ eng, me, id, onClose, onAttack, onStrike, onDipl
   const r = me && owner && !mine ? eng.peek(me.id, owner.id) : undefined;
   const why = me && owner && !mine ? eng.canHit(me, owner) : null;
   const incoming = s.moves.filter((x) => x.to === id && x.kind === 'attack');
+  const srcs = me && !mine ? eng.sources(me, id) : [];
   const canDefect = !!me && me.cards.includes('defect') && cardTargets(eng, me, 'defect').terrs.includes(id);
   return (
     <div class="tcard">
@@ -85,14 +90,27 @@ export function TerritoryCard({ eng, me, id, onClose, onAttack, onStrike, onDipl
         </div>
       )}
       {incoming.length > 0 && <div class="warn small">⚠️ فيه {incoming.length} جيش متجه لهنا!</div>}
+      {mine && me && (
+        <div class="tcard-army">
+          <div class="row-between small">
+            <b>🪖 الجيش هنا</b>
+            {generalAt(me, id) && <span>{GENERALS[generalAt(me, id)!.kind].icon} {generalAt(me, id)!.name}</span>}
+          </div>
+          <StackLine st={me.place[id]} />
+          <div class="tcard-actions">
+            <button class="btn btn-sm" disabled={!me.place[id]} onClick={onMove}>🚚 حرّك القوات</button>
+          </div>
+        </div>
+      )}
       {me && !mine && (
         <>
           <div class="muted small">
             {route ? (route.naval ? `🚢 تقدر توصل لها بغزو بحري من ${eng.w.name(route.from)}` : `🛤️ مجاورة لأراضيك (${eng.w.name(route.from)})`) : '🚫 بعيدة عن متناولك حالياً'}
+            {route && (srcs.length ? ` · تهاجم من ${srcs.length === 1 ? eng.w.name(srcs[0].from) : srcs.length + ' أراضي'}` : ' · ما عندك جيش جنبها، انقل قوات للحدود 🚚')}
           </div>
           {why && <div class="small warn">⛔ {why}</div>}
           <div class="tcard-actions">
-            <button class="btn btn-danger" disabled={!route || !!why} onClick={onAttack}>⚔️ هجوم</button>
+            <button class="btn btn-danger" disabled={!route || !!why || !srcs.length} onClick={onAttack}>⚔️ هجوم</button>
             {me.units.missile > 0 && <button class="btn" disabled={!!why} onClick={() => onStrike('missile')}>🚀 قصف ({me.units.missile})</button>}
             {me.units.nuke > 0 && <button class="btn btn-danger" disabled={!!why} onClick={() => onStrike('nuke')}>☢️ نووي ({me.units.nuke})</button>}
             {canDefect && <button class="btn btn-gold" title="بطاقة الانشقاق: تنضم لك بدون حرب" onClick={onDefect}>🏳️ انشقاق</button>}

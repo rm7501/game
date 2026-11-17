@@ -1,12 +1,13 @@
 // ذكاء البوتات (وأيضاً يلعب عن اللاعب اللي فصل)
-import { BUILDINGS, NUKE_PROJECT, SHIP_CAPACITY, UNITS, emptyUnits, missileRange } from './defs';
+import { BUILDINGS, MAX_GEN, MAX_GENERALS, NUKE_PROJECT, SHIP_CAPACITY, UNITS, emptyUnits, generalCost, missileRange } from './defs';
+import { generalAt, stackPower, upgradeCost } from './army';
 import { estimate } from './battle';
 import type { Engine } from './engine';
 import { spinFortune } from './events';
 import { aiCards } from './cards';
 import { aiSpy } from './spies';
 import { aiVote } from './un';
-import type { BuildingType, Nation, Personality, Proposal, TerrId, UnitType, Units } from './types';
+import type { Branch, BuildingType, Nation, Personality, Proposal, TerrId, UnitType, Units } from './types';
 import { COMBAT_UNITS } from './types';
 
 const PRIORITY: Record<Personality, Partial<Record<BuildingType, number>>> = {
@@ -52,7 +53,7 @@ function recruit(e: Engine, n: Nation, u: UnitType, budget: number): number {
   const man = UNITS[u].man;
   if (man > 0) cnt = Math.min(cnt, Math.floor(n.d.manpower / man));
   if (cnt < 1) return 0;
-  const r = e.command(n.id, { t: 'recruit', u, n: cnt });
+  const r = e.command(n.id, { t: 'recruit', u, n: cnt, at: u === 'ship' ? undefined : n.ai?.stage });
   return r.ok ? cost * cnt : 0;
 }
 
@@ -153,9 +154,11 @@ export function aiThink(e: Engine, n: Nation) {
     }
   }
 
-  // البطاقات والجواسيس
+  // البطاقات والجواسيس والجيش
   aiCards(e, n, atWar, danger);
   aiSpy(e, n, atWar);
+  aiArmy(e, n, diff);
+  aiDeploy(e, n);
 
   // الهجوم
   const myMoves = s.moves.filter((m) => m.owner === n.id && m.kind === 'attack').length;
@@ -185,23 +188,32 @@ export function aiThink(e: Engine, n: Nation) {
 
 function planAttack(e: Engine, n: Nation, diff: string, pers: Personality) {
   const s = e.s;
-  const commit = { aggressive: 0.7, balanced: 0.6, economic: 0.5, defensive: 0.45 }[pers];
+  const commit = { aggressive: 0.75, balanced: 0.65, economic: 0.55, defensive: 0.5 }[pers];
   // أقل فرصة فوز يقبل فيها البوت يهاجم
   let pThr = { aggressive: 0.62, balanced: 0.74, economic: 0.84, defensive: 0.87 }[pers];
   if (diff === 'easy') pThr += 0.08;
   if (diff === 'hard') pThr -= 0.07;
-  const cands = new Set<TerrId>();
-  for (const t of e.owned(n.id)) {
-    const m = e.w.get(t.id);
-    for (const x of m.n) if (s.terr[x] && s.terr[x].owner !== n.id) cands.add(x);
-    if (n.units.ship >= 2 && m.c) for (const x of Object.keys(m.s)) if (s.terr[x] && s.terr[x].owner !== n.id) cands.add(x);
+  // كل جيش متمركز ونشوف وش يقدر يهاجم منه
+  const cands = new Map<TerrId, TerrId[]>(); // الهدف ← الأراضي اللي نقدر نهاجم منها
+  for (const [t, st] of Object.entries(n.place ?? {})) {
+    if (st.u.inf + st.u.tank < 2) continue;
+    const m = e.w.get(t);
+    const targets = [...m.n];
+    if (st.u.ship >= 2 && m.c) targets.push(...Object.keys(m.s));
+    for (const x of targets) {
+      if (!s.terr[x] || s.terr[x].owner === n.id) continue;
+      const list = cands.get(x) ?? [];
+      list.push(t);
+      cands.set(x, list);
+    }
   }
-  let best: { to: TerrId; units: Units; score: number } | null = null;
+  let best: { to: TerrId; from: TerrId; units: Units; score: number } | null = null;
+  let stage: { to: TerrId; from: TerrId; value: number } | null = null;
   const already = new Set([...s.moves.filter((m) => m.owner === n.id).map((m) => m.to), ...s.battles.map((b) => b.terr)]);
-  const noNeutrals = ![...cands].some((x) => s.terr[x].owner === '');
+  const noNeutrals = ![...cands.keys()].some((x) => s.terr[x].owner === '');
   let checked = 0;
-  for (const to of cands) {
-    if (already.has(to) || checked > 14) continue;
+  for (const [to, froms] of cands) {
+    if (already.has(to) || checked > 16) continue;
     const T = s.terr[to];
     if (T.owner) {
       const D = s.nations[T.owner];
@@ -209,46 +221,160 @@ function planAttack(e: Engine, n: Nation, diff: string, pers: Personality) {
       const war = e.atWar(n.id, D.id);
       const grudge = n.ai?.grudge === D.id;
       if (!war && !grudge) {
-        // إعلان حرب جديدة: العدوانيين أكثر، والباقين أحياناً لو الفرصة حلوة
         const p = { aggressive: 0.8, balanced: 0.3, economic: 0.1, defensive: 0.08 }[pers] * (noNeutrals ? 2 : 1);
         if (e.rand() > p) continue;
         if (D.d.power > n.d.power * 1.05) continue;
         if (e.allies(D.id).length && e.rand() < 0.5) continue;
       }
     }
-    const route = e.route(n, to);
-    if (!route) continue;
-    const units = emptyUnits();
-    for (const k of COMBAT_UNITS) units[k] = Math.floor(n.units[k] * commit);
-    if (route.naval) {
-      const cap = units.ship * SHIP_CAPACITY;
-      if (cap < 2) continue;
-      const land = units.inf + units.tank;
-      if (land > cap) {
-        const f = cap / land;
-        units.inf = Math.floor(units.inf * f);
-        units.tank = Math.floor(units.tank * f);
-      }
-    }
-    if (units.inf + units.tank < 1) continue;
-    checked++;
-    let est = estimate(e, n, units, to, 10);
-    if (est.p < pThr || est.aLoss > 0.55) continue;
-    // نرسل اللي يكفي بس لو الفوز مضمون
-    if (est.p >= 0.99 && est.aLoss < 0.2) {
-      const small = { ...units };
-      for (const k of COMBAT_UNITS) small[k] = Math.ceil(units[k] * 0.6);
-      if (route.naval) small.ship = Math.max(small.ship, Math.ceil((small.inf + small.tank) / SHIP_CAPACITY));
-      const est2 = estimate(e, n, small, to, 10);
-      if (est2.p >= Math.min(0.97, pThr + 0.15)) { Object.assign(units, small); est = est2; }
-    }
     const mt = e.w.get(to);
     let value = T.gdp / 40 + T.pop / 4 + mt.area / 150000 + 2;
     if (T.owner) value *= n.ai?.grudge === T.owner ? 2.5 : 1.3;
-    const sc = (value * est.p * (1 - est.aLoss * 0.5)) / (route.naval ? 1.5 : 1);
-    if (!best || sc > best.score) best = { to, units, score: sc };
+    for (const from of froms) {
+      const route = e.route(n, to, from);
+      if (!route) continue;
+      const st = n.place[from];
+      const units = emptyUnits();
+      for (const k of COMBAT_UNITS) units[k] = Math.floor(st.u[k] * commit);
+      if (route.naval) {
+        const cap = units.ship * SHIP_CAPACITY;
+        if (cap < 2) continue;
+        const land = units.inf + units.tank;
+        if (land > cap) {
+          const f = cap / land;
+          units.inf = Math.floor(units.inf * f);
+          units.tank = Math.floor(units.tank * f);
+        }
+      }
+      if (units.inf + units.tank < 1) continue;
+      checked++;
+      const withGen = !!generalAt(n, from);
+      let est = estimate(e, n, units, to, 10, from, withGen);
+      if (est.p < pThr || est.aLoss > 0.55) {
+        // ما يكفي: نجهز جيش أكبر هنا للمرة الجاية
+        if (est.p > 0.15 && (!stage || value > stage.value)) stage = { to, from, value };
+        continue;
+      }
+      // نرسل اللي يكفي بس لو الفوز مضمون
+      if (est.p >= 0.99 && est.aLoss < 0.2) {
+        const small = { ...units };
+        for (const k of COMBAT_UNITS) small[k] = Math.ceil(units[k] * 0.6);
+        if (route.naval) small.ship = Math.max(small.ship, Math.ceil((small.inf + small.tank) / SHIP_CAPACITY));
+        const est2 = estimate(e, n, small, to, 10, from, withGen);
+        if (est2.p >= Math.min(0.97, pThr + 0.15)) { Object.assign(units, small); est = est2; }
+      }
+      const sc = (value * est.p * (1 - est.aLoss * 0.5)) / (route.naval ? 1.5 : 1);
+      if (!best || sc > best.score) best = { to, from, units, score: sc };
+    }
   }
-  if (best) e.command(n.id, { t: 'attack', to: best.to, units: best.units });
+  if (best) {
+    e.command(n.id, { t: 'attack', to: best.to, units: best.units, from: best.from, gen: !!generalAt(n, best.from) });
+    if (n.ai && n.ai.stage === best.from) n.ai.stage = undefined;
+  } else if (n.ai) {
+    // نثبت مكان تجميع الجيش لين نهاجم منه (ما نغيره كل شوي)
+    const cur = n.ai.stage;
+    const valid = cur && s.terr[cur]?.owner === n.id && e.w.get(cur).n.some((x) => s.terr[x] && s.terr[x].owner !== n.id && !e.allied(n.id, s.terr[x].owner));
+    if (!valid) n.ai.stage = stage?.from ?? pickStage(e, n);
+  }
+}
+
+/** نختار أرض حدودية نجمع فيها الجيش (جنب هدف مغري) */
+function pickStage(e: Engine, n: Nation): TerrId | undefined {
+  const s = e.s;
+  let best: { t: TerrId; v: number } | undefined;
+  for (const t of e.owned(n.id)) {
+    for (const x of e.w.get(t.id).n) {
+      const T = s.terr[x];
+      if (!T || T.owner === n.id) continue;
+      if (T.owner) {
+        const D = s.nations[T.owner];
+        if (!D || e.canHit(n, D) || (!e.atWar(n.id, D.id) && n.ai?.grudge !== D.id)) continue;
+      }
+      const v = (T.gdp / 40 + T.pop / 4 + 2) / (1 + e.w.centerDist(n.capital, t.id) / 3000);
+      if (!best || v > best.v) best = { t: t.id, v };
+    }
+  }
+  return best?.t;
+}
+
+/** البوت يوزع جيشه: العاصمة والحدود الخطرة والمكان اللي يجهز منه هجومه */
+function aiDeploy(e: Engine, n: Nation) {
+  const s = e.s;
+  const terrs = e.owned(n.id);
+  if (terrs.length < 2) return;
+  const want = new Map<TerrId, number>();
+  for (const t of terrs) {
+    let w = 0;
+    for (const x of e.w.get(t.id).n) {
+      const o = s.terr[x]?.owner;
+      if (o === n.id) continue;
+      if (!o) { w = Math.max(w, 0.25); continue; }
+      const O = s.nations[o];
+      if (!O?.alive || e.allied(n.id, o)) continue;
+      w = Math.max(w, (e.atWar(n.id, o) ? 3 : 0.8) * Math.min(3, O.d.power / Math.max(1, n.d.power) + 0.3));
+    }
+    if (t.id === n.capital) w += 1.5;
+    if (n.ai?.stage === t.id) w += 6;
+    if (s.battles.some((b) => b.terr === t.id) || s.moves.some((m) => m.kind === 'attack' && m.to === t.id)) w += 4;
+    if (w > 0) want.set(t.id, w);
+  }
+  const totW = [...want.values()].reduce((a, b) => a + b, 0);
+  if (!totW) return;
+  const totP = Object.values(n.place).reduce((a, st) => a + stackPower(n, st.u), 0);
+  if (totP < 1) return;
+  const surplus: { t: TerrId; p: number }[] = [];
+  const deficit: { t: TerrId; p: number }[] = [];
+  for (const t of terrs) {
+    const cur = n.place[t.id] ? stackPower(n, n.place[t.id].u) : 0;
+    const target = (totP * (want.get(t.id) ?? 0)) / totW;
+    if (cur - target > totP * 0.08) surplus.push({ t: t.id, p: cur - target });
+    else if (target - cur > totP * 0.08) deficit.push({ t: t.id, p: target - cur });
+  }
+  surplus.sort((a, b) => b.p - a.p);
+  deficit.sort((a, b) => b.p - a.p);
+  let moves = 0;
+  for (const d of deficit) {
+    const src = surplus.filter((x) => x.p > 0).sort((a, b) => e.w.centerDist(a.t, d.t) - e.w.centerDist(b.t, d.t))[0];
+    if (!src || moves >= 3) break;
+    const st = n.place[src.t];
+    const cur = stackPower(n, st.u);
+    const frac = Math.min(0.8, Math.min(src.p, d.p) / Math.max(1, cur));
+    if (frac < 0.1) continue;
+    const u: Partial<Units> = {};
+    for (const k of ['inf', 'tank', 'jet'] as const) u[k] = Math.floor(st.u[k] * frac);
+    if (e.w.get(d.t).c) u.ship = Math.floor(st.u.ship * frac);
+    if ((u.inf ?? 0) + (u.tank ?? 0) + (u.jet ?? 0) < 1) continue;
+    const r = e.command(n.id, { t: 'move', from: src.t, to: d.t, units: u });
+    if (r.ok) { moves++; src.p -= Math.min(src.p, d.p); }
+  }
+}
+
+/** البوت يطور أسلحته ويعين جنرالات */
+function aiArmy(e: Engine, n: Nation, diff: string) {
+  const s = e.s;
+  if (!n.q.some((q) => q.kind === 'project' && q.type.startsWith('gen:')) && e.rand() < (diff === 'hard' ? 0.45 : 0.3)) {
+    const order: Branch[] = [...n.spec, 'land', 'air', 'rocket', 'sea'];
+    for (const b of order) {
+      if (n.gen[b] >= MAX_GEN || n.tech < n.gen[b] + 1) continue;
+      const { cost } = upgradeCost(n, b);
+      if (n.treasury > cost * 2.2) { e.command(n.id, { t: 'upgrade', b }); break; }
+    }
+  }
+  if (n.generals.length < Math.min(MAX_GENERALS, 1 + Math.floor(n.d.terrs / 5)) && n.treasury > generalCost(n.generals.length, n.d.gdp) * 3 && e.rand() < 0.15) {
+    e.command(n.id, { t: 'general', act: 'hire' });
+  }
+  // الجنرالات يروحون لأقوى الجيوش
+  const tops = Object.entries(n.place).sort((a, b) => stackPower(n, b[1].u) - stackPower(n, a[1].u)).map(([t]) => t);
+  for (const g of n.generals) {
+    if (!g.at || tops.indexOf(g.at) >= 0 && tops.indexOf(g.at) < n.generals.length) continue;
+    const free = tops.find((t) => !n.generals.some((x) => x.at === t));
+    if (free) g.at = free;
+  }
+  if (n.spec.length < 2 && n.tech >= 3 && n.treasury > 600 && e.rand() < 0.04 && !n.q.some((q) => q.type.startsWith('spec:'))) {
+    const b = e.pick((['land', 'air', 'sea', 'rocket'] as Branch[]).filter((x) => !n.spec.includes(x)));
+    e.command(n.id, { t: 'specialize', b });
+  }
+  void s;
 }
 
 function diplomacy(e: Engine, n: Nation, neighbors: Set<string>, atWar: string[]) {
